@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--start baidutongji-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?70d16e3d719cb37c0878fd1f9a4c9a02";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--end baidutongji-->
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>Elasticsearch学习摘要二----基本概念和原理</title>
+<meta name="description" content="" />
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="shortcut icon" href="../favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=44b73496a4" />
+
+<link rel="canonical" href="http://whitespur.top/elasticsearchxue-xi-zhai-yao-er-ji-ben-gai-nian-he-yuan-li/" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="遥望白鹿巷" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Elasticsearch学习摘要二----基本概念和原理" />
+    <meta property="og:description" content="集群内的原理 https://elasticsearch.cn/book/elasticsearchdefinitiveguide_2.x/distributed-cluster.html  一个运行中的 Elasticsearch 实例称为一个 节点，而集群是由一个或者多个拥有相同 cluster.name 配置的节点组成， 它们共同承担数据和负载的压力。当有节点加入集群中 或者从集群中移除节点时，集群将会重新平均分布所有的数据。 当一个节点被选举成为 主节点时， 它将负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。 而主节点并不需要涉及到文档级别的变更和搜索等操作，所以当集群只拥有一个主节点的情况下，即使流量的增加它也不会成为瓶颈。 任何节点都可以成为主节点。我们的示例集群就只有一个节点，所以它同时也成为了主节点。 查看集群健康 GET /_cluster/health  status..." />
+    <meta property="og:url" content="http://whitespur.top/elasticsearchxue-xi-zhai-yao-er-ji-ben-gai-nian-he-yuan-li/" />
+    <meta property="article:published_time" content="2017-08-29T22:56:47.000Z" />
+    <meta property="article:modified_time" content="2017-08-29T22:56:47.000Z" />
+    <meta property="article:tag" content="集群" />
+    <meta property="article:tag" content="分片" />
+    <meta property="article:tag" content="索引" />
+    <meta property="article:tag" content="内存" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Elasticsearch学习摘要二----基本概念和原理" />
+    <meta name="twitter:description" content="集群内的原理 https://elasticsearch.cn/book/elasticsearchdefinitiveguide_2.x/distributed-cluster.html  一个运行中的 Elasticsearch 实例称为一个 节点，而集群是由一个或者多个拥有相同 cluster.name 配置的节点组成， 它们共同承担数据和负载的压力。当有节点加入集群中 或者从集群中移除节点时，集群将会重新平均分布所有的数据。 当一个节点被选举成为 主节点时， 它将负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。 而主节点并不需要涉及到文档级别的变更和搜索等操作，所以当集群只拥有一个主节点的情况下，即使流量的增加它也不会成为瓶颈。 任何节点都可以成为主节点。我们的示例集群就只有一个节点，所以它同时也成为了主节点。 查看集群健康 GET /_cluster/health  status..." />
+    <meta name="twitter:url" content="http://whitespur.top/elasticsearchxue-xi-zhai-yao-er-ji-ben-gai-nian-he-yuan-li/" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "遥望白鹿巷",
+    "author": {
+        "@type": "Person",
+        "name": "whitespur",
+        "url": "http://whitespur.top/author/whitespur",
+        "sameAs": "http://go2mars.top",
+        "description": "科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)\n太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷"
+    },
+    "headline": "Elasticsearch学习摘要二----基本概念和原理",
+    "url": "http://whitespur.top/elasticsearchxue-xi-zhai-yao-er-ji-ben-gai-nian-he-yuan-li/",
+    "datePublished": "2017-08-29T22:56:47.000Z",
+    "dateModified": "2017-08-29T22:56:47.000Z",
+    "keywords": "集群, 分片, 索引, 内存",
+    "description": "集群内的原理 https://elasticsearch.cn/book/elasticsearchdefinitiveguide_2.x/distributed-cluster.html  一个运行中的 Elasticsearch 实例称为一个 节点，而集群是由一个或者多个拥有相同 cluster.name 配置的节点组成， 它们共同承担数据和负载的压力。当有节点加入集群中 或者从集群中移除节点时，集群将会重新平均分布所有的数据。 当一个节点被选举成为 主节点时， 它将负责管理集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。 而主节点并不需要涉及到文档级别的变更和搜索等操作，所以当集群只拥有一个主节点的情况下，即使流量的增加它也不会成为瓶颈。 任何节点都可以成为主节点。我们的示例集群就只有一个节点，所以它同时也成为了主节点。 查看集群健康 GET /_cluster/health  status..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7" />
+    <link rel="alternate" type="application/rss+xml" title="遥望白鹿巷" href="http://whitespur.top/rss/" />
+</head>
+<body class="post-template tag-ji-qun tag-fen-pian tag-suo-yin tag-nei-cun nav-closed">
+
+<div class="nav">
+    <h3 class="nav-title">菜单</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">关闭</span>
+    </a>
+    <ul>
+            <li class="nav-" role="presentation"><a href="http://go2mars.top/">首页</a></li>
+            <li class="nav-spacex" role="presentation"><a href="http://www.spacex.com/">spaceX官网</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.marsinstitute.no/">火星研究组织</a></li>
+            <li class="nav-nasa" role="presentation"><a href="https://mars.jpl.nasa.gov/">NASA火星探索官网</a></li>
+            <li class="nav-" role="presentation"><a href="http://go2mars.ru/">一个俄罗斯关于火星的神奇网站</a></li>
+            <li class="nav-openai" role="presentation"><a href="https://openai.com/">OpenAI</a></li>
+            <li class="nav-" role="presentation"><a href="https://program-think.blogspot.com/">编程随想大牛</a></li>
+            <li class="nav-musk" role="presentation"><a href="https://elonmusknews.org/">musk相关网站</a></li>
+            <li class="nav-infoq" role="presentation"><a href="http://www.infoq.com/cn/">infoq</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.coursera.org/learn/machine-learning/home/info">机器学习课程</a></li>
+            <li class="nav-" role="presentation"><a href="https://tech.meituan.com/">美团点评技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://cwiki.apachecn.org/">开源项目学习汇总</a></li>
+            <li class="nav-" role="presentation"><a href="http://tech.youzan.com/tag/big-data/">有赞技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://www.jasongj.com/">技术世界博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://lib.csdn.net/bases/fd/Artificial-Intelligence/ast/all">人工智能知识库</a></li>
+            <li class="nav-" role="presentation"><a href="http://ifeve.com/">并发编程网</a></li>
+            <li class="nav-" role="presentation"><a href="https://bitcoin.org/zh_CN/">比特币官网-中文版</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://whitespur.top/rss/">订阅</a>
+</div>
+<span class="nav-cover"></span>
+
+<div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">菜单</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-ji-qun tag-fen-pian tag-suo-yin tag-nei-cun">
+
+        <header class="post-header">
+            <h1 class="post-title">Elasticsearch学习摘要二----基本概念和原理</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-08-30">2017年08月30日</time>  标签：<a href="../tag/ji-qun/index.html">集群</a>, <a href="../tag/fen-pian/index.html">分片</a>, <a href="../tag/suo-yin/index.html">索引</a>, <a href="../tag/nei-cun/index.html">内存</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <h2 id="">集群内的原理</h2>
+
+<p><a href="https://elasticsearch.cn/book/elasticsearch">https://elasticsearch.cn/book/elasticsearch</a><em>definitive</em>guide_2.x/distributed-cluster.html <br />
+一个运行中的 Elasticsearch <mark>实例</mark>称为一个 <mark>节点</mark>，而集群是由一个或者多个拥有相同 cluster.name 配置的节点组成， 它们共同承担数据和负载的压力。当有节点加入集群中
+或者从集群中移除节点时，集群将会重新平均分布所有的数据。
+当一个节点被选举成为 <mark>主节点</mark>时， 它将负责<mark>管理</mark>集群范围内的所有变更，例如增加、删除索引，或者增加、删除节点等。 而主节点并<mark>不需要涉及到文档级别的变更和搜索</mark>等操作，所以当集群只拥有一个主节点的情况下，<mark>即使流量的增加它也不会成为瓶颈</mark>。 任何节点都可以成为主节点。我们的示例集群就只有一个节点，所以它同时也成为了主节点。</p>
+
+<h2 id="">查看集群健康</h2>
+
+<p>GET /_cluster/health <br />
+status 字段指示着当前集群在总体上是否工作正常。它的三种颜色含义如下： <br />
+green 所有的主分片和副本分片都正常运行。 <br />
+yellow 所有的主分片都正常运行，但不是所有的副本分片都正常运行。 <br />
+red 有主分片没能正常运行。  </p>
+
+<h2 id="">索引，主分片，副分片</h2>
+
+<p>我们往 Elasticsearch 添加数据时需要用到 <mark>索引</mark> —— 保存相关数据的地方。 索引实际上是指向一个或者多个物理 分片 的 <mark>逻辑命名空间</mark> 。
+一个 <mark>分片</mark> 是一个<mark>底层的工作单元</mark>，它仅保存了 全部数据中的<mark>一部分</mark>。 在分片内部机制中，我们将详细介绍分片是如何工作的，而现在我们只需知道一个分片是<mark>一个 Lucene 的实例</mark>，以及它本身就是<mark>一个完整的搜索引擎</mark>。 我们的文档被存储和索引到分片内，但是<mark>应用程序是直接与索引而不是与分片进行交互</mark>。
+一个分片可以是 主分片或者副本分片。 <mark>索引内任意一个文档都归属于一个主分片，所以主分片的数目决定着索引能够保存的最大数据量。</mark>
+<mark>一个副本分片只是一个主分片的拷贝</mark>。 副本分片作为硬件故障时保护数据不丢失的冗余备份，并为搜索和返回文档等读操作提供服务。
+在索引建立的时候就已经确定了主分片数，但是副本分片数可以随时修改。
+所有新近被索引的文档都将会保存在主分片上，然后被并行的复制到对应的副本分片上。这就保证了我们既可以从主分片又可以从副本分片上获得文档。</p>
+
+<h2 id="">水平扩容</h2>
+
+<p><a href="https://elasticsearch.cn/book/elasticsearch">https://elasticsearch.cn/book/elasticsearch</a><em>definitive</em>guide<em>2.x/</em>scale_horizontally.html <br />
+blogs 索引现在拥有9个分片：3个主分片和6个副本分片。 这意味着我们可以将集群扩容到9个节点，每个节点上一个分片。相比原来3个节点时，集群搜索性能可以提升 3 倍。 <br />
+通常情况下，我们使用的术语 对象 和 文档 是可以互相替换的。不过，有一个区别： 一个对象仅仅是类似于 hash 、 hashmap 、字典或者关联数组的 <mark>JSON 对象</mark>，对象中也可以嵌套其他的对象。 对象可能包含了另外一些对象。在 Elasticsearch 中，术语 <mark>文档</mark> 有着特定的含义。它是指最顶层或者根对象, 这个<mark>根对象被序列化成 JSON 并存储到 Elasticsearch 中，指定了唯一ID</mark>。</p>
+
+<h2 id="">文档<mark>元数据</mark></h2>
+
+<p>一个文档不仅仅包含它的数据 ，也包含 元数据 —— 有关 文档的信息。 三个必须的元数据元素如下：
+    _index
+    文档在哪存放
+    _type
+    文档表示的对象类别
+    _id
+    文档唯一标识
+响应体包括目前已经熟悉了的元数据元素，再加上 _source 字段，这个字段包含我们索引数据时发送给 Elasticsearch 的原始 JSON 文档</p>
+
+<h2 id="">排序</h2>
+
+<p><a href="https://elasticsearch.cn/book/elasticsearch">https://elasticsearch.cn/book/elasticsearch</a><em>definitive</em>guide<em>2.x/</em>Sorting.html <br />
+为了按照相关性来排序，需要将相关性表示为一个数值。在 Elasticsearch 中， 相关性得分 由一个浮点数进行表示，并在搜索结果中通过 _score 参数返回， 默认排序是 _score 降序
+计算 _score 的花销巨大，通常仅用于排序
+每个文档都有相关性评分，用一个正浮点数字段 _score 来表示 。 _score 的评分越高，相关性越高。
+查询语句会为每个文档生成一个 _score 字段。评分的计算方式取决于查询类型 不同的查询语句用于不同的目的： fuzzy 查询会计算与关键词的拼写相似程度，terms 查询会计算 找到的内容与关键词组成部分匹配的百分比，但是通常我们说的 relevance 是我们用来计算全文本字段的值相对于全文本检索词相似程度的算法。
+Elasticsearch 的相似度算法 被定义为检索词频率/反向文档频率， TF/IDF ，包括以下内容： <br />
+检索词频率
+检索词在该字段出现的频率？出现频率越高，相关性也越高。 字段中出现过 5 次要比只出现过 1 次的相关性高。
+反向文档频率
+每个检索词在索引中出现的频率？频率越高，相关性越低。检索词出现在多数文档中会比出现在少数文档中的权重更低。
+字段长度准则
+字段的长度是多少？长度越长，相关性越低。 检索词出现在一个短的 title 要比同样的词出现在一个长的 content 字段权重更大。</p>
+
+<p>保存相同的字符串两次在 <em>source 字段是浪费空间的。 我们真正想要做的是传递一个 单字段 但是却用两种方式索引它。所有的 _core</em>field 类型 (strings, numbers, Booleans, dates) 接收一个 fields 参数
+该参数允许你转化一个简单的映射如：
+"tweet": {
+    "type":     "string",
+    "analyzer": "english"
+}
+为一个多字段映射如：
+"tweet": {1 
+         "type":     "string",
+    "analyzer": "english",
+    "fields": {2
+        "raw": { 
+                             "type":  "string",
+            "index": "not<em>analyzed"
+        }
+    }
+}
+1tweet 主字段与之前的一样: 是一个 analyzed 全文字段。 <br />
+2新的 tweet.raw 子字段是 not</em>analyzed. <br />
+以全文 analyzed 字段排序会消耗大量的内存。获取更多信息请看 聚合与分析 </p>
+
+<h1 id="">内存相关</h1>
+
+<p>选择堆大小（Choosing a Heap Size）
+在设置 Elasticsearch 堆大小时需要通过 $ES<em>HEAP</em>SIZE 环境变量应用两个规则：
+1<mark>不要超过可用 RAM 的 50%</mark> <br />
+Lucene 能很好利用文件系统的缓存，它是通过系统内核管理的。如果没有足够的文件系统缓存空间，性能会收到影响。 此外，专用于堆的内存越多意味着其他所有使用 doc values 的字段内存越少。 <br />
+2<mark>不要超过 32 GB</mark> <br />
+如果堆大小小于 32 GB，JVM 可以利用指针压缩，这可以大大降低内存的使用：每个指针 4 字节而不是 8 字节。
+更详细和更完整的堆大小讨论，请参阅 堆内存:大小和交换
+Fielddata的大小 <br />
+indices.fielddata.cache.size 控制为 fielddata 分配的堆空间大小。 当你发起一个查询，分析字符串的聚合将会被加载到 fielddata，如果这些字符串之前没有被加载过。如果结果中 fielddata 大小超过了指定 大小 ，其他的值将会被回收从而获得空间。 <br />
+默认情况下，设置都是 unbounded ，Elasticsearch 永远都不会从 fielddata 中回收数据。</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../author/whitespur/index.html">whitespur</a></h4>
+
+                    <p>科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)
+太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Hangzhou,China</span>
+                    <span class="author-link icon-link"><a href="http://go2mars.top">http://go2mars.top</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>分享此博文</h4>
+                <div class="bdsharebuttonbox"><a href="index.html#" class="bds_more" data-cmd="more"></a><a href="index.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="index.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="index.html#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="index.html#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="../zhong-duan-qi-gui-hua/index.html">
+        <section class="post">
+            <h2>毕业流水账+中短期规划</h2>
+            <p>处在信息爆炸的时代，各种知识，新闻每天都充斥在身边，工作生活也是一天一天过去，毕业7年了，虽然一直在做技术，但是领域内容有点广，都浅尝辄止了，简单写下流水账：    10年刚毕业就幸运的接触了android，而且还是系统层方面的工作，机顶盒，pad，手机系统层定制优化，红外,SurfaceFlinger,RIL,telephony从hal到framework几个模块搞过；  13年后面入职阿里，&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="../she-ji-mo-shi-zhi-dan-li-mo-shi/index.html">
+        <section class="post">
+            <h2>设计模式之单例模式</h2>
+            <p>本文介绍了为何需要单例模式，单例模式的设计要点，饿汉和懒汉的区别，并通过实例介绍了实现单例模式的八种实现方式及其优缺点。 原创文章，转载请务必将下面这段话置于文章开头处（保留超链接）。 本文转发自技术世界，原文链接　http://www.jasongj.com/design_pattern/singleton/ 为何需要单例模式 对于系统中的某些类来说，只有一个实例很重要，&hellip;</p>
+        </section>
+    </a>
+</aside>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/**
+var disqus_config = function () {
+this.page.url = "/elasticsearchxue-xi-zhai-yao-er-ji-ben-gai-nian-he-yuan-li/";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "ghost-"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://go2mars-top.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<footer class="site-footer clearfix">
+<section class="copyright"><a href="http://whitespur.top">遥望白鹿巷</a> &copy; 2017</section>
+<section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a> &amp; <a href="http://www.ghostchina.com">GhostChina</a></section>
+</footer>
+
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+<script src="../assets/js/index.js?v=44b73496a4"></script>
+<!-- 开始：我们把统计代码加到此处，百度统计
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");  
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6338835ad35c6d950a554fdedb598e48' type='text/javascript'%3E%3C/script%3E"));  
+</script>
+结束：我们把统计代码加到此处，百度统计 -->
+</body>
+</html>

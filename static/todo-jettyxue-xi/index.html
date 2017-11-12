@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--start baidutongji-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?70d16e3d719cb37c0878fd1f9a4c9a02";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--end baidutongji-->
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>Jetty  安装配置、特性、以及后期优化</title>
+<meta name="description" content="" />
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="shortcut icon" href="../favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=44b73496a4" />
+
+<link rel="canonical" href="http://whitespur.top/todo-jettyxue-xi/" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="遥望白鹿巷" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Jetty  安装配置、特性、以及后期优化" />
+    <meta property="og:description" content="Jetty 的工作原理以及与 Tomcat 的比较  https://www.ibm.com/developerworks/cn/java/j-lo-jetty/ 1)Jetty：  作用：Jetty 是一个开源的servlet容器，它为基于Java的web内容，例如JSP和servlet提供运行环境。 特性：易用性，可扩展性，易嵌入性 2) Jetty安装：   tar zxf jetty.tar.gz -C /usr/local/jetty/ #解压  Java -jar stat.jar #启动jetty..." />
+    <meta property="og:url" content="http://whitespur.top/todo-jettyxue-xi/" />
+    <meta property="article:published_time" content="2017-08-24T19:18:03.000Z" />
+    <meta property="article:modified_time" content="2017-09-19T19:36:10.000Z" />
+    <meta property="article:tag" content="jetty" />
+    <meta property="article:tag" content="tomcat" />
+    <meta property="article:tag" content="性能优化" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Jetty  安装配置、特性、以及后期优化" />
+    <meta name="twitter:description" content="Jetty 的工作原理以及与 Tomcat 的比较  https://www.ibm.com/developerworks/cn/java/j-lo-jetty/ 1)Jetty：  作用：Jetty 是一个开源的servlet容器，它为基于Java的web内容，例如JSP和servlet提供运行环境。 特性：易用性，可扩展性，易嵌入性 2) Jetty安装：   tar zxf jetty.tar.gz -C /usr/local/jetty/ #解压  Java -jar stat.jar #启动jetty..." />
+    <meta name="twitter:url" content="http://whitespur.top/todo-jettyxue-xi/" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "遥望白鹿巷",
+    "author": {
+        "@type": "Person",
+        "name": "whitespur",
+        "url": "http://whitespur.top/author/whitespur",
+        "sameAs": "http://go2mars.top",
+        "description": "科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)\n太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷"
+    },
+    "headline": "Jetty  安装配置、特性、以及后期优化",
+    "url": "http://whitespur.top/todo-jettyxue-xi/",
+    "datePublished": "2017-08-24T19:18:03.000Z",
+    "dateModified": "2017-09-19T19:36:10.000Z",
+    "keywords": "jetty, tomcat, 性能优化",
+    "description": "Jetty 的工作原理以及与 Tomcat 的比较  https://www.ibm.com/developerworks/cn/java/j-lo-jetty/ 1)Jetty：  作用：Jetty 是一个开源的servlet容器，它为基于Java的web内容，例如JSP和servlet提供运行环境。 特性：易用性，可扩展性，易嵌入性 2) Jetty安装：   tar zxf jetty.tar.gz -C /usr/local/jetty/ #解压  Java -jar stat.jar #启动jetty..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7" />
+    <link rel="alternate" type="application/rss+xml" title="遥望白鹿巷" href="http://whitespur.top/rss/" />
+</head>
+<body class="post-template tag-jetty tag-tomcat tag-xing-neng-you-hua nav-closed">
+
+<div class="nav">
+    <h3 class="nav-title">菜单</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">关闭</span>
+    </a>
+    <ul>
+            <li class="nav-" role="presentation"><a href="http://go2mars.top/">首页</a></li>
+            <li class="nav-spacex" role="presentation"><a href="http://www.spacex.com/">spaceX官网</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.marsinstitute.no/">火星研究组织</a></li>
+            <li class="nav-nasa" role="presentation"><a href="https://mars.jpl.nasa.gov/">NASA火星探索官网</a></li>
+            <li class="nav-" role="presentation"><a href="http://go2mars.ru/">一个俄罗斯关于火星的神奇网站</a></li>
+            <li class="nav-openai" role="presentation"><a href="https://openai.com/">OpenAI</a></li>
+            <li class="nav-" role="presentation"><a href="https://program-think.blogspot.com/">编程随想大牛</a></li>
+            <li class="nav-musk" role="presentation"><a href="https://elonmusknews.org/">musk相关网站</a></li>
+            <li class="nav-infoq" role="presentation"><a href="http://www.infoq.com/cn/">infoq</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.coursera.org/learn/machine-learning/home/info">机器学习课程</a></li>
+            <li class="nav-" role="presentation"><a href="https://tech.meituan.com/">美团点评技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://cwiki.apachecn.org/">开源项目学习汇总</a></li>
+            <li class="nav-" role="presentation"><a href="http://tech.youzan.com/tag/big-data/">有赞技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://www.jasongj.com/">技术世界博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://lib.csdn.net/bases/fd/Artificial-Intelligence/ast/all">人工智能知识库</a></li>
+            <li class="nav-" role="presentation"><a href="http://ifeve.com/">并发编程网</a></li>
+            <li class="nav-" role="presentation"><a href="https://bitcoin.org/zh_CN/">比特币官网-中文版</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://whitespur.top/rss/">订阅</a>
+</div>
+<span class="nav-cover"></span>
+
+<div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">菜单</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-jetty tag-tomcat tag-xing-neng-you-hua">
+
+        <header class="post-header">
+            <h1 class="post-title">Jetty  安装配置、特性、以及后期优化</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-08-25">2017年08月25日</time>  标签：<a href="../tag/jetty/index.html">jetty</a>, <a href="../tag/tomcat/index.html">tomcat</a>, <a href="../tag/xing-neng-you-hua/index.html">性能优化</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Jetty 的工作原理以及与 Tomcat 的比较 <br />
+<a href="https://www.ibm.com/developerworks/cn/java/j-lo-jetty/">https://www.ibm.com/developerworks/cn/java/j-lo-jetty/</a></p>
+
+<p>1)Jetty： <br />
+作用：Jetty 是一个开源的servlet容器，它为基于Java的web内容，例如JSP和servlet提供运行环境。
+特性：易用性，可扩展性，易嵌入性
+2) Jetty安装： <br />
+ tar zxf jetty.tar.gz -C /usr/local/jetty/ #解压
+ Java -jar stat.jar #启动jetty
+ export JETTY_HOME=/usr/java/jetty #将Jetty路径添加到环境变量
+3) Jetty配置： <br />
+etc:该路径用于存放Jetty的配置文件 <br />
+examples:该路径用于存放Jetty的示例。 <br />
+legal:该路径用于存放该项目的Lisence信息。 <br />
+lib:该路径用于存放运行Jetty必需的静态库文件。 <br />
+modules:该路径用于存放Jetty的模块，包括API文档。 <br />
+patches:包含一些补丁说明。 <br />
+pom.xm1:是Jetty的build文件，该文件不是Ant的build文件，而是mavaen2的build文件。 <br />
+project-site:包含Jetty的网站的必需的样式文件。 <br />
+readme.txt:包含最基本的使用信息。 <br />
+start.jar:启动Jetty的启动文件。 <br />
+version.txt:Jetty版本更新日志的简单版本。 <br />
+webapps: 该路径用于存放自动部署的Web 应用，只要将用户的Web应用复制到该路径下，Web应用将自动部署 <br />
+webapps-plus: 存放一些用于演示Jetty 扩展属性的Web 应用，该路径下的Web应用也可自动部署。 <br />
+4) Jetty与Tomcat <br />
+ 相同点：
+Tomcat和Jetty都是一种Servlet引擎，他们都支持标准的servlet规范和JavaEE的规范。 <br />
+ 不同点：
+1.架构比较 <br />
+Jetty的架构比Tomcat的更为简单 <br />
+Jetty的架构是基于Handler来实现的，主要的扩展功能都可以用Handler来实现，扩展简单。 <br />
+Tomcat的架构是基于容器设计的，进行扩展是需要了解Tomcat的整体设计结构，不易扩展。 <br />
+2. 性能比较 <br />
+Jetty和Tomcat性能方面差异不大 <br />
+Jetty可以同时处理大量连接而且可以长时间保持连接，适合于web聊天应用等等。 <br />
+Jetty的架构简单，因此作为服务器，Jetty可以按需加载组件，减少不需要的组件，减少了服务器内存开销，从而提高服务器性能。 <br />
+Jetty默认采用NIO结束在处理I/O请求上更占优势，在处理静态资源时，性能较高 <br />
+Tomcat适合处理少数非常繁忙的链接，也就是说链接生命周期短的话，Tomcat的总体性能更高。 <br />
+Tomcat默认采用BIO处理I/O请求，在处理静态资源时，性能较差。 <br />
+3.其它比较 <br />
+Jetty的应用更加快速，修改简单，对新的Servlet规范的支持较好。 <br />
+Tomcat目前应用比较广泛，对JavaEE和Servlet的支持更加全面，很多特性会直接集成进来。 <br />
+5) Jetty优化： <br />
+一、一般调优的基本过程
+1.明了需要调优的系统架构 <br />
+2.设定性能调优的目标 <br />
+3.明了目标当前的性能情况 <br />
+4.找出目前的性能瓶颈的所在 <br />
+5.解决引起性能瓶颈的根本问题 <br />
+6.重复以上过程直到达到设定目标性能为止 <br />
+二、性能指标：
+崩溃点：同时多少并发的时候，服务器Down掉？
+吞吐量:多少人一起来，都没问题？
+并发数:每秒能处理多少人？
+响应时间：每人需要等待的时间多长？
+三、调优点：
+1.硬件配置优化： <br />
+虚拟机
+物理机
+CPU <br />
+内存 </p>
+
+<p>2、系统优化（Linux) <br />
+已经根据门户的方式去优化。</p>
+
+<p>3.JVM参数优化： <br />
+<mark>-Xms：设置jvm内存的初始大小
+-Xmx：设置jvm内存的最大值</mark>
+-Xmn：设置新域的大小（这个似乎只对 jdk1.4来说是有效的，后来就废弃了）
+<mark>-Xss：设置每个线程的堆栈大小(也就是说,在相同物理内存下，减小这个值能生成更多的线程)</mark>
+-XX：NewRatio :设置新域与旧域之比，如-XX：NewRatio = 4就表示新域与旧域之比为1：4
+-XX:NewSize：设置新域的初始值
+-XX:MaxNewSize ：设置新域的最大值
+-XX:PermSize：设置永久域的初始值
+<mark>-XX:MaxPermSize：设置永久域的最大值</mark>
+-XX:SurvivorRatio=n:设置新域中Eden区与两个Survivor区的比值。（Eden区主要是用来存放新生的对象，而两个 Survivor区则用来存放每次垃圾回收后存活下来的对象）
+监控内存 CPU
+<mark>常见的错误 ：
+java.lang.OutOfMemoryError相信很多开发人员都用到过，这个主要就是JVM参数没有配好引起的，但是这种错误又分两种：java.lang.OutOfMemoryError: Java heap space和 <br />
+java.lang.OutOfMemoryError: PermGen space，其中前者是有关堆内存的内存溢出，可以同过配置-Xms和-Xmx参数来设置，而后者是有关永久域的内存溢出，可以通过配置-XX:MaxPermSize来设置。</mark></p>
+
+<p>4.容器优化： <br />
+a.线程池 <br />
+ 线程池线程资源大小确定了服务器的服务能力
+默认大小不一定能满足生产环境
+线程分配方式决定了服务器的资源利用效率
+固定线程数处理多任务,代表：JDK的ThreadPoolExecutor
+以最大线程数为限处理多任务，代表：Jetty自带QueuedThreadPool
+Work-stealing 分配，Jetty目前没有这个实现 Jetty中配置实例： <br />
+<mark>maxThreads</mark>：表示最多同时处理的连接数。应该将线程数（最大线程数）设置比最大预期负载（同时并发的点击）多25%（经验规则）(低配置用户可通过降低maxThreads并同时增大
+acceptCount值来保证系统的稳定)。 <br />
+<mark>acceptCount</mark>：当同时连接的人数达到maxThreads时，还可以接收排队的连接。
+minSpareThread：指“启动以后，总是保持该数量的线程空闲等待”；设置比预期负载多25%。 <br />
+maxSpareThread：指“如果超过了minSpareThread，然后总是保持该数量的线程空闲等待”；设置比预期负载多25%。 <br />
+<mark>其中主要修改两个参数maxThreads和acceptCount值。增加maxThreads，减少acceptCount值有利缩短系统的响应时间。但是maxThreads和acceptCount的总和最高值不能超过6000，而且maxThreads过大会增加CPU和内存消耗，故低配置用户可通过降低maxThreads并同时增大acceptCount值来保证系统的稳定。</mark>
+<mark>connectionTimeout</mark>：连接超时，最大超时时间，当响应速度慢的时候，通过调整该参数，来平衡正确率和服务器资源的回收。</p>
+
+<p>b.Connectors <br />
+选择Connector时，需要考虑应用自身的特点，例如股票、聊天室.
+TCP 连接数 Keep-Alive Java BIO Connectors SocketConnector (HTTP) <br />
+Ajp13SocketConnector (AJP) SslSocketConnector(SSL) <br />
+Java NIO Connectors electChannelConnector(HTTP) SslSelectChannelConnector(SSL)</p>
+
+<p><mark>Acceptors 表示同时在监听read事件的线程数
+默认值是 1 典型值范围 1~(处理器内核数+1) 
+对于NIO 来说，设置为(处理器内核数+1)比较合适</mark>
+maxIdleTime 表示连接最大空闲时间 默认值是 200000，一般这个值都太大了 <br />
+典型值 3000 左右足够 
+对AJP来说一般设置为-1，表示连接需要一直保持</p>
+
+<p>LowResourcesMaxIdleTime 表示线程资源稀少时的maxIdleTime 默认值是 -1，表示没有设置 <br />
+一般设置值应该&lt;=maxIdleTime
+lowResourcesConnections 只有NIO才有这个设置，表示连接空闲时的连接数，大于这个数将被shutdown <br />
+默认值是 0,表示该设置没有生效 每个acceptor的连接数=(lowResourcesConnections+acceptors-1)/acceptors</p>
+
+<p>AcceptQueueSize 连接被 accept 前允许等待的连接数即Socket的Backlog ，默认 50 <br />
+SoLingerTime 具有指定逗留时间（以毫秒为单位) 即socket的setSoLinger，默认关闭 <br />
+ResolveNames 是否反查 getRemoteHost() 默认false</p>
+
+<p>c.JVM <br />
+<mark>Jetty性能调优点-JVM
+JVM参数调整主要涉及两个方面 <br />
+堆/栈内存大小调整 
+Xmx/xms 最大/最小堆大小 <br />
+xmn 新生代大小 <br />
+-XX:MaxPermSize 持久代堆大小 
+垃圾分配回收算法考虑暂停时间、吞吐量选择不同算法 
+串行/并行/并发收集</mark></p>
+
+<p>d.Content Cache <br />
+动态内容不会被cache 静态内容才会被cache
+maxCacheSize 256,000,000 <br />
+maxCachedFileSize 200,000,000 <br />
+maxCachedFiles ?2,048 <br />
+useFileMappedBuffer ?true <br />
+可以通过etc/webdefault.xml配置</p>
+
+<p>e.冗余组件去除 <br />
+去除多余的Connector 去除不需要的构建Handler 例如SessionHandler,ServletHandler
+关闭不必要的服务 例如 jmx-console。(JBoss)</p>
+
+<p>5.代码优化： <br />
+在高峰期，减去日志记录的操作，或者把日志暂时先缓存起来，使用异步处理的方式。
+减少一些数据库操作。
+减少NC 身份证等匹配方式。</p>
+
+<p>6.数据库优化： <br />
+索引
+视图</p>
+
+<p>7.其他： <br />
+压缩css,js,图片
+使用浏览器缓存
+CDN加速 <br />
+分布式缓存服务器
+集群、负载均衡</p>
+
+<p>三.调优策略：
+a.关键点，找到瓶颈,给瓶颈分配更多的资源，或者减轻其工作量。</p>
+
+<p>四、调优原则
+a.每台服务器，所能承载的参数，都会有差异，尤其是内存 CPU的配置不一致。 <br />
+b.每种服务所需的计算资源各不相同，要根据服务的偏向不同，而去把最好的资源，分配到最需要的地方 <br />
+c.性能优化，是永恒的话题，没有永久最优解，只能查出目前最优解,是一个不断优化的过程。</p>
+
+<p>五、调优技巧
+1.粗狂的扫点与详细的指标相结合，尽量让验证调优的过程更敏捷,让主要的指标稳定下来，在确定指标前，再使用详细的方式去测出各种指标。 <br />
+2.分轮测试，在测试结果中，找出各个参数的规律。为调优提供指导数据。 <br />
+3.在程序增加计数器，验证LR的请求次数。 <br />
+4.在程序每个步骤，增加多一些时间，检查下，到底是卡在哪个步骤，尤其是操作数据库前后。</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../author/whitespur/index.html">whitespur</a></h4>
+
+                    <p>科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)
+太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Hangzhou,China</span>
+                    <span class="author-link icon-link"><a href="http://go2mars.top">http://go2mars.top</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>分享此博文</h4>
+                <div class="bdsharebuttonbox"><a href="index.html#" class="bds_more" data-cmd="more"></a><a href="index.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="index.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="index.html#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="index.html#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story " style="background-image: url(../content/images/2017/08/image-5.png)" href="../sou-suo-yin-qing-jian-jie/index.html">
+        <section class="post">
+            <h2>搜索引擎简介</h2>
+            <p>1原理 https://www.ibm.com/developerworks/cn/java/j-lo-dyse1/index.html https://yq.aliyun.com/articles/101334 搜索引擎三段式工作流程 搜索引擎整体结构&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="../todo-elasticsearchxue-xi-bi-ji/index.html">
+        <section class="post">
+            <h2>Elasticsearch学习摘要一</h2>
+            <p>Elasticsearch 是一个分布式、可扩展、实时的搜索与数据分析引擎。 它能从项目一开始就赋予你的数据以搜索、分析和探索的能力，这是通常没有预料到的。 它存在还因为原始数据如果只是躺在磁盘里面根本就毫无用处。  https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html&hellip;</p>
+        </section>
+    </a>
+</aside>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/**
+var disqus_config = function () {
+this.page.url = "/todo-jettyxue-xi/";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "ghost-"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://go2mars-top.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<footer class="site-footer clearfix">
+<section class="copyright"><a href="http://whitespur.top">遥望白鹿巷</a> &copy; 2017</section>
+<section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a> &amp; <a href="http://www.ghostchina.com">GhostChina</a></section>
+</footer>
+
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+<script src="../assets/js/index.js?v=44b73496a4"></script>
+<!-- 开始：我们把统计代码加到此处，百度统计
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");  
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6338835ad35c6d950a554fdedb598e48' type='text/javascript'%3E%3C/script%3E"));  
+</script>
+结束：我们把统计代码加到此处，百度统计 -->
+</body>
+</html>

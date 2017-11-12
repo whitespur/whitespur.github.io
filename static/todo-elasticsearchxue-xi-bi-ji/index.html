@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--start baidutongji-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?70d16e3d719cb37c0878fd1f9a4c9a02";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--end baidutongji-->
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>Elasticsearch学习摘要一</title>
+<meta name="description" content="" />
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="shortcut icon" href="../favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=44b73496a4" />
+
+<link rel="canonical" href="http://whitespur.top/todo-elasticsearchxue-xi-bi-ji/" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="遥望白鹿巷" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Elasticsearch学习摘要一" />
+    <meta property="og:description" content="Elasticsearch 是一个分布式、可扩展、实时的搜索与数据分析引擎。 它能从项目一开始就赋予你的数据以搜索、分析和探索的能力，这是通常没有预料到的。 它存在还因为原始数据如果只是躺在磁盘里面根本就毫无用处。  https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html 中文wiki http://www.apache.wiki/display/Elasticsearch/Index 学习博客 http://www.cnblogs.com/xing901022/p/4704319.html 有赞 http://tech.youzan...." />
+    <meta property="og:url" content="http://whitespur.top/todo-elasticsearchxue-xi-bi-ji/" />
+    <meta property="article:published_time" content="2017-08-22T17:30:49.000Z" />
+    <meta property="article:modified_time" content="2017-08-25T21:45:48.000Z" />
+    <meta property="article:tag" content="Elasticsearch" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Elasticsearch学习摘要一" />
+    <meta name="twitter:description" content="Elasticsearch 是一个分布式、可扩展、实时的搜索与数据分析引擎。 它能从项目一开始就赋予你的数据以搜索、分析和探索的能力，这是通常没有预料到的。 它存在还因为原始数据如果只是躺在磁盘里面根本就毫无用处。  https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html 中文wiki http://www.apache.wiki/display/Elasticsearch/Index 学习博客 http://www.cnblogs.com/xing901022/p/4704319.html 有赞 http://tech.youzan...." />
+    <meta name="twitter:url" content="http://whitespur.top/todo-elasticsearchxue-xi-bi-ji/" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "遥望白鹿巷",
+    "author": {
+        "@type": "Person",
+        "name": "whitespur",
+        "url": "http://whitespur.top/author/whitespur",
+        "sameAs": "http://go2mars.top",
+        "description": "科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)\n太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷"
+    },
+    "headline": "Elasticsearch学习摘要一",
+    "url": "http://whitespur.top/todo-elasticsearchxue-xi-bi-ji/",
+    "datePublished": "2017-08-22T17:30:49.000Z",
+    "dateModified": "2017-08-25T21:45:48.000Z",
+    "keywords": "Elasticsearch",
+    "description": "Elasticsearch 是一个分布式、可扩展、实时的搜索与数据分析引擎。 它能从项目一开始就赋予你的数据以搜索、分析和探索的能力，这是通常没有预料到的。 它存在还因为原始数据如果只是躺在磁盘里面根本就毫无用处。  https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html 中文wiki http://www.apache.wiki/display/Elasticsearch/Index 学习博客 http://www.cnblogs.com/xing901022/p/4704319.html 有赞 http://tech.youzan...."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7" />
+    <link rel="alternate" type="application/rss+xml" title="遥望白鹿巷" href="http://whitespur.top/rss/" />
+</head>
+<body class="post-template tag-elasticsearch nav-closed">
+
+<div class="nav">
+    <h3 class="nav-title">菜单</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">关闭</span>
+    </a>
+    <ul>
+            <li class="nav-" role="presentation"><a href="http://go2mars.top/">首页</a></li>
+            <li class="nav-spacex" role="presentation"><a href="http://www.spacex.com/">spaceX官网</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.marsinstitute.no/">火星研究组织</a></li>
+            <li class="nav-nasa" role="presentation"><a href="https://mars.jpl.nasa.gov/">NASA火星探索官网</a></li>
+            <li class="nav-" role="presentation"><a href="http://go2mars.ru/">一个俄罗斯关于火星的神奇网站</a></li>
+            <li class="nav-openai" role="presentation"><a href="https://openai.com/">OpenAI</a></li>
+            <li class="nav-" role="presentation"><a href="https://program-think.blogspot.com/">编程随想大牛</a></li>
+            <li class="nav-musk" role="presentation"><a href="https://elonmusknews.org/">musk相关网站</a></li>
+            <li class="nav-infoq" role="presentation"><a href="http://www.infoq.com/cn/">infoq</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.coursera.org/learn/machine-learning/home/info">机器学习课程</a></li>
+            <li class="nav-" role="presentation"><a href="https://tech.meituan.com/">美团点评技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://cwiki.apachecn.org/">开源项目学习汇总</a></li>
+            <li class="nav-" role="presentation"><a href="http://tech.youzan.com/tag/big-data/">有赞技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://www.jasongj.com/">技术世界博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://lib.csdn.net/bases/fd/Artificial-Intelligence/ast/all">人工智能知识库</a></li>
+            <li class="nav-" role="presentation"><a href="http://ifeve.com/">并发编程网</a></li>
+            <li class="nav-" role="presentation"><a href="https://bitcoin.org/zh_CN/">比特币官网-中文版</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://whitespur.top/rss/">订阅</a>
+</div>
+<span class="nav-cover"></span>
+
+<div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">菜单</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-elasticsearch">
+
+        <header class="post-header">
+            <h1 class="post-title">Elasticsearch学习摘要一</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-08-23">2017年08月23日</time>  标签：<a href="../tag/elasticsearch/index.html">Elasticsearch</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>Elasticsearch 是一个分布式、可扩展、实时的搜索与数据分析引擎。 它能从项目一开始就赋予你的数据以搜索、分析和探索的能力，这是通常没有预料到的。 它存在还因为原始数据如果只是躺在磁盘里面根本就毫无用处。 <br />
+<a href="https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html">https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html</a></p>
+
+<p>中文wiki
+<a href="http://www.apache.wiki/display/Elasticsearch/Index">http://www.apache.wiki/display/Elasticsearch/Index</a></p>
+
+<p>学习博客
+<a href="http://www.cnblogs.com/xing901022/p/4704319.html">http://www.cnblogs.com/xing901022/p/4704319.html</a></p>
+
+<p>有赞
+<a href="http://tech.youzan.com/search-engine1/">http://tech.youzan.com/search-engine1/</a></p>
+
+<p>安装使用</p>
+
+<p><a href="https://www.elastic.co/downloads/elasticsearch">https://www.elastic.co/downloads/elasticsearch</a> <br />
+./bin/elasticsearch
+访问
+<a href="http://localhost:9200/">http://localhost:9200/</a></p>
+
+<p><a href="https://www.elastic.co/downloads/kibana">https://www.elastic.co/downloads/kibana</a> <br />
+./bin/kibana
+访问
+<a href="http://localhost:5601/">http://localhost:5601/</a></p>
+
+<p>bin/kibana plugin -i sense -u file:///PATH<em>TO</em>SENSE<em>TAR</em>FILE</p>
+
+<p><a href="https://www.elastic.co/downloads/logstash">https://www.elastic.co/downloads/logstash</a> <br />
+<a href="http://jaseywang.me/2012/12/26/logstash-%E5%88%9D%E4%BD%93%E9%AA%8C/">http://jaseywang.me/2012/12/26/logstash-%E5%88%9D%E4%BD%93%E9%AA%8C/</a> <br />
+bin/logstash -f config/logstash-simple.conf </p>
+
+<p>访问
+<a href="http://localhost:9600/">http://localhost:9600/</a></p>
+
+<p><a href="https://www.elastic.co/downloads/hadoop">https://www.elastic.co/downloads/hadoop</a> <br />
+ES-Hadoop</p>
+
+<p>mac安装elk <br />
+<a href="http://blog.ywheel.cn/post/2017/03/04/setup">http://blog.ywheel.cn/post/2017/03/04/setup</a><em>elk</em>on_mac/</p>
+
+<p>索引crud
+<a href="http://www.apache.wiki/pages/viewpage.action?pageId=4260694">http://www.apache.wiki/pages/viewpage.action?pageId=4260694</a></p>
+
+<p>kibana <br />
+<a href="http://www.apache.wiki/pages/viewpage.action?pageId=8159567">http://www.apache.wiki/pages/viewpage.action?pageId=8159567</a></p>
+
+<p>ES索引如何存储</p>
+
+<p>集群健康状况
+GET /_cluster/health</p>
+
+<p>status 字段指示着当前集群在总体上是否工作正常。它的三种颜色含义如下： <br />
+    green
+    所有的主分片和副本分片都正常运行。
+    yellow
+    所有的主分片都正常运行，但不是所有的副本分片都正常运行。
+    red
+    有主分片没能正常运行。</p>
+
+<pre><code>索引，分片
+索引 —— 保存相关数据的地方。 索引实际上是指向一个或者多个物理 分片 的 逻辑命名空间 。
+Elasticsearch 是利用分片将数据分发到集群内各处的。分片是数据的容器，文档保存在分片内，分片又被分配到集群内的各个节点里。 当你的集群规模扩大或者缩小时， Elasticsearch 会自动的在各节点中迁移分片，使得数据仍然均匀分布在集群里。
+一个分片可以是 主 分片或者 副本 分片。 索引内任意一个文档都归属于一个主分片，所以主分片的数目决定着索引能够保存的最大数据量。
+一个副本分片只是一个主分片的拷贝。 副本分片作为硬件故障时保护数据不丢失的冗余备份，并为搜索和返回文档等读操作提供服务。
+
+通常情况下，我们使用的术语 对象 和 文档 是可以互相替换的。不过，有一个区别： 一个对象仅仅是类似于 hash 、 hashmap 、字典或者关联数组的 JSON 对象，对象中也可以嵌套其他的对象。 对象可能包含了另外一些对象。在 Elasticsearch 中，术语 文档 有着特定的含义。它是指最顶层或者根对象, 这个根对象被序列化成 JSON 并存储到 Elasticsearch 中，指定了唯一 ID。
+
+一个文档不仅仅包含它的数据 ，也包含 元数据 —— 有关 文档的信息。 三个必须的元数据元素如下：
+    _index
+    文档在哪存放，一个 索引 应该是因共同的特性被分组到一起的文档集合
+    _type
+    文档表示的对象类别，数据可能在索引中只是松散的组合在一起，但是通常明确定义一些数据中的子分区是很有用的。 例如，所有的产品都放在一个索引中，但是你有许多不同的产品类别，比如 "electronics" 、 "kitchen" 和 "lawn-care"，这些文档共享一种相同的（或非常相似）的模式，一个 _type 命名可以是大写或者小写，但是不能以下划线或者句号开头，不应该包含逗号， 并且长度限制为256个字符
+    _id
+    文档唯一标识，ID 是一个字符串， 当它和 _index 以及 _type 组合就可以唯一确定 Elasticsearch 中的一个文档，要么提供自己的 _id ，要么让 Elasticsearch 帮你生成
+
+创建文档api：
+使用自定义id
+PUT /{index}/{type}/{id}
+</code></pre>
+
+<p>{
+  "field": "value",
+  ...
+}
+    使用系统id
+    POST /website/blog/
+{
+  "title": "My second blog entry",
+  "text":  "Still trying this out...",
+  "date":  "2014/01/01"
+}</p>
+
+<pre><code>取回文档api
+GET /website/blog/123?pretty
+返回文档的一部分
+GET /website/blog/123?_source=title,text
+
+更新整个文档
+在 Elasticsearch 中文档是 不可改变 的，不能修改它们。 相反，如果想要更新现有的文档，需要 重建索引或者进行替换， 我们可以使用相同的 index API 进行实现,返回值增加了_version 字段值，created 标志设置成 false
+PUT /customer/external/1
+{
+  "name": "John Doe",
+  "sex":"male"
+}
+唯一的区别在于, update API 仅仅通过一个客户端请求来实现这些步骤，而不需要单独的 get 和 index请求
+更新部分文档
+POST /customer/external/1/_update
+{
+  "doc":{
+    "age":"23"
+  }
+}
+
+创建新文档
+1使用系统id
+POST /website/blog/
+</code></pre>
+
+<p>{ ... }
+    2增加op<em>type=create
+    PUT /website/blog/123?op</em>type=create
+{ ... }
+    3增加<em>create
+    PUT /website/blog/123/</em>create
+{ ... }</p>
+
+<pre><code>删除文档 
+语法和我们所知道的规则相同，只是 使用 DELETE 方法：
+DELETE /website/blog/123
+
+取回多个文档
+mget API 要求有一个 docs 数组作为参数，每个 元素包含需要检索文档的元数据， 包括 _index 、 _type 和 _id 
+GET /_mget
+{
+   "docs" : [
+      {
+         "_index" : "customer",
+         "_type" :  "external",
+         "_id" :    1
+      },
+      {
+         "_index" : "customer",
+         "_type" :  "external",
+         "_id" :    2
+      }
+   ]
+}
+</code></pre>
+
+<p>搜索
+    空搜索,简单地返回集群中所有索引下的所有文档
+    返回结果中最重要的部分是 hits ，它 包含 total 字段来表示匹配到的文档总数，并且一个 hits 数组包含所查询结果的前十个文档</p>
+
+<pre><code>GET /_search
+多索引，多类型
+/gb,us/user,tweet/_search
+在 gb 和 us 索引中搜索 user 和 tweet 类型
+/_all/user,tweet/_search
+在所有的索引中搜索 user 和 tweet 类型
+分页
+GET /_search?size=5&amp;from=5
+
+有两种形式的 搜索 API：一种是 “轻量的” 查询字符串 版本，要求在查询字符串中传递所有的 参数，另一种是更完整的 请求体 版本，要求使用 JSON 格式和更丰富的查询表达式作为搜索语言。
+简易 查询 —query-string search— 对于用命令行进行点对点（ad-hoc）查询是非常有用
+查询在 tweet 类型中 tweet 字段包含 elasticsearch 单词的所有文档：
+GET /_all/tweet/_search?q=tweet:elasticsearch
+
+这个简单搜索返回包含 mary 的所有文档
+
+GET /_search?q=mary
+
+当索引一个文档的时候，Elasticsearch 取出所有字段的值拼接成一个大的字符串，作为 _all 字段进行索引
+除非设置特定字段，否则查询字符串就使用 _all 字段进行搜索。
+
+查看某个索引／类型的映射
+GET /customer/_mapping/external
+这个响应告诉我们 date 字段被认为是 date 类型的。由于 _all 是默认字段，所以没有提及它。但是我们知道 _all 字段是 string 类型的。
+所以 date 字段和 string 字段 索引方式不同，因此搜索结果也不一样
+到目前为止，最大的差异在于 代表 精确值 （它包括 string 字段）的字段和代表 全文 的字段。这个区别非常重要——它将搜索引擎和所有其他数据库区别开来。
+
+Elasticsearch 中的数据可以概括的分为两类：精确值和全文
+我们很少对全文类型的域做精确匹配。相反，我们希望在文本类型的域中搜索。不仅如此，我们还希望搜索能够理解我们的 意图 ：
+• 搜索 UK ，会返回包含 United Kindom 的文档。
+• 搜索 jump ，会匹配 jumped ， jumps ， jumping ，甚至是 leap 。
+• 搜索 johnny walker 会匹配 Johnnie Walker ， johnnie depp 应该匹配 Johnny Depp 。
+• fox news hunting 应该返回福克斯新闻（ Foxs News ）中关于狩猎的故事，同时， fox hunting news 应该返回关于猎狐的故事。
+为了促进这类在全文域中的查询，Elasticsearch 首先 分析 文档，之后根据结果创建 
+倒排索引
+一个倒排索引由文档中所有不重复词的列表构成，对于其中每个词，有一个包含它的文档列表。
+索引文本和查询字符串必须标准化为相同的格式。
+将所有文档的信息写入到倒排索引（Inverted Index）的数据结构中，倒排索引建立的是索引中词和文档之间的映射关系，在倒排索引中，数据是面向词（Term）而不是面向文档的。
+在Elasticsearch中，文档归属于一种类型(type),而这些类型存在于索引(index)中，我们可以画一些简单的对比图来类比传统关系型数据库：
+Relational DB -&gt; Databases -&gt; Tables -&gt; Rows -&gt; Columns
+</code></pre>
+
+<p>Elasticsearch -> Indices   -> Types  -> Documents -> Fields <br />
+    Elasticsearch集群可以包含多个索引(indices)（数据库），每一个索引可以包含多个类型(types)（表），每一个类型包含多个文档(documents)（行），然后每个文档包含多个字段(Fields)（列）。
+    「索引」含义的区分
+    你可能已经注意到索引(index)这个词在Elasticsearch中有着不同的含义，所以有必要在此做一下区分:
+    • 索引（名词） 如上文所述，一个索引(index)就像是传统关系数据库中的数据库，它是相关文档存储的地方，index的复数是indices 或indexes。
+    • 索引（动词） 「索引一个文档」表示把一个文档存储到索引（名词）里，以便它可以被检索或者查询。这很像SQL中的INSERT关键字，差别是，如果文档已经存在，新的文档将覆盖旧的文档。
+    • 倒排索引 传统数据库为特定列增加一个索引，例如B-Tree索引来加速检索。Elasticsearch和Lucene使用一种叫做倒排索引(inverted index)的数据结构来达到相同目的。
+    默认情况下，文档中的所有字段都会被索引（拥有一个倒排索引），只有这样他们才是可被搜索的。
+    分析与分析器
+    分析 包含下面的过程：
+    • 首先，将一块文本分成适合于倒排索引的独立的 词条 ，
+    • 之后，将这些词条统一化为标准格式以提高它们的“可搜索性”，或者 recall
+    • 字符过滤器，分词器，Token 过滤器
+    • 当你查询一个 全文 域时， 会对查询字符串应用相同的分析器，以产生正确的搜索词条列表。
+    • 当你查询一个 精确值 域时，不会分析查询字符串， 而是搜索你指定的精确值。
+    • 测试分析器
+    GET /<em>analyze
+{
+  "analyzer": "standard",
+  "text": "Text to analyze"
+}
+    映射
+    为了能够将时间域视为时间，数字域视为数字，字符串域视为全文或精确值字符串， Elasticsearch 需要知道每个域中数据的类型。这个信息包含在映射中。
+    Elasticsearch 支持 如下简单域类型：
+    • 字符串: string
+    • 整数 : byte, short, integer, long
+    • 浮点数: float, double
+    • 布尔型: boolean
+    • 日期: date
+    默认， string 类型域会被认为包含全文。就是说，它们的值在索引前，会通过 一个分析器，针对于这个域的查询在搜索前也会经过一个分析器。
+    string 域映射的两个最重要 属性是 index 和 analyzer 。index 属性控制怎样索引字符串。它可以是下面三个值：
+    analyzed首先分析字符串，然后索引它。换句话说，以全文索引这个域。
+    not</em>analyzed索引这个域，所以可以搜索到它，但索引指定的精确值。不对它进行分析。
+    no不索引这个域。这个域不会被搜索到。
+    <a href="https://elasticsearch.cn/book/elasticsearch">https://elasticsearch.cn/book/elasticsearch</a><em>definitive</em>guide<em>2.x/mapping-intro.html#</em>查看映射</p>
+
+<pre><code>请求体查询 —下文简称 查询—不仅可以处理自身的查询请求，还允许你对结果进行片段强调（高亮）、对所有或部分结果进行聚合分析，同时还可以给出 你是不是想找 的建议，这些建议可以引导使用者快速找到他想要的结果。
+GET /_search
+</code></pre>
+
+<p>{}
+    GET /index<em>2014*/type1,type2/</em>search
+{}
+    GET /<em>search
+{
+  "from": 30,
+  "size": 10
+}
+    查询表达式(Query DSL)
+    一个查询语句 的典型结构：
+    {
+    QUERY</em>NAME: {
+        ARGUMENT: VALUE,
+        ARGUMENT: VALUE,...
+    }
+}
+    如果是针对某个字段，那么它的结构如下：
+    {
+    QUERY<em>NAME: {
+        FIELD</em>NAME: {
+            ARGUMENT: VALUE,
+            ARGUMENT: VALUE,...
+        }
+    }
+}</p>
+
+<pre><code>GET /_search
+</code></pre>
+
+<p>{
+    "query": {
+        "match": {
+            "tweet": "elasticsearch"
+        }
+    }
+}</p>
+
+<pre><code>最重要的几个查询
+https://elasticsearch.cn/book/elasticsearch_definitive_guide_2.x/_most_important_queries.html
+
+排序
+默认情况下，返回的结果是按照 相关性 进行排序的——最相关的文档排在最前
+为了按照相关性来排序，需要将相关性表示为一个数值。在 Elasticsearch 中， 相关性得分 由一个浮点数进行表示，并在搜索结果中通过 _score 参数返回， 默认排序是 _score 降序
+通过sort参数按照指定字段排序
+"sort": { "date": { "order": "desc" }}
+</code></pre>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../author/whitespur/index.html">whitespur</a></h4>
+
+                    <p>科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)
+太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Hangzhou,China</span>
+                    <span class="author-link icon-link"><a href="http://go2mars.top">http://go2mars.top</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>分享此博文</h4>
+                <div class="bdsharebuttonbox"><a href="index.html#" class="bds_more" data-cmd="more"></a><a href="index.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="index.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="index.html#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="index.html#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="../todo-jettyxue-xi/index.html">
+        <section class="post">
+            <h2>Jetty  安装配置、特性、以及后期优化</h2>
+            <p>Jetty 的工作原理以及与 Tomcat 的比较  https://www.ibm.com/developerworks/cn/java/j-lo-jetty/ 1)Jetty：  作用：Jetty 是一个开源的servlet容器，它为基于Java的web内容，例如JSP和servlet提供运行环境。&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="../springbootzheng-he-es/index.html">
+        <section class="post">
+            <h2>spring-data-elasticsearch预研</h2>
+            <p>一 遇到问题： 1 版本问题：  Spring Boot Version (x)    Spring Data Elasticsearch Version (y)    Elasticsearch Version (z)  x &lt;= 1.&hellip;</p>
+        </section>
+    </a>
+</aside>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/**
+var disqus_config = function () {
+this.page.url = "/todo-elasticsearchxue-xi-bi-ji/";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "ghost-"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://go2mars-top.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<footer class="site-footer clearfix">
+<section class="copyright"><a href="http://whitespur.top">遥望白鹿巷</a> &copy; 2017</section>
+<section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a> &amp; <a href="http://www.ghostchina.com">GhostChina</a></section>
+</footer>
+
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+<script src="../assets/js/index.js?v=44b73496a4"></script>
+<!-- 开始：我们把统计代码加到此处，百度统计
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");  
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6338835ad35c6d950a554fdedb598e48' type='text/javascript'%3E%3C/script%3E"));  
+</script>
+结束：我们把统计代码加到此处，百度统计 -->
+</body>
+</html>

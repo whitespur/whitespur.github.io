@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--start baidutongji-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?70d16e3d719cb37c0878fd1f9a4c9a02";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--end baidutongji-->
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>协程是什么，有什么好处，与进程，线程的区别，理解并发与并行</title>
+<meta name="description" content="" />
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="shortcut icon" href="../favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=44b73496a4" />
+
+<link rel="canonical" href="http://whitespur.top/xie-cheng-shi-shi-yao-you-shi-yao-hao-chu-yu-jin-cheng-xian-cheng-de-qu-bie/" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="遥望白鹿巷" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="协程是什么，有什么好处，与进程，线程的区别，理解并发与并行" />
+    <meta property="og:description" content="今天学python，遇到了协程，这个之前写java没怎么用过，今天查了下记录下来，反复理解。 协程其实就是函数调用,相比线程更为轻量级，代码示例如下： def 协程1(): pass def 协程2(): pass def 协程3(): pass def 协程n(): pass while 1: 协程1() 协程2() 协程3() 协程n() 协程就是一个个函数，然后死循环调用，以上就是协程的基本思想。没什么神秘的~需要配合异步IO使用，避免阻塞~ 参考文章： https://segmentfault.com/q/1010000007757966 协程，又称微线程，..." />
+    <meta property="og:url" content="http://whitespur.top/xie-cheng-shi-shi-yao-you-shi-yao-hao-chu-yu-jin-cheng-xian-cheng-de-qu-bie/" />
+    <meta property="og:image" content="http://whitespur.top/content/images/2017/10/image-2.png" />
+    <meta property="article:published_time" content="2017-10-05T20:59:48.000Z" />
+    <meta property="article:modified_time" content="2017-10-05T20:59:48.000Z" />
+    <meta property="article:tag" content="协程" />
+    <meta property="article:tag" content="进程" />
+    <meta property="article:tag" content="多线程" />
+    <meta property="article:tag" content="并发" />
+    <meta property="article:tag" content="并行" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="协程是什么，有什么好处，与进程，线程的区别，理解并发与并行" />
+    <meta name="twitter:description" content="今天学python，遇到了协程，这个之前写java没怎么用过，今天查了下记录下来，反复理解。 协程其实就是函数调用,相比线程更为轻量级，代码示例如下： def 协程1(): pass def 协程2(): pass def 协程3(): pass def 协程n(): pass while 1: 协程1() 协程2() 协程3() 协程n() 协程就是一个个函数，然后死循环调用，以上就是协程的基本思想。没什么神秘的~需要配合异步IO使用，避免阻塞~ 参考文章： https://segmentfault.com/q/1010000007757966 协程，又称微线程，..." />
+    <meta name="twitter:url" content="http://whitespur.top/xie-cheng-shi-shi-yao-you-shi-yao-hao-chu-yu-jin-cheng-xian-cheng-de-qu-bie/" />
+    <meta name="twitter:image:src" content="http://whitespur.top/content/images/2017/10/image-2.png" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "遥望白鹿巷",
+    "author": {
+        "@type": "Person",
+        "name": "whitespur",
+        "url": "http://whitespur.top/author/whitespur",
+        "sameAs": "http://go2mars.top",
+        "description": "科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)\n太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷"
+    },
+    "headline": "协程是什么，有什么好处，与进程，线程的区别，理解并发与并行",
+    "url": "http://whitespur.top/xie-cheng-shi-shi-yao-you-shi-yao-hao-chu-yu-jin-cheng-xian-cheng-de-qu-bie/",
+    "datePublished": "2017-10-05T20:59:48.000Z",
+    "dateModified": "2017-10-05T20:59:48.000Z",
+    "image": "http://whitespur.top/content/images/2017/10/image-2.png",
+    "keywords": "协程, 进程, 多线程, 并发, 并行",
+    "description": "今天学python，遇到了协程，这个之前写java没怎么用过，今天查了下记录下来，反复理解。 协程其实就是函数调用,相比线程更为轻量级，代码示例如下： def 协程1(): pass def 协程2(): pass def 协程3(): pass def 协程n(): pass while 1: 协程1() 协程2() 协程3() 协程n() 协程就是一个个函数，然后死循环调用，以上就是协程的基本思想。没什么神秘的~需要配合异步IO使用，避免阻塞~ 参考文章： https://segmentfault.com/q/1010000007757966 协程，又称微线程，..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7" />
+    <link rel="alternate" type="application/rss+xml" title="遥望白鹿巷" href="http://whitespur.top/rss/" />
+</head>
+<body class="post-template tag-xie-cheng tag-jin-cheng tag-duo-xian-cheng tag-bing-fa tag-bing-xing nav-closed">
+
+<div class="nav">
+    <h3 class="nav-title">菜单</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">关闭</span>
+    </a>
+    <ul>
+            <li class="nav-" role="presentation"><a href="http://go2mars.top/">首页</a></li>
+            <li class="nav-spacex" role="presentation"><a href="http://www.spacex.com/">spaceX官网</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.marsinstitute.no/">火星研究组织</a></li>
+            <li class="nav-nasa" role="presentation"><a href="https://mars.jpl.nasa.gov/">NASA火星探索官网</a></li>
+            <li class="nav-" role="presentation"><a href="http://go2mars.ru/">一个俄罗斯关于火星的神奇网站</a></li>
+            <li class="nav-openai" role="presentation"><a href="https://openai.com/">OpenAI</a></li>
+            <li class="nav-" role="presentation"><a href="https://program-think.blogspot.com/">编程随想大牛</a></li>
+            <li class="nav-musk" role="presentation"><a href="https://elonmusknews.org/">musk相关网站</a></li>
+            <li class="nav-infoq" role="presentation"><a href="http://www.infoq.com/cn/">infoq</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.coursera.org/learn/machine-learning/home/info">机器学习课程</a></li>
+            <li class="nav-" role="presentation"><a href="https://tech.meituan.com/">美团点评技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://cwiki.apachecn.org/">开源项目学习汇总</a></li>
+            <li class="nav-" role="presentation"><a href="http://tech.youzan.com/tag/big-data/">有赞技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://www.jasongj.com/">技术世界博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://lib.csdn.net/bases/fd/Artificial-Intelligence/ast/all">人工智能知识库</a></li>
+            <li class="nav-" role="presentation"><a href="http://ifeve.com/">并发编程网</a></li>
+            <li class="nav-" role="presentation"><a href="https://bitcoin.org/zh_CN/">比特币官网-中文版</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://whitespur.top/rss/">订阅</a>
+</div>
+<span class="nav-cover"></span>
+
+<div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head " style="background-image: url(../content/images/2017/10/image-2.png)">
+    <nav class="main-nav overlay clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">菜单</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-xie-cheng tag-jin-cheng tag-duo-xian-cheng tag-bing-fa tag-bing-xing">
+
+        <header class="post-header">
+            <h1 class="post-title">协程是什么，有什么好处，与进程，线程的区别，理解并发与并行</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-10-06">2017年10月06日</time>  标签：<a href="../tag/xie-cheng/index.html">协程</a>, <a href="../tag/jin-cheng/index.html">进程</a>, <a href="../tag/duo-xian-cheng/index.html">多线程</a>, <a href="../tag/bing-fa/index.html">并发</a>, <a href="../tag/bing-xing/index.html">并行</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>今天学python，遇到了协程，这个之前写java没怎么用过，今天查了下记录下来，反复理解。</p>
+
+<p>协程其实就是函数调用,相比线程更为轻量级，代码示例如下：</p>
+
+<pre><code>def 协程1():
+pass
+def 协程2():
+pass
+def 协程3():
+pass
+def 协程n():
+pass
+while 1:
+协程1()
+协程2()
+协程3()
+协程n()
+协程就是一个个函数，然后死循环调用，以上就是协程的基本思想。没什么神秘的~需要配合异步IO使用，避免阻塞~
+</code></pre>
+
+<p>参考文章：
+<a href="https://segmentfault.com/q/1010000007757966">https://segmentfault.com/q/1010000007757966</a></p>
+
+<p>协程，又称微线程，纤程。英文名Coroutine。协程看上去也是子程序，但执行过程中，<mark>在子程序内部可中断</mark>，然后转而执行别的子程序，在适当的时候再返回来接着执行。</p>
+
+<p>参考文章：<a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868328689835ecd883d910145dfa8227b539725e5ed000">https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868328689835ecd883d910145dfa8227b539725e5ed000</a></p>
+
+<p><mark>协程允许一个执行过程A中断，然后转到执行过程B，在适当的时候再一次转回来，有点类似于多线程</mark>。但协程有以下2个优势：</p>
+
+<pre><code>协程的数量理论上可以是无限个，而且没有线程之间的切换动作，执行效率比线程高。
+协程不需要“锁”机制，即不需要lock和release过程，因为所有的协程都在一个线程中。
+相对于线程，协程更容易调试debug，因为所有的代码是顺序执行的。
+</code></pre>
+
+<p>参考文章：
+<a href="https://zhuanlan.zhihu.com/p/24118476?refer=pythoner">https://zhuanlan.zhihu.com/p/24118476?refer=pythoner</a></p>
+
+<p>没有啥复杂的东西，考虑清楚需求，就可以很自然的衍生出这些解决方案。一开始大家想要同一时间执行那么三五个程序，大家能一块跑一跑。特别是UI什么的，别一上计算量比较大的玩意就跟死机一样。于是就有了并发，从程序员的角度可以看成是多个独立的逻辑流。内部可以是多cpu并行，也可以是单cpu时间分片，能快速的切换逻辑流，看起来像是大家一块跑的就行。但是一块跑就有问题了。我计算到一半，刚把多次方程解到最后一步，你突然插进来，我的中间状态咋办，我用来储存的内存被你覆盖了咋办？所以跑在一个cpu里面的并发都需要处理上下文切换的问题。<mark>进程就是这样抽象出来个一个概念，搭配虚拟内存、进程表之类的东西，用来管理独立的程序运行、切换</mark>。后来一电脑上有了好几个cpu，好咧，大家都别闲着，一人跑一进程。就是所谓的并行。因为程序的使用涉及大量的计算机资源配置，把这活随意的交给用户程序，非常容易让整个系统分分钟被搞跪，资源分配也很难做到相对的公平。所以核心的操作需要陷入内核(kernel)，切换到操作系统，让老大帮你来做。有的时候碰着I/O访问，阻塞了后面所有的计算。空着也是空着，老大就直接把CPU切换到其他进程，让人家先用着。当然除了I\O阻塞，还有时钟阻塞等等。一开始大家都这样弄，后来发现不成，太慢了。为啥呀，一切换进程得反复进入内核，置换掉一大堆状态。进程数一高，大部分系统资源就被进程切换给吃掉了。后来搞出<mark>线程的概念，大致意思就是，这个地方阻塞了，但我还有其他地方的逻辑流可以计算，这些逻辑流是共享一个地址空间的，不用特别麻烦的切换页表、刷新TLB，只要把寄存器刷新一遍就行，能比切换进程开销少点</mark>。如果连时钟阻塞、 线程切换这些功能我们都不需要了，自己在进程里面写一个逻辑流调度的东西。那么我们即可以利用到并发优势，又可以避免反复系统调用，还有进程切换造成的开销，分分钟给你上几千个逻辑流不费力。这就是用户态线程。从上面可以看到，实现一个用户态线程有两个必须要处理的问题：一是碰着阻塞式I\O会导致整个进程被挂起；二是由于缺乏时钟阻塞，进程需要自己拥有调度线程的能力。<mark>如果一种实现使得每个线程需要自己通过调用某个方法，主动交出控制权。那么我们就称这种用户态线程是协作式的，即是协程。本质上协程就是用户空间下的线程。</mark></p>
+
+<p>参考文章：<a href="https://www.zhihu.com/question/20511233/answer/24260355">https://www.zhihu.com/question/20511233/answer/24260355</a></p>
+
+<p>进程拥有自己<strong>独立的堆和栈</strong>，既不共享堆，亦不共享栈，进程由操作系统调度。
+线程拥有自己独立的栈和共享的堆，共享堆，<strong>不共享栈</strong>，线程亦由操作系统调度(标准线程是的)。
+协程和线程一样<strong>共享堆，不共享栈</strong>，协程由程序员在协程的代码里显示调度。
+进程和其他两个的区别还是很明显的。
+协程和线程的区别是：协程避免了无意义的调度，由此可以提高性能，但也因此，程序员必须<strong>自己承担调度</strong>的责任，同时，协程也失去了标准线程使用多CPU的能力。</p>
+
+<p>参考文章<a href="http://blog.csdn.net/hairetz/article/details/16119911">http://blog.csdn.net/hairetz/article/details/16119911</a></p>
+
+<p>最后复习下并发与并行的概念：</p>
+
+<p>深入理解计算机系统CSAPP的回答。</p>
+
+<pre><code>并发（Concurrency）是说进程B的开始时间是在进程A的开始时间与结束时间之间，我们就说A和B是并发的。
+并行（Parallel Execution）是并发的真子集，指同一时间两个进程运行在不同的机器上或者同一个机器不同的核心上。
+对于单核，多线程的多任务是在单cpu交替执行，属于并发；
+对于多核，多线程的任务如果能够分布在各个cpu上（线程数少许核心数），那么就是并行。
+并发（Concurrency）是同时处理很多事情（dealing with lots of things at once），并行（Parallelism）是同时执行很多事情（doing lots of things at once）；
+</code></pre>
+
+<p><img src="../content/images/2017/10/image-1.png" alt="" />
+参考：<a href="https://www.zhihu.com/question/33515481/answer/67962756">https://www.zhihu.com/question/33515481/answer/67962756</a></p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../author/whitespur/index.html">whitespur</a></h4>
+
+                    <p>科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)
+太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Hangzhou,China</span>
+                    <span class="author-link icon-link"><a href="http://go2mars.top">http://go2mars.top</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>分享此博文</h4>
+                <div class="bdsharebuttonbox"><a href="index.html#" class="bds_more" data-cmd="more"></a><a href="index.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="index.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="index.html#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="index.html#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story " style="background-image: url(../content/images/2017/10/image-254.png)" href="../chao-zhi-neng-ti-du-shu-bi-ji-1/index.html">
+        <section class="post">
+            <h2>超智能体读书笔记1</h2>
+            <p>在此感谢yjango大神，在学习神经网络的路上有大神深入浅出的指引使自己少走了很多弯路，以下是此书地址： https://yjango.gitbooks.io/superorganism/content/ 该书最终的目的是：通过理解智能，学习如何学习。 如何机器学习 如何大脑学习 以下是学习过程中感觉重要的笔记，在此记录下来，如有侵权，请随时联系我删除。&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="../cong-liao-tian-ji-qi-ren-xian-zhuang-kan-ge-da-gong-si-ren-gong-zhi-neng-fa-zhan-bu-ju/index.html">
+        <section class="post">
+            <h2>从聊天机器人现状看各大公司人工智能的布局发展</h2>
+            <p>首先祝大家中秋快乐，博客公众号开了以后，访问统计看了下pv，uv少的可怜，主要原因还是内容太少，渠道也只有朋友圈传播，这次起个牛点的标题，说不定可以通过搜索增加流量，最近接触聊天机器人比较多，一直在想怎么做，能做到什么程度，能解决哪些问题，刚好国庆放假在滨江龙湖天街的奇客巴士体验了一下国内几款智能机器人的硬件产品，比较失望，于是又找了一下各大巨头的软件产品，对比了一下，记录在这里，从这里可以看到从移动互联网时代向人工智能时代巨头们的发展状况，也基本可以知道自己能做到什么地步了，&hellip;</p>
+        </section>
+    </a>
+</aside>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/**
+var disqus_config = function () {
+this.page.url = "/xie-cheng-shi-shi-yao-you-shi-yao-hao-chu-yu-jin-cheng-xian-cheng-de-qu-bie/";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "ghost-"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://go2mars-top.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<footer class="site-footer clearfix">
+<section class="copyright"><a href="http://whitespur.top">遥望白鹿巷</a> &copy; 2017</section>
+<section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a> &amp; <a href="http://www.ghostchina.com">GhostChina</a></section>
+</footer>
+
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+<script src="../assets/js/index.js?v=44b73496a4"></script>
+<!-- 开始：我们把统计代码加到此处，百度统计
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");  
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6338835ad35c6d950a554fdedb598e48' type='text/javascript'%3E%3C/script%3E"));  
+</script>
+结束：我们把统计代码加到此处，百度统计 -->
+</body>
+</html>

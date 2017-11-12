@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--start baidutongji-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?70d16e3d719cb37c0878fd1f9a4c9a02";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--end baidutongji-->
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>spring-data-elasticsearch预研</title>
+<meta name="description" content="" />
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="shortcut icon" href="../favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=44b73496a4" />
+
+<link rel="canonical" href="http://whitespur.top/springbootzheng-he-es/" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="遥望白鹿巷" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="spring-data-elasticsearch预研" />
+    <meta property="og:description" content="一 遇到问题： 1 版本问题：  Spring Boot Version (x)    Spring Data Elasticsearch Version (y)    Elasticsearch Version (z)  x &amp;lt;= 1.3.5    y &amp;lt;= 1.3.4    z &amp;lt;= 1.7.2*  x &gt;= 1.4.x    2.0.0 &amp;lt;=y..." />
+    <meta property="og:url" content="http://whitespur.top/springbootzheng-he-es/" />
+    <meta property="article:published_time" content="2017-08-22T17:27:29.000Z" />
+    <meta property="article:modified_time" content="2017-08-29T23:00:11.000Z" />
+    <meta property="article:tag" content="springboot" />
+    <meta property="article:tag" content="Elasticsearch" />
+    <meta property="article:tag" content="spring-data-elasticsearch" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="spring-data-elasticsearch预研" />
+    <meta name="twitter:description" content="一 遇到问题： 1 版本问题：  Spring Boot Version (x)    Spring Data Elasticsearch Version (y)    Elasticsearch Version (z)  x &amp;lt;= 1.3.5    y &amp;lt;= 1.3.4    z &amp;lt;= 1.7.2*  x &gt;= 1.4.x    2.0.0 &amp;lt;=y..." />
+    <meta name="twitter:url" content="http://whitespur.top/springbootzheng-he-es/" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "遥望白鹿巷",
+    "author": {
+        "@type": "Person",
+        "name": "whitespur",
+        "url": "http://whitespur.top/author/whitespur",
+        "sameAs": "http://go2mars.top",
+        "description": "科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)\n太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷"
+    },
+    "headline": "spring-data-elasticsearch预研",
+    "url": "http://whitespur.top/springbootzheng-he-es/",
+    "datePublished": "2017-08-22T17:27:29.000Z",
+    "dateModified": "2017-08-29T23:00:11.000Z",
+    "keywords": "springboot, Elasticsearch, spring-data-elasticsearch",
+    "description": "一 遇到问题： 1 版本问题：  Spring Boot Version (x)    Spring Data Elasticsearch Version (y)    Elasticsearch Version (z)  x &amp;lt;= 1.3.5    y &amp;lt;= 1.3.4    z &amp;lt;= 1.7.2*  x &gt;= 1.4.x    2.0.0 &amp;lt;=y..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7" />
+    <link rel="alternate" type="application/rss+xml" title="遥望白鹿巷" href="http://whitespur.top/rss/" />
+</head>
+<body class="post-template tag-springboot tag-elasticsearch tag-spring-data-elasticsearch nav-closed">
+
+<div class="nav">
+    <h3 class="nav-title">菜单</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">关闭</span>
+    </a>
+    <ul>
+            <li class="nav-" role="presentation"><a href="http://go2mars.top/">首页</a></li>
+            <li class="nav-spacex" role="presentation"><a href="http://www.spacex.com/">spaceX官网</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.marsinstitute.no/">火星研究组织</a></li>
+            <li class="nav-nasa" role="presentation"><a href="https://mars.jpl.nasa.gov/">NASA火星探索官网</a></li>
+            <li class="nav-" role="presentation"><a href="http://go2mars.ru/">一个俄罗斯关于火星的神奇网站</a></li>
+            <li class="nav-openai" role="presentation"><a href="https://openai.com/">OpenAI</a></li>
+            <li class="nav-" role="presentation"><a href="https://program-think.blogspot.com/">编程随想大牛</a></li>
+            <li class="nav-musk" role="presentation"><a href="https://elonmusknews.org/">musk相关网站</a></li>
+            <li class="nav-infoq" role="presentation"><a href="http://www.infoq.com/cn/">infoq</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.coursera.org/learn/machine-learning/home/info">机器学习课程</a></li>
+            <li class="nav-" role="presentation"><a href="https://tech.meituan.com/">美团点评技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://cwiki.apachecn.org/">开源项目学习汇总</a></li>
+            <li class="nav-" role="presentation"><a href="http://tech.youzan.com/tag/big-data/">有赞技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://www.jasongj.com/">技术世界博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://lib.csdn.net/bases/fd/Artificial-Intelligence/ast/all">人工智能知识库</a></li>
+            <li class="nav-" role="presentation"><a href="http://ifeve.com/">并发编程网</a></li>
+            <li class="nav-" role="presentation"><a href="https://bitcoin.org/zh_CN/">比特币官网-中文版</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://whitespur.top/rss/">订阅</a>
+</div>
+<span class="nav-cover"></span>
+
+<div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">菜单</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-springboot tag-elasticsearch tag-spring-data-elasticsearch">
+
+        <header class="post-header">
+            <h1 class="post-title">spring-data-elasticsearch预研</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-08-23">2017年08月23日</time>  标签：<a href="../tag/springboot/index.html">springboot</a>, <a href="../tag/elasticsearch/index.html">Elasticsearch</a>, <a href="../tag/spring-data-elasticsearch/index.html">spring-data-elasticsearch</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <h1 id="">一 遇到问题：</h1>
+
+<p>1 版本问题： <br />
+Spring Boot Version (x)    Spring Data Elasticsearch Version (y)    Elasticsearch Version (z) <br />
+x &lt;= 1.3.5    y &lt;= 1.3.4    z &lt;= 1.7.2* <br />
+x >= 1.4.x    2.0.0 &lt;=y &lt; 5.0.0<em>*    2.0.0 &lt;= z &lt; 5.0.0</em>* <br />
+2 配置文件修改： <br />
+增加spring.data.elasticsearch.cluster-name=xxx
+修改spring.data.elasticsearch.cluster-nodes = xxx
+为实际地址</p>
+
+<h2 id="">二 解决过程：</h2>
+
+<p>1版本问题，查询资料找到各个系统对应的版本映射进行修改，可以启动起来。 <br />
+2 配置文件问题，启动后查询不到数据，报错org.elasticsearch.client.transport.NoNodeAvailableException: None of the configured nodes are available: []，对比原生调用ES代码发现配置文件缺少东西，可是怎么添加配置文件让springboot es找到，简单看了下源码也没理清楚，需要再深入了解springboot具体原理，最后参考一篇文章增加了集群名称的配置解决了问题。  </p>
+
+<h2 id="">三 需要拓展学习</h2>
+
+<p>1 springboot原理，与之前spring mvc的区别特点 <br />
+2 spring配置文件如何解析的，如何自定义增加  </p>
+
+<h2 id="">四预研结论</h2>
+
+<h3 id="">优点：</h3>
+
+<p>简单查询直接按照字段写方法名即可，不用另写查询语句</p>
+
+<h3 id="">缺点：</h3>
+
+<p>a 索引名写在注解里面，不适用当前根据城市切换索引的情况， <br />
+b 复杂查询（嵌套，过滤，排序）还是需要使用es的java client <br />
+c 需要花时间另外集成dubbo，disconf，swagger  </p>
+
+<h3 id="">结论：</h3>
+
+<p>不使用spring-data-elasticsearch，直接使用spring+dubbo+disconf+elasticsearch java客户端</p>
+
+<h2 id="">五 参考资料</h2>
+
+<p><a href="http://www.bysocket.com/?p=1889">http://www.bysocket.com/?p=1889</a> <br />
+<a href="https://github.com/JeffLi1993/springboot-learning-example">https://github.com/JeffLi1993/springboot-learning-example</a> <br />
+<a href="https://github.com/spring-projects/spring-data-elasticsearch">https://github.com/spring-projects/spring-data-elasticsearch</a> <br />
+<a href="https://segmentfault.com/a/1190000004383465">https://segmentfault.com/a/1190000004383465</a></p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../author/whitespur/index.html">whitespur</a></h4>
+
+                    <p>科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)
+太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Hangzhou,China</span>
+                    <span class="author-link icon-link"><a href="http://go2mars.top">http://go2mars.top</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>分享此博文</h4>
+                <div class="bdsharebuttonbox"><a href="index.html#" class="bds_more" data-cmd="more"></a><a href="index.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="index.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="index.html#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="index.html#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="../todo-elasticsearchxue-xi-bi-ji/index.html">
+        <section class="post">
+            <h2>Elasticsearch学习摘要一</h2>
+            <p>Elasticsearch 是一个分布式、可扩展、实时的搜索与数据分析引擎。 它能从项目一开始就赋予你的数据以搜索、分析和探索的能力，这是通常没有预料到的。 它存在还因为原始数据如果只是躺在磁盘里面根本就毫无用处。  https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="../da-jian-ghostbo-ke-xi-tong/index.html">
+        <section class="post">
+            <h2>接触的几套博客系统</h2>
+            <p>1前言 目前主要接触了3套博客系统（wordpress，Goblog，ghost），分别基于php，go和nodejs开发的博客，wordpress用过一段时间，操作简便，不过后台管理不好用，摘要设置不好；goblog是基于beego框架开发的博客系统，数据存储mongodb，可docker部署，还整合了elasticsearch，项目地址（https://github.com/&hellip;</p>
+        </section>
+    </a>
+</aside>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/**
+var disqus_config = function () {
+this.page.url = "/springbootzheng-he-es/";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "ghost-"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://go2mars-top.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<footer class="site-footer clearfix">
+<section class="copyright"><a href="http://whitespur.top">遥望白鹿巷</a> &copy; 2017</section>
+<section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a> &amp; <a href="http://www.ghostchina.com">GhostChina</a></section>
+</footer>
+
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+<script src="../assets/js/index.js?v=44b73496a4"></script>
+<!-- 开始：我们把统计代码加到此处，百度统计
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");  
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6338835ad35c6d950a554fdedb598e48' type='text/javascript'%3E%3C/script%3E"));  
+</script>
+结束：我们把统计代码加到此处，百度统计 -->
+</body>
+</html>

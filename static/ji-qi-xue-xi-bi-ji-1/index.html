@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--start baidutongji-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?70d16e3d719cb37c0878fd1f9a4c9a02";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--end baidutongji-->
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>机器学习笔记1----Introduction</title>
+<meta name="description" content="" />
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="shortcut icon" href="../favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=44b73496a4" />
+
+<link rel="canonical" href="http://whitespur.top/ji-qi-xue-xi-bi-ji-1/" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="遥望白鹿巷" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="机器学习笔记1----Introduction" />
+    <meta property="og:description" content="1 概念 A computer program is said to learn from experience E with respect to some task T and some performace measure P,if its performance on T,as measured by P,improves with experience E. In general, any machine..." />
+    <meta property="og:url" content="http://whitespur.top/ji-qi-xue-xi-bi-ji-1/" />
+    <meta property="og:image" content="http://whitespur.top/content/images/2017/09/image-39.png" />
+    <meta property="article:published_time" content="2017-09-25T02:06:56.000Z" />
+    <meta property="article:modified_time" content="2017-09-25T02:06:56.000Z" />
+    <meta property="article:tag" content="机器学习" />
+    <meta property="article:tag" content="监督学习" />
+    <meta property="article:tag" content="非监督学习" />
+    <meta property="article:tag" content="回归" />
+    <meta property="article:tag" content="分类" />
+    <meta property="article:tag" content="聚类" />
+    <meta property="article:tag" content="非聚类" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="机器学习笔记1----Introduction" />
+    <meta name="twitter:description" content="1 概念 A computer program is said to learn from experience E with respect to some task T and some performace measure P,if its performance on T,as measured by P,improves with experience E. In general, any machine..." />
+    <meta name="twitter:url" content="http://whitespur.top/ji-qi-xue-xi-bi-ji-1/" />
+    <meta name="twitter:image:src" content="http://whitespur.top/content/images/2017/09/image-39.png" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "遥望白鹿巷",
+    "author": {
+        "@type": "Person",
+        "name": "whitespur",
+        "url": "http://whitespur.top/author/whitespur",
+        "sameAs": "http://go2mars.top",
+        "description": "科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)\n太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷"
+    },
+    "headline": "机器学习笔记1----Introduction",
+    "url": "http://whitespur.top/ji-qi-xue-xi-bi-ji-1/",
+    "datePublished": "2017-09-25T02:06:56.000Z",
+    "dateModified": "2017-09-25T02:06:56.000Z",
+    "image": "http://whitespur.top/content/images/2017/09/image-39.png",
+    "keywords": "机器学习, 监督学习, 非监督学习, 回归, 分类, 聚类, 非聚类",
+    "description": "1 概念 A computer program is said to learn from experience E with respect to some task T and some performace measure P,if its performance on T,as measured by P,improves with experience E. In general, any machine..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7" />
+    <link rel="alternate" type="application/rss+xml" title="遥望白鹿巷" href="http://whitespur.top/rss/" />
+</head>
+<body class="post-template tag-ji-qi-xue-xi tag-jian-du-xue-xi tag-fei-jian-du-xue-xi tag-hui-gui tag-fen-lei tag-ju-lei tag-fei-ju-lei nav-closed">
+
+<div class="nav">
+    <h3 class="nav-title">菜单</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">关闭</span>
+    </a>
+    <ul>
+            <li class="nav-" role="presentation"><a href="http://go2mars.top/">首页</a></li>
+            <li class="nav-spacex" role="presentation"><a href="http://www.spacex.com/">spaceX官网</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.marsinstitute.no/">火星研究组织</a></li>
+            <li class="nav-nasa" role="presentation"><a href="https://mars.jpl.nasa.gov/">NASA火星探索官网</a></li>
+            <li class="nav-" role="presentation"><a href="http://go2mars.ru/">一个俄罗斯关于火星的神奇网站</a></li>
+            <li class="nav-openai" role="presentation"><a href="https://openai.com/">OpenAI</a></li>
+            <li class="nav-" role="presentation"><a href="https://program-think.blogspot.com/">编程随想大牛</a></li>
+            <li class="nav-musk" role="presentation"><a href="https://elonmusknews.org/">musk相关网站</a></li>
+            <li class="nav-infoq" role="presentation"><a href="http://www.infoq.com/cn/">infoq</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.coursera.org/learn/machine-learning/home/info">机器学习课程</a></li>
+            <li class="nav-" role="presentation"><a href="https://tech.meituan.com/">美团点评技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://cwiki.apachecn.org/">开源项目学习汇总</a></li>
+            <li class="nav-" role="presentation"><a href="http://tech.youzan.com/tag/big-data/">有赞技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://www.jasongj.com/">技术世界博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://lib.csdn.net/bases/fd/Artificial-Intelligence/ast/all">人工智能知识库</a></li>
+            <li class="nav-" role="presentation"><a href="http://ifeve.com/">并发编程网</a></li>
+            <li class="nav-" role="presentation"><a href="https://bitcoin.org/zh_CN/">比特币官网-中文版</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://whitespur.top/rss/">订阅</a>
+</div>
+<span class="nav-cover"></span>
+
+<div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head " style="background-image: url(../content/images/2017/09/image-39.png)">
+    <nav class="main-nav overlay clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">菜单</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-ji-qi-xue-xi tag-jian-du-xue-xi tag-fei-jian-du-xue-xi tag-hui-gui tag-fen-lei tag-ju-lei tag-fei-ju-lei">
+
+        <header class="post-header">
+            <h1 class="post-title">机器学习笔记1----Introduction</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-09-25">2017年09月25日</time>  标签：<a href="../tag/ji-qi-xue-xi/index.html">机器学习</a>, <a href="../tag/jian-du-xue-xi/index.html">监督学习</a>, <a href="../tag/fei-jian-du-xue-xi/index.html">非监督学习</a>, <a href="../tag/hui-gui/index.html">回归</a>, <a href="../tag/fen-lei/index.html">分类</a>, <a href="../tag/ju-lei/index.html">聚类</a>, <a href="../tag/fei-ju-lei/index.html">非聚类</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <h1 id="1">1 概念</h1>
+
+<p>A computer program is said to learn from experience E with respect to some task T and some performace measure P,if its performance on T,as measured by P,improves with experience E.</p>
+
+<p>In general, any machine learning problem can be assigned to one of two broad classifications: <br />
+Supervised learning and Unsupervised learning. <br />
+<img src="../content/images/2017/09/image-41.png" alt="" /></p>
+
+<p>机器学习算法分类：
+监督学习，非监督学习</p>
+
+<p>注意：理解各种定义以及什么场景使用何种算法。</p>
+
+<h1 id="2">2 分类</h1>
+
+<h2 id="21">2.1 监督学习</h2>
+
+<p>部分数据有正确结果，<mark>有标记</mark></p>
+
+<p>In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.
+    Supervised learning problems are categorized into "regression" and "classification" problems. In a regression problem, we are trying to predict results within a continuous output, meaning that we are trying to map input variables to some continuous function. In a classification problem, we are instead trying to predict results in a discrete output. In other words, we are trying to map input variables into discrete categories.</p>
+
+<p><mark>回归</mark>问题-regression<mark>输出结果连续值</mark>
+例如：房价预测，</p>
+
+<p><mark>分类</mark>问题-classification-<mark>输出结果离散值</mark>
+输入-特征值，例如是否会患肿瘤预测
+支持向量机</p>
+
+<h2 id="22">2.2 无监督学习</h2>
+
+<p>所有数据一样或类似，无明显标记</p>
+
+<p>Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables. <br />
+    We can derive this structure by clustering the data based on relationships among the variables in the data.</p>
+
+<p><mark>聚类</mark>算法：Clustering</p>
+
+<p>例如：基因分析，社交网络分组，天文数据分析</p>
+
+<p>鸡尾酒会算法：<mark>非聚类</mark> Non-clustering</p>
+
+<p>例如：复杂环境下人声提取</p>
+
+<p>备注工具：<mark>Octave</mark>内置很多算法，预研算法是否合适，用来开发原型
+Svd-奇异值分解</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../author/whitespur/index.html">whitespur</a></h4>
+
+                    <p>科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)
+太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Hangzhou,China</span>
+                    <span class="author-link icon-link"><a href="http://go2mars.top">http://go2mars.top</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>分享此博文</h4>
+                <div class="bdsharebuttonbox"><a href="index.html#" class="bds_more" data-cmd="more"></a><a href="index.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="index.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="index.html#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="index.html#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="../ma-si-ke-wai-xing-zhi-min-ji-hua-pu-guang-zai-ci-ji-lu/index.html">
+        <section class="post">
+            <h2>马斯克外星殖民计划曝光----在此记录</h2>
+            <p>视频介绍： http://www.spacex.com/mars  可以选择中文字幕，不得不说技术发展真快，自动翻译已经这么先进了，看外语视频再也不用找字幕了 中文介绍： http://www.pingwest.com/musk-multiplanetary-plan-bfr-rocket/ 详尽的火星殖民计划：最大的现役运载火箭，轨道加油；&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev no-cover" href="../shi-yong-tcpcopyjin-xing-ya-li-ce-shi/index.html">
+        <section class="post">
+            <h2>使用TCPCopy进行压力测试</h2>
+            <p>简介： XCopy是由主要由网易的王斌开发的一套流量复制测试工具。XCopy系列包括 TCPCopy、UDPCopy、MysqlCopy 等开源软件（这些软件都集成在tcpcopy 开源项目内)。曾经应用于网易的广告投放系统，urs系统，nginx hmux协议等系统，避免了上线带来的很多问题。所以很多时候我们指的tcpcopy （广义上的）就包括xcopy的全系统产品。 TCPCopy 包含两部分：&hellip;</p>
+        </section>
+    </a>
+</aside>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/**
+var disqus_config = function () {
+this.page.url = "/ji-qi-xue-xi-bi-ji-1/";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "ghost-"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://go2mars-top.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<footer class="site-footer clearfix">
+<section class="copyright"><a href="http://whitespur.top">遥望白鹿巷</a> &copy; 2017</section>
+<section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a> &amp; <a href="http://www.ghostchina.com">GhostChina</a></section>
+</footer>
+
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+<script src="../assets/js/index.js?v=44b73496a4"></script>
+<!-- 开始：我们把统计代码加到此处，百度统计
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");  
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6338835ad35c6d950a554fdedb598e48' type='text/javascript'%3E%3C/script%3E"));  
+</script>
+结束：我们把统计代码加到此处，百度统计 -->
+</body>
+</html>

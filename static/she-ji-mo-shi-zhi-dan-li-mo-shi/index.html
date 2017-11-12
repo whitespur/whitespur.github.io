@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--start baidutongji-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?70d16e3d719cb37c0878fd1f9a4c9a02";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--end baidutongji-->
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>设计模式之单例模式</title>
+<meta name="description" content="" />
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="shortcut icon" href="../favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=44b73496a4" />
+
+<link rel="canonical" href="http://whitespur.top/she-ji-mo-shi-zhi-dan-li-mo-shi/" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="遥望白鹿巷" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="设计模式之单例模式" />
+    <meta property="og:description" content="本文介绍了为何需要单例模式，单例模式的设计要点，饿汉和懒汉的区别，并通过实例介绍了实现单例模式的八种实现方式及其优缺点。 原创文章，转载请务必将下面这段话置于文章开头处（保留超链接）。 本文转发自技术世界，原文链接　http://www.jasongj.com/design_pattern/singleton/ 为何需要单例模式 对于系统中的某些类来说，只有一个实例很重要，例如，一个系统只能有一个窗口管理器或文件系统；一个系统只能有一个计时工具或ID（序号）生成器。 单例模式设计要点 保证该类只有一个实例。将该类的构造方法定义为私有方法，这样其他处的代码就无法通过调用该类的构造方法来实例化该类的对象 提供一个该实例的访问点。一般由该类自己负责创建实例，并提供一个静态方法作为该实例的访问点 饿汉 vs. 懒汉 饿汉 声明实例引用时即实例化 懒汉 静态方法第一次被调用前不实例化，也即懒加载。对于创建实例代价大，..." />
+    <meta property="og:url" content="http://whitespur.top/she-ji-mo-shi-zhi-dan-li-mo-shi/" />
+    <meta property="article:published_time" content="2017-08-29T15:35:47.000Z" />
+    <meta property="article:modified_time" content="2017-08-29T15:35:47.000Z" />
+    <meta property="article:tag" content="设计模式" />
+    <meta property="article:tag" content="单例" />
+    <meta property="article:tag" content="多线程" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="设计模式之单例模式" />
+    <meta name="twitter:description" content="本文介绍了为何需要单例模式，单例模式的设计要点，饿汉和懒汉的区别，并通过实例介绍了实现单例模式的八种实现方式及其优缺点。 原创文章，转载请务必将下面这段话置于文章开头处（保留超链接）。 本文转发自技术世界，原文链接　http://www.jasongj.com/design_pattern/singleton/ 为何需要单例模式 对于系统中的某些类来说，只有一个实例很重要，例如，一个系统只能有一个窗口管理器或文件系统；一个系统只能有一个计时工具或ID（序号）生成器。 单例模式设计要点 保证该类只有一个实例。将该类的构造方法定义为私有方法，这样其他处的代码就无法通过调用该类的构造方法来实例化该类的对象 提供一个该实例的访问点。一般由该类自己负责创建实例，并提供一个静态方法作为该实例的访问点 饿汉 vs. 懒汉 饿汉 声明实例引用时即实例化 懒汉 静态方法第一次被调用前不实例化，也即懒加载。对于创建实例代价大，..." />
+    <meta name="twitter:url" content="http://whitespur.top/she-ji-mo-shi-zhi-dan-li-mo-shi/" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "遥望白鹿巷",
+    "author": {
+        "@type": "Person",
+        "name": "whitespur",
+        "url": "http://whitespur.top/author/whitespur",
+        "sameAs": "http://go2mars.top",
+        "description": "科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)\n太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷"
+    },
+    "headline": "设计模式之单例模式",
+    "url": "http://whitespur.top/she-ji-mo-shi-zhi-dan-li-mo-shi/",
+    "datePublished": "2017-08-29T15:35:47.000Z",
+    "dateModified": "2017-08-29T15:35:47.000Z",
+    "keywords": "设计模式, 单例, 多线程",
+    "description": "本文介绍了为何需要单例模式，单例模式的设计要点，饿汉和懒汉的区别，并通过实例介绍了实现单例模式的八种实现方式及其优缺点。 原创文章，转载请务必将下面这段话置于文章开头处（保留超链接）。 本文转发自技术世界，原文链接　http://www.jasongj.com/design_pattern/singleton/ 为何需要单例模式 对于系统中的某些类来说，只有一个实例很重要，例如，一个系统只能有一个窗口管理器或文件系统；一个系统只能有一个计时工具或ID（序号）生成器。 单例模式设计要点 保证该类只有一个实例。将该类的构造方法定义为私有方法，这样其他处的代码就无法通过调用该类的构造方法来实例化该类的对象 提供一个该实例的访问点。一般由该类自己负责创建实例，并提供一个静态方法作为该实例的访问点 饿汉 vs. 懒汉 饿汉 声明实例引用时即实例化 懒汉 静态方法第一次被调用前不实例化，也即懒加载。对于创建实例代价大，..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7" />
+    <link rel="alternate" type="application/rss+xml" title="遥望白鹿巷" href="http://whitespur.top/rss/" />
+</head>
+<body class="post-template tag-she-ji-mo-shi tag-dan-li tag-duo-xian-cheng nav-closed">
+
+<div class="nav">
+    <h3 class="nav-title">菜单</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">关闭</span>
+    </a>
+    <ul>
+            <li class="nav-" role="presentation"><a href="http://go2mars.top/">首页</a></li>
+            <li class="nav-spacex" role="presentation"><a href="http://www.spacex.com/">spaceX官网</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.marsinstitute.no/">火星研究组织</a></li>
+            <li class="nav-nasa" role="presentation"><a href="https://mars.jpl.nasa.gov/">NASA火星探索官网</a></li>
+            <li class="nav-" role="presentation"><a href="http://go2mars.ru/">一个俄罗斯关于火星的神奇网站</a></li>
+            <li class="nav-openai" role="presentation"><a href="https://openai.com/">OpenAI</a></li>
+            <li class="nav-" role="presentation"><a href="https://program-think.blogspot.com/">编程随想大牛</a></li>
+            <li class="nav-musk" role="presentation"><a href="https://elonmusknews.org/">musk相关网站</a></li>
+            <li class="nav-infoq" role="presentation"><a href="http://www.infoq.com/cn/">infoq</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.coursera.org/learn/machine-learning/home/info">机器学习课程</a></li>
+            <li class="nav-" role="presentation"><a href="https://tech.meituan.com/">美团点评技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://cwiki.apachecn.org/">开源项目学习汇总</a></li>
+            <li class="nav-" role="presentation"><a href="http://tech.youzan.com/tag/big-data/">有赞技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://www.jasongj.com/">技术世界博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://lib.csdn.net/bases/fd/Artificial-Intelligence/ast/all">人工智能知识库</a></li>
+            <li class="nav-" role="presentation"><a href="http://ifeve.com/">并发编程网</a></li>
+            <li class="nav-" role="presentation"><a href="https://bitcoin.org/zh_CN/">比特币官网-中文版</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://whitespur.top/rss/">订阅</a>
+</div>
+<span class="nav-cover"></span>
+
+<div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">菜单</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-she-ji-mo-shi tag-dan-li tag-duo-xian-cheng">
+
+        <header class="post-header">
+            <h1 class="post-title">设计模式之单例模式</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-08-29">2017年08月29日</time>  标签：<a href="../tag/she-ji-mo-shi/index.html">设计模式</a>, <a href="../tag/dan-li/index.html">单例</a>, <a href="../tag/duo-xian-cheng/index.html">多线程</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>本文介绍了为何需要单例模式，单例模式的设计要点，饿汉和懒汉的区别，并通过实例介绍了实现单例模式的八种实现方式及其优缺点。
+原创文章，转载请务必将下面这段话置于文章开头处（保留超链接）。
+本文转发自技术世界，原文链接　<a href="http://www.jasongj.com/design_pattern/singleton/">http://www.jasongj.com/design_pattern/singleton/</a></p>
+
+<h1 id="">为何需要单例模式</h1>
+
+<p>对于系统中的某些类来说，只有一个实例很重要，例如，一个系统只能有一个窗口管理器或文件系统；一个系统只能有一个计时工具或ID（序号）生成器。</p>
+
+<h1 id="">单例模式设计要点</h1>
+
+<p>保证该类只有一个实例。将该类的<strong>构造方法定义为私有方法</strong>，这样其他处的代码就无法通过调用该类的构造方法来实例化该类的对象
+提供一个该实例的访问点。一般由该类自己负责创建实例，并<strong>提供一个静态方法作为该实例的访问点</strong></p>
+
+<h1 id="vs">饿汉 vs. 懒汉</h1>
+
+<p><strong>饿汉</strong> 声明实例引用时即实例化</p>
+
+<p><strong>懒汉</strong> 静态方法第一次被调用前不实例化，也即<strong>懒加载</strong>。对于创建实例代价大，且不定会使用时，使用懒加载模式可以减少开销</p>
+
+<h1 id="">实现单例模式的九种方法</h1>
+
+<h2 id="1">1 线程不安全的懒汉 - 多线程不可用</h2>
+
+<pre><code>package com.jasongj.singleton1;  
+public class Singleton {  
+  private static Singleton INSTANCE;
+  private Singleton() {};
+  public static Singleton getInstance() {
+    if (INSTANCE == null) {
+      INSTANCE = new Singleton();
+    }
+    return INSTANCE;
+  }
+}
+</code></pre>
+
+<p>优点：达到了Lazy Loading的效果
+缺点：只有在单线程下能保证只有一个实例，多线程下有创建多个实例的风险</p>
+
+<h2 id="2">2 同步方法下的懒汉 - 可用，不推荐</h2>
+
+<pre><code>package com.jasongj.singleton2;  
+public class Singleton {  
+  private static Singleton INSTANCE;
+  private Singleton() {};
+  public static synchronized Singleton getInstance() {
+    if (INSTANCE == null) {
+      INSTANCE = new Singleton();
+    }
+    return INSTANCE;
+  }
+}
+</code></pre>
+
+<p>优点：线程安全，可确保正常使用下（不考虑通过反射调用私有构造方法）只有一个实例
+缺点：每次获取实例都需要申请锁，开销大，效率低</p>
+
+<h2 id="3">3 同步代码块下的懒汉 - 不可用</h2>
+
+<pre><code>package com.jasongj.singleton3;  
+public class Singleton {  
+  private static Singleton INSTANCE;
+  private Singleton() {};
+  public static Singleton getInstance() {
+    if (INSTANCE == null) {
+      synchronized (Singleton.class) {
+        INSTANCE = new Singleton();
+      }
+    }
+    return INSTANCE;
+  }
+}
+</code></pre>
+
+<p>优点：不需要在每次调用时加锁，效率比上一个高
+缺点：虽然使用了synchronized，但本质上是线程不安全的。</p>
+
+<h2 id="4doublecheck">4 双重检查（Double Check）下的懒汉 - 推荐</h2>
+
+<pre><code>package com.jasongj.singleton4;  
+public class Singleton {  
+  private static Singleton INSTANCE;
+  private Singleton() {};
+  public static Singleton getInstance() {
+    if (INSTANCE == null) {
+      synchronized(Singleton.class){
+        if(INSTANCE == null) {
+          INSTANCE = new Singleton();
+        }
+      }
+    }
+    return INSTANCE;
+  }
+}
+</code></pre>
+
+<p>优点：使用了双重检查，很大程度上避免了线程不安全，同时也避免了不必要的锁开销。这里要注意，虽然未使用volatile关键字，但是这里的synchronized已经保证了INSTANCE写操作对其它线程读操作的可见性。具体原理请参考《Java进阶（二）当我们说线程安全时，到底在说什么》
+缺点：NA</p>
+
+<h2 id="5">5 静态常量 饿汉 - 推荐</h2>
+
+<pre><code>package com.jasongj.singleton6;  
+public class Singleton {  
+  private static final Singleton INSTANCE = new Singleton();
+  private Singleton() {};
+  public static Singleton getInstance() {
+    return INSTANCE;
+  }
+}
+</code></pre>
+
+<p>优点：实现简单，无线程同步问题
+缺点：在类装载时完成实例化。若该实例一直未被使用，则会造成资源浪费</p>
+
+<h2 id="6">6 静态代码块 饿汉 可用</h2>
+
+<pre><code>package com.jasongj.singleton7;  
+public class Singleton {  
+  private static Singleton INSTANCE;
+
+  static{
+    INSTANCE = new Singleton();
+  }
+  private Singleton() {};
+  public static Singleton getInstance() {
+    return INSTANCE;
+  }
+}
+</code></pre>
+
+<p>优点：无线程同步问题
+缺点：类装载时创建实例，无Lazy Loading。实例一直未被使用时，会浪费资源</p>
+
+<h2 id="7">7 静态内部类 推荐</h2>
+
+<pre><code>package com.jasongj.singleton8;  
+public class Singleton {  
+  private Singleton() {};
+  public static Singleton getInstance() {
+    return InnerClass.INSTANCE;
+  }
+
+  private static class InnerClass {
+    private static final Singleton INSTANCE = new Singleton();
+  }
+}
+</code></pre>
+
+<p>优点：无线程同步问题，实现了懒加载（Lazy Loading）。因为只有调用getInstance时才会装载内部类，才会创建实例
+缺点：NA</p>
+
+<h2 id="8">8 枚举 不推荐</h2>
+
+<pre><code>package com.jasongj.singleton9;  
+public enum Singleton {  
+  INSTANCE;
+
+  public void whatSoEverMethod() { }
+}
+</code></pre>
+
+<p>优点：无线程同步问题，且能防止通过反射创建新的对象
+缺点：使用的是枚举，而非类。同时单一实例的访问点也不是一般单例模式的静态方法</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../author/whitespur/index.html">whitespur</a></h4>
+
+                    <p>科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)
+太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Hangzhou,China</span>
+                    <span class="author-link icon-link"><a href="http://go2mars.top">http://go2mars.top</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>分享此博文</h4>
+                <div class="bdsharebuttonbox"><a href="index.html#" class="bds_more" data-cmd="more"></a><a href="index.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="index.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="index.html#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="index.html#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story no-cover" href="../elasticsearchxue-xi-zhai-yao-er-ji-ben-gai-nian-he-yuan-li/index.html">
+        <section class="post">
+            <h2>Elasticsearch学习摘要二----基本概念和原理</h2>
+            <p>集群内的原理 https://elasticsearch.cn/book/elasticsearchdefinitiveguide_2.x/distributed-cluster.html  一个运行中的 Elasticsearch 实例称为一个 节点，而集群是由一个或者多个拥有相同 cluster.name 配置的节点组成， 它们共同承担数据和负载的压力。&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev " style="background-image: url(../content/images/2017/08/image-5.png)" href="../sou-suo-yin-qing-jian-jie/index.html">
+        <section class="post">
+            <h2>搜索引擎简介</h2>
+            <p>1原理 https://www.ibm.com/developerworks/cn/java/j-lo-dyse1/index.html https://yq.aliyun.com/articles/101334 搜索引擎三段式工作流程 搜索引擎整体结构&hellip;</p>
+        </section>
+    </a>
+</aside>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/**
+var disqus_config = function () {
+this.page.url = "/she-ji-mo-shi-zhi-dan-li-mo-shi/";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "ghost-"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://go2mars-top.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<footer class="site-footer clearfix">
+<section class="copyright"><a href="http://whitespur.top">遥望白鹿巷</a> &copy; 2017</section>
+<section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a> &amp; <a href="http://www.ghostchina.com">GhostChina</a></section>
+</footer>
+
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+<script src="../assets/js/index.js?v=44b73496a4"></script>
+<!-- 开始：我们把统计代码加到此处，百度统计
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");  
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6338835ad35c6d950a554fdedb598e48' type='text/javascript'%3E%3C/script%3E"));  
+</script>
+结束：我们把统计代码加到此处，百度统计 -->
+</body>
+</html>
