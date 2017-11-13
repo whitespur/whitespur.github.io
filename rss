@@ -1,0 +1,1014 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[遥望白鹿巷]]></title><description><![CDATA[哪来的天才]]></description><link>http://whitespur.top/</link><generator>Ghost 0.7</generator><lastBuildDate>Mon, 13 Nov 2017 07:50:23 GMT</lastBuildDate><atom:link href="http://whitespur.top/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[转载-（译）理解 LSTM 网络 （Understanding LSTM Networks by colah）]]></title><description><![CDATA[<p>LSTM可以用在上下文理解中。</p>
+
+<p>原文地址<a href="http://blog.csdn.net/jerr__y/article/details/58598296">http://blog.csdn.net/jerr__y/article/details/58598296</a>
+@翻译：huangyongye</p>
+
+<p>原文链接： Understanding LSTM Networks</p>
+
+<p>前言：其实之前就已经用过 LSTM 了，是在深度学习框架 keras 上直接用的，但是到现在对LSTM详细的网络结构还是不了解，心里牵挂着难受呀！今天看了 tensorflow 文档上面推荐的这篇博文，看完这后，焕然大悟，对 LSTM 的结构理解基本上没有太大问题。此博文写得真真真好！！！为了帮助大家理解，也是怕日后自己对这些有遗忘的话可以迅速回想起来，所以打算对原文写个翻译。首先声明，由于本人水平有限，如有翻译不好或理解有误的多多指出！此外，本译文也不是和原文一字一句对应的，为了方便理解可能会做一些调整和修改。另外本文是作为我自己的学习笔记，没有经过原作者本人的授权，所以请勿转载）</p>
+
+<ol>
+<li>循环神经网络（RNNs)</li>
+</ol>
+
+<p>人们思考问题往往不是从零开始的。</p>]]></description><link>http://whitespur.top/zhuan-zai-yi-li-jie-lstm-wang-luo-understanding-lstm-networks-by-colah/</link><guid isPermaLink="false">78cc1c3c-51e0-4b9e-9004-63029a5d4744</guid><category><![CDATA[LSTM]]></category><category><![CDATA[上下文理解]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 30 Oct 2017 11:26:59 GMT</pubDate><content:encoded><![CDATA[<p>LSTM可以用在上下文理解中。</p>
+
+<p>原文地址<a href="http://blog.csdn.net/jerr__y/article/details/58598296">http://blog.csdn.net/jerr__y/article/details/58598296</a>
+@翻译：huangyongye</p>
+
+<p>原文链接： Understanding LSTM Networks</p>
+
+<p>前言：其实之前就已经用过 LSTM 了，是在深度学习框架 keras 上直接用的，但是到现在对LSTM详细的网络结构还是不了解，心里牵挂着难受呀！今天看了 tensorflow 文档上面推荐的这篇博文，看完这后，焕然大悟，对 LSTM 的结构理解基本上没有太大问题。此博文写得真真真好！！！为了帮助大家理解，也是怕日后自己对这些有遗忘的话可以迅速回想起来，所以打算对原文写个翻译。首先声明，由于本人水平有限，如有翻译不好或理解有误的多多指出！此外，本译文也不是和原文一字一句对应的，为了方便理解可能会做一些调整和修改。另外本文是作为我自己的学习笔记，没有经过原作者本人的授权，所以请勿转载）</p>
+
+<ol>
+<li>循环神经网络（RNNs)</li>
+</ol>
+
+<p>人们思考问题往往不是从零开始的。就好像你现在阅读这篇文章一样，你对每个词的理解都会依赖于你前面看到的一些词，而不是把你前面看的内容全部抛弃了，忘记了，再去理解这个单词。也就是说，人们的思维总是会有延续性的。</p>
+
+<p>传统的神经网络是做不到这样的延续性（它们没办法保留对前文的理解），这似乎成了它们一个巨大的缺陷。举个例子，在观看影片中，你想办法去对每一帧画面上正在发生的事情做一个分类理解。目前还没有明确的办法利用传统的网络把对影片中前面发生的事件添加进来帮助理解后面的画面。</p>
+
+<p>但是，循环神经网络可以做到。在RNNs的网络中，有一个循环的操作，使得它们能够保留之前学习到的内容。</p>
+
+<p>Fig1. RNNs 网络结构 <br>
+在上图网络结构中，对于矩形块 A 的那部分，通过输入xt（t时刻的特征向量），它会输出一个结果ht（t时刻的状态或者输出）。网络中的循环结构使得某个时刻的状态能够传到下一个时刻。（译者注：因为当前时刻的状态会作为下一时刻输入的一部分）</p>
+
+<p>这些循环的结构让 RNNs 看起来有些难以理解。但是，你稍微想一下就会发现，这似乎和普通的神经网络有不少相似之处呀。我们可以把 RNNs 看成是一个普通的网络做了多次复制后叠加在一起组成的。每一网络会把它的输出传递到下一个网络中。我们可以把 RNNs 在时间步上进行展开，就得到下图这样：</p>
+
+<p>fig2. RNNs 展开网络结构 <br>
+从 RNNs 链状的结构很容易理解到它是和序列信息相关的。这种结构似乎生来就是为了解决序列相关问题的。</p>
+
+<p>而且，它们的的确确非常管用！在最近的几年中，人们利用 RNNs 不可思议地解决了各种各样的问题：语音识别，语言模型，翻译，图像（添加）字幕，等等。关于RNNs在这些方面取得的惊人成功，我们可以看 Andrej Karpathy 的博客： The Unreasonable Effectiveness of Recurrent Neural Networks.</p>
+
+<p>RNNs 能够取得这样的成功，主要还是 LSTMs 的使用。这是一种比较特殊的 RNNs，而且对于很多任务，它比普通的 RNNs 效果要好很多很多！基本上现在所使用的循环神经网络用的都是 LSTMs，这也正是本文后面所要解释的网络。</p>
+
+<ol>
+<li>长时期依赖存在的问题</li>
+</ol>
+
+<p>RNNs 的出现，主要是因为它们能够把以前的信息联系到现在，从而解决现在的问题。比如，利用前面的画面，能够帮助我们理解当前画面的内容。如果 RNNs 真的可以做到这个，那么它肯定是对我们的任务有帮助的。但是它真的可以 做到吗，恐怕还得看实际情况呀！</p>
+
+<p>有时候，我们在处理当前任务的时候，只需要看一下比较近的一些信息。比如在一个语言模型中，我们要通过上文来预测一下个词可能会是什么，那么当我们看到“ the clouds are in the ?”时，不需要更多的信息，我们就能够自然而然的想到下一个词应该是“sky”。在这样的情况下，我们所要预测的内容和相关信息之间的间隔很小，这种情况下 RNNs 就能够利用过去的信息， 很容易的实现。</p>
+
+<p>fig2. 短期依赖 <br>
+但是，有些情况是需要更多的上下文信息。比如我们要预测“I grew up in France … (此处省略1万字)… I speak ?”这个预测的词应该是 Franch，但是我们是要通过很长很长之前提到的信息，才能做出这个正确的预测的呀，普通的 RNNs 很难做到这个。</p>
+
+<p>随着预测信息和相关信息间的间隔增大， RNNs 很难去把它们关联起来了。</p>
+
+<p>fig3. 长期依赖 <br>
+从理论上来讲，通过选择合适的参数，RNNs 确实是可以把这种长时期的依赖关系（“long-term dependencies”） 联系起来，并解决这类问题的。但遗憾的是在实际中， RNNs 无法解决这个问题。 Hochreiter (1991) [German] 和 Bengio, et al. (1994) 曾经对这个问题进行过深入的研究，发现 RNNs 的确很难解决这个问题。</p>
+
+<p>但是非常幸运，LSTMs 能够帮我们解决这个问题。</p>
+
+<ol>
+<li>LSTM 网络</li>
+</ol>
+
+<p>长短期记忆网络（Long Short Term Memory networks） - 通常叫做 “LSTMs” —— 是 RNN 中一个特殊的类型。由Hochreiter &amp; Schmidhuber (1997)提出，广受欢迎，之后也得到了很多人们的改进调整。LSTMs 被广泛地用于解决各类问题，并都取得了非常棒的效果。</p>
+
+<p>明确来说，设计 LSTMs 主要是为了避免前面提到的 长时期依赖 （long-term dependency ）的问题。它们的本质就是能够记住很长时期内的信息，而且非常轻松就能做到。</p>
+
+<p>所有循环神经网络结构都是由完全相同结构的（神经网络）模块进行复制而成的。在普通的RNNs 中，这个模块结构非常简单，比如仅是一个单一的 tanh 层。</p>
+
+<p>fig4. 普通 RNNs 内部结构 <br>
+LSTMs 也有类似的结构（译者注：唯一的区别就是中间部分）。但是它们不再只是用一个单一的 tanh 层，而是用了四个相互作用的层。 </p>
+
+<p>fig5. LSTM 内部结构 <br>
+别担心，别让这个结构给吓着了，下面根据这个结构，我们把它解剖开，一步一步地来理解它（耐心看下去，你一定可以理解的）。现在，我们先来定义一下用到的符号： </p>
+
+<p>fig6. 符号说明 <br>
+在网络结构图中，每条线都传递着一个向量，从一个节点中输出，然后输入到另一个节点中。粉红色的圆圈表示逐点操作，比如向量相加；黄色的矩形框表示的是一个神经网络层（就是很多个神经节点）；合并的线表示把两条线上所携带的向量进行合并（比如一个带 ht−1,另一个带 xt , 那么合并后的输出就是[ht−1,xt]）; 分开的线表示将线上传递的向量复制一份，传给两个地方。</p>
+
+<p>3.1 LSTMs 的核心思想</p>
+
+<p>LSTMs 最关键的地方在于 cell（整个绿色的框就是一个 cell） 的状态 和 结构图上面的那条横穿的水平线。</p>
+
+<p>cell 状态的传输就像一条传送带，向量从整个 cell 中穿过，只是做了少量的线性操作。这种结构能够很轻松地实现信息从整个 cell 中穿过而不做改变。（译者注：这样我们就可以实现了长时期的记忆保留了） </p>
+
+<p>fig7. 传送带结构 <br>
+若只有上面的那条水平线是没办法实现添加或者删除信息的。而是通过一种叫做 门（gates） 的结构来实现的。</p>
+
+<p>门 可以实现选择性地让信息通过，主要是通过一个 sigmoid 的神经层 和一个逐点相乘的操作来实现的。 </p>
+
+<p>fig8. 门结构（sigmoid 层） <br>
+sigmoid 层输出（是一个向量）的每个元素都是一个在 0 和 1 之间的实数，表示让对应信息通过的权重（或者占比）。比如， 0 表示“不让任何信息通过”， 1 表示“让所有信息通过”。</p>
+
+<p>每个 LSTM 有三个这样的门结构，来实现保护和控制信息。（译者注：分别是 “forget gate layer”, 遗忘门； “input gate layer”，传入门； “output gate layer”, 输出门）</p>
+
+<p>3.2 逐步理解 LSTM</p>
+
+<p>（好了，终于来到最激动的时刻了）</p>
+
+<p>3.2.1 遗忘门</p>
+
+<p>首先是 LSTM 要决定让那些信息继续通过这个 cell，这是通过一个叫做“forget gate layer ”的sigmoid 神经层来实现的。它的输入是ht−1和xt，输出是一个数值都在 0，1 之间的向量（向量长度和 cell 的状态 Ct−1 一样），表示让 Ct−1 的各部分信息通过的比重。 0 表示“不让任何信息通过”， 1 表示“让所有信息通过”。</p>
+
+<p>回到我们上面提到的语言模型中，我们要根据所有的上文信息来预测下一个词。这种情况下，每个 cell 的状态中都应该包含了当前主语的性别信息（保留信息），这样接下来我们才能够正确地使用代词。但是当我们又开始描述一个新的主语时，就应该把上文中的主语性别给忘了才对(忘记信息)。 </p>
+
+<p>fig9. 遗忘门 (forget gates) <br>
+3.2.2 传入门</p>
+
+<p>下一步是决定让多少新的信息加入到 cell 状态 中来。实现这个需要包括两个 步骤：首先，一个叫做“input gate layer ”的 sigmoid 层决定哪些信息需要更新；一个 tanh 层生成一个向量，也就是备选的用来更新的内容，Ct~ 。在下一步，我们把这两部分联合起来，对 cell 的状态进行一个更新。</p>
+
+<p>fig10. 传入门 (input gates) <br>
+在我们的语言模型的例子中，我们想把新的主语性别信息添加到 cell 状态中，来替换掉老的状态信息。 
+有了上述的结构，我们就能够更新 cell 状态了， 即把Ct−1更新为 Ct。 从结构图中应该能一目了然， 首先我们把旧的状态 Ct−1和ft相乘， 把一些不想保留的信息忘掉。然后加上it∗Ct~。这部分信息就是我们要添加的新内容。</p>
+
+<p>fig11. 更新 cell 状态 <br>
+3.2.3 输出门</p>
+
+<p>最后，我们需要来决定输出什么值了。这个输出主要是依赖于 cell 的状态Ct，但是又不仅仅依赖于 Ct，而是需要经过一个过滤的处理。首先，我们还是使用一个 sigmoid 层来（计算出）决定Ct中的哪部分信息会被输出。接着，我们把Ct通过一个 tanh 层（把数值都归到 -1 和 1 之间），然后把 tanh 层的输出和 sigmoid 层计算出来的权重相乘，这样就得到了最后输出的结果。</p>
+
+<p>在语言模型例子中，假设我们的模型刚刚接触了一个代词，接下来可能要输出一个动词，这个输出可能就和代词的信息相关了。比如说，这个动词应该采用单数形式还是复数的形式，那么我们就得把刚学到的和代词相关的信息都加入到 cell 状态中来，才能够进行正确的预测。</p>
+
+<p>fig12. cell 输出 <br>
+4. LSTM 的变种 GRU</p>
+
+<p>原文这部分介绍了 LSTM 的几个变种，还有这些变形的作用。在这里我就不再写了。有兴趣的可以直接阅读原文。</p>
+
+<p>下面主要讲一下其中比较著名的变种 GRU（Gated Recurrent Unit ），这是由 Cho, et al. (2014) 提出。在 GRU 中，如 fig.13 所示，只有两个门：重置门（reset gate）和更新门（update gate）。同时在这个结构中，把细胞状态和隐藏状态进行了合并。最后模型比标准的 LSTM 结构要简单，而且这个结构后来也非常流行。 </p>
+
+<p>fig13. GRU结构 <br>
+其中， rt 表示重置门，zt 表示更新门。重置门决定是否将之前的状态忘记。（作用相当于合并了 LSTM 中的遗忘门和传入门）当 rt 趋于 0 的时候，前一个时刻的状态信息 ht−1 会被忘掉，隐藏状态 ht~ 会被重置为当前输入的信息。更新门决定是否要将隐藏状态更新为新的状态ht~（作用相当于 LSTM 中的输出门） 。</p>
+
+<p>和 LSTM 比较一下：</p>
+
+<p>(1) GRU 少一个门，同时少了细胞状态 Ct。
+(2) 在 LSTM 中，通过遗忘门和传入门控制信息的保留和传入；GRU 则通过重置门来控制是否要保留原来隐藏状态的信息，但是不再限制当前信息的传入。
+(3) 在 LSTM 中，虽然得到了新的细胞状态 Ct，但是还不能直接输出，而是需要经过一个过滤的处理： ht=ot∗tanh(Ct)； 同样，在 GRU 中, 虽然 (2) 中我们也得到了新的隐藏状态 ht~， 但是还不能直接输出，而是通过更新门来控制最后的输出： ht=(1−zt)∗ht−1+zt∗ht~ 。
+后记：好了，到这里对一般形式的 LSTM 的结构讲解已经结束了，原文后面对 LSTM 的各种变形讲解也比较简单，在这里我就不再写了，有兴趣的可以直接阅读原文。上面我结合了原论文比较详细地介绍了一下 GRU，个人水平有限，难免也会出错。其实英语理解能力还行的话建议还是阅读原文比较好，有些东西翻译过来连我自己都不知道该怎么表达了，如果您觉得有什么地方不对，欢迎指出。翻译完后才发现网上已经有很多翻译的版本了，所以参考那些版本又做了一些调整，主要是参考了[译] 理解 LSTM 网络这篇文章。后面如果有时间的话，我应该会写个用 TensorFlow 来实现 LSTM 的例子，敬请期待，哈哈哈！</p>
+
+<p>（LSTM 的例子还真写好了，欢迎戳： TensorFlow入门（五）多层 LSTM 通俗易懂版）</p>]]></content:encoded></item><item><title><![CDATA[待解决问题，待学习技术，待了解公司]]></title><description><![CDATA[<h1 id="1">1问题</h1>
+
+<p>聊天机器人方面
+<a href="http://forum.yige.ai/thread/85">http://forum.yige.ai/thread/85</a></p>
+
+<p>1.1 多轮对话，对话管理 <br>
+1.2 上下文理解 <br>
+1.3 聊天记录存储，分析  </p>
+
+<h1 id="2">2技术</h1>
+
+<p>2.1 知识图谱 <br>
+2.2 机器学习，深度学习相关算法和应用  </p>
+
+<h1 id="3">3 公司</h1>
+
+<p>3.1 谷歌提供的服务：<a href="https://dialogflow.com/">https://dialogflow.com/</a> <br>
+3.2 国内创业公司：智能一点，阿里大牛出来做的 <br>
+<a href="https://36kr.com/p/5091791.html">https://36kr.com/p/5091791.html</a></p>]]></description><link>http://whitespur.top/dai-jie-jue-wen-ti-he-dai-xue-xi-ji-zhu/</link><guid isPermaLink="false">98215548-96b5-4584-b9ed-cc300fdd26e4</guid><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 30 Oct 2017 11:22:24 GMT</pubDate><content:encoded><![CDATA[<h1 id="1">1问题</h1>
+
+<p>聊天机器人方面
+<a href="http://forum.yige.ai/thread/85">http://forum.yige.ai/thread/85</a></p>
+
+<p>1.1 多轮对话，对话管理 <br>
+1.2 上下文理解 <br>
+1.3 聊天记录存储，分析  </p>
+
+<h1 id="2">2技术</h1>
+
+<p>2.1 知识图谱 <br>
+2.2 机器学习，深度学习相关算法和应用  </p>
+
+<h1 id="3">3 公司</h1>
+
+<p>3.1 谷歌提供的服务：<a href="https://dialogflow.com/">https://dialogflow.com/</a> <br>
+3.2 国内创业公司：智能一点，阿里大牛出来做的 <br>
+<a href="https://36kr.com/p/5091791.html">https://36kr.com/p/5091791.html</a></p>]]></content:encoded></item><item><title><![CDATA[聊天机器人一期技术方案设计]]></title><description><![CDATA[<p>公司的项目向来都是时间紧，任务重，现在又来了，在支持原有项目的同时要在月底上线第一版机器人，结合之前的理解，整理出如下内容：</p>
+
+<p>整体架构和功能划分
+<img src="http://whitespur.top/content/images/2017/10/image-302.png" alt=""></p>
+
+<p>各模块交互关系
+<img src="http://whitespur.top/content/images/2017/10/image-304.png" alt=""></p>]]></description><link>http://whitespur.top/liao-tian-ji-qi-ren-yi-qi-she-ji-fang-an/</link><guid isPermaLink="false">c2b746ab-e181-47cb-b13c-20561dd89bf9</guid><category><![CDATA[聊天机器人]]></category><category><![CDATA[技术方案设计]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 30 Oct 2017 11:09:54 GMT</pubDate><media:content url="http://whitespur.top/content/images/2017/10/image-303.png" medium="image"/><content:encoded><![CDATA[<img src="http://whitespur.top/content/images/2017/10/image-303.png" alt="聊天机器人一期技术方案设计"><p>公司的项目向来都是时间紧，任务重，现在又来了，在支持原有项目的同时要在月底上线第一版机器人，结合之前的理解，整理出如下内容：</p>
+
+<p>整体架构和功能划分
+<img src="http://whitespur.top/content/images/2017/10/image-302.png" alt="聊天机器人一期技术方案设计"></p>
+
+<p>各模块交互关系
+<img src="http://whitespur.top/content/images/2017/10/image-304.png" alt="聊天机器人一期技术方案设计"></p>]]></content:encoded></item><item><title><![CDATA[自己动手开发聊天机器人chatbot系列1----总览]]></title><description><![CDATA[<p>最近接触聊天机器人chatbot有段时间了，今天把各种渠道已有的关于chatbot的认识梳理了一下，加深理解，便于后面动手实践。</p>
+
+<h1 id="1chatbot">1 什么是聊天机器人chatbot</h1>
+
+<p>聊天机器人，是一种通过自然语言模拟人类进行对话的程序。通常运行在特定的软件平台上，如PC平台或者移动终端设备平台，而类人的硬件机械体则不是必需的承载设备。</p>
+
+<pre><code>https://mp.weixin.qq.com/s?__biz=MzIxMjAzNDY5Mg==&amp;mid=401067430&amp;idx=1&amp;sn=76f859a0c05b00b12c47f5c6c8f5c590
+</code></pre>
+
+<p>提到机器人不得不提图灵测试，内容如下：</p>
+
+<p>如果一个人（代号C）使用测试对象皆理解的语言去询问两个他不能看见的对象任意一串问题。对象为：一个是正常思维的人（代号B）、一个是机器（代号A）。如果经过<strong>若干询问</strong>以后，C不能得出实质的区别来分辨A与B的不同，则此机器A通过图灵测试。</p>
+
+<h1 id="2">2 分类</h1>
+
+<p>从<strong>技术</strong>的角度看，实现一个 Chatbot</p>]]></description><link>http://whitespur.top/zi-ji-dong-shou-kai-fa-liao-tian-ji-qi-ren-xi-lie/</link><guid isPermaLink="false">46f98408-e8e1-44ef-85b4-2f9e3c741214</guid><category><![CDATA[ChatBot]]></category><category><![CDATA[聊天机器人]]></category><category><![CDATA[NLP]]></category><category><![CDATA[自然语言处理]]></category><category><![CDATA[图灵测试]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 22 Oct 2017 22:43:42 GMT</pubDate><media:content url="http://whitespur.top/content/images/2017/10/image-299.png" medium="image"/><content:encoded><![CDATA[<img src="http://whitespur.top/content/images/2017/10/image-299.png" alt="自己动手开发聊天机器人chatbot系列1----总览"><p>最近接触聊天机器人chatbot有段时间了，今天把各种渠道已有的关于chatbot的认识梳理了一下，加深理解，便于后面动手实践。</p>
+
+<h1 id="1chatbot">1 什么是聊天机器人chatbot</h1>
+
+<p>聊天机器人，是一种通过自然语言模拟人类进行对话的程序。通常运行在特定的软件平台上，如PC平台或者移动终端设备平台，而类人的硬件机械体则不是必需的承载设备。</p>
+
+<pre><code>https://mp.weixin.qq.com/s?__biz=MzIxMjAzNDY5Mg==&amp;mid=401067430&amp;idx=1&amp;sn=76f859a0c05b00b12c47f5c6c8f5c590
+</code></pre>
+
+<p>提到机器人不得不提图灵测试，内容如下：</p>
+
+<p>如果一个人（代号C）使用测试对象皆理解的语言去询问两个他不能看见的对象任意一串问题。对象为：一个是正常思维的人（代号B）、一个是机器（代号A）。如果经过<strong>若干询问</strong>以后，C不能得出实质的区别来分辨A与B的不同，则此机器A通过图灵测试。</p>
+
+<h1 id="2">2 分类</h1>
+
+<p>从<strong>技术</strong>的角度看，实现一个 Chatbot 也可以大致分为基于<strong>检索的模型</strong>和<strong>生成模型</strong>两种方案。</p>
+
+<p>基于<strong>检索</strong>的模型在算法流程和结构上相对更容易理解，在很大程度上和搜索引擎的技术实现类似。一方面事先定义好了<strong>问题库和答案知识库</strong>或回答的<strong>模板</strong>，另一方面通过 <strong>NLP</strong> 技术对用户提出的问题进行分析，通过关键词提取、倒排索引、文档排序等等方法与定义好的知识库进行匹配，并返回给用户。</p>
+
+<p><strong>生成模型</strong>方案直接<strong>从语料来训练知识表示和语言模型</strong>，可以有效降低维护问答库和规则的精力；同时，生成模型可以应对各种不在预设的问题库的问题，表现形式更加灵活。但是，好的生成模型往往需要巨大规模的训练语料，并且，对话中的<strong>上下文关系</strong>、<strong>信息和人格的一致性</strong>、以及<strong>关键意图识别</strong>等等一系列问题都是生成模型需要克服的难关。</p>
+
+<p>从<strong>应用的场景</strong>来看，Chatbot 可以分为<strong>开放域（Open-Domain）问题和封闭域（Closed-Domain）</strong>问题两大类。</p>
+
+<p>开放域问题和图灵测试更接近，也更困难。没有任何限定的主题或明确的目标，用户和Chatbot 之间可以进行任何话题的自由对话。</p>
+
+<p>封闭域问题通常有若干明确的目标和限定的知识范围，也就是说，Chatbot 所面临的输入和输出通常是有限的。例如电商导购机器人</p>
+
+<p>从<strong>表现形式</strong>看，Chatbot可以分为<strong>单轮对话和多轮对话</strong>两种类型。单轮对话其实可以看做是<strong>问答系统</strong>（Question Answering System）的变形， 一般是一问一答的形式，用户提问，机器生成相应答案的文本或者是综合与答案相关的各种信息返回给用户。多轮对话则更接近我们通常理解的人与人之间的对话模式，通常是<strong>有问有答</strong>，除了用户提问，机器也会主动向用户询问，并且会根据上下文来判断该给出什么样的答案或提出什么样的问题。从应用的角度来看，单轮对话更适合使用在信息查询、客户服务、产品介绍等等目标明确、会话行程短的浅服务类项目，用户对通过使用这类产品获得的服务有明确的预期，更多的是把它看做快速获取信息、提升效率的入口。而多轮对话服务，往往会应用在信息搜集、商品和服务导购推荐、专业方案咨询等等一系列结构复杂、会话行程长的深度服务项目里，用户通过使用这类产品会在某一领域获得相对完整的服务，解决一个复杂问题，或者获得某种方向性的引导。一般来说，企业使用多轮对话服务的目标不仅仅是提升效率降低成本，还往往可以改进产品质量带来更多的收入。</p>
+
+<pre><code>https://zhuanlan.zhihu.com/p/21973054
+</code></pre>
+
+<h1 id="3">3 有哪些用途</h1>
+
+<p>从应用场景的角度来看，可以分为在线客服、娱乐、教育、个人助理和智能问答五个种类。
+在线客服聊天机器人系统的主要功能是同用户进行基本沟通并自动回复用户有关产品或服务的问题，以实现降低企业客服运营成本、提升用户体验的目的。其应用场景通常为网站首页和手机终端。代表性的商用系统有小I机器人、京东的JIMI客服机器人等。用户可以通过与JIMI聊天了解商品的具体信息以及反馈购物中存在的问题等。值得称赞的是，JIMI具备一定的拒识能力，即能够知道自己不能回答用户的哪些问题以及何时应该转向人工客服。</p>
+
+<p>娱乐场景下聊天机器人系统的主要功能是同用户进行开放主题的对话，从而实现对用户的精神陪伴、情感慰藉和心理疏导等作用。其应用场景通常为社交媒体、儿童玩具等。代表性的系统如微软“小冰”、微信“小微”、“小黄鸡”、“爱情玩偶”等。其中微软“小冰”和微信“小微”除了能够与用户进行开放主题的聊天之外，还能提供特定主题的服务，如天气预报和生活常识等。</p>
+
+<p>应用于教育场景下的聊天机器人系统根据教育的内容不同包括构建交互式的语言使用环境，帮助用户学习某种语言；在学习某项专业技能中，指导用户逐步深入地学习并掌握该技能；在用户的特定年龄阶段，帮助用户进行某种知识的辅助学习等。其应用场景通常为具备人机交互功能的学习、培训类软件以及智能玩具等。这里以科大讯飞公司的开心熊宝（具备移动终端应用软件和实体型玩具两种形态）智能玩具为例，“熊宝”可以通过语音对话的形式辅助儿童学习唐诗、宋词以及回答简单的常识性问题等。</p>
+
+<p>个人助理类应用主要通过语音或文字与聊天机器人系统进行交互，实现个人事务的查询及代办功能，如天气查询、空气质量查询、定位、短信收发、日程提醒、智能搜索等，从而更便捷地辅助用户的日常事务处理。其应用场景通常为便携式移动终端设备。代表性的商业系统有Apple Siri、Google Now、微软Cortana、出门问问等。其中，Apple Siri的出现引领了移动终端个人事务助理应用的商业化发展潮流。，Apple Siri随着IOS 5一同发布，具备聊天和指令执行功能，可以视为移动终端应用的总入口，然而受到语音识别能力、系统本身自然语言理解能力的不足以及用户使用语音和UI操作两种形式进行人机交互时的习惯差异等限制，Siri没能真正担负起个人事务助理的重任。</p>
+
+<p>智能问答类的聊天机器人主要功能包括回答用户以自然语言形式提出的事实型问题和需要计算和逻辑推理型的问题，以达到直接满足用户的信息需求及辅助用户进行决策的目的。其应用场景通常作为问答服务整合到聊天机器人系统中。典型的智能问答系统除了IBM Watson之外，还有Wolfram Alpha和Magi，后两者都是基于结构化知识库的问答系统，且分别仅支持英文和中文的问答。</p>
+
+<h1 id="4">4 产品交互设计</h1>
+
+<p>各种套路</p>
+
+<pre><code>https://zhuanlan.zhihu.com/p/26659463
+https://zhuanlan.zhihu.com/p/29544405
+</code></pre>
+
+<p><img src="http://whitespur.top/content/images/2017/10/image-300.png" alt="自己动手开发聊天机器人chatbot系列1----总览"></p>
+
+<h1 id="5">5 技术架构设计</h1>
+
+<p>简要设计
+简要技术框架
+<img src="http://whitespur.top/content/images/2017/10/image-295.png" alt="自己动手开发聊天机器人chatbot系列1----总览">
+<img src="http://whitespur.top/content/images/2017/10/image-294.png" alt="自己动手开发聊天机器人chatbot系列1----总览">
+后面用到的各种技术慢慢补充（语言分析和理解、语言生成、机器学习、人机对话、信息检索、信息传输与信息存储、文本分类、自动文摘、数学方法、语言资源、系统评测等内容）</p>
+
+<h1 id="6">6 评价标准</h1>
+
+<p>常见的通用的客观评价标准，如回答正确率、任务完成率、对话回合数、对话时间、系统平均响应时间、错误信息率等，对聊天机器人进行评价，评价的基本单元是单轮对话。
+自己实际用的一个是上下文理解，短期记忆能力，比如告诉机器人一个问题的答案再次提问，看机器人能否回答出来。</p>]]></content:encoded></item><item><title><![CDATA[机器学习笔记2----线性代数]]></title><description><![CDATA[<p>大学的数学忘的差不多了，今天跟着大师又复习了一下，课程地址</p>
+
+<pre><code>https://www.coursera.org/learn/machine-learning/lecture/38jIT/matrices-and-vectors
+</code></pre>
+
+<p>简单笔记如下：</p>
+
+<p>矩阵 matrix m行n列 大写字母</p>
+
+<p>向量 vectors m行*1列矩阵 小写字母</p>
+
+<p>加减</p>
+
+<p>标量 乘除</p>
+
+<p>矩阵 乘除</p>
+
+<p>矩阵 * 向量</p>
+
+<p>m * n   X n * 1 == m * 1 <br>
+<img src="http://whitespur.top/content/images/2017/10/image-283.png" alt="">
+矩阵 * 矩阵
+<img src="http://whitespur.top/content/images/2017/10/image-287.png" alt="">
+交互律不成立</p>
+
+<p>• Matrices are not commutative: A∗B≠B∗A</p>
+
+<p>结合律成立</p>
+
+<p>• Matrices are</p>]]></description><link>http://whitespur.top/ji-qi-xue-xi-bi-ji-2-xian-xing-dai-shu/</link><guid isPermaLink="false">44f49bda-00fd-4552-8a4e-2a76927fc458</guid><category><![CDATA[机器学习]]></category><category><![CDATA[线性代数]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Fri, 20 Oct 2017 22:23:37 GMT</pubDate><media:content url="http://whitespur.top/content/images/2017/10/image-288.png" medium="image"/><content:encoded><![CDATA[<img src="http://whitespur.top/content/images/2017/10/image-288.png" alt="机器学习笔记2----线性代数"><p>大学的数学忘的差不多了，今天跟着大师又复习了一下，课程地址</p>
+
+<pre><code>https://www.coursera.org/learn/machine-learning/lecture/38jIT/matrices-and-vectors
+</code></pre>
+
+<p>简单笔记如下：</p>
+
+<p>矩阵 matrix m行n列 大写字母</p>
+
+<p>向量 vectors m行*1列矩阵 小写字母</p>
+
+<p>加减</p>
+
+<p>标量 乘除</p>
+
+<p>矩阵 乘除</p>
+
+<p>矩阵 * 向量</p>
+
+<p>m * n   X n * 1 == m * 1 <br>
+<img src="http://whitespur.top/content/images/2017/10/image-283.png" alt="机器学习笔记2----线性代数">
+矩阵 * 矩阵
+<img src="http://whitespur.top/content/images/2017/10/image-287.png" alt="机器学习笔记2----线性代数">
+交互律不成立</p>
+
+<p>• Matrices are not commutative: A∗B≠B∗A</p>
+
+<p>结合律成立</p>
+
+<p>• Matrices are associative: (A∗B)∗C=A∗(B∗C)</p>
+
+<p>• 单位矩阵</p>
+
+<p>The identity matrix, when multiplied by any matrix of the same dimensions, results in the original matrix. It's just like multiplying numbers by 1</p>
+
+<p>• 矩阵的逆</p>
+
+<p>m * m的矩阵也叫方阵，只有方阵才有逆 <br>
+没有逆的矩阵----奇异矩阵或退化矩阵</p>
+
+<p>矩阵的转置
+<img src="http://whitespur.top/content/images/2017/10/image-293.png" alt="机器学习笔记2----线性代数"></p>]]></content:encoded></item><item><title><![CDATA[超智能体读书笔记1]]></title><description><![CDATA[<p>在此感谢yjango大神，在学习神经网络的路上有大神深入浅出的指引使自己少走了很多弯路，以下是此书地址：
+<a href="https://yjango.gitbooks.io/superorganism/content/">https://yjango.gitbooks.io/superorganism/content/</a></p>
+
+<p>该书最终的目的是：<strong>通过理解智能，学习如何学习</strong>。</p>
+
+<pre><code>如何机器学习
+如何大脑学习
+</code></pre>
+
+<p>以下是学习过程中感觉重要的笔记，在此记录下来，如有侵权，请随时联系我删除。</p>
+
+<p><img src="http://whitespur.top/content/images/2017/10/image-8.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-11.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-14.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-16.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-18.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-27.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-33.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-38.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-64.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-50.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-81.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-102.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-122.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-140.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-158.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-176.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-198.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-223.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-247.png" alt="">
+<img src="http://whitespur.top/content/images/2017/10/image-275.png" alt=""></p>]]></description><link>http://whitespur.top/chao-zhi-neng-ti-du-shu-bi-ji-1/</link><guid isPermaLink="false">2e3cda6f-4f09-41ea-9a63-93f32a65a01b</guid><category><![CDATA[机器学习]]></category><category><![CDATA[智能]]></category><category><![CDATA[大脑学习]]></category><category><![CDATA[TensorFLow]]></category><category><![CDATA[神经网络]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Thu, 05 Oct 2017 22:51:13 GMT</pubDate><media:content url="http://whitespur.top/content/images/2017/10/image-254.png" medium="image"/><content:encoded><![CDATA[<img src="http://whitespur.top/content/images/2017/10/image-254.png" alt="超智能体读书笔记1"><p>在此感谢yjango大神，在学习神经网络的路上有大神深入浅出的指引使自己少走了很多弯路，以下是此书地址：
+<a href="https://yjango.gitbooks.io/superorganism/content/">https://yjango.gitbooks.io/superorganism/content/</a></p>
+
+<p>该书最终的目的是：<strong>通过理解智能，学习如何学习</strong>。</p>
+
+<pre><code>如何机器学习
+如何大脑学习
+</code></pre>
+
+<p>以下是学习过程中感觉重要的笔记，在此记录下来，如有侵权，请随时联系我删除。</p>
+
+<p><img src="http://whitespur.top/content/images/2017/10/image-8.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-11.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-14.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-16.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-18.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-27.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-33.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-38.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-64.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-50.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-81.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-102.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-122.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-140.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-158.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-176.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-198.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-223.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-247.png" alt="超智能体读书笔记1">
+<img src="http://whitespur.top/content/images/2017/10/image-275.png" alt="超智能体读书笔记1"></p>]]></content:encoded></item><item><title><![CDATA[协程是什么，有什么好处，与进程，线程的区别，理解并发与并行]]></title><description><![CDATA[<p>今天学python，遇到了协程，这个之前写java没怎么用过，今天查了下记录下来，反复理解。</p>
+
+<p>协程其实就是函数调用,相比线程更为轻量级，代码示例如下：</p>
+
+<pre><code>def 协程1():
+pass
+def 协程2():
+pass
+def 协程3():
+pass
+def 协程n():
+pass
+while 1:
+协程1()
+协程2()
+协程3()
+协程n()
+协程就是一个个函数，然后死循环调用，以上就是协程的基本思想。没什么神秘的~需要配合异步IO使用，避免阻塞~
+</code></pre>
+
+<p>参考文章：
+<a href="https://segmentfault.com/q/1010000007757966">https://segmentfault.com/q/1010000007757966</a></p>
+
+<p>协程，又称微线程，纤程。英文名Coroutine。协程看上去也是子程序，但执行过程中，<mark>在子程序内部可中断</mark>，然后转而执行别的子程序，在适当的时候再返回来接着执行。</p>
+
+<p>参考文章：<a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868328689835ecd883d910145dfa8227b539725e5ed000">https://www.</a></p>]]></description><link>http://whitespur.top/xie-cheng-shi-shi-yao-you-shi-yao-hao-chu-yu-jin-cheng-xian-cheng-de-qu-bie/</link><guid isPermaLink="false">895dddad-ce7b-493e-81dc-f3ed7f2cb8c1</guid><category><![CDATA[协程]]></category><category><![CDATA[进程]]></category><category><![CDATA[多线程]]></category><category><![CDATA[并发]]></category><category><![CDATA[并行]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Thu, 05 Oct 2017 20:59:48 GMT</pubDate><media:content url="http://whitespur.top/content/images/2017/10/image-2.png" medium="image"/><content:encoded><![CDATA[<img src="http://whitespur.top/content/images/2017/10/image-2.png" alt="协程是什么，有什么好处，与进程，线程的区别，理解并发与并行"><p>今天学python，遇到了协程，这个之前写java没怎么用过，今天查了下记录下来，反复理解。</p>
+
+<p>协程其实就是函数调用,相比线程更为轻量级，代码示例如下：</p>
+
+<pre><code>def 协程1():
+pass
+def 协程2():
+pass
+def 协程3():
+pass
+def 协程n():
+pass
+while 1:
+协程1()
+协程2()
+协程3()
+协程n()
+协程就是一个个函数，然后死循环调用，以上就是协程的基本思想。没什么神秘的~需要配合异步IO使用，避免阻塞~
+</code></pre>
+
+<p>参考文章：
+<a href="https://segmentfault.com/q/1010000007757966">https://segmentfault.com/q/1010000007757966</a></p>
+
+<p>协程，又称微线程，纤程。英文名Coroutine。协程看上去也是子程序，但执行过程中，<mark>在子程序内部可中断</mark>，然后转而执行别的子程序，在适当的时候再返回来接着执行。</p>
+
+<p>参考文章：<a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868328689835ecd883d910145dfa8227b539725e5ed000">https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868328689835ecd883d910145dfa8227b539725e5ed000</a></p>
+
+<p><mark>协程允许一个执行过程A中断，然后转到执行过程B，在适当的时候再一次转回来，有点类似于多线程</mark>。但协程有以下2个优势：</p>
+
+<pre><code>协程的数量理论上可以是无限个，而且没有线程之间的切换动作，执行效率比线程高。
+协程不需要“锁”机制，即不需要lock和release过程，因为所有的协程都在一个线程中。
+相对于线程，协程更容易调试debug，因为所有的代码是顺序执行的。
+</code></pre>
+
+<p>参考文章：
+<a href="https://zhuanlan.zhihu.com/p/24118476?refer=pythoner">https://zhuanlan.zhihu.com/p/24118476?refer=pythoner</a></p>
+
+<p>没有啥复杂的东西，考虑清楚需求，就可以很自然的衍生出这些解决方案。一开始大家想要同一时间执行那么三五个程序，大家能一块跑一跑。特别是UI什么的，别一上计算量比较大的玩意就跟死机一样。于是就有了并发，从程序员的角度可以看成是多个独立的逻辑流。内部可以是多cpu并行，也可以是单cpu时间分片，能快速的切换逻辑流，看起来像是大家一块跑的就行。但是一块跑就有问题了。我计算到一半，刚把多次方程解到最后一步，你突然插进来，我的中间状态咋办，我用来储存的内存被你覆盖了咋办？所以跑在一个cpu里面的并发都需要处理上下文切换的问题。<mark>进程就是这样抽象出来个一个概念，搭配虚拟内存、进程表之类的东西，用来管理独立的程序运行、切换</mark>。后来一电脑上有了好几个cpu，好咧，大家都别闲着，一人跑一进程。就是所谓的并行。因为程序的使用涉及大量的计算机资源配置，把这活随意的交给用户程序，非常容易让整个系统分分钟被搞跪，资源分配也很难做到相对的公平。所以核心的操作需要陷入内核(kernel)，切换到操作系统，让老大帮你来做。有的时候碰着I/O访问，阻塞了后面所有的计算。空着也是空着，老大就直接把CPU切换到其他进程，让人家先用着。当然除了I\O阻塞，还有时钟阻塞等等。一开始大家都这样弄，后来发现不成，太慢了。为啥呀，一切换进程得反复进入内核，置换掉一大堆状态。进程数一高，大部分系统资源就被进程切换给吃掉了。后来搞出<mark>线程的概念，大致意思就是，这个地方阻塞了，但我还有其他地方的逻辑流可以计算，这些逻辑流是共享一个地址空间的，不用特别麻烦的切换页表、刷新TLB，只要把寄存器刷新一遍就行，能比切换进程开销少点</mark>。如果连时钟阻塞、 线程切换这些功能我们都不需要了，自己在进程里面写一个逻辑流调度的东西。那么我们即可以利用到并发优势，又可以避免反复系统调用，还有进程切换造成的开销，分分钟给你上几千个逻辑流不费力。这就是用户态线程。从上面可以看到，实现一个用户态线程有两个必须要处理的问题：一是碰着阻塞式I\O会导致整个进程被挂起；二是由于缺乏时钟阻塞，进程需要自己拥有调度线程的能力。<mark>如果一种实现使得每个线程需要自己通过调用某个方法，主动交出控制权。那么我们就称这种用户态线程是协作式的，即是协程。本质上协程就是用户空间下的线程。</mark></p>
+
+<p>参考文章：<a href="https://www.zhihu.com/question/20511233/answer/24260355">https://www.zhihu.com/question/20511233/answer/24260355</a></p>
+
+<p>进程拥有自己<strong>独立的堆和栈</strong>，既不共享堆，亦不共享栈，进程由操作系统调度。
+线程拥有自己独立的栈和共享的堆，共享堆，<strong>不共享栈</strong>，线程亦由操作系统调度(标准线程是的)。
+协程和线程一样<strong>共享堆，不共享栈</strong>，协程由程序员在协程的代码里显示调度。
+进程和其他两个的区别还是很明显的。
+协程和线程的区别是：协程避免了无意义的调度，由此可以提高性能，但也因此，程序员必须<strong>自己承担调度</strong>的责任，同时，协程也失去了标准线程使用多CPU的能力。</p>
+
+<p>参考文章<a href="http://blog.csdn.net/hairetz/article/details/16119911">http://blog.csdn.net/hairetz/article/details/16119911</a></p>
+
+<p>最后复习下并发与并行的概念：</p>
+
+<p>深入理解计算机系统CSAPP的回答。</p>
+
+<pre><code>并发（Concurrency）是说进程B的开始时间是在进程A的开始时间与结束时间之间，我们就说A和B是并发的。
+并行（Parallel Execution）是并发的真子集，指同一时间两个进程运行在不同的机器上或者同一个机器不同的核心上。
+对于单核，多线程的多任务是在单cpu交替执行，属于并发；
+对于多核，多线程的任务如果能够分布在各个cpu上（线程数少许核心数），那么就是并行。
+并发（Concurrency）是同时处理很多事情（dealing with lots of things at once），并行（Parallelism）是同时执行很多事情（doing lots of things at once）；
+</code></pre>
+
+<p><img src="http://whitespur.top/content/images/2017/10/image-1.png" alt="协程是什么，有什么好处，与进程，线程的区别，理解并发与并行">
+参考：<a href="https://www.zhihu.com/question/33515481/answer/67962756">https://www.zhihu.com/question/33515481/answer/67962756</a></p>]]></content:encoded></item><item><title><![CDATA[从聊天机器人现状看各大公司人工智能的布局发展]]></title><description><![CDATA[<p>首先祝大家中秋快乐，博客公众号开了以后，访问统计看了下pv，uv少的可怜，主要原因还是内容太少，渠道也只有朋友圈传播，这次起个牛点的标题，说不定可以通过搜索增加流量，最近接触聊天机器人比较多，一直在想怎么做，能做到什么程度，能解决哪些问题，刚好国庆放假在滨江龙湖天街的奇客巴士体验了一下国内几款智能机器人的硬件产品，比较失望，于是又找了一下各大巨头的软件产品，对比了一下，记录在这里，从这里可以看到从移动互联网时代向人工智能时代巨头们的发展状况，也基本可以知道自己能做到什么地步了，最后一个感慨就是跟着google走有肉吃，google在今年5月的I/O大会宣布了从Mobile-first向AI-first的战略，自己作为个人刚好也从15年转到了backend，今年也逐渐从backend向data,ai方向进军，希望今年能做出点拿的出手的东西来，后面也会不断增加这方面的文章，废话不多说了，以下是正文：</p>
+
+<h1 id="">一 国际大公司</h1>
+
+<h2 id="google">Google:</h2>
+
+<p>面向消费者的手机app：Allo（Google Assistant），水平最高，有记忆功能，可以做私人助理，交互方式很好，支持文字和语音输入，而且每次都有文字提示输入，不足之处是不支持中文。
+<img src="http://whitespur.top/content/images/2017/10/google.jpeg" alt="">
+智能家居Google Home(<a href="https://madeby.google.com/home/">https://madeby.google.com/home/</a></p>]]></description><link>http://whitespur.top/cong-liao-tian-ji-qi-ren-xian-zhuang-kan-ge-da-gong-si-ren-gong-zhi-neng-fa-zhan-bu-ju/</link><guid isPermaLink="false">9998f8a1-5834-44a5-ad4e-27cafc7d4fb4</guid><category><![CDATA[聊天机器人]]></category><category><![CDATA[人工智能]]></category><category><![CDATA[谷歌]]></category><category><![CDATA[亚马逊]]></category><category><![CDATA[微软]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Tue, 03 Oct 2017 19:12:38 GMT</pubDate><content:encoded><![CDATA[<p>首先祝大家中秋快乐，博客公众号开了以后，访问统计看了下pv，uv少的可怜，主要原因还是内容太少，渠道也只有朋友圈传播，这次起个牛点的标题，说不定可以通过搜索增加流量，最近接触聊天机器人比较多，一直在想怎么做，能做到什么程度，能解决哪些问题，刚好国庆放假在滨江龙湖天街的奇客巴士体验了一下国内几款智能机器人的硬件产品，比较失望，于是又找了一下各大巨头的软件产品，对比了一下，记录在这里，从这里可以看到从移动互联网时代向人工智能时代巨头们的发展状况，也基本可以知道自己能做到什么地步了，最后一个感慨就是跟着google走有肉吃，google在今年5月的I/O大会宣布了从Mobile-first向AI-first的战略，自己作为个人刚好也从15年转到了backend，今年也逐渐从backend向data,ai方向进军，希望今年能做出点拿的出手的东西来，后面也会不断增加这方面的文章，废话不多说了，以下是正文：</p>
+
+<h1 id="">一 国际大公司</h1>
+
+<h2 id="google">Google:</h2>
+
+<p>面向消费者的手机app：Allo（Google Assistant），水平最高，有记忆功能，可以做私人助理，交互方式很好，支持文字和语音输入，而且每次都有文字提示输入，不足之处是不支持中文。
+<img src="http://whitespur.top/content/images/2017/10/google.jpeg" alt="">
+智能家居Google Home(<a href="https://madeby.google.com/home/">https://madeby.google.com/home/</a> )，没条件体验，不过跟Allo接入的后台应该是一样的。</p>
+
+<p>平台方面(<a href="https://ai.google/">https://ai.google/</a> )，收购DeepMind，开源TensowFlow，推出TPU（英伟达GPU有竞争对手了）,AlphaGo围棋峰会完胜人类顶级棋手（柯洁，李世乭等），看2017年的IO大会，对外宣布了<strong>Mobile-first</strong>向<strong>AI-first</strong>的战略，具体视频<a href="https://events.google.com/io/">https://events.google.com/io/</a> 可以再看看</p>
+
+<h2 id="microsoft">MicroSoft:</h2>
+
+<p>小冰，水平没谷歌强，比剩余强，没有记忆功能，支持中文，产品跟第三方整合的比较多，微信微博都接入了，微信也有小程序-小冰FM，这个小程序可以秒杀掉国内的若琪，喜马拉雅的智能机器人了
+<img src="http://whitespur.top/content/images/2017/10/ms2.jpeg" alt=""></p>
+
+<h1 id="amazon">Amazon:</h1>
+
+<p>echo没条件体验硬件，做智能家居最早最强的，2014年第一款上线，16年销量超650万台，<a href="https://www.amazon.com/b/?ie=UTF8&amp;node=9818047011&amp;ref">https://www.amazon.com/b/?ie=UTF8&amp;node=9818047011&amp;ref</a><em>=hud</em>2<em>gw</em>alexa<em>cp&amp;pf</em>rd<em>p=f5d37052-217b-4003-98c5-2c76ee403c8f&amp;pf</em>rd_r=FQB9ZG8YRXRQK46VDV3Y，目前出了5类等级的设备了，最便宜的50刀，看宣传视频还是很棒的，交互流畅，可以控制家里的智能家居设备，设备丰富度应该很强的，唯一担心是中文输入是否支持，以后有机会买个体验一下，网上讨论（<a href="https://www.zhihu.com/question/48036249）">https://www.zhihu.com/question/48036249）</a>  </p>
+
+<h2 id="facebook">Facebook:</h2>
+
+<p>由于翻墙地址经常变动，提示我要上传照片审核后才能登录，不过按理说fb这么牛的公司应该会机器自动审核才对的，结果2个小时过去了，还是提示（审核你的照片后，我们将尽快与你联系。出于安全考虑，你将会从 Facebook 退出），fb好感下降一大截。</p>
+
+<h2 id="apple">Apple:</h2>
+
+<p>Siri挺弱智的，挺弱智的，挺弱智的，虽然支持中文语音，但是智商实在太低，让使用的用户也感觉弱智，尤其是晚上老婆喊“Hey Siri，给我打开闹钟”时每次都被我鄙视一次，但是当让siri打开指定日期都闹钟时它就歇菜了，苹果果然还是面子货（又要被果粉黑了） <br>
+<img src="http://whitespur.top/content/images/2017/10/apple.jpeg" alt=""></p>
+
+<h2 id="openai">OpenAI:</h2>
+
+<p>Musk跟Altman聚集的一帮大牛做ai方面研究的非营利组织，专业性很强，后面多关注学习下。  </p>
+
+<h1 id="">二 国内大公司：</h1>
+
+<h2 id="">阿里:</h2>
+
+<p>硬件方面：</p>
+
+<p>17年8月刚上市天猫精灵（<a href="https://detail.tmall.com/item.htm?spm=a21m2.9157088.0.0.32896777Tnlsln&amp;id=554918982034">https://detail.tmall.com/item.htm?spm=a21m2.9157088.0.0.32896777Tnlsln&amp;id=554918982034</a> ），价格499，如果没看过echo的话感觉还是挺惊艳的，但是知道了echo以后，感觉就是山寨了echo，而且晚了3年，好点的地方时中文支持多了，毕竟是国产的。</p>
+
+<p>软件方面：</p>
+
+<p>阿里小蜜，盒马鲜生的盒马福利社有点意思，产品有创意
+<img src="http://whitespur.top/content/images/2017/10/ali.jpeg" alt=""></p>
+
+<h2 id="">百度：</h2>
+
+<p>移动互联网时代落后了一大截，最近在AI上Allin，官网(<a href="http://dueros.baidu.com">http://dueros.baidu.com</a> )看着挺丰富的，有具体产品（软硬件），合作厂商，解决方案，开放平台等等，手机端的app是度密，号称人工智能小秘书，简单体验了一番，水平一般，我告诉的问题再次提问还是记不住，哈哈，这个可以看作检验聊天机器人水平的一个小标准了，上下文短期记忆能力
+<img src="http://whitespur.top/content/images/2017/10/baidu.jpeg" alt=""></p>
+
+<h2 id="">腾讯:</h2>
+
+<p>机器人开放平台(<a href="http://open.qq.com/bot/">http://open.qq.com/bot/</a> )，具体产品小Q机器人2代(<a href="https://qrobot.qq.com/#/">https://qrobot.qq.com/#/</a> )看视频介绍没多大新意，定位于儿童成长智能伴侣，可以忽悠下小朋友，手机app方面没找到对应应用和入口，微信也没有，有点诧异，腾讯这方面产品居然这么少，不过有个研究院（<a href="http://ai.tencent.com/ailab/index.html">http://ai.tencent.com/ailab/index.html</a> ），偏研究方向，看介绍有些论文。</p>
+
+<h2 id="">京东:</h2>
+
+<p>直接面向消费者的不多，更多面向京东自身，智慧物流，自己能体验到的是京东JIMI，跟阿里小蜜类似，主要还是客服，推荐系统的功能，用之前的问题检验不出意料还是回答不上来，水平一般
+<img src="http://whitespur.top/content/images/2017/10/jd.jpeg" alt=""></p>
+
+<h1 id="">三 创业公司：</h1>
+
+<h2 id="">硬件方面：</h2>
+
+<p>若琪，喜马拉雅，公子小白，这几个智能程度都一般，没什么惊艳的地方</p>
+
+<h2 id="">软件方面：</h2>
+
+<p>后面有空了再补充，商汤，旷世，第四范式，科大讯飞，出门问问，寒武纪等等，具体名单可看(<a href="http://www.199it.com/archives/526832.html">http://www.199it.com/archives/526832.html</a>)</p>
+
+<p>如果您有更多想讨论的东西欢迎留言，也可以关注我的个人公众号(muskinfo)进行留言，后面会增加聊天机器人到上面，拭目以待吧。</p>]]></content:encoded></item><item><title><![CDATA[博客功能升级和后续计划]]></title><description><![CDATA[<p>鉴于开通了公众号，博客可能会有越来越多人来访问，今天下午给博客升级了一下功能，主要增加了访问统计和评论留言功能，简单记录如下：</p>
+
+<h1 id="1">1 访问统计</h1>
+
+<p>由于读者大部分应该还是国内用户，就使用了百度统计，接入非常简单方便，功能看着还算强大，后面考虑可以做下seo搜索优化，目前google搜博客地址可以搜到，baidu还是乱七八糟的结果，bing搜出来的是个俄罗斯网站(<a href="http://go2mars.ru/">http://go2mars.ru/</a>) ，内容是关于火星探索的，挺丰富的，没想到自己yy的这个域名还是可以的，老毛子也起了一样的域名前缀，不过人家研究的更早更专业，看了下域名注册时间居然是2006年的。</p>
+
+<p>具体增加方法参考官方文档即可：
+<a href="https://tongji.baidu.com/web/help/articleList?type=0&amp;category=16">https://tongji.baidu.com/web/help/articleList?type=0&amp;category=16</a> <br>
+<a href="http://www.ghostchina.com/add-analytics-code-for-ghost/">http://www.ghostchina.com/add-analytics-code-for-ghost/</a>  </p>
+
+<h1 id="2">2 评论留言</h1>
+
+<p>虽然百度统计也有意见反馈功能，不过试用了下是访客在博客页面右下角输入意见，系统再发送邮件到指定邮箱，这个只能自己看到，不方便其他读者进行交流，于是又调研了一下评论留言的系统，</p>]]></description><link>http://whitespur.top/bo-ke-gong-neng-sheng-ji/</link><guid isPermaLink="false">db34f27a-8c1c-4330-bd93-dd991fc45798</guid><category><![CDATA[访问统计]]></category><category><![CDATA[评论]]></category><category><![CDATA[升级]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 01 Oct 2017 22:23:51 GMT</pubDate><content:encoded><![CDATA[<p>鉴于开通了公众号，博客可能会有越来越多人来访问，今天下午给博客升级了一下功能，主要增加了访问统计和评论留言功能，简单记录如下：</p>
+
+<h1 id="1">1 访问统计</h1>
+
+<p>由于读者大部分应该还是国内用户，就使用了百度统计，接入非常简单方便，功能看着还算强大，后面考虑可以做下seo搜索优化，目前google搜博客地址可以搜到，baidu还是乱七八糟的结果，bing搜出来的是个俄罗斯网站(<a href="http://go2mars.ru/">http://go2mars.ru/</a>) ，内容是关于火星探索的，挺丰富的，没想到自己yy的这个域名还是可以的，老毛子也起了一样的域名前缀，不过人家研究的更早更专业，看了下域名注册时间居然是2006年的。</p>
+
+<p>具体增加方法参考官方文档即可：
+<a href="https://tongji.baidu.com/web/help/articleList?type=0&amp;category=16">https://tongji.baidu.com/web/help/articleList?type=0&amp;category=16</a> <br>
+<a href="http://www.ghostchina.com/add-analytics-code-for-ghost/">http://www.ghostchina.com/add-analytics-code-for-ghost/</a>  </p>
+
+<h1 id="2">2 评论留言</h1>
+
+<p>虽然百度统计也有意见反馈功能，不过试用了下是访客在博客页面右下角输入意见，系统再发送邮件到指定邮箱，这个只能自己看到，不方便其他读者进行交流，于是又调研了一下评论留言的系统，最后选用了discus，至于为什么用disqus，知乎还有其他博客上有人分享过，国内之前的多说是评论系统的top1，不过后面由于无法盈利，官网在2017年3月下线了多说，网易云跟帖用的应该比较多，不过也在2017年8月下线了，另外几个国产评论系统用户量更少，很有可能也活不长了，估计跟zf进行言论控制有关，于是绕了一圈还是选用了国际上top1的discus，刚好自己的服务器也是在国外的，在国外访问应该还好，不太好的地方就是需要登录系统才能留言，而登录的几个系统(facebook,google,twitter)由于天朝防火墙的原因，普通小白用户都不容易登录，因此这个评论功能短期来看可能有些鸡肋，用处不大了，除非后面国际化，增加英文文章，这个暂时来的有点远，先留着吧。</p>
+
+<p>具体增加方法还是参考官方文档：</p>
+
+<p><a href="https://go2mars-top.disqus.com/admin/install/platforms/ghost/">https://go2mars-top.disqus.com/admin/install/platforms/ghost/</a></p>
+
+<p>第三方评论系统相关文章：</p>
+
+<p><a href="https://blog.shuiba.co/comment-systems-recommendation">https://blog.shuiba.co/comment-systems-recommendation</a> <br>
+<a href="https://www.zhihu.com/question/57426274">https://www.zhihu.com/question/57426274</a>  </p>
+
+<h1 id="3">3 后续功能</h1>
+
+<p>博客：搜索，标签云，布局结构美化</p>
+
+<p>公众号：聊天机器人</p>]]></content:encoded></item><item><title><![CDATA[HelloWorld！开通公众号了]]></title><description><![CDATA[<p>一到放假醒的格外早的“恶习”还是一如既往，不管晚上睡的多晚，早上到点就醒，比上班都准时。最近不知怎么的感觉想法越来越多，一是受马斯克火星殖民计划的影响，二是微信知乎看的有趣的东西比较多，感觉需要把想法idea记录下来，微信公众号朋友圈，微博，知乎这些算是信息源，看到好的mark下转发下，同时自己的想法也记录下，很多东西都是一闪而过，先写下来：
+1 个人公众号开通，取名musk，因为搜索了一下居然没人用，又去搜了下网站域名，结果大部分都被注册了，想要购买的花要高价买了，其实很多人早就在做域名生意了，先把好的域名抢注下来，就像在网络虚拟世界里先买了个房子一样，好的域名就是好城市好地段的房子。 <br>
+2 公众号内容：科技相关，musk相关，国外有<a href="https://elonmusknews.org/">https://elonmusknews.org/</a> 可以订阅musk最新动态，还且还提供了付费服务（ $7 / month or $37 / year），那我打算也搞个国内版的网站或者公众号，一是本人就是musk粉丝，科技粉，希望及时获取musk及其旗下公司的最新进展，但是国内这块专业性的还比较少，认识的朋友里目前就个位数对此感兴趣，不过这并不能说明什么，</p>]]></description><link>http://whitespur.top/guo-qing-10yue-2hao-sui-gan/</link><guid isPermaLink="false">9fc23643-ee4b-4bdb-a772-57031407c475</guid><category><![CDATA[公众号]]></category><category><![CDATA[价值投资]]></category><category><![CDATA[musk]]></category><category><![CDATA[科技股]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 01 Oct 2017 14:48:16 GMT</pubDate><content:encoded><![CDATA[<p>一到放假醒的格外早的“恶习”还是一如既往，不管晚上睡的多晚，早上到点就醒，比上班都准时。最近不知怎么的感觉想法越来越多，一是受马斯克火星殖民计划的影响，二是微信知乎看的有趣的东西比较多，感觉需要把想法idea记录下来，微信公众号朋友圈，微博，知乎这些算是信息源，看到好的mark下转发下，同时自己的想法也记录下，很多东西都是一闪而过，先写下来：
+1 个人公众号开通，取名musk，因为搜索了一下居然没人用，又去搜了下网站域名，结果大部分都被注册了，想要购买的花要高价买了，其实很多人早就在做域名生意了，先把好的域名抢注下来，就像在网络虚拟世界里先买了个房子一样，好的域名就是好城市好地段的房子。 <br>
+2 公众号内容：科技相关，musk相关，国外有<a href="https://elonmusknews.org/">https://elonmusknews.org/</a> 可以订阅musk最新动态，还且还提供了付费服务（ $7 / month or $37 / year），那我打算也搞个国内版的网站或者公众号，一是本人就是musk粉丝，科技粉，希望及时获取musk及其旗下公司的最新进展，但是国内这块专业性的还比较少，认识的朋友里目前就个位数对此感兴趣，不过这并不能说明什么，mush及其公司还是非常非常非常有前途的，单从其名下的tesla股价就能看出；二是自己希望利用技术，尝试技术来获取信息，最近要学爬虫，练习爬虫，一个目标就是用爬虫爬取有价值的东西，那musk相关信息就是非常有价值的信息，很值得爬取收集；三是对musk有兴趣的关注musk感觉层次应该还是比较高的，比起投机炒房炒股的强多了，个人把公众号网站运营好，加个大赏功能啥的说不定也可以赚点外快，哈哈，毕竟目前还是挺穷的，就像www.liaoxuefeng.com一样，给小白大众提供初级教程，也增加了打赏功能，目测最近还上了好多培训课程，这块又是个有点钱途的东西，不过对我个人来说价值不大（虽然很多刚毕业技术水的人都喜欢花高价来培训希望找到好工作） <br>
+3 价值投资方面：区块链很好的东西，可惜由于ico投机的人太多，ico被国内政府给禁了，比特币等国内的交易网站也被禁了，不过技术层面的确是一项非常伟大的进步，国外很多地区和政府还是支持的，更不用暗网这种地下交易了 <br>
+4 价值投资方面：科技股重点关注，为什么重点关注科技股，因为我是科技迷，呵呵，废话，因为我认为科技才是第一生产力，是推动人类进步的重要力量，像能源国企等靠政治取得的垄断是没有前途的，效率是低下的，今早也恰好朋友圈看到一篇文章发现一个公众号就是关于科技股的，里面几句话说的很好：</p>
+
+<pre><code>    这个世界绝大多数的公司都是平庸的公司，绝大部分的生意都只是一个挣辛苦钱的生意。企业的高速增长永远都不是一个常态，企业的常态是不死不活或者走向衰败。只有少数的幸运儿，在好的行业，好的领导人的带领下，才能走出长期的增长。
+   硅谷创投教父、PayPal创始人彼得·蒂尔在他著名的那本小册子《从0到1》里，告诫创业者要致力于开创新的商业模式，因为只有这样才能建立垄断型企业。这个世界上最成功的企业都是垄断者，而竞争是输家的游戏。
+  在2000年的一个早上，杰夫贝索斯给巴菲特打电话，问巴菲特：“你的投资体系这么简单，为什么你是全世界第二富有的人，别人不做和你一样的事情？”巴菲特回答说：“因为没人愿意慢慢地变富。”
+   为什么我们要重点关注科技企业？其实绝大部分的科技企业都不值得投资，但在当今这个时代以及未来，能靠市场竞争获得垄断地位的一定是那些利用了互联网，大数据和人工智能的科技企业。这点从世界十大上市公司排行榜近10年的变迁就能看出来，2007年的榜单上石油公司和银行占据了7席，而到了2017年就有7家科技企业上榜，而且更是霸占了前5名。
+</code></pre>
+
+<p>5 个人重点关于上市公司：有钱的老铁们可以买起来了</p>
+
+<pre><code>Tesla,google,Amazon,Facebook,Nvidia,mircrosoft,veritone,apple,Ali,tencent,猎豹移动
+</code></pre>]]></content:encoded></item><item><title><![CDATA[国庆计划]]></title><description><![CDATA[<p>前言：今年国庆不回老家了，为啥不回？因为人多，其实是因为穷。
+既然留杭还是得干点事情，1号在家打扫卫生就这么过去了，后面几天好好利用起来，列个计划监督自己。</p>
+
+<h1 id="1python">1 python 入门</h1>
+
+<p>目标：基础概念建立，工具，环境配好，简易网站搭建，注意与java对比
+教程：<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000</a></p>
+
+<p>代码:
+<a href="https://github.com/michaelliao/awesome-python-webapp">https://github.com/michaelliao/awesome-python-webapp</a>  </p>
+
+<h1 id="2python">2 python 进阶</h1>
+
+<p>目标：爬虫学习，可以爬取指定网页的图片文字并保存到本地</p>
+
+<p>框架：<a href="http://docs.pyspider.org/en/latest/">http://docs.pyspider.org/en/latest/</a></p>
+
+<h1 id="3">3 机器学习 入门</h1>
+
+<p>上次花了一个晚上刚学完入门部分：机器学习基础概念，问题分类，</p>]]></description><link>http://whitespur.top/guo-qing-ji-hua/</link><guid isPermaLink="false">01ed31ed-25cd-4174-9e79-8fc6c74f608b</guid><category><![CDATA[国庆]]></category><category><![CDATA[计划]]></category><category><![CDATA[杂感]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sat, 30 Sep 2017 21:59:47 GMT</pubDate><content:encoded><![CDATA[<p>前言：今年国庆不回老家了，为啥不回？因为人多，其实是因为穷。
+既然留杭还是得干点事情，1号在家打扫卫生就这么过去了，后面几天好好利用起来，列个计划监督自己。</p>
+
+<h1 id="1python">1 python 入门</h1>
+
+<p>目标：基础概念建立，工具，环境配好，简易网站搭建，注意与java对比
+教程：<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000</a></p>
+
+<p>代码:
+<a href="https://github.com/michaelliao/awesome-python-webapp">https://github.com/michaelliao/awesome-python-webapp</a>  </p>
+
+<h1 id="2python">2 python 进阶</h1>
+
+<p>目标：爬虫学习，可以爬取指定网页的图片文字并保存到本地</p>
+
+<p>框架：<a href="http://docs.pyspider.org/en/latest/">http://docs.pyspider.org/en/latest/</a></p>
+
+<h1 id="3">3 机器学习 入门</h1>
+
+<p>上次花了一个晚上刚学完入门部分：机器学习基础概念，问题分类，线性回归，代价函数，这几天要把落下的课程补回来，完成第一周梯度下降和第二周内容：多元线性回归。</p>
+
+<p>学习地址：<a href="https://www.coursera.org/learn/machine-learning/home/week/2">https://www.coursera.org/learn/machine-learning/home/week/2</a></p>
+
+<h1 id="4">4 杂感</h1>
+
+<p>最近公司招人也面了很多人，很多都说会大数据，机器学习算法，结果大部分都只是会用大数据的工具，做过一点流程性的工作，算法名字知道一大堆，但是问起机器学习的基本概念都答不上来，一个比一个水，刷新了好几次三观，反倒是刚毕业的科班出身的感觉不错，不会瞎扯，思路正确，实事求是。</p>
+
+<p>编程是一件需要创造力的事情，现阶段的基本目标是学习先进技术应用到公司实际项目中，当然除了技术外产品意识也是很重要的，因为那才是最终面向用户的东西，技术再好产品界面交互不好也不行，最近搜索优化基本完成了，后面的智能机器人，推荐系统，用户画像每个东西要做好都不容易，珍惜现在的机会，对标业内先进产品，借鉴学习，争取这次把技术+产品做好，什么算好呢？产品上用户愿意用，指标是活跃用户数，用户留存率，这个要多关注。技术上代码架构设计，性能，直观点就是代码可读性，系统并发量。</p>]]></content:encoded></item><item><title><![CDATA[使用pyenv和virtualenv搭建python虚拟开发环境]]></title><description><![CDATA[<p>pyenv install --list <br>
+查看有哪些版本python可以安装</p>
+
+<p>pyenv install 3.6.2 <br>
+安装3.6.2</p>
+
+<p>pyenv versions <br>
+查看当前环境</p>
+
+<p>pyenv virtualenv 3.6.2 env362 <br>
+创建虚拟环境</p>
+
+<p>pyenv activate env362 <br>
+切换到环境</p>
+
+<p>pyenv deactivate <br>
+切回原环境</p>
+
+<p>rm -rf ~/.pyenv/versions/env362/ <br>
+删除环境</p>]]></description><link>http://whitespur.top/pyenvda-jian-pythonxu-ni-kai-fa-huan-jing/</link><guid isPermaLink="false">3902d414-50fd-44f4-90e7-d230745497a9</guid><category><![CDATA[python]]></category><category><![CDATA[pyenv]]></category><category><![CDATA[virtualenv]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Fri, 29 Sep 2017 22:33:11 GMT</pubDate><content:encoded><![CDATA[<p>pyenv install --list <br>
+查看有哪些版本python可以安装</p>
+
+<p>pyenv install 3.6.2 <br>
+安装3.6.2</p>
+
+<p>pyenv versions <br>
+查看当前环境</p>
+
+<p>pyenv virtualenv 3.6.2 env362 <br>
+创建虚拟环境</p>
+
+<p>pyenv activate env362 <br>
+切换到环境</p>
+
+<p>pyenv deactivate <br>
+切回原环境</p>
+
+<p>rm -rf ~/.pyenv/versions/env362/ <br>
+删除环境</p>]]></content:encoded></item><item><title><![CDATA[马斯克外星殖民计划曝光----在此记录]]></title><description><![CDATA[<p>视频介绍：
+<a href="http://www.spacex.com/mars">http://www.spacex.com/mars</a> <br>
+可以选择中文字幕，不得不说技术发展真快，自动翻译已经这么先进了，看外语视频再也不用找字幕了
+中文介绍：</p>
+
+<p><a href="http://www.pingwest.com/musk-multiplanetary-plan-bfr-rocket/">http://www.pingwest.com/musk-multiplanetary-plan-bfr-rocket/</a></p>
+
+<p>详尽的火星殖民计划：最大的现役运载火箭，轨道加油；探测风险、完成基建；燃料工厂、建造基地
+尽管困难重重，相信他们可以实现，期待有生之年看到。</p>
+
+<p>火星时代，纪录片+科幻片，2033年与2016年的镜头交叉展现，马斯克反复露镜科普，强烈推荐，第一集开篇字幕写的很好：
+我们拥有梦想
+这就是人类
+那创造的本能
+那探索未知的欲望
+存在于我们的基因之中
+我们跨越海洋
+我们征服天空
+当地球上的各处已遍布人类的足迹时
+我们决定出发前往其它星体
+我们选择在这十年间登陆月球
+并完成一系列任务
+不是因为这很简单
+而是因为这很困难
+宇宙向新一代先驱与探险家招手
+敦促人类征服更远的地方一
+人类将前往太阳系中的其它星球
+不只是为了探访而是为了留下</p>]]></description><link>http://whitespur.top/ma-si-ke-wai-xing-zhi-min-ji-hua-pu-guang-zai-ci-ji-lu/</link><guid isPermaLink="false">324a2ed4-c619-40f2-911c-7f06832145c7</guid><category><![CDATA[马斯克]]></category><category><![CDATA[火星殖民]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Fri, 29 Sep 2017 14:26:12 GMT</pubDate><content:encoded><![CDATA[<p>视频介绍：
+<a href="http://www.spacex.com/mars">http://www.spacex.com/mars</a> <br>
+可以选择中文字幕，不得不说技术发展真快，自动翻译已经这么先进了，看外语视频再也不用找字幕了
+中文介绍：</p>
+
+<p><a href="http://www.pingwest.com/musk-multiplanetary-plan-bfr-rocket/">http://www.pingwest.com/musk-multiplanetary-plan-bfr-rocket/</a></p>
+
+<p>详尽的火星殖民计划：最大的现役运载火箭，轨道加油；探测风险、完成基建；燃料工厂、建造基地
+尽管困难重重，相信他们可以实现，期待有生之年看到。</p>
+
+<p>火星时代，纪录片+科幻片，2033年与2016年的镜头交叉展现，马斯克反复露镜科普，强烈推荐，第一集开篇字幕写的很好：
+我们拥有梦想
+这就是人类
+那创造的本能
+那探索未知的欲望
+存在于我们的基因之中
+我们跨越海洋
+我们征服天空
+当地球上的各处已遍布人类的足迹时
+我们决定出发前往其它星体
+我们选择在这十年间登陆月球
+并完成一系列任务
+不是因为这很简单
+而是因为这很困难
+宇宙向新一代先驱与探险家招手
+敦促人类征服更远的地方一
+人类将前往太阳系中的其它星球
+不只是为了探访而是为了留下</p>]]></content:encoded></item><item><title><![CDATA[机器学习笔记1----Introduction]]></title><description><![CDATA[<h1 id="1">1 概念</h1>
+
+<p>A computer program is said to learn from experience E with respect to some task T and some performace measure P,if its performance on T,as measured by P,improves with experience E.</p>
+
+<p>In general, any machine learning problem can be assigned to one of two broad</p>]]></description><link>http://whitespur.top/ji-qi-xue-xi-bi-ji-1/</link><guid isPermaLink="false">0ab086b1-991f-4b0d-8f69-716bfa984c14</guid><category><![CDATA[机器学习]]></category><category><![CDATA[监督学习]]></category><category><![CDATA[非监督学习]]></category><category><![CDATA[回归]]></category><category><![CDATA[分类]]></category><category><![CDATA[聚类]]></category><category><![CDATA[非聚类]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 25 Sep 2017 02:06:56 GMT</pubDate><media:content url="http://whitespur.top/content/images/2017/09/image-39.png" medium="image"/><content:encoded><![CDATA[<h1 id="1">1 概念</h1>
+
+<img src="http://whitespur.top/content/images/2017/09/image-39.png" alt="机器学习笔记1----Introduction"><p>A computer program is said to learn from experience E with respect to some task T and some performace measure P,if its performance on T,as measured by P,improves with experience E.</p>
+
+<p>In general, any machine learning problem can be assigned to one of two broad classifications: <br>
+Supervised learning and Unsupervised learning. <br>
+<img src="http://whitespur.top/content/images/2017/09/image-41.png" alt="机器学习笔记1----Introduction"></p>
+
+<p>机器学习算法分类：
+监督学习，非监督学习</p>
+
+<p>注意：理解各种定义以及什么场景使用何种算法。</p>
+
+<h1 id="2">2 分类</h1>
+
+<h2 id="21">2.1 监督学习</h2>
+
+<p>部分数据有正确结果，<mark>有标记</mark></p>
+
+<p>In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.
+    Supervised learning problems are categorized into "regression" and "classification" problems. In a regression problem, we are trying to predict results within a continuous output, meaning that we are trying to map input variables to some continuous function. In a classification problem, we are instead trying to predict results in a discrete output. In other words, we are trying to map input variables into discrete categories.</p>
+
+<p><mark>回归</mark>问题-regression<mark>输出结果连续值</mark>
+例如：房价预测，</p>
+
+<p><mark>分类</mark>问题-classification-<mark>输出结果离散值</mark>
+输入-特征值，例如是否会患肿瘤预测
+支持向量机</p>
+
+<h2 id="22">2.2 无监督学习</h2>
+
+<p>所有数据一样或类似，无明显标记</p>
+
+<p>Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables. <br>
+    We can derive this structure by clustering the data based on relationships among the variables in the data.</p>
+
+<p><mark>聚类</mark>算法：Clustering</p>
+
+<p>例如：基因分析，社交网络分组，天文数据分析</p>
+
+<p>鸡尾酒会算法：<mark>非聚类</mark> Non-clustering</p>
+
+<p>例如：复杂环境下人声提取</p>
+
+<p>备注工具：<mark>Octave</mark>内置很多算法，预研算法是否合适，用来开发原型
+Svd-奇异值分解</p>]]></content:encoded></item><item><title><![CDATA[使用TCPCopy进行压力测试]]></title><description><![CDATA[<p>简介：
+XCopy是由主要由网易的王斌开发的一套流量复制测试工具。XCopy系列包括 TCPCopy、UDPCopy、MysqlCopy 等开源软件（这些软件都集成在tcpcopy 开源项目内)。曾经应用于网易的广告投放系统，urs系统，nginx hmux协议等系统，避免了上线带来的很多问题。所以很多时候我们指的tcpcopy （广义上的）就包括xcopy的全系统产品。</p>
+
+<p>TCPCopy 包含两部分：TCPCopy client（tcpcopy） 和 TCPCopy server（intercept） ，其中，TCPCopy client 运行在在线系统，用来捕获在线请求数据包，而 TCPCopy server 运行在测试系统，用来做一系列辅助配合工作，如返回响应包头信息、维护路由信息等。 <br>
+<a href="https://github.com/session-replay-tools/tcpcopy">https://github.com/session-replay-tools/tcpcopy</a> <br>
+参考
+<a href="https://blog.hackroad.com/operations-engineer/linux">https://blog.hackroad.com/operations-engineer/linux</a></p>]]></description><link>http://whitespur.top/shi-yong-tcpcopyjin-xing-ya-li-ce-shi/</link><guid isPermaLink="false">ef247361-a81f-4093-be90-2f47c94fb998</guid><category><![CDATA[TCPCopy]]></category><category><![CDATA[压力测试]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Tue, 19 Sep 2017 16:19:31 GMT</pubDate><content:encoded><![CDATA[<p>简介：
+XCopy是由主要由网易的王斌开发的一套流量复制测试工具。XCopy系列包括 TCPCopy、UDPCopy、MysqlCopy 等开源软件（这些软件都集成在tcpcopy 开源项目内)。曾经应用于网易的广告投放系统，urs系统，nginx hmux协议等系统，避免了上线带来的很多问题。所以很多时候我们指的tcpcopy （广义上的）就包括xcopy的全系统产品。</p>
+
+<p>TCPCopy 包含两部分：TCPCopy client（tcpcopy） 和 TCPCopy server（intercept） ，其中，TCPCopy client 运行在在线系统，用来捕获在线请求数据包，而 TCPCopy server 运行在测试系统，用来做一系列辅助配合工作，如返回响应包头信息、维护路由信息等。 <br>
+<a href="https://github.com/session-replay-tools/tcpcopy">https://github.com/session-replay-tools/tcpcopy</a> <br>
+参考
+<a href="https://blog.hackroad.com/operations-engineer/linux">https://blog.hackroad.com/operations-engineer/linux</a><em>server/11024.html <br>
+<a href="http://www.cnblogs.com/zhengyun">http://www.cnblogs.com/zhengyun</a></em>ustc/p/tcpcopy.html <br>
+本文档适用人员：技术人员
+提纲：
+为什么要做仿真测试
+TCPCopy是如何工作的 <br>
+实作：仿真测试的拓扑
+实作：操作步骤
+可能会遇到的问题
+ip_conntrack <br>
+少量丢包
+离线重放
+不提取7层信息
+观测的性能指标
+0x00，为什么要做仿真测试 <br>
+线下的传统压力测试，难以模拟真实流量，尤其难以模拟正常流量混杂着各色异常流量。所以，线下压得好好的系统，上线后可能某天突然雪崩，说好能支撑 5 倍流量的系统重构，也许流量一翻倍就彻底挂了。
+但办法总比问题多。
+系统重构或重要变更上线前，可以拷贝线上真实流量，实时模拟线上流量，甚至可以放大真实流量，进行压力测试，以评估系统承载能力。
+反过来也可以这样，如果线上跑着跑着发现有性能瓶颈，但线下环境难以复现，还不如把真实流量拷贝到线下重放，毕竟线下环境便于上各种排查手段，重放几遍都行，直到找到问题。
+所以本次基于 Varnish 的商品详情页静态化在上线前，做了仿真压测。</p>
+
+<p>如何实时拷贝线上真实流量呢？
+TCPCopy。 <br>
+2010年，网易技术部的王斌在王波的工作基础上开发了 TCPCopy - A TCP Stream Replay Tool。2011年9月开源。当前版本号是 1.0.0。很多公司的模拟在线测试都是基于 TCPCopy 做的，如一淘。</p>
+
+<p>TCPCopy 是一种请求复制（复制基于 TCP 的 packets）工具 ，通过复制在线数据包，修改 TCP/IP 头部信息，发送给测试服务器，达到欺骗测试服务器的TCP 程序的目的，从而为欺骗上层应用打下坚实基础。</p>
+
+<p>0x01，TCPCopy是如何工作的 <br>
+王斌讲过，基于 Server 的请求回放领域，一般分为离线回放和在线实时复制两种。
+其中请求实时复制，一般可以分为两类：
+1）基于应用层的请求复制 ， <br>
+2）基于底层数据包的请求复制。</p>
+
+<p>如果从应用层面进行复制，比如基于服务器的请求复制，实现起来相对简单，但也存在着若干缺点：
+1）请求复制从应用层出发，穿透整个协议栈，这样就容易挤占应用的资源，比如宝贵的连接资源 ， <br>
+2）测试跟实际应用耦合在一起，容易影响在线系统， <br>
+3）也因此很难支撑压力大的请求复制， <br>
+4）很难控制网络延迟。 <br>
+而基于底层数据包的请求复制，可以做到无需穿透整个协议栈，路程最短的，可以从数据链路层抓请求包，从数据链路层发包，路程一般的，可以在IP层抓请求包，从IP层发出去，不管怎么走，只要不走TCP，对在线的影响就会小得多。这也就是 TCPCopy 的基本思路。</p>
+
+<p>从传统架构的 rawsocket+iptable+netlink，到新架构的 pacp+route，它经历了三次架构调整，现如今的 TCPCopy 分为三个角色：
+Online Server(OS)：上面要部署 TCPCopy，从数据链路层(pcap 接口)抓请求数据包，发包是从IP层发出去； <br>
+Test Server(TS)：最新的架构调整把 intercept 的工作从 TS 中 offload 出来。TS 设置路由信息，把 被测应用 的需要被捕获的响应数据包信息路由到 AS； <br>
+Assistant Server(AS)：这是一台独立的辅助服务器，原则上一定要用同网段的一台闲置服务器来充当辅助服务器。AS 在数据链路层截获到响应包，从中抽取出有用的信息，再返回给相应的 OS 上的 tcpcopy 进程。</p>
+
+<p>请配合下图1理解：</p>
+
+<p>图1 三个角色的数据流转方式</p>
+
+<p>Online Server 上的抓包： <br>
+tcpcopy 的新架构在 OS 上抓请求数据包默认采用 raw socket input 接口抓包。王斌则推荐采用 pcap 抓包，安装命令如下： <br>
+./configure --enable-advanced --enable-pcap
+　　make
+　　make install
+这样就可以在内核态进行过滤，否则只能在用户态进行包的过滤，而且在 intercept 端或者 tcpcopy 端设置 filter（通过 -F 参数，类似 tcpdump 的 filter），达到起多个实例来共同完成抓包的工作，这样可扩展性就更强，适合于超级高并发的场合。
+为了便于理解 pcap 抓包，下面简单描述一下 libpcap 的工作原理。</p>
+
+<p>一个包的捕捉分为三个主要部分：</p>
+
+<p>面向底层包捕获，
+面向中间层的数据包过滤，
+面向应用层的用户接口。</p>
+
+<p>这与 Linux 操作系统对数据包的处理流程是相同的（网卡->网卡驱动->数据链路层->IP层->传输层->应用程序）。包捕获机制是在数据链路层增加一个旁路处理（并不干扰系统自身的网络协议栈的处理），对发送和接收的数据包通过Linux内核做过滤和缓冲处理，最后直接传递给上层应用程序。如下图2所示：</p>
+
+<p>libpcap的三部分</p>
+
+<p>图2 libpcap的三部分</p>
+
+<p>Online Server 上的发包： <br>
+如图1所示，新架构和传统架构一样，OS 默认使用 raw socket output 接口发包，此时发包命令如下： 
+./tcpcopy -x 80-测试机IP:测试机应用端口 -s 服务器IP -i eth0
+其中 -i 参数指定 pcap 从哪个网卡抓取请求包。
+此外，新架构还支持通过 pcap_inject（编译时候增加--enable-dlinject）来发包。</p>
+
+<p>Test Server 上的响应包路由： <br>
+需要在 Test Server 上添加静态路由，确保被测试应用程序的响应包路由到辅助测试服务器，而不是回包给 Online Server。</p>
+
+<p>Assistant Server 上的捕获响应包： <br>
+辅助服务器要确保没有开启路由模式 cat /proc/sys/net/ipv4/ip_forward，为0表示没有开启。
+辅助服务器上的 intercept 进程通过 pcap 抓取测试机应用程序的响应包，将头部抽取后发送给 Online Server 上的 tcpcopy 进程，从而完成一次请求的复制。</p>
+
+<p>0x02，实作：仿真测试的拓扑 <br>
+下面将列出本次仿真测试的线上环境拓扑图。
+环境如下：
+Online Server <br>
+4个生产环境 Nginx <br>
+172.16.<strong><em>.110 <br>
+172.16.</em></strong>.111 <br>
+172.16.<strong><em>.112 <br>
+172.16.</em></strong>.113 <br>
+Test Server <br>
+一个镜像环境的 Nginx
+172.16.<strong><em>.52 <br>
+Assistant Server <br>
+镜像环境里的一台独立服务器
+172.16.</em></strong>.53 <br>
+拓扑如图3所示：
+压测环境拓扑
+图3 压测环境拓扑
+它的数据流转顺序如下图4所示：
+压测环境的数据流转顺序
+图4 压测环境的数据流转顺序</p>
+
+<p>0x03，实作：操作步骤 <br>
+下面分别列出在 Online Server/Test Server/Assistant Server 上的操作步骤。
+3.1 Online Server 上的操作： <br>
+下载并安装 tcpcopy 客户端；
+git clone <a href="http://github.com/session-replay-tools/tcpcopy">http://github.com/session-replay-tools/tcpcopy</a> <br>
+./configure
+make &amp;&amp; make install</p>
+
+<p>安装完成后的各结构目录：
+Configuration summary</p>
+
+<p>tcpcopy path prefix: "/usr/local/tcpcopy"
+  tcpcopy binary file: "/usr/local/tcpcopy/sbin/tcpcopy"
+  tcpcopy configuration prefix: "/usr/local/tcpcopy/conf"
+  tcpcopy configuration file: "/usr/local/tcpcopy/conf/plugin.conf"
+  tcpcopy pid file: "/usr/local/tcpcopy/logs/tcpcopy.pid"
+  tcpcopy error log file: "/usr/local/tcpcopy/logs/error_tcpcopy.log"</p>
+
+<p>运行 tcpcopy 客户端，有几种可选方式：
+./tcpcopy -x 80-172.16.<strong><em>.52:80 -s 172.16.</em></strong>.53 -d       #全流量复制
+./tcpcopy -x 80-172.16.<strong><em>.52:80 -s 172.16.</em></strong>.53 -r 20 -d  #复制20%的流量
+./tcpcopy -x 80-172.16.<strong><em>.52:80 -s 172.16.</em></strong>.53 -n 2 -d    #放大2倍流量</p>
+
+<p>3.2 Test Server 上的操作： <br>
+添加静态路由：
+route add -net 0.0.0.0/0 gw 172.16.<em>*</em>.53</p>
+
+<p>3.3 Assistant Server 上的操作： <br>
+下载并安装 intercept 服务端；
+git clone <a href="http://github.com/session-replay-tools/intercept">http://github.com/session-replay-tools/intercept</a> <br>
+./configure
+make &amp;&amp; make install</p>
+
+<p>安装完成后的各结构目录：
+Configuration summary <br>
+  intercept path prefix: "/usr/local/intercept"
+  intercept binary file: "/usr/local/intercept/sbin/intercept"
+  intercept configuration prefix: "/usr/local"
+  intercept configuration file: "/usr/local/intercept/"
+  intercept pid file: "/usr/local/intercept/logs/intercept.pid"
+  intercept error log file: "/usr/local/intercept/logs/error_intercept.log"</p>
+
+<p>运行 intercept 服务端；
+./intercept -i eth0 -F 'tcp and src port 80' -d</p>
+
+<p>生产环境和镜像环境数据传输流程图
+图5 生产环境和镜像环境数据传输流程图
+对照上图5，再简单解释一下工作原理：
+TCPcopy 从数据链路层 copy 端口请求，然后更改目的 ip 和目的端口。 <br>
+将修改过的数据包传送给数据链路层，并且保持 tcp 连接请求。
+通过数据链路层从 online server 发送到 test server。
+在数据链路层解封装后到达 nginx 响应的服务端口。
+等用户请求的数据返回结果后，回包走数据链路层。
+通过数据链路层将返回的结果从 test server 发送到 assistant server。注：test server 只有一条默认路由指向 assistant server。
+数据到达 assistant server 后被 intercept 进程截获。
+过滤相关信息将请求状态发送给 online server 的 tcpcopy，关闭 tcp 连接。
+0x04，可能会遇到的问题 <br>
+王斌自己讲：要想用好 tcpcopy，需要熟悉系统知识，包括如何高效率抓包，如何定位系统瓶颈，如何部署测试应用系统，如何抓包分析。常见问题有：1）部署测试系统不到位，耦合线上系统，2）忽视系统瓶颈问题，3）不知道如何定位问题，4）资源不到位，资源紧张引发的问题 。</p>
+
+<p>1）ip<em>conntrack <br>
+2014年6月，微博的唐福林曾说：“Tcpcopy 引流工具是线上问题排查的绝佳之选，但使用者很少有人去关注开启 tcpcopy 服务时，同时会开启 ip</em>conntrack 内核模块，这个模块负责追踪所有 tcp 链接的状态，而且它的内部存储有长度限制，一旦超过，所有新建链接都会失败。” <br>
+王斌则回应说：“开启 tcpcopy，自身不会去开启 ip<em>conntrack 内核模块。开不开启 ip</em>conntrack 内核模块，是用户自己决定的，跟 tcpcopy 没关系。”他还建议：“当连接数量非常多的时候，本身就应该关闭 ip<em>conntrack，否则严重影响性能。至于 tcpcopy，默认是从 ip 层发包的，所以也会被 ip</em>conntrack 干涉，文档中也有描述，其实也可以采用 --enable-dlinject 来发包，避开ip层的ip<em>conntrack。如果没有报“ip</em>conntrack: table full, dropping packet”，一般无需去操心ip<em>conntrack。”以及“线上连接不多的场合，开启 ip</em>conntrack 并没有问题。线上连接比较多的场合，最好关闭 ip_conntrack，或者对线上应用系统端口设置 NOTRACK，至少我周围的系统都是这样的，这是为性能考虑，也是一种好的运维习惯。”</p>
+
+<p>2）少量丢包 <br>
+如何发现 TCPCopy 丢包多还是少呢？
+王斌自己称，在某些场景下，pcap 抓包丢包率会远高于 raw socket 抓包，因此最好利用 pf_ring 来辅助或者采用 raw socket 来抓包。
+丢包率需要在测试环境中按照定量请求发送进行对比才能展开计算，另外还需要对日志内容进行分析，有待测试。</p>
+
+<p>3）离线重放</p>
+
+<p>tcpcopy 有两种工作模式： <br>
+1）实时拷贝数据包； <br>
+2）通过使用 tcpdump 等抓包生成的文件进行离线（offline）请求重放。 <br>
+本次仿真测试，没有试验成功第二种工作模式，留待以后进一步研究。</p>
+
+<p>4）不提取 7 层信息 <br>
+会议上曾提出按域名区分拷贝流量，省得把不在本次压测范围内的工程打挂，但 tcpcopy 的原理是在 ip 层拷贝，不提取 7 层的信息，也就是说，在我们的 Nginx*4 上部署 TCPCopy，只能是将所有流量拷贝到镜像环境的 Nginx 上。反正没有配置对应的 server，或者 server 停掉，这种处理不了的流量就丢弃掉。</p>
+
+<p>0x05，观测的性能指标 <br>
+仿真压测时，需要记录下 Test Server 以及后端各种被压工程的性能指标。
+本次压测，我们记录的指标有：
+Java 工程的访问次数，响应时间，平均响应时间，调用成功或失败，Web端口连接数； <br>
+Web容器的 thread、memory 等情况； <br>
+虚拟机的 CPU-usage、Load-avg、io-usage 等；
+memcached/redis 等缓存集群的命中率等； <br>
+参考资源：
+1，2014，使用tcpcopy导入线上流量进行功能和压力测试； <br>
+2，2012，一淘：利用tcpcopy引流做模拟在线测试； <br>
+3，王斌的微博； <br>
+4，2013，tcpcopy架构漫谈； <br>
+5，2014，网易QA，Tcpcopy两种架构原理详解(连载二) ；</p>]]></content:encoded></item></channel></rss>

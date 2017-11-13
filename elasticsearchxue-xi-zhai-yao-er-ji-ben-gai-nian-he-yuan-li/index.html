@@ -1,36 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html class="theme-next mist use-motion">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
 
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico?v=0.5.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="遥望白鹿巷">
+    <meta property="og:url" content="http://whitespur.top">
+    <meta property="og:site_name" content="遥望白鹿巷">
+    <meta property="og:description" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="遥望白鹿巷">
+    <meta name="twitter:description" content="">
     <title>Elasticsearch学习摘要二----基本概念和原理</title>
 
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Style Sheet-->
+    <link href="../assets/vendors/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css">
+    <link href="../assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="../assets/vendors/highlight/css/github.css" rel="stylesheet">
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <!-- End Style-->
+    <style type="text/css">.fancybox-margin{margin-right:15px;}</style>
 
-    <meta name="description" content="">
-
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Elasticsearch学习摘要二----基本概念和原理">
-    <meta name="twitter:description" content="">
-
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Elasticsearch学习摘要二----基本概念和原理">
-    <meta property="og:description" content="">
-
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
-    <link href="../assets/images/favicon.png" rel="shortcut icon" type="image/png">
-    <link href="http://localhost:2368/apple-touch-icon-precomposed.png" rel="apple-touch-icon">
-
-    <link rel="stylesheet" type="text/css" href="../assets/css/vno.css" />
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../assets/css/tomorrow.css">
-    
-    <link rel="canonical" href="http://whitespur.top/elasticsearchxue-xi-zhai-yao-er-ji-ben-gai-nian-he-yuan-li/" />
+    <script type="text/javascript" id="hexo.configuration">
+        var NexT = window.NexT || {};
+        var CONFIG = {
+            scheme: 'Mist',
+            sidebar: {"position":"right","display":"post"},
+            fancybox: true,
+            motion: true
+        };
+    </script>
+    <div style="display: none"><link rel="canonical" href="http://whitespur.top/elasticsearchxue-xi-zhai-yao-er-ji-ben-gai-nian-he-yuan-li/" />
     <meta name="referrer" content="origin" />
     
     <meta property="og:site_name" content="遥望白鹿巷" />
@@ -71,113 +77,132 @@
 }
     </script>
 
+    <script type="text/javascript" src="../shared/ghost-url.min.js"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "1b3e089f4eb6"
+});
+</script>
     <meta name="generator" content="Ghost 0.7" />
     <link rel="alternate" type="application/rss+xml" title="遥望白鹿巷" href="http://whitespur.top/rss/" />
+    <div id="site-config">
+	{
+	    "author_name": "遥望白鹿巷",
+	    "links": [
+	    {
+	        "name": "openai",
+	        "link": "https://openai.com/"
+	    },
+	    {
+	        "name": "编程随想大神",
+	        "link": "https://program-think.blogspot.com/"
+	    },
+	    {
+	        "name": "机器学习课程",
+	        "link": "https://www.coursera.org/learn/machine-learning/home/info"
+	    }
+	    ]
+	}
+	</div></div>
+
 
 </head>
+
+<script>
+    var siteConfig = JSON.parse($("#site-config").html());
+    var duoshuo_name = siteConfig.duoshuo_name;
+    var author_name = siteConfig.author_name;
+    var link_list = siteConfig.links;
+</script>
+
 <body class="post-template tag-ji-qun tag-fen-pian tag-suo-yin tag-nei-cun">
-
-    <span class="mobile btn-mobile-menu">
-        <i class="fa fa-list btn-mobile-menu__icon"></i>
-        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
-    </span>
-
-    <header class="panel-cover panel-cover--collapsed" >
-  <div class="panel-main">
-
-    <div class="panel-main__inner panel-inverted">
-    <div class="panel-main__content">
-
-        <a href="http://whitespur.top" title="前往 遥望白鹿巷 的主页"><img src="../content/images/2017/11/visible-earth-mars-planet.jpg" width="80" alt="遥望白鹿巷 logo" class="panel-cover__logo logo" /></a>
-        <h1 class="panel-cover__title panel-title"><a href="http://whitespur.top" title="前往 遥望白鹿巷 的主页">遥望白鹿巷</a></h1>
-        <hr class="panel-cover__divider" />
-        <p class="panel-cover__description">哪来的天才</p>
-        <hr class="panel-cover__divider panel-cover__divider--secondary" />
-
-        <div class="navigation-wrapper">
-          <div>
-          <nav class="cover-navigation cover-navigation--primary">
-            <ul class="navigation">
-              <li class="navigation__item"><a href="../index.html#blog" title="访问博客" class="blog-button">博客</a></li>
-              <li class="navigation__item"><a href="https://github.com/whitespur" target="_blank" title="我的项目">项目</a></li>
-              <li class="navigation__item"><a href="https://github.com/whitespur" title="了解更多关于我">关于</a></li>
-              <li class="navigation__item"><a href="http://eepurl.com/" title="邮件订阅本站">订阅</a></li>
-            </ul>
-          </nav>
-          </div>
-          <div>
-          <nav class="cover-navigation navigation--social">
-  <ul class="navigation">
-
-
-  <!-- Weibo -->
-  <li class="navigation__item">
-    <a href="https://weibo.com/u/2017560737" title="@whitespur 的微博" target="_blank">
-      <i class='social fa fa-weibo'></i>
-      <span class="label">Weibo</span>
-    </a>
-  </li>
-
-  <!-- Github -->
-  <li class="navigation__item">
-    <a href="https://github.com/whitespur" title="@whitespur 的 Github" target="_blank">
-      <i class='social fa fa-github'></i>
-      <span class="label">Github</span>
-    </a>
-  </li>
-
-  <!-- Twitter -->
-  <li class="navigation__item">
-    <a href="https://twitter.com/robert_jiao" title="@whitespur" target="_blank">
-      <i class='social fa fa-twitter'></i>
-      <span class="label">Twitter</span>
-    </a>
-  </li>
-  
-  <!-- RSS -->
-  <li class="navigation__item">
-    <a href="http://whitespur.top/rss/" rel="author" title="RSS" target="_blank">
-      <i class='social fa fa-rss'></i>
-      <span class="label">RSS</span>
-    </a>
-  </li>
-
-  <!-- Email -->
-  <li class="navigation__item">
-    <a href="mailto:815795010@qq.com" title="邮件联系我">
-      <i class='social fa fa-envelope'></i>
-      <span class="label">Email</span>
-    </a>
-  </li>
-
-  </ul>
-</nav>          </div>
+<div class="container one-collumn sidebar-position-left page-home">
+<div class="headband"></div>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-meta ">
+            <div class="custom-logo-site-title">
+                <a href="http://whitespur.top" class="brand" rel="start" >
+                    <span class="logo-line-before "><i class=""></i></span>
+                    <span class="site-title">遥望白鹿巷</span>
+                    <span class="logo-line-after"><i class=""></i></span>
+                </a>
+            </div>
         </div>
-
-      </div>
-
-    </div>
-
-    <div class="panel-cover--overlay cover-disabled"></div>
-  </div>
-</header>
-
-    <div class="content-wrapper">
-        <div class="content-wrapper__inner">
-            
-
-  <article class="post-container post-container--single">
-
-    <header class="post-header">
-      <div class="post-meta">
-        <time datetime="30 8月 2017" class="post-meta__date date">30 8月 2017</time> &#8226; <span class="post-meta__tags tags">于 <a href="../tag/ji-qun/index.html">集群</a>, <a href="../tag/fen-pian/index.html">分片</a>, <a href="../tag/suo-yin/index.html">索引</a>, <a href="../tag/nei-cun/index.html">内存</a></span>
-        <!--<span class="post-meta__author author"><img src="" alt="profile image for whitespur" class="avatar post-meta__avatar" /> by whitespur</span>-->
-      </div>
-      <h1 class="post-title">Elasticsearch学习摘要二----基本概念和原理</h1>
+            <div class="site-nav-toggle">
+                <button>
+                    <span class="btn-bar"></span>
+                    <span class="btn-bar"></span>
+                    <span class="btn-bar"></span>
+                </button>
+            </div>
+            <nav class="site-nav">
+                <ul id="menu" class="menu menu-left">
+        <li class="menu-item menu-item-home menu-item-active nav-" role="presentation">
+            <a href="http://go2mars.top/" rel="section">
+                <i class="menu-item-icon fa fa-home fa-fw"></i> <br>首页
+            </a>
+        </li>
+        <li class="menu-item menu-item-home menu-item-active nav-github" role="presentation">
+            <a href="https://github.com/whitespur/" rel="section">
+                <i class="menu-item-icon fa fa-home fa-fw"></i> <br>github
+            </a>
+        </li>
+        <li class="menu-item menu-item-home menu-item-active nav-" role="presentation">
+            <a href="https://whitespur.github.io/tag/ji-qi-xue-xi/" rel="section">
+                <i class="menu-item-icon fa fa-home fa-fw"></i> <br>机器学习
+            </a>
+        </li>
+</ul>
+                <div class="site-search">
+                    <form class="site-search-form">
+                        <input type="text" id="search-input" class="search-input default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+                    </form>
+                </div>
+            </nav>
+        </div>
     </header>
-
-    <section class="post tag-ji-qun tag-fen-pian tag-suo-yin tag-nei-cun">
-      <h2 id="">集群内的原理</h2>
+    <main id="main" class="main">
+        <div class="main-inner ">
+                <div class="content-wrap  page-post-detail">
+        <div id="content" class="content">
+            <div id="post" class="posts-expand fadeInDown">
+                <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+                    <header class="post-header">
+                        <h1 class="post-title" itemprop="name headline">Elasticsearch学习摘要二----基本概念和原理</h1>
+                        <div class="post-meta">
+                            <span class="post-time">
+                                <span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span>
+                                <span class="post-meta-item-text">发表于</span>
+                                <time itemprop="dateCreated">2017-08-30</time>
+                            </span>
+                            <span class="post-category">&nbsp; | &nbsp;
+                                <span class="post-meta-item-icon">
+                                    <i class="fa fa-folder-o"></i>
+                                </span>
+                                <span class="post-meta-item-text">标签</span>
+                                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                                        <a href="../tag/ji-qun/index.html">集群</a>, <a href="../tag/fen-pian/index.html">分片</a>, <a href="../tag/suo-yin/index.html">索引</a>, <a href="../tag/nei-cun/index.html">内存</a>
+                                </span>
+                            </span>
+                            <span class="post-comments-count">&nbsp; | &nbsp;
+                                <a href="index.html#comments" itemprop="discussionUrl">
+                                    <span class="post-comments-count ds-thread-count" data-thread-key="10" itemprop="commentsCount"></span>
+                                </a>
+                            </span>
+                            <!--
+             <span id="/blog/2016/05/09/flink-internals-understanding-execution-resources/" class="leancloud_visitors" data-flag-title="Flink 原理与实现：理解 Flink 中的计算资源">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count">173</span>
+              </span> -->
+                        </div>
+                    </header>
+                    <div class="post-body" itemprop="articleBody">
+                        <h2 id="">集群内的原理</h2>
 
 <p><a href="https://elasticsearch.cn/book/elasticsearch">https://elasticsearch.cn/book/elasticsearch</a><em>definitive</em>guide_2.x/distributed-cluster.html <br />
 一个运行中的 Elasticsearch <mark>实例</mark>称为一个 <mark>节点</mark>，而集群是由一个或者多个拥有相同 cluster.name 配置的节点组成， 它们共同承担数据和负载的压力。当有节点加入集群中
@@ -266,46 +291,183 @@ Lucene 能很好利用文件系统的缓存，它是通过系统内核管理的�
 Fielddata的大小 <br />
 indices.fielddata.cache.size 控制为 fielddata 分配的堆空间大小。 当你发起一个查询，分析字符串的聚合将会被加载到 fielddata，如果这些字符串之前没有被加载过。如果结果中 fielddata 大小超过了指定 大小 ，其他的值将会被回收从而获得空间。 <br />
 默认情况下，设置都是 unbounded ，Elasticsearch 永远都不会从 fielddata 中回收数据。</p>
-    </section>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="comments" id="comments">
+            <!-- 页面绑定 - 请勿改动 -->
+            <div class="ds-thread" data-thread-key="10" data-title="Elasticsearch学习摘要二----基本概念和原理" data-url="http://whitespur.top/elasticsearchxue-xi-zhai-yao-er-ji-ben-gai-nian-he-yuan-li/"></div>
+            <!-- 结束绑定 -->
 
-  </article>
-  
-  <div class="read-more">
-   <div class="read-more-item read-more-item-left">
-       <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="../zhong-duan-qi-gui-hua/index.html" title="link to 毕业流水账+中短期规划">毕业流水账+中短期规划</a></h2>
-       <p class="excerpt">处在信息爆炸的时代，各种知识，新闻每天都充斥在身边，工作生活也是一天一天过去，毕业7年了，虽然一直在做技术，但是领域内容有点广，都浅尝辄止了，简单写下流水账：    10年刚毕业就幸运的接触了andr&hellip;</p>
-       <div class="post-list__meta"><time datetime="30 8月 2017" class="post-list__meta--date date">30 8月 2017</time> &#8226; <span class="post-list__meta--tags tags">于 <a href="../tag/gui-hua/index.html">规划</a>, <a href="../tag/liu-shui-zhang/index.html">流水账</a></span><a class="btn-border-small" href="../zhong-duan-qi-gui-hua/index.html">继续阅读</a></div>
-   </div>
-   
-   <div class="read-more-item read-more-item-right">
-       <span class="read-more-item-dim">更早的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="../she-ji-mo-shi-zhi-dan-li-mo-shi/index.html" title="link to 设计模式之单例模式">设计模式之单例模式</a></h2>
-       <p class="excerpt">本文介绍了为何需要单例模式，单例模式的设计要点，饿汉和懒汉的区别，并通过实例介绍了实现单例模式的八种实现方式及其优缺点。 原创文章，转载请务必将下面这段话置于文章开头处（保留超链接）。 本文转发自技术&hellip;</p>
-       <div class="post-list__meta"><time datetime="29 8月 2017" class="post-list__meta--date date">29 8月 2017</time> &#8226; <span class="post-list__meta--tags tags">于 <a href="../tag/she-ji-mo-shi/index.html">设计模式</a>, <a href="../tag/dan-li/index.html">单例</a>, <a href="../tag/duo-xian-cheng/index.html">多线程</a></span><a class="btn-border-small" href="../she-ji-mo-shi-zhi-dan-li-mo-shi/index.html">继续阅读</a></div>
-   </div>
+            <!-- 不必修改下述代码，在head inject中添加配置即可 -->
+            <script type="text/javascript">
+                var duoshuoQuery = {short_name:duoshuo_name};
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';ds.async = true;
+                    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0]
+                    || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+            </script>
+            <!-- 结束替换位置 -->
+
+        </div>
+    </div>
+<div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+        <span class="sidebar-toggle-line sidebar-toggle-line-first" style="background: #87daff;"></span>
+        <span class="sidebar-toggle-line sidebar-toggle-line-middle" style="background: #87daff;"></span>
+        <span class="sidebar-toggle-line sidebar-toggle-line-last" style="background: #87daff;"></span>
+    </div>
 </div>
 
+<aside id="sidebar" class="sidebar page-post-detail">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+            <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview">
+                站点概览
+            </li>
+        </ul>
+                <section class="site-overview sidebar-panel" style="display: block;">
+            <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="index.html" alt="遥望白鹿巷">
+                <p class="site-author-name" id="site-author-name" itemprop="name"></p>
+                <p class="site-description motion-element" itemprop="description" >哪来的天才</p>
+            </div>
+            <nav class="site-state motion-element" >
+                <div class="site-state-item site-state-posts">
+                    <a href="http://localhost:2368/records">
+                        <span class="site-state-item-count">
+                                32
+                        </span>
+                        <span class="site-state-item-name">文章</span>
+                    </a>
+                </div>
+                <!-- <div class="site-state-item site-state-categories">
+      <a href="/categories">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>-->
+                <div class="site-state-item site-state-categories">
+                    <a href="http://localhost:2368/tags">
+                        <span class="site-state-item-count">
+                                74
+                        </span>
+                        <span class="site-state-item-name">标签</span>
+                    </a>
+                </div>
+                <!--
+                <div class="site-state-item site-state-tags">
+                    <a href="/tags">
+                        <span class="site-state-item-count">62</span>
+                        <span class="site-state-item-name">标签</span>
+                    </a>
+                </div>-->
+            </nav>
+            <div class="feed-link motion-element" >
+                <a href="../rss" rel="alternate"><i class="fa fa-rss"></i>RSS</a>
+            </div>
+            <div class="links-of-author motion-element" >
+            </div>
+            <div class="links-of-author motion-element" id="site-links">
+                <p class="site-author-name">友情链接</p>
 
+                <!--友情链接位置，在后台修改head inject配置即可-->
 
-            <footer class="footer">
-    <span class="footer__copyright">&copy; 2017  All rights reserved.</span>
-    <span class="footer__copyright"><a href="https://github.com/onevcat/vno">Vno</a> theme by <a href="http://im.onevcat.com">@onevcat</a></span>
-</footer>        </div>
+            </div>
+        </section>
+<script>
+    $("#site-author-name").html(author_name);
+    var i = 0;
+    for (i = 0; i < link_list.length; i++)
+    {
+        $("#site-links").html($("#site-links").html() + '<span class="links-of-author-item">' +
+                '<a href="http://localhost:2368/elasticsearchxue-xi-zhai-yao-er-ji-ben-gai-nian-he-yuan-li/'&#32;+&#32;link_list[i].link&#32;+&#32;'" target="_blank">' +
+                link_list[i].name +
+                '</a></span>');
+    }
+</script>        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+            <div class="post-toc-indicator-top post-toc-indicator">
+                <i class="fa fa-angle-double-up"></i>
+            </div>
+            <div class="post-toc">
+                <div class="post-toc-content"><ol class="nav" id="category_nav">
+                </ol></div>
+            </div>
+            <div class="post-toc-indicator-bottom post-toc-indicator">
+                <i class="fa fa-angle-double-down"></i>
+            </div>
+        </section>
     </div>
+</aside>
+<script type="text/javascript">
+    $(".site-overview").css("display","none");
+    if ($("#content h2").length > 0) {
+        $("#content h2").each(function () {
+            $(this).attr("id", $(this).html().replace(/ +/g, '-').replace(/<(\/a|a).*>/g, ""));
+            $("#category_nav").html($("#category_nav").html() + '<li class="nav-item nav-level-2"><a class="nav-link" href="index.html#' + $(this).html().replace(/ +/g, '-').replace(/<(\/a|a).*>/g, "") + '"><span class="nav-text">' + $(this).html().replace(/<(\/a|a).*>/g, "") + '</span></a></li>');
+        });
+    } else {
+        $("#category_nav").html($("#category_nav").html() + '<span class="nav-text">暂无目录</span>');
+    }
+</script>
 
-    
+        </div>
+    </main>
 
-    <!-- Compatibility for Ghost 0.7.0: http://dev.ghost.org/no-more-jquery/ -->
-    <script type="text/javascript">  
-      if (typeof jQuery == 'undefined') {
-        document.write('<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></'+'script>');
-      }
-    </script>
-    
-    <script type="text/javascript" src="../assets/js/main.js"></script>
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="ghost-footer">
+                
+            </div>
+            <div class="powered-by">
+                Powered&nbsp;by&nbsp;<a class="theme-link" href="http://ghost.org">Ghost</a>
+            </div>
+            <div class="theme-info">
+                Theme&nbsp;-&nbsp;<a class="theme-link" href="https://github.com/microud/ghost-theme-next">NexT.Mist</a>
+            </div>
+        </div>
+    </footer>
+    <div class="back-to-top"></div>
+</div>
 
-    <script type="text/javascript" src="../assets/js/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+<script>
+$("#search-input").keypress(function(key){
+    if (key.keyCode == 13)
+    {
+        window.open("/search/?keyword=" + $(this).val(), "_blank");
+    }
+
+});
+
+
+</script>
+<script type="text/javascript" src="../assets/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="../assets/vendors/velocity/velocity.ui.min.js"></script>
+<script type="text/javascript" src="../assets/vendors/fastclick/lib/fastclick.min.js"></script>
+<script type="text/javascript" src="../assets/vendors/jquery_lazyload/jquery.lazyload.js"></script>
+<script type="text/javascript" src="../assets/vendors/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="../assets/vendors/ua-parser-js/ua-parser.pack.js"></script>
+<script type="text/javascript" src="../assets/vendors/highlight/script/highlight.pack.js"></script>
+
+<script type="text/javascript" src="../assets/js/motion.js"></script>
+<script type="text/javascript" src="../assets/js/utils.js"></script>
+<script type="text/javascript" src="../assets/js/affix.js"></script>
+<script type="text/javascript" src="../assets/js/post-details.js"></script>
+<script type="text/javascript" src="../assets/js/scrollspy.js"></script>
+
+<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
 </body>
 </html>
