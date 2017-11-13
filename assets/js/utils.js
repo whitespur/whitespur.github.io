@@ -12,7 +12,7 @@ NexT.utils = NexT.$u = {
       var $imageWrapLink = $image.parent('a');
 
       if ($imageWrapLink.size() < 1) {
-        $imageWrapLink = $image.wrap('<a href="http://localhost:2368/assets/js/'&#32;+&#32;this.getAttribute('src')&#32;+&#32;'"></a>').parent('a');
+        $imageWrapLink = $image.wrap('<a href="' + this.getAttribute('src') + '"></a>').parent('a');
       }
 
       $imageWrapLink.addClass('fancybox');
