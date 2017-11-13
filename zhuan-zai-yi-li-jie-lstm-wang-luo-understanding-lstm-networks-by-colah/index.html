@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--start baidutongji-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?70d16e3d719cb37c0878fd1f9a4c9a02";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--end baidutongji-->
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>转载-（译）理解 LSTM 网络 （Understanding LSTM Networks by colah）</title>
+<meta name="description" content="" />
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="shortcut icon" href="../favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="../assets/css/screen.css" />
+
+<link rel="canonical" href="http://whitespur.top/zhuan-zai-yi-li-jie-lstm-wang-luo-understanding-lstm-networks-by-colah/" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="遥望白鹿巷" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="转载-（译）理解 LSTM 网络 （Understanding LSTM Networks by colah）" />
+    <meta property="og:description" content="LSTM可以用在上下文理解中。 原文地址http://blog.csdn.net/jerr__y/article/details/58598296 @翻译：huangyongye 原文链接： Understanding LSTM Networks 前言：其实之前就已经用过 LSTM 了，是在深度学习框架 keras 上直接用的，但是到现在对LSTM详细的网络结构还是不了解，心里牵挂着难受呀！今天看了 tensorflow 文档上面推荐的这篇博文，看完这后，焕然大悟，对 LSTM 的结构理解基本上没有太大问题。此博文写得真真真好！！！为了帮助大家理解，也是怕日后自己对这些有遗忘的话可以迅速回想起来，所以打算对原文写个翻译。首先声明，由于本人水平有限，如有翻译不好或理解有误的多多指出！..." />
+    <meta property="og:url" content="http://whitespur.top/zhuan-zai-yi-li-jie-lstm-wang-luo-understanding-lstm-networks-by-colah/" />
+    <meta property="article:published_time" content="2017-10-30T11:26:59.000Z" />
+    <meta property="article:modified_time" content="2017-10-30T11:26:59.000Z" />
+    <meta property="article:tag" content="LSTM" />
+    <meta property="article:tag" content="上下文理解" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="转载-（译）理解 LSTM 网络 （Understanding LSTM Networks by colah）" />
+    <meta name="twitter:description" content="LSTM可以用在上下文理解中。 原文地址http://blog.csdn.net/jerr__y/article/details/58598296 @翻译：huangyongye 原文链接： Understanding LSTM Networks 前言：其实之前就已经用过 LSTM 了，是在深度学习框架 keras 上直接用的，但是到现在对LSTM详细的网络结构还是不了解，心里牵挂着难受呀！今天看了 tensorflow 文档上面推荐的这篇博文，看完这后，焕然大悟，对 LSTM 的结构理解基本上没有太大问题。此博文写得真真真好！！！为了帮助大家理解，也是怕日后自己对这些有遗忘的话可以迅速回想起来，所以打算对原文写个翻译。首先声明，由于本人水平有限，如有翻译不好或理解有误的多多指出！..." />
+    <meta name="twitter:url" content="http://whitespur.top/zhuan-zai-yi-li-jie-lstm-wang-luo-understanding-lstm-networks-by-colah/" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "遥望白鹿巷",
+    "author": {
+        "@type": "Person",
+        "name": "whitespur",
+        "url": "http://whitespur.top/author/whitespur",
+        "sameAs": "http://go2mars.top",
+        "description": "科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)\n太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷"
+    },
+    "headline": "转载-（译）理解 LSTM 网络 （Understanding LSTM Networks by colah）",
+    "url": "http://whitespur.top/zhuan-zai-yi-li-jie-lstm-wang-luo-understanding-lstm-networks-by-colah/",
+    "datePublished": "2017-10-30T11:26:59.000Z",
+    "dateModified": "2017-10-30T11:26:59.000Z",
+    "keywords": "LSTM, 上下文理解",
+    "description": "LSTM可以用在上下文理解中。 原文地址http://blog.csdn.net/jerr__y/article/details/58598296 @翻译：huangyongye 原文链接： Understanding LSTM Networks 前言：其实之前就已经用过 LSTM 了，是在深度学习框架 keras 上直接用的，但是到现在对LSTM详细的网络结构还是不了解，心里牵挂着难受呀！今天看了 tensorflow 文档上面推荐的这篇博文，看完这后，焕然大悟，对 LSTM 的结构理解基本上没有太大问题。此博文写得真真真好！！！为了帮助大家理解，也是怕日后自己对这些有遗忘的话可以迅速回想起来，所以打算对原文写个翻译。首先声明，由于本人水平有限，如有翻译不好或理解有误的多多指出！..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7" />
+    <link rel="alternate" type="application/rss+xml" title="遥望白鹿巷" href="http://whitespur.top/rss/" />
+</head>
+<body class="post-template tag-lstm tag-shang-xia-wen-li-jie nav-closed">
+
+<div class="nav">
+    <h3 class="nav-title">菜单</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">关闭</span>
+    </a>
+    <ul>
+            <li class="nav-" role="presentation"><a href="http://go2mars.top/">首页</a></li>
+            <li class="nav-spacex" role="presentation"><a href="http://www.spacex.com/">spaceX官网</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.marsinstitute.no/">火星研究组织</a></li>
+            <li class="nav-nasa" role="presentation"><a href="https://mars.jpl.nasa.gov/">NASA火星探索官网</a></li>
+            <li class="nav-" role="presentation"><a href="http://go2mars.ru/">一个俄罗斯关于火星的神奇网站</a></li>
+            <li class="nav-openai" role="presentation"><a href="https://openai.com/">OpenAI</a></li>
+            <li class="nav-" role="presentation"><a href="https://program-think.blogspot.com/">编程随想大牛</a></li>
+            <li class="nav-musk" role="presentation"><a href="https://elonmusknews.org/">musk相关网站</a></li>
+            <li class="nav-infoq" role="presentation"><a href="http://www.infoq.com/cn/">infoq</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.coursera.org/learn/machine-learning/home/info">机器学习课程</a></li>
+            <li class="nav-" role="presentation"><a href="https://tech.meituan.com/">美团点评技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://cwiki.apachecn.org/">开源项目学习汇总</a></li>
+            <li class="nav-" role="presentation"><a href="http://tech.youzan.com/tag/big-data/">有赞技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://www.jasongj.com/">技术世界博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://lib.csdn.net/bases/fd/Artificial-Intelligence/ast/all">人工智能知识库</a></li>
+            <li class="nav-" role="presentation"><a href="http://ifeve.com/">并发编程网</a></li>
+            <li class="nav-" role="presentation"><a href="https://bitcoin.org/zh_CN/">比特币官网-中文版</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://whitespur.top/rss/">订阅</a>
+</div>
+<span class="nav-cover"></span>
+
+<div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">菜单</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-lstm tag-shang-xia-wen-li-jie">
+
+        <header class="post-header">
+            <h1 class="post-title">转载-（译）理解 LSTM 网络 （Understanding LSTM Networks by colah）</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-10-30">2017年10月30日</time>  标签：<a href="../tag/lstm/index.html">LSTM</a>, <a href="../tag/shang-xia-wen-li-jie/index.html">上下文理解</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>LSTM可以用在上下文理解中。</p>
+
+<p>原文地址<a href="http://blog.csdn.net/jerr__y/article/details/58598296">http://blog.csdn.net/jerr__y/article/details/58598296</a>
+@翻译：huangyongye</p>
+
+<p>原文链接： Understanding LSTM Networks</p>
+
+<p>前言：其实之前就已经用过 LSTM 了，是在深度学习框架 keras 上直接用的，但是到现在对LSTM详细的网络结构还是不了解，心里牵挂着难受呀！今天看了 tensorflow 文档上面推荐的这篇博文，看完这后，焕然大悟，对 LSTM 的结构理解基本上没有太大问题。此博文写得真真真好！！！为了帮助大家理解，也是怕日后自己对这些有遗忘的话可以迅速回想起来，所以打算对原文写个翻译。首先声明，由于本人水平有限，如有翻译不好或理解有误的多多指出！此外，本译文也不是和原文一字一句对应的，为了方便理解可能会做一些调整和修改。另外本文是作为我自己的学习笔记，没有经过原作者本人的授权，所以请勿转载）</p>
+
+<ol>
+<li>循环神经网络（RNNs)</li>
+</ol>
+
+<p>人们思考问题往往不是从零开始的。就好像你现在阅读这篇文章一样，你对每个词的理解都会依赖于你前面看到的一些词，而不是把你前面看的内容全部抛弃了，忘记了，再去理解这个单词。也就是说，人们的思维总是会有延续性的。</p>
+
+<p>传统的神经网络是做不到这样的延续性（它们没办法保留对前文的理解），这似乎成了它们一个巨大的缺陷。举个例子，在观看影片中，你想办法去对每一帧画面上正在发生的事情做一个分类理解。目前还没有明确的办法利用传统的网络把对影片中前面发生的事件添加进来帮助理解后面的画面。</p>
+
+<p>但是，循环神经网络可以做到。在RNNs的网络中，有一个循环的操作，使得它们能够保留之前学习到的内容。</p>
+
+<p>Fig1. RNNs 网络结构 <br />
+在上图网络结构中，对于矩形块 A 的那部分，通过输入xt（t时刻的特征向量），它会输出一个结果ht（t时刻的状态或者输出）。网络中的循环结构使得某个时刻的状态能够传到下一个时刻。（译者注：因为当前时刻的状态会作为下一时刻输入的一部分）</p>
+
+<p>这些循环的结构让 RNNs 看起来有些难以理解。但是，你稍微想一下就会发现，这似乎和普通的神经网络有不少相似之处呀。我们可以把 RNNs 看成是一个普通的网络做了多次复制后叠加在一起组成的。每一网络会把它的输出传递到下一个网络中。我们可以把 RNNs 在时间步上进行展开，就得到下图这样：</p>
+
+<p>fig2. RNNs 展开网络结构 <br />
+从 RNNs 链状的结构很容易理解到它是和序列信息相关的。这种结构似乎生来就是为了解决序列相关问题的。</p>
+
+<p>而且，它们的的确确非常管用！在最近的几年中，人们利用 RNNs 不可思议地解决了各种各样的问题：语音识别，语言模型，翻译，图像（添加）字幕，等等。关于RNNs在这些方面取得的惊人成功，我们可以看 Andrej Karpathy 的博客： The Unreasonable Effectiveness of Recurrent Neural Networks.</p>
+
+<p>RNNs 能够取得这样的成功，主要还是 LSTMs 的使用。这是一种比较特殊的 RNNs，而且对于很多任务，它比普通的 RNNs 效果要好很多很多！基本上现在所使用的循环神经网络用的都是 LSTMs，这也正是本文后面所要解释的网络。</p>
+
+<ol>
+<li>长时期依赖存在的问题</li>
+</ol>
+
+<p>RNNs 的出现，主要是因为它们能够把以前的信息联系到现在，从而解决现在的问题。比如，利用前面的画面，能够帮助我们理解当前画面的内容。如果 RNNs 真的可以做到这个，那么它肯定是对我们的任务有帮助的。但是它真的可以 做到吗，恐怕还得看实际情况呀！</p>
+
+<p>有时候，我们在处理当前任务的时候，只需要看一下比较近的一些信息。比如在一个语言模型中，我们要通过上文来预测一下个词可能会是什么，那么当我们看到“ the clouds are in the ?”时，不需要更多的信息，我们就能够自然而然的想到下一个词应该是“sky”。在这样的情况下，我们所要预测的内容和相关信息之间的间隔很小，这种情况下 RNNs 就能够利用过去的信息， 很容易的实现。</p>
+
+<p>fig2. 短期依赖 <br />
+但是，有些情况是需要更多的上下文信息。比如我们要预测“I grew up in France … (此处省略1万字)… I speak ?”这个预测的词应该是 Franch，但是我们是要通过很长很长之前提到的信息，才能做出这个正确的预测的呀，普通的 RNNs 很难做到这个。</p>
+
+<p>随着预测信息和相关信息间的间隔增大， RNNs 很难去把它们关联起来了。</p>
+
+<p>fig3. 长期依赖 <br />
+从理论上来讲，通过选择合适的参数，RNNs 确实是可以把这种长时期的依赖关系（“long-term dependencies”） 联系起来，并解决这类问题的。但遗憾的是在实际中， RNNs 无法解决这个问题。 Hochreiter (1991) [German] 和 Bengio, et al. (1994) 曾经对这个问题进行过深入的研究，发现 RNNs 的确很难解决这个问题。</p>
+
+<p>但是非常幸运，LSTMs 能够帮我们解决这个问题。</p>
+
+<ol>
+<li>LSTM 网络</li>
+</ol>
+
+<p>长短期记忆网络（Long Short Term Memory networks） - 通常叫做 “LSTMs” —— 是 RNN 中一个特殊的类型。由Hochreiter &amp; Schmidhuber (1997)提出，广受欢迎，之后也得到了很多人们的改进调整。LSTMs 被广泛地用于解决各类问题，并都取得了非常棒的效果。</p>
+
+<p>明确来说，设计 LSTMs 主要是为了避免前面提到的 长时期依赖 （long-term dependency ）的问题。它们的本质就是能够记住很长时期内的信息，而且非常轻松就能做到。</p>
+
+<p>所有循环神经网络结构都是由完全相同结构的（神经网络）模块进行复制而成的。在普通的RNNs 中，这个模块结构非常简单，比如仅是一个单一的 tanh 层。</p>
+
+<p>fig4. 普通 RNNs 内部结构 <br />
+LSTMs 也有类似的结构（译者注：唯一的区别就是中间部分）。但是它们不再只是用一个单一的 tanh 层，而是用了四个相互作用的层。 </p>
+
+<p>fig5. LSTM 内部结构 <br />
+别担心，别让这个结构给吓着了，下面根据这个结构，我们把它解剖开，一步一步地来理解它（耐心看下去，你一定可以理解的）。现在，我们先来定义一下用到的符号： </p>
+
+<p>fig6. 符号说明 <br />
+在网络结构图中，每条线都传递着一个向量，从一个节点中输出，然后输入到另一个节点中。粉红色的圆圈表示逐点操作，比如向量相加；黄色的矩形框表示的是一个神经网络层（就是很多个神经节点）；合并的线表示把两条线上所携带的向量进行合并（比如一个带 ht−1,另一个带 xt , 那么合并后的输出就是[ht−1,xt]）; 分开的线表示将线上传递的向量复制一份，传给两个地方。</p>
+
+<p>3.1 LSTMs 的核心思想</p>
+
+<p>LSTMs 最关键的地方在于 cell（整个绿色的框就是一个 cell） 的状态 和 结构图上面的那条横穿的水平线。</p>
+
+<p>cell 状态的传输就像一条传送带，向量从整个 cell 中穿过，只是做了少量的线性操作。这种结构能够很轻松地实现信息从整个 cell 中穿过而不做改变。（译者注：这样我们就可以实现了长时期的记忆保留了） </p>
+
+<p>fig7. 传送带结构 <br />
+若只有上面的那条水平线是没办法实现添加或者删除信息的。而是通过一种叫做 门（gates） 的结构来实现的。</p>
+
+<p>门 可以实现选择性地让信息通过，主要是通过一个 sigmoid 的神经层 和一个逐点相乘的操作来实现的。 </p>
+
+<p>fig8. 门结构（sigmoid 层） <br />
+sigmoid 层输出（是一个向量）的每个元素都是一个在 0 和 1 之间的实数，表示让对应信息通过的权重（或者占比）。比如， 0 表示“不让任何信息通过”， 1 表示“让所有信息通过”。</p>
+
+<p>每个 LSTM 有三个这样的门结构，来实现保护和控制信息。（译者注：分别是 “forget gate layer”, 遗忘门； “input gate layer”，传入门； “output gate layer”, 输出门）</p>
+
+<p>3.2 逐步理解 LSTM</p>
+
+<p>（好了，终于来到最激动的时刻了）</p>
+
+<p>3.2.1 遗忘门</p>
+
+<p>首先是 LSTM 要决定让那些信息继续通过这个 cell，这是通过一个叫做“forget gate layer ”的sigmoid 神经层来实现的。它的输入是ht−1和xt，输出是一个数值都在 0，1 之间的向量（向量长度和 cell 的状态 Ct−1 一样），表示让 Ct−1 的各部分信息通过的比重。 0 表示“不让任何信息通过”， 1 表示“让所有信息通过”。</p>
+
+<p>回到我们上面提到的语言模型中，我们要根据所有的上文信息来预测下一个词。这种情况下，每个 cell 的状态中都应该包含了当前主语的性别信息（保留信息），这样接下来我们才能够正确地使用代词。但是当我们又开始描述一个新的主语时，就应该把上文中的主语性别给忘了才对(忘记信息)。 </p>
+
+<p>fig9. 遗忘门 (forget gates) <br />
+3.2.2 传入门</p>
+
+<p>下一步是决定让多少新的信息加入到 cell 状态 中来。实现这个需要包括两个 步骤：首先，一个叫做“input gate layer ”的 sigmoid 层决定哪些信息需要更新；一个 tanh 层生成一个向量，也就是备选的用来更新的内容，Ct~ 。在下一步，我们把这两部分联合起来，对 cell 的状态进行一个更新。</p>
+
+<p>fig10. 传入门 (input gates) <br />
+在我们的语言模型的例子中，我们想把新的主语性别信息添加到 cell 状态中，来替换掉老的状态信息。 
+有了上述的结构，我们就能够更新 cell 状态了， 即把Ct−1更新为 Ct。 从结构图中应该能一目了然， 首先我们把旧的状态 Ct−1和ft相乘， 把一些不想保留的信息忘掉。然后加上it∗Ct~。这部分信息就是我们要添加的新内容。</p>
+
+<p>fig11. 更新 cell 状态 <br />
+3.2.3 输出门</p>
+
+<p>最后，我们需要来决定输出什么值了。这个输出主要是依赖于 cell 的状态Ct，但是又不仅仅依赖于 Ct，而是需要经过一个过滤的处理。首先，我们还是使用一个 sigmoid 层来（计算出）决定Ct中的哪部分信息会被输出。接着，我们把Ct通过一个 tanh 层（把数值都归到 -1 和 1 之间），然后把 tanh 层的输出和 sigmoid 层计算出来的权重相乘，这样就得到了最后输出的结果。</p>
+
+<p>在语言模型例子中，假设我们的模型刚刚接触了一个代词，接下来可能要输出一个动词，这个输出可能就和代词的信息相关了。比如说，这个动词应该采用单数形式还是复数的形式，那么我们就得把刚学到的和代词相关的信息都加入到 cell 状态中来，才能够进行正确的预测。</p>
+
+<p>fig12. cell 输出 <br />
+4. LSTM 的变种 GRU</p>
+
+<p>原文这部分介绍了 LSTM 的几个变种，还有这些变形的作用。在这里我就不再写了。有兴趣的可以直接阅读原文。</p>
+
+<p>下面主要讲一下其中比较著名的变种 GRU（Gated Recurrent Unit ），这是由 Cho, et al. (2014) 提出。在 GRU 中，如 fig.13 所示，只有两个门：重置门（reset gate）和更新门（update gate）。同时在这个结构中，把细胞状态和隐藏状态进行了合并。最后模型比标准的 LSTM 结构要简单，而且这个结构后来也非常流行。 </p>
+
+<p>fig13. GRU结构 <br />
+其中， rt 表示重置门，zt 表示更新门。重置门决定是否将之前的状态忘记。（作用相当于合并了 LSTM 中的遗忘门和传入门）当 rt 趋于 0 的时候，前一个时刻的状态信息 ht−1 会被忘掉，隐藏状态 ht~ 会被重置为当前输入的信息。更新门决定是否要将隐藏状态更新为新的状态ht~（作用相当于 LSTM 中的输出门） 。</p>
+
+<p>和 LSTM 比较一下：</p>
+
+<p>(1) GRU 少一个门，同时少了细胞状态 Ct。
+(2) 在 LSTM 中，通过遗忘门和传入门控制信息的保留和传入；GRU 则通过重置门来控制是否要保留原来隐藏状态的信息，但是不再限制当前信息的传入。
+(3) 在 LSTM 中，虽然得到了新的细胞状态 Ct，但是还不能直接输出，而是需要经过一个过滤的处理： ht=ot∗tanh(Ct)； 同样，在 GRU 中, 虽然 (2) 中我们也得到了新的隐藏状态 ht~， 但是还不能直接输出，而是通过更新门来控制最后的输出： ht=(1−zt)∗ht−1+zt∗ht~ 。
+后记：好了，到这里对一般形式的 LSTM 的结构讲解已经结束了，原文后面对 LSTM 的各种变形讲解也比较简单，在这里我就不再写了，有兴趣的可以直接阅读原文。上面我结合了原论文比较详细地介绍了一下 GRU，个人水平有限，难免也会出错。其实英语理解能力还行的话建议还是阅读原文比较好，有些东西翻译过来连我自己都不知道该怎么表达了，如果您觉得有什么地方不对，欢迎指出。翻译完后才发现网上已经有很多翻译的版本了，所以参考那些版本又做了一些调整，主要是参考了[译] 理解 LSTM 网络这篇文章。后面如果有时间的话，我应该会写个用 TensorFlow 来实现 LSTM 的例子，敬请期待，哈哈哈！</p>
+
+<p>（LSTM 的例子还真写好了，欢迎戳： TensorFlow入门（五）多层 LSTM 通俗易懂版）</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../author/whitespur/index.html">whitespur</a></h4>
+
+                    <p>科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)
+太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Hangzhou,China</span>
+                    <span class="author-link icon-link"><a href="http://go2mars.top">http://go2mars.top</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>分享此博文</h4>
+                <div class="bdsharebuttonbox"><a href="index.html#" class="bds_more" data-cmd="more"></a><a href="index.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="index.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="index.html#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="index.html#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story prev no-cover" href="../dai-jie-jue-wen-ti-he-dai-xue-xi-ji-zhu/index.html">
+        <section class="post">
+            <h2>待解决问题，待学习技术，待了解公司</h2>
+            <p>1问题 聊天机器人方面 http://forum.yige.ai/thread/85 1.1 多轮对话，对话管理  1.2 上下文理解  1.3 聊天记录存储，分析&hellip;</p>
+        </section>
+    </a>
+</aside>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/**
+var disqus_config = function () {
+this.page.url = "/zhuan-zai-yi-li-jie-lstm-wang-luo-understanding-lstm-networks-by-colah/";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "ghost-"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://go2mars-top.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<footer class="site-footer clearfix">
+<section class="copyright"><a href="http://whitespur.top">遥望白鹿巷</a> &copy; 2017</section>
+<section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a> &amp; <a href="http://www.ghostchina.com">GhostChina</a></section>
+</footer>
+
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+<script src="../assets/js/index.js"></script>
+<!-- 开始：我们把统计代码加到此处，百度统计
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");  
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6338835ad35c6d950a554fdedb598e48' type='text/javascript'%3E%3C/script%3E"));  
+</script>
+结束：我们把统计代码加到此处，百度统计 -->
+</body>
+</html>

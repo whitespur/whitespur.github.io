@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!--start baidutongji-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?70d16e3d719cb37c0878fd1f9a4c9a02";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--end baidutongji-->
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>自己动手开发聊天机器人chatbot系列1----总览</title>
+<meta name="description" content="" />
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="shortcut icon" href="../favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="../assets/css/screen.css" />
+
+<link rel="canonical" href="http://whitespur.top/zi-ji-dong-shou-kai-fa-liao-tian-ji-qi-ren-xi-lie/" />
+    <meta name="referrer" content="origin" />
+    
+    <meta property="og:site_name" content="遥望白鹿巷" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="自己动手开发聊天机器人chatbot系列1----总览" />
+    <meta property="og:description" content="最近接触聊天机器人chatbot有段时间了，今天把各种渠道已有的关于chatbot的认识梳理了一下，加深理解，便于后面动手实践。 1 什么是聊天机器人chatbot 聊天机器人，是一种通过自然语言模拟人类进行对话的程序。通常运行在特定的软件平台上，如PC平台或者移动终端设备平台，而类人的硬件机械体则不是必需的承载设备。 https://mp.weixin.qq.com/s?__biz=MzIxMjAzNDY5Mg==&amp;amp;mid=401067430&amp;amp;idx=1&amp;amp;sn=76f859a0c05b00b12c47f5c6c8f5c590 提到机器人不得不提图灵测试，内容如下： 如果一个人（代号C）使用测试对象皆理解的语言去询问两个他不能看见的对象任意一串问题。对象为：一个是正常思维的人（代号B）、一个是机器（代号A）。如果经过若干询问以后，C不能得出实质的区别来分辨A与B的不同，..." />
+    <meta property="og:url" content="http://whitespur.top/zi-ji-dong-shou-kai-fa-liao-tian-ji-qi-ren-xi-lie/" />
+    <meta property="og:image" content="http://whitespur.top/content/images/2017/10/image-299.png" />
+    <meta property="article:published_time" content="2017-10-22T22:43:42.000Z" />
+    <meta property="article:modified_time" content="2017-10-23T13:40:26.000Z" />
+    <meta property="article:tag" content="ChatBot" />
+    <meta property="article:tag" content="聊天机器人" />
+    <meta property="article:tag" content="NLP" />
+    <meta property="article:tag" content="自然语言处理" />
+    <meta property="article:tag" content="图灵测试" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="自己动手开发聊天机器人chatbot系列1----总览" />
+    <meta name="twitter:description" content="最近接触聊天机器人chatbot有段时间了，今天把各种渠道已有的关于chatbot的认识梳理了一下，加深理解，便于后面动手实践。 1 什么是聊天机器人chatbot 聊天机器人，是一种通过自然语言模拟人类进行对话的程序。通常运行在特定的软件平台上，如PC平台或者移动终端设备平台，而类人的硬件机械体则不是必需的承载设备。 https://mp.weixin.qq.com/s?__biz=MzIxMjAzNDY5Mg==&amp;amp;mid=401067430&amp;amp;idx=1&amp;amp;sn=76f859a0c05b00b12c47f5c6c8f5c590 提到机器人不得不提图灵测试，内容如下： 如果一个人（代号C）使用测试对象皆理解的语言去询问两个他不能看见的对象任意一串问题。对象为：一个是正常思维的人（代号B）、一个是机器（代号A）。如果经过若干询问以后，C不能得出实质的区别来分辨A与B的不同，..." />
+    <meta name="twitter:url" content="http://whitespur.top/zi-ji-dong-shou-kai-fa-liao-tian-ji-qi-ren-xi-lie/" />
+    <meta name="twitter:image:src" content="http://whitespur.top/content/images/2017/10/image-299.png" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "遥望白鹿巷",
+    "author": {
+        "@type": "Person",
+        "name": "whitespur",
+        "url": "http://whitespur.top/author/whitespur",
+        "sameAs": "http://go2mars.top",
+        "description": "科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)\n太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷"
+    },
+    "headline": "自己动手开发聊天机器人chatbot系列1----总览",
+    "url": "http://whitespur.top/zi-ji-dong-shou-kai-fa-liao-tian-ji-qi-ren-xi-lie/",
+    "datePublished": "2017-10-22T22:43:42.000Z",
+    "dateModified": "2017-10-23T13:40:26.000Z",
+    "image": "http://whitespur.top/content/images/2017/10/image-299.png",
+    "keywords": "ChatBot, 聊天机器人, NLP, 自然语言处理, 图灵测试",
+    "description": "最近接触聊天机器人chatbot有段时间了，今天把各种渠道已有的关于chatbot的认识梳理了一下，加深理解，便于后面动手实践。 1 什么是聊天机器人chatbot 聊天机器人，是一种通过自然语言模拟人类进行对话的程序。通常运行在特定的软件平台上，如PC平台或者移动终端设备平台，而类人的硬件机械体则不是必需的承载设备。 https://mp.weixin.qq.com/s?__biz=MzIxMjAzNDY5Mg==&amp;amp;mid=401067430&amp;amp;idx=1&amp;amp;sn=76f859a0c05b00b12c47f5c6c8f5c590 提到机器人不得不提图灵测试，内容如下： 如果一个人（代号C）使用测试对象皆理解的语言去询问两个他不能看见的对象任意一串问题。对象为：一个是正常思维的人（代号B）、一个是机器（代号A）。如果经过若干询问以后，C不能得出实质的区别来分辨A与B的不同，..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7" />
+    <link rel="alternate" type="application/rss+xml" title="遥望白鹿巷" href="http://whitespur.top/rss/" />
+</head>
+<body class="post-template tag-chatbot tag-liao-tian-ji-qi-ren tag-nlp tag-zi-ran-yu-yan-chu-li tag-tu-ling-ce-shi nav-closed">
+
+<div class="nav">
+    <h3 class="nav-title">菜单</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">关闭</span>
+    </a>
+    <ul>
+            <li class="nav-" role="presentation"><a href="http://go2mars.top/">首页</a></li>
+            <li class="nav-spacex" role="presentation"><a href="http://www.spacex.com/">spaceX官网</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.marsinstitute.no/">火星研究组织</a></li>
+            <li class="nav-nasa" role="presentation"><a href="https://mars.jpl.nasa.gov/">NASA火星探索官网</a></li>
+            <li class="nav-" role="presentation"><a href="http://go2mars.ru/">一个俄罗斯关于火星的神奇网站</a></li>
+            <li class="nav-openai" role="presentation"><a href="https://openai.com/">OpenAI</a></li>
+            <li class="nav-" role="presentation"><a href="https://program-think.blogspot.com/">编程随想大牛</a></li>
+            <li class="nav-musk" role="presentation"><a href="https://elonmusknews.org/">musk相关网站</a></li>
+            <li class="nav-infoq" role="presentation"><a href="http://www.infoq.com/cn/">infoq</a></li>
+            <li class="nav-" role="presentation"><a href="https://www.coursera.org/learn/machine-learning/home/info">机器学习课程</a></li>
+            <li class="nav-" role="presentation"><a href="https://tech.meituan.com/">美团点评技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://cwiki.apachecn.org/">开源项目学习汇总</a></li>
+            <li class="nav-" role="presentation"><a href="http://tech.youzan.com/tag/big-data/">有赞技术博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://www.jasongj.com/">技术世界博客</a></li>
+            <li class="nav-" role="presentation"><a href="http://lib.csdn.net/bases/fd/Artificial-Intelligence/ast/all">人工智能知识库</a></li>
+            <li class="nav-" role="presentation"><a href="http://ifeve.com/">并发编程网</a></li>
+            <li class="nav-" role="presentation"><a href="https://bitcoin.org/zh_CN/">比特币官网-中文版</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="http://whitespur.top/rss/">订阅</a>
+</div>
+<span class="nav-cover"></span>
+
+<div class="site-wrapper">
+
+
+
+
+<header class="main-header post-head " style="background-image: url(http://localhost:2368/content/images/2017/10/image-299.png)">
+    <nav class="main-nav overlay clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">菜单</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post tag-chatbot tag-liao-tian-ji-qi-ren tag-nlp tag-zi-ran-yu-yan-chu-li tag-tu-ling-ce-shi">
+
+        <header class="post-header">
+            <h1 class="post-title">自己动手开发聊天机器人chatbot系列1----总览</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2017-10-23">2017年10月23日</time>  标签：<a href="../tag/chatbot/index.html">ChatBot</a>, <a href="../tag/liao-tian-ji-qi-ren/index.html">聊天机器人</a>, <a href="../tag/nlp/index.html">NLP</a>, <a href="../tag/zi-ran-yu-yan-chu-li/index.html">自然语言处理</a>, <a href="../tag/tu-ling-ce-shi/index.html">图灵测试</a>
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>最近接触聊天机器人chatbot有段时间了，今天把各种渠道已有的关于chatbot的认识梳理了一下，加深理解，便于后面动手实践。</p>
+
+<h1 id="1chatbot">1 什么是聊天机器人chatbot</h1>
+
+<p>聊天机器人，是一种通过自然语言模拟人类进行对话的程序。通常运行在特定的软件平台上，如PC平台或者移动终端设备平台，而类人的硬件机械体则不是必需的承载设备。</p>
+
+<pre><code>https://mp.weixin.qq.com/s?__biz=MzIxMjAzNDY5Mg==&amp;mid=401067430&amp;idx=1&amp;sn=76f859a0c05b00b12c47f5c6c8f5c590
+</code></pre>
+
+<p>提到机器人不得不提图灵测试，内容如下：</p>
+
+<p>如果一个人（代号C）使用测试对象皆理解的语言去询问两个他不能看见的对象任意一串问题。对象为：一个是正常思维的人（代号B）、一个是机器（代号A）。如果经过<strong>若干询问</strong>以后，C不能得出实质的区别来分辨A与B的不同，则此机器A通过图灵测试。</p>
+
+<h1 id="2">2 分类</h1>
+
+<p>从<strong>技术</strong>的角度看，实现一个 Chatbot 也可以大致分为基于<strong>检索的模型</strong>和<strong>生成模型</strong>两种方案。</p>
+
+<p>基于<strong>检索</strong>的模型在算法流程和结构上相对更容易理解，在很大程度上和搜索引擎的技术实现类似。一方面事先定义好了<strong>问题库和答案知识库</strong>或回答的<strong>模板</strong>，另一方面通过 <strong>NLP</strong> 技术对用户提出的问题进行分析，通过关键词提取、倒排索引、文档排序等等方法与定义好的知识库进行匹配，并返回给用户。</p>
+
+<p><strong>生成模型</strong>方案直接<strong>从语料来训练知识表示和语言模型</strong>，可以有效降低维护问答库和规则的精力；同时，生成模型可以应对各种不在预设的问题库的问题，表现形式更加灵活。但是，好的生成模型往往需要巨大规模的训练语料，并且，对话中的<strong>上下文关系</strong>、<strong>信息和人格的一致性</strong>、以及<strong>关键意图识别</strong>等等一系列问题都是生成模型需要克服的难关。</p>
+
+<p>从<strong>应用的场景</strong>来看，Chatbot 可以分为<strong>开放域（Open-Domain）问题和封闭域（Closed-Domain）</strong>问题两大类。</p>
+
+<p>开放域问题和图灵测试更接近，也更困难。没有任何限定的主题或明确的目标，用户和Chatbot 之间可以进行任何话题的自由对话。</p>
+
+<p>封闭域问题通常有若干明确的目标和限定的知识范围，也就是说，Chatbot 所面临的输入和输出通常是有限的。例如电商导购机器人</p>
+
+<p>从<strong>表现形式</strong>看，Chatbot可以分为<strong>单轮对话和多轮对话</strong>两种类型。单轮对话其实可以看做是<strong>问答系统</strong>（Question Answering System）的变形， 一般是一问一答的形式，用户提问，机器生成相应答案的文本或者是综合与答案相关的各种信息返回给用户。多轮对话则更接近我们通常理解的人与人之间的对话模式，通常是<strong>有问有答</strong>，除了用户提问，机器也会主动向用户询问，并且会根据上下文来判断该给出什么样的答案或提出什么样的问题。从应用的角度来看，单轮对话更适合使用在信息查询、客户服务、产品介绍等等目标明确、会话行程短的浅服务类项目，用户对通过使用这类产品获得的服务有明确的预期，更多的是把它看做快速获取信息、提升效率的入口。而多轮对话服务，往往会应用在信息搜集、商品和服务导购推荐、专业方案咨询等等一系列结构复杂、会话行程长的深度服务项目里，用户通过使用这类产品会在某一领域获得相对完整的服务，解决一个复杂问题，或者获得某种方向性的引导。一般来说，企业使用多轮对话服务的目标不仅仅是提升效率降低成本，还往往可以改进产品质量带来更多的收入。</p>
+
+<pre><code>https://zhuanlan.zhihu.com/p/21973054
+</code></pre>
+
+<h1 id="3">3 有哪些用途</h1>
+
+<p>从应用场景的角度来看，可以分为在线客服、娱乐、教育、个人助理和智能问答五个种类。
+在线客服聊天机器人系统的主要功能是同用户进行基本沟通并自动回复用户有关产品或服务的问题，以实现降低企业客服运营成本、提升用户体验的目的。其应用场景通常为网站首页和手机终端。代表性的商用系统有小I机器人、京东的JIMI客服机器人等。用户可以通过与JIMI聊天了解商品的具体信息以及反馈购物中存在的问题等。值得称赞的是，JIMI具备一定的拒识能力，即能够知道自己不能回答用户的哪些问题以及何时应该转向人工客服。</p>
+
+<p>娱乐场景下聊天机器人系统的主要功能是同用户进行开放主题的对话，从而实现对用户的精神陪伴、情感慰藉和心理疏导等作用。其应用场景通常为社交媒体、儿童玩具等。代表性的系统如微软“小冰”、微信“小微”、“小黄鸡”、“爱情玩偶”等。其中微软“小冰”和微信“小微”除了能够与用户进行开放主题的聊天之外，还能提供特定主题的服务，如天气预报和生活常识等。</p>
+
+<p>应用于教育场景下的聊天机器人系统根据教育的内容不同包括构建交互式的语言使用环境，帮助用户学习某种语言；在学习某项专业技能中，指导用户逐步深入地学习并掌握该技能；在用户的特定年龄阶段，帮助用户进行某种知识的辅助学习等。其应用场景通常为具备人机交互功能的学习、培训类软件以及智能玩具等。这里以科大讯飞公司的开心熊宝（具备移动终端应用软件和实体型玩具两种形态）智能玩具为例，“熊宝”可以通过语音对话的形式辅助儿童学习唐诗、宋词以及回答简单的常识性问题等。</p>
+
+<p>个人助理类应用主要通过语音或文字与聊天机器人系统进行交互，实现个人事务的查询及代办功能，如天气查询、空气质量查询、定位、短信收发、日程提醒、智能搜索等，从而更便捷地辅助用户的日常事务处理。其应用场景通常为便携式移动终端设备。代表性的商业系统有Apple Siri、Google Now、微软Cortana、出门问问等。其中，Apple Siri的出现引领了移动终端个人事务助理应用的商业化发展潮流。，Apple Siri随着IOS 5一同发布，具备聊天和指令执行功能，可以视为移动终端应用的总入口，然而受到语音识别能力、系统本身自然语言理解能力的不足以及用户使用语音和UI操作两种形式进行人机交互时的习惯差异等限制，Siri没能真正担负起个人事务助理的重任。</p>
+
+<p>智能问答类的聊天机器人主要功能包括回答用户以自然语言形式提出的事实型问题和需要计算和逻辑推理型的问题，以达到直接满足用户的信息需求及辅助用户进行决策的目的。其应用场景通常作为问答服务整合到聊天机器人系统中。典型的智能问答系统除了IBM Watson之外，还有Wolfram Alpha和Magi，后两者都是基于结构化知识库的问答系统，且分别仅支持英文和中文的问答。</p>
+
+<h1 id="4">4 产品交互设计</h1>
+
+<p>各种套路</p>
+
+<pre><code>https://zhuanlan.zhihu.com/p/26659463
+https://zhuanlan.zhihu.com/p/29544405
+</code></pre>
+
+<p><img src="http://localhost:2368/content/images/2017/10/image-300.png" alt="" /></p>
+
+<h1 id="5">5 技术架构设计</h1>
+
+<p>简要设计
+简要技术框架
+<img src="http://localhost:2368/content/images/2017/10/image-295.png" alt="" />
+<img src="http://localhost:2368/content/images/2017/10/image-294.png" alt="" />
+后面用到的各种技术慢慢补充（语言分析和理解、语言生成、机器学习、人机对话、信息检索、信息传输与信息存储、文本分类、自动文摘、数学方法、语言资源、系统评测等内容）</p>
+
+<h1 id="6">6 评价标准</h1>
+
+<p>常见的通用的客观评价标准，如回答正确率、任务完成率、对话回合数、对话时间、系统平均响应时间、错误信息率等，对聊天机器人进行评价，评价的基本单元是单轮对话。
+自己实际用的一个是上下文理解，短期记忆能力，比如告诉机器人一个问题的答案再次提问，看机器人能否回答出来。</p>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../author/whitespur/index.html">whitespur</a></h4>
+
+                    <p>科技迷，兴趣点：elon musk个人及其相关公司（SpaceX,Tesla,Solar City)
+太空探索(火星殖民)，人工智能，科幻悬疑类影片，足球，热刺球迷</p>
+                <div class="author-meta">
+                    <span class="author-location icon-location">Hangzhou,China</span>
+                    <span class="author-link icon-link"><a href="http://go2mars.top">http://go2mars.top</a></span>
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>分享此博文</h4>
+                <div class="bdsharebuttonbox"><a href="index.html#" class="bds_more" data-cmd="more"></a><a href="index.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="index.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="index.html#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="index.html#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    <a class="read-next-story " style="background-image: url(http://localhost:2368/content/images/2017/10/image-303.png)" href="../liao-tian-ji-qi-ren-yi-qi-she-ji-fang-an/index.html">
+        <section class="post">
+            <h2>聊天机器人一期技术方案设计</h2>
+            <p>公司的项目向来都是时间紧，任务重，现在又来了，在支持原有项目的同时要在月底上线第一版机器人，结合之前的理解，整理出如下内容： 整体架构和功能划分 各模块交互关系&hellip;</p>
+        </section>
+    </a>
+    <a class="read-next-story prev " style="background-image: url(http://localhost:2368/content/images/2017/10/image-288.png)" href="../ji-qi-xue-xi-bi-ji-2-xian-xing-dai-shu/index.html">
+        <section class="post">
+            <h2>机器学习笔记2----线性代数</h2>
+            <p>大学的数学忘的差不多了，今天跟着大师又复习了一下，课程地址 https://www.coursera.org/learn/machine-learning/lecture/38jIT/matrices-and-vectors 简单笔记如下： 矩阵 matrix m行n列 大写字母 向量 vectors&hellip;</p>
+        </section>
+    </a>
+</aside>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/**
+var disqus_config = function () {
+this.page.url = "/zi-ji-dong-shou-kai-fa-liao-tian-ji-qi-ren-xi-lie/";  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = "ghost-"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://go2mars-top.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<footer class="site-footer clearfix">
+<section class="copyright"><a href="http://whitespur.top">遥望白鹿巷</a> &copy; 2017</section>
+<section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a> &amp; <a href="http://www.ghostchina.com">GhostChina</a></section>
+</footer>
+
+</div>
+
+
+
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/fitvids/1.1.0/jquery.fitvids.min.js"></script>
+<script src="../assets/js/index.js"></script>
+<!-- 开始：我们把统计代码加到此处，百度统计
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");  
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F6338835ad35c6d950a554fdedb598e48' type='text/javascript'%3E%3C/script%3E"));  
+</script>
+结束：我们把统计代码加到此处，百度统计 -->
+</body>
+</html>
