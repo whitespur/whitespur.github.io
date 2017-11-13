@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[遥望白鹿巷]]></title><description><![CDATA[哪来的天才]]></description><link>http://whitespur.top/</link><generator>Ghost 0.7</generator><lastBuildDate>Mon, 13 Nov 2017 09:03:38 GMT</lastBuildDate><atom:link href="http://whitespur.top/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[转载-（译）理解 LSTM 网络 （Understanding LSTM Networks by colah）]]></title><description><![CDATA[<p>LSTM可以用在上下文理解中。</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[遥望白鹿巷]]></title><description><![CDATA[哪来的天才]]></description><link>http://go2mars.top/</link><generator>Ghost 0.7</generator><lastBuildDate>Mon, 13 Nov 2017 11:20:35 GMT</lastBuildDate><atom:link href="http://go2mars.top/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[转载-（译）理解 LSTM 网络 （Understanding LSTM Networks by colah）]]></title><description><![CDATA[<p>LSTM可以用在上下文理解中。</p>
 
 <p>原文地址<a href="http://blog.csdn.net/jerr__y/article/details/58598296">http://blog.csdn.net/jerr__y/article/details/58598296</a>
 @翻译：huangyongye</p>
@@ -11,7 +11,7 @@
 <li>循环神经网络（RNNs)</li>
 </ol>
 
-<p>人们思考问题往往不是从零开始的。</p>]]></description><link>http://whitespur.top/zhuan-zai-yi-li-jie-lstm-wang-luo-understanding-lstm-networks-by-colah/</link><guid isPermaLink="false">78cc1c3c-51e0-4b9e-9004-63029a5d4744</guid><category><![CDATA[LSTM]]></category><category><![CDATA[上下文理解]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 30 Oct 2017 11:26:59 GMT</pubDate><content:encoded><![CDATA[<p>LSTM可以用在上下文理解中。</p>
+<p>人们思考问题往往不是从零开始的。</p>]]></description><link>http://go2mars.top/zhuan-zai-yi-li-jie-lstm-wang-luo-understanding-lstm-networks-by-colah/</link><guid isPermaLink="false">78cc1c3c-51e0-4b9e-9004-63029a5d4744</guid><category><![CDATA[LSTM]]></category><category><![CDATA[上下文理解]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 30 Oct 2017 11:26:59 GMT</pubDate><content:encoded><![CDATA[<p>LSTM可以用在上下文理解中。</p>
 
 <p>原文地址<a href="http://blog.csdn.net/jerr__y/article/details/58598296">http://blog.csdn.net/jerr__y/article/details/58598296</a>
 @翻译：huangyongye</p>
@@ -156,7 +156,7 @@ sigmoid 层输出（是一个向量）的每个元素都是一个在 0 和 1 之
 
 <p>3.1 谷歌提供的服务：<a href="https://dialogflow.com/">https://dialogflow.com/</a> <br>
 3.2 国内创业公司：智能一点，阿里大牛出来做的 <br>
-<a href="https://36kr.com/p/5091791.html">https://36kr.com/p/5091791.html</a></p>]]></description><link>http://whitespur.top/dai-jie-jue-wen-ti-he-dai-xue-xi-ji-zhu/</link><guid isPermaLink="false">98215548-96b5-4584-b9ed-cc300fdd26e4</guid><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 30 Oct 2017 11:22:24 GMT</pubDate><content:encoded><![CDATA[<h1 id="1">1问题</h1>
+<a href="https://36kr.com/p/5091791.html">https://36kr.com/p/5091791.html</a></p>]]></description><link>http://go2mars.top/dai-jie-jue-wen-ti-he-dai-xue-xi-ji-zhu/</link><guid isPermaLink="false">98215548-96b5-4584-b9ed-cc300fdd26e4</guid><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 30 Oct 2017 11:22:24 GMT</pubDate><content:encoded><![CDATA[<h1 id="1">1问题</h1>
 
 <p>聊天机器人方面
 <a href="http://forum.yige.ai/thread/85">http://forum.yige.ai/thread/85</a></p>
@@ -177,16 +177,16 @@ sigmoid 层输出（是一个向量）的每个元素都是一个在 0 和 1 之
 <a href="https://36kr.com/p/5091791.html">https://36kr.com/p/5091791.html</a></p>]]></content:encoded></item><item><title><![CDATA[聊天机器人一期技术方案设计]]></title><description><![CDATA[<p>公司的项目向来都是时间紧，任务重，现在又来了，在支持原有项目的同时要在月底上线第一版机器人，结合之前的理解，整理出如下内容：</p>
 
 <p>整体架构和功能划分
-<img src="http://whitespur.top/content/images/2017/10/image-302.png" alt=""></p>
+<img src="http://go2mars.top/content/images/2017/10/image-302.png" alt=""></p>
 
 <p>各模块交互关系
-<img src="http://whitespur.top/content/images/2017/10/image-304.png" alt=""></p>]]></description><link>http://whitespur.top/liao-tian-ji-qi-ren-yi-qi-she-ji-fang-an/</link><guid isPermaLink="false">c2b746ab-e181-47cb-b13c-20561dd89bf9</guid><category><![CDATA[聊天机器人]]></category><category><![CDATA[技术方案设计]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 30 Oct 2017 11:09:54 GMT</pubDate><media:content url="http://whitespur.top/content/images/2017/10/image-303.png" medium="image"/><content:encoded><![CDATA[<img src="http://whitespur.top/content/images/2017/10/image-303.png" alt="聊天机器人一期技术方案设计"><p>公司的项目向来都是时间紧，任务重，现在又来了，在支持原有项目的同时要在月底上线第一版机器人，结合之前的理解，整理出如下内容：</p>
+<img src="http://go2mars.top/content/images/2017/10/image-304.png" alt=""></p>]]></description><link>http://go2mars.top/liao-tian-ji-qi-ren-yi-qi-she-ji-fang-an/</link><guid isPermaLink="false">c2b746ab-e181-47cb-b13c-20561dd89bf9</guid><category><![CDATA[聊天机器人]]></category><category><![CDATA[技术方案设计]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 30 Oct 2017 11:09:54 GMT</pubDate><media:content url="http://go2mars.top/content/images/2017/10/image-303.png" medium="image"/><content:encoded><![CDATA[<img src="http://go2mars.top/content/images/2017/10/image-303.png" alt="聊天机器人一期技术方案设计"><p>公司的项目向来都是时间紧，任务重，现在又来了，在支持原有项目的同时要在月底上线第一版机器人，结合之前的理解，整理出如下内容：</p>
 
 <p>整体架构和功能划分
-<img src="http://whitespur.top/content/images/2017/10/image-302.png" alt="聊天机器人一期技术方案设计"></p>
+<img src="http://go2mars.top/content/images/2017/10/image-302.png" alt="聊天机器人一期技术方案设计"></p>
 
 <p>各模块交互关系
-<img src="http://whitespur.top/content/images/2017/10/image-304.png" alt="聊天机器人一期技术方案设计"></p>]]></content:encoded></item><item><title><![CDATA[自己动手开发聊天机器人chatbot系列1----总览]]></title><description><![CDATA[<p>最近接触聊天机器人chatbot有段时间了，今天把各种渠道已有的关于chatbot的认识梳理了一下，加深理解，便于后面动手实践。</p>
+<img src="http://go2mars.top/content/images/2017/10/image-304.png" alt="聊天机器人一期技术方案设计"></p>]]></content:encoded></item><item><title><![CDATA[自己动手开发聊天机器人chatbot系列1----总览]]></title><description><![CDATA[<p>最近接触聊天机器人chatbot有段时间了，今天把各种渠道已有的关于chatbot的认识梳理了一下，加深理解，便于后面动手实践。</p>
 
 <h1 id="1chatbot">1 什么是聊天机器人chatbot</h1>
 
@@ -201,7 +201,7 @@ sigmoid 层输出（是一个向量）的每个元素都是一个在 0 和 1 之
 
 <h1 id="2">2 分类</h1>
 
-<p>从<strong>技术</strong>的角度看，实现一个 Chatbot</p>]]></description><link>http://whitespur.top/zi-ji-dong-shou-kai-fa-liao-tian-ji-qi-ren-xi-lie/</link><guid isPermaLink="false">46f98408-e8e1-44ef-85b4-2f9e3c741214</guid><category><![CDATA[ChatBot]]></category><category><![CDATA[聊天机器人]]></category><category><![CDATA[NLP]]></category><category><![CDATA[自然语言处理]]></category><category><![CDATA[图灵测试]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 22 Oct 2017 22:43:42 GMT</pubDate><media:content url="http://whitespur.top/content/images/2017/10/image-299.png" medium="image"/><content:encoded><![CDATA[<img src="http://whitespur.top/content/images/2017/10/image-299.png" alt="自己动手开发聊天机器人chatbot系列1----总览"><p>最近接触聊天机器人chatbot有段时间了，今天把各种渠道已有的关于chatbot的认识梳理了一下，加深理解，便于后面动手实践。</p>
+<p>从<strong>技术</strong>的角度看，实现一个 Chatbot</p>]]></description><link>http://go2mars.top/zi-ji-dong-shou-kai-fa-liao-tian-ji-qi-ren-xi-lie/</link><guid isPermaLink="false">46f98408-e8e1-44ef-85b4-2f9e3c741214</guid><category><![CDATA[ChatBot]]></category><category><![CDATA[聊天机器人]]></category><category><![CDATA[NLP]]></category><category><![CDATA[自然语言处理]]></category><category><![CDATA[图灵测试]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 22 Oct 2017 22:43:42 GMT</pubDate><media:content url="http://go2mars.top/content/images/2017/10/image-299.png" medium="image"/><content:encoded><![CDATA[<img src="http://go2mars.top/content/images/2017/10/image-299.png" alt="自己动手开发聊天机器人chatbot系列1----总览"><p>最近接触聊天机器人chatbot有段时间了，今天把各种渠道已有的关于chatbot的认识梳理了一下，加深理解，便于后面动手实践。</p>
 
 <h1 id="1chatbot">1 什么是聊天机器人chatbot</h1>
 
@@ -254,14 +254,14 @@ sigmoid 层输出（是一个向量）的每个元素都是一个在 0 和 1 之
 https://zhuanlan.zhihu.com/p/29544405
 </code></pre>
 
-<p><img src="http://whitespur.top/content/images/2017/10/image-300.png" alt="自己动手开发聊天机器人chatbot系列1----总览"></p>
+<p><img src="http://go2mars.top/content/images/2017/10/image-300.png" alt="自己动手开发聊天机器人chatbot系列1----总览"></p>
 
 <h1 id="5">5 技术架构设计</h1>
 
 <p>简要设计
 简要技术框架
-<img src="http://whitespur.top/content/images/2017/10/image-295.png" alt="自己动手开发聊天机器人chatbot系列1----总览">
-<img src="http://whitespur.top/content/images/2017/10/image-294.png" alt="自己动手开发聊天机器人chatbot系列1----总览">
+<img src="http://go2mars.top/content/images/2017/10/image-295.png" alt="自己动手开发聊天机器人chatbot系列1----总览">
+<img src="http://go2mars.top/content/images/2017/10/image-294.png" alt="自己动手开发聊天机器人chatbot系列1----总览">
 后面用到的各种技术慢慢补充（语言分析和理解、语言生成、机器学习、人机对话、信息检索、信息传输与信息存储、文本分类、自动文摘、数学方法、语言资源、系统评测等内容）</p>
 
 <h1 id="6">6 评价标准</h1>
@@ -287,16 +287,16 @@ https://zhuanlan.zhihu.com/p/29544405
 <p>矩阵 * 向量</p>
 
 <p>m * n   X n * 1 == m * 1 <br>
-<img src="http://whitespur.top/content/images/2017/10/image-283.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-283.png" alt="">
 矩阵 * 矩阵
-<img src="http://whitespur.top/content/images/2017/10/image-287.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-287.png" alt="">
 交互律不成立</p>
 
 <p>• Matrices are not commutative: A∗B≠B∗A</p>
 
 <p>结合律成立</p>
 
-<p>• Matrices are</p>]]></description><link>http://whitespur.top/ji-qi-xue-xi-bi-ji-2-xian-xing-dai-shu/</link><guid isPermaLink="false">44f49bda-00fd-4552-8a4e-2a76927fc458</guid><category><![CDATA[机器学习]]></category><category><![CDATA[线性代数]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Fri, 20 Oct 2017 22:23:37 GMT</pubDate><media:content url="http://whitespur.top/content/images/2017/10/image-288.png" medium="image"/><content:encoded><![CDATA[<img src="http://whitespur.top/content/images/2017/10/image-288.png" alt="机器学习笔记2----线性代数"><p>大学的数学忘的差不多了，今天跟着大师又复习了一下，课程地址</p>
+<p>• Matrices are</p>]]></description><link>http://go2mars.top/ji-qi-xue-xi-bi-ji-2-xian-xing-dai-shu/</link><guid isPermaLink="false">44f49bda-00fd-4552-8a4e-2a76927fc458</guid><category><![CDATA[机器学习]]></category><category><![CDATA[线性代数]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Fri, 20 Oct 2017 22:23:37 GMT</pubDate><media:content url="http://go2mars.top/content/images/2017/10/image-288.png" medium="image"/><content:encoded><![CDATA[<img src="http://go2mars.top/content/images/2017/10/image-288.png" alt="机器学习笔记2----线性代数"><p>大学的数学忘的差不多了，今天跟着大师又复习了一下，课程地址</p>
 
 <pre><code>https://www.coursera.org/learn/machine-learning/lecture/38jIT/matrices-and-vectors
 </code></pre>
@@ -316,9 +316,9 @@ https://zhuanlan.zhihu.com/p/29544405
 <p>矩阵 * 向量</p>
 
 <p>m * n   X n * 1 == m * 1 <br>
-<img src="http://whitespur.top/content/images/2017/10/image-283.png" alt="机器学习笔记2----线性代数">
+<img src="http://go2mars.top/content/images/2017/10/image-283.png" alt="机器学习笔记2----线性代数">
 矩阵 * 矩阵
-<img src="http://whitespur.top/content/images/2017/10/image-287.png" alt="机器学习笔记2----线性代数">
+<img src="http://go2mars.top/content/images/2017/10/image-287.png" alt="机器学习笔记2----线性代数">
 交互律不成立</p>
 
 <p>• Matrices are not commutative: A∗B≠B∗A</p>
@@ -337,7 +337,7 @@ https://zhuanlan.zhihu.com/p/29544405
 没有逆的矩阵----奇异矩阵或退化矩阵</p>
 
 <p>矩阵的转置
-<img src="http://whitespur.top/content/images/2017/10/image-293.png" alt="机器学习笔记2----线性代数"></p>]]></content:encoded></item><item><title><![CDATA[超智能体读书笔记1]]></title><description><![CDATA[<p>在此感谢yjango大神，在学习神经网络的路上有大神深入浅出的指引使自己少走了很多弯路，以下是此书地址：
+<img src="http://go2mars.top/content/images/2017/10/image-293.png" alt="机器学习笔记2----线性代数"></p>]]></content:encoded></item><item><title><![CDATA[超智能体读书笔记1]]></title><description><![CDATA[<p>在此感谢yjango大神，在学习神经网络的路上有大神深入浅出的指引使自己少走了很多弯路，以下是此书地址：
 <a href="https://yjango.gitbooks.io/superorganism/content/">https://yjango.gitbooks.io/superorganism/content/</a></p>
 
 <p>该书最终的目的是：<strong>通过理解智能，学习如何学习</strong>。</p>
@@ -348,26 +348,26 @@ https://zhuanlan.zhihu.com/p/29544405
 
 <p>以下是学习过程中感觉重要的笔记，在此记录下来，如有侵权，请随时联系我删除。</p>
 
-<p><img src="http://whitespur.top/content/images/2017/10/image-8.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-11.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-14.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-16.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-18.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-27.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-33.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-38.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-64.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-50.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-81.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-102.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-122.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-140.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-158.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-176.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-198.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-223.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-247.png" alt="">
-<img src="http://whitespur.top/content/images/2017/10/image-275.png" alt=""></p>]]></description><link>http://whitespur.top/chao-zhi-neng-ti-du-shu-bi-ji-1/</link><guid isPermaLink="false">2e3cda6f-4f09-41ea-9a63-93f32a65a01b</guid><category><![CDATA[机器学习]]></category><category><![CDATA[智能]]></category><category><![CDATA[大脑学习]]></category><category><![CDATA[TensorFLow]]></category><category><![CDATA[神经网络]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Thu, 05 Oct 2017 22:51:13 GMT</pubDate><media:content url="http://whitespur.top/content/images/2017/10/image-254.png" medium="image"/><content:encoded><![CDATA[<img src="http://whitespur.top/content/images/2017/10/image-254.png" alt="超智能体读书笔记1"><p>在此感谢yjango大神，在学习神经网络的路上有大神深入浅出的指引使自己少走了很多弯路，以下是此书地址：
+<p><img src="http://go2mars.top/content/images/2017/10/image-8.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-11.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-14.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-16.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-18.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-27.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-33.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-38.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-64.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-50.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-81.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-102.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-122.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-140.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-158.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-176.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-198.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-223.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-247.png" alt="">
+<img src="http://go2mars.top/content/images/2017/10/image-275.png" alt=""></p>]]></description><link>http://go2mars.top/chao-zhi-neng-ti-du-shu-bi-ji-1/</link><guid isPermaLink="false">2e3cda6f-4f09-41ea-9a63-93f32a65a01b</guid><category><![CDATA[机器学习]]></category><category><![CDATA[智能]]></category><category><![CDATA[大脑学习]]></category><category><![CDATA[TensorFLow]]></category><category><![CDATA[神经网络]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Thu, 05 Oct 2017 22:51:13 GMT</pubDate><media:content url="http://go2mars.top/content/images/2017/10/image-254.png" medium="image"/><content:encoded><![CDATA[<img src="http://go2mars.top/content/images/2017/10/image-254.png" alt="超智能体读书笔记1"><p>在此感谢yjango大神，在学习神经网络的路上有大神深入浅出的指引使自己少走了很多弯路，以下是此书地址：
 <a href="https://yjango.gitbooks.io/superorganism/content/">https://yjango.gitbooks.io/superorganism/content/</a></p>
 
 <p>该书最终的目的是：<strong>通过理解智能，学习如何学习</strong>。</p>
@@ -378,26 +378,26 @@ https://zhuanlan.zhihu.com/p/29544405
 
 <p>以下是学习过程中感觉重要的笔记，在此记录下来，如有侵权，请随时联系我删除。</p>
 
-<p><img src="http://whitespur.top/content/images/2017/10/image-8.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-11.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-14.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-16.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-18.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-27.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-33.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-38.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-64.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-50.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-81.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-102.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-122.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-140.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-158.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-176.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-198.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-223.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-247.png" alt="超智能体读书笔记1">
-<img src="http://whitespur.top/content/images/2017/10/image-275.png" alt="超智能体读书笔记1"></p>]]></content:encoded></item><item><title><![CDATA[协程是什么，有什么好处，与进程，线程的区别，理解并发与并行]]></title><description><![CDATA[<p>今天学python，遇到了协程，这个之前写java没怎么用过，今天查了下记录下来，反复理解。</p>
+<p><img src="http://go2mars.top/content/images/2017/10/image-8.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-11.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-14.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-16.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-18.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-27.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-33.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-38.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-64.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-50.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-81.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-102.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-122.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-140.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-158.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-176.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-198.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-223.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-247.png" alt="超智能体读书笔记1">
+<img src="http://go2mars.top/content/images/2017/10/image-275.png" alt="超智能体读书笔记1"></p>]]></content:encoded></item><item><title><![CDATA[协程是什么，有什么好处，与进程，线程的区别，理解并发与并行]]></title><description><![CDATA[<p>今天学python，遇到了协程，这个之前写java没怎么用过，今天查了下记录下来，反复理解。</p>
 
 <p>协程其实就是函数调用,相比线程更为轻量级，代码示例如下：</p>
 
@@ -422,7 +422,7 @@ while 1:
 
 <p>协程，又称微线程，纤程。英文名Coroutine。协程看上去也是子程序，但执行过程中，<mark>在子程序内部可中断</mark>，然后转而执行别的子程序，在适当的时候再返回来接着执行。</p>
 
-<p>参考文章：<a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868328689835ecd883d910145dfa8227b539725e5ed000">https://www.</a></p>]]></description><link>http://whitespur.top/xie-cheng-shi-shi-yao-you-shi-yao-hao-chu-yu-jin-cheng-xian-cheng-de-qu-bie/</link><guid isPermaLink="false">895dddad-ce7b-493e-81dc-f3ed7f2cb8c1</guid><category><![CDATA[协程]]></category><category><![CDATA[进程]]></category><category><![CDATA[多线程]]></category><category><![CDATA[并发]]></category><category><![CDATA[并行]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Thu, 05 Oct 2017 20:59:48 GMT</pubDate><media:content url="http://whitespur.top/content/images/2017/10/image-2.png" medium="image"/><content:encoded><![CDATA[<img src="http://whitespur.top/content/images/2017/10/image-2.png" alt="协程是什么，有什么好处，与进程，线程的区别，理解并发与并行"><p>今天学python，遇到了协程，这个之前写java没怎么用过，今天查了下记录下来，反复理解。</p>
+<p>参考文章：<a href="https://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/0013868328689835ecd883d910145dfa8227b539725e5ed000">https://www.</a></p>]]></description><link>http://go2mars.top/xie-cheng-shi-shi-yao-you-shi-yao-hao-chu-yu-jin-cheng-xian-cheng-de-qu-bie/</link><guid isPermaLink="false">895dddad-ce7b-493e-81dc-f3ed7f2cb8c1</guid><category><![CDATA[协程]]></category><category><![CDATA[进程]]></category><category><![CDATA[多线程]]></category><category><![CDATA[并发]]></category><category><![CDATA[并行]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Thu, 05 Oct 2017 20:59:48 GMT</pubDate><media:content url="http://go2mars.top/content/images/2017/10/image-2.png" medium="image"/><content:encoded><![CDATA[<img src="http://go2mars.top/content/images/2017/10/image-2.png" alt="协程是什么，有什么好处，与进程，线程的区别，理解并发与并行"><p>今天学python，遇到了协程，这个之前写java没怎么用过，今天查了下记录下来，反复理解。</p>
 
 <p>协程其实就是函数调用,相比线程更为轻量级，代码示例如下：</p>
 
@@ -482,7 +482,7 @@ while 1:
 并发（Concurrency）是同时处理很多事情（dealing with lots of things at once），并行（Parallelism）是同时执行很多事情（doing lots of things at once）；
 </code></pre>
 
-<p><img src="http://whitespur.top/content/images/2017/10/image-1.png" alt="协程是什么，有什么好处，与进程，线程的区别，理解并发与并行">
+<p><img src="http://go2mars.top/content/images/2017/10/image-1.png" alt="协程是什么，有什么好处，与进程，线程的区别，理解并发与并行">
 参考：<a href="https://www.zhihu.com/question/33515481/answer/67962756">https://www.zhihu.com/question/33515481/answer/67962756</a></p>]]></content:encoded></item><item><title><![CDATA[从聊天机器人现状看各大公司人工智能的布局发展]]></title><description><![CDATA[<p>首先祝大家中秋快乐，博客公众号开了以后，访问统计看了下pv，uv少的可怜，主要原因还是内容太少，渠道也只有朋友圈传播，这次起个牛点的标题，说不定可以通过搜索增加流量，最近接触聊天机器人比较多，一直在想怎么做，能做到什么程度，能解决哪些问题，刚好国庆放假在滨江龙湖天街的奇客巴士体验了一下国内几款智能机器人的硬件产品，比较失望，于是又找了一下各大巨头的软件产品，对比了一下，记录在这里，从这里可以看到从移动互联网时代向人工智能时代巨头们的发展状况，也基本可以知道自己能做到什么地步了，最后一个感慨就是跟着google走有肉吃，google在今年5月的I/O大会宣布了从Mobile-first向AI-first的战略，自己作为个人刚好也从15年转到了backend，今年也逐渐从backend向data,ai方向进军，希望今年能做出点拿的出手的东西来，后面也会不断增加这方面的文章，废话不多说了，以下是正文：</p>
 
 <h1 id="">一 国际大公司</h1>
@@ -490,15 +490,15 @@ while 1:
 <h2 id="google">Google:</h2>
 
 <p>面向消费者的手机app：Allo（Google Assistant），水平最高，有记忆功能，可以做私人助理，交互方式很好，支持文字和语音输入，而且每次都有文字提示输入，不足之处是不支持中文。
-<img src="http://whitespur.top/content/images/2017/10/google.jpeg" alt="">
-智能家居Google Home(<a href="https://madeby.google.com/home/">https://madeby.google.com/home/</a></p>]]></description><link>http://whitespur.top/cong-liao-tian-ji-qi-ren-xian-zhuang-kan-ge-da-gong-si-ren-gong-zhi-neng-fa-zhan-bu-ju/</link><guid isPermaLink="false">9998f8a1-5834-44a5-ad4e-27cafc7d4fb4</guid><category><![CDATA[聊天机器人]]></category><category><![CDATA[人工智能]]></category><category><![CDATA[谷歌]]></category><category><![CDATA[亚马逊]]></category><category><![CDATA[微软]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Tue, 03 Oct 2017 19:12:38 GMT</pubDate><content:encoded><![CDATA[<p>首先祝大家中秋快乐，博客公众号开了以后，访问统计看了下pv，uv少的可怜，主要原因还是内容太少，渠道也只有朋友圈传播，这次起个牛点的标题，说不定可以通过搜索增加流量，最近接触聊天机器人比较多，一直在想怎么做，能做到什么程度，能解决哪些问题，刚好国庆放假在滨江龙湖天街的奇客巴士体验了一下国内几款智能机器人的硬件产品，比较失望，于是又找了一下各大巨头的软件产品，对比了一下，记录在这里，从这里可以看到从移动互联网时代向人工智能时代巨头们的发展状况，也基本可以知道自己能做到什么地步了，最后一个感慨就是跟着google走有肉吃，google在今年5月的I/O大会宣布了从Mobile-first向AI-first的战略，自己作为个人刚好也从15年转到了backend，今年也逐渐从backend向data,ai方向进军，希望今年能做出点拿的出手的东西来，后面也会不断增加这方面的文章，废话不多说了，以下是正文：</p>
+<img src="http://go2mars.top/content/images/2017/10/google.jpeg" alt="">
+智能家居Google Home(<a href="https://madeby.google.com/home/">https://madeby.google.com/home/</a></p>]]></description><link>http://go2mars.top/cong-liao-tian-ji-qi-ren-xian-zhuang-kan-ge-da-gong-si-ren-gong-zhi-neng-fa-zhan-bu-ju/</link><guid isPermaLink="false">9998f8a1-5834-44a5-ad4e-27cafc7d4fb4</guid><category><![CDATA[聊天机器人]]></category><category><![CDATA[人工智能]]></category><category><![CDATA[谷歌]]></category><category><![CDATA[亚马逊]]></category><category><![CDATA[微软]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Tue, 03 Oct 2017 19:12:38 GMT</pubDate><content:encoded><![CDATA[<p>首先祝大家中秋快乐，博客公众号开了以后，访问统计看了下pv，uv少的可怜，主要原因还是内容太少，渠道也只有朋友圈传播，这次起个牛点的标题，说不定可以通过搜索增加流量，最近接触聊天机器人比较多，一直在想怎么做，能做到什么程度，能解决哪些问题，刚好国庆放假在滨江龙湖天街的奇客巴士体验了一下国内几款智能机器人的硬件产品，比较失望，于是又找了一下各大巨头的软件产品，对比了一下，记录在这里，从这里可以看到从移动互联网时代向人工智能时代巨头们的发展状况，也基本可以知道自己能做到什么地步了，最后一个感慨就是跟着google走有肉吃，google在今年5月的I/O大会宣布了从Mobile-first向AI-first的战略，自己作为个人刚好也从15年转到了backend，今年也逐渐从backend向data,ai方向进军，希望今年能做出点拿的出手的东西来，后面也会不断增加这方面的文章，废话不多说了，以下是正文：</p>
 
 <h1 id="">一 国际大公司</h1>
 
 <h2 id="google">Google:</h2>
 
 <p>面向消费者的手机app：Allo（Google Assistant），水平最高，有记忆功能，可以做私人助理，交互方式很好，支持文字和语音输入，而且每次都有文字提示输入，不足之处是不支持中文。
-<img src="http://whitespur.top/content/images/2017/10/google.jpeg" alt="">
+<img src="http://go2mars.top/content/images/2017/10/google.jpeg" alt="">
 智能家居Google Home(<a href="https://madeby.google.com/home/">https://madeby.google.com/home/</a> )，没条件体验，不过跟Allo接入的后台应该是一样的。</p>
 
 <p>平台方面(<a href="https://ai.google/">https://ai.google/</a> )，收购DeepMind，开源TensowFlow，推出TPU（英伟达GPU有竞争对手了）,AlphaGo围棋峰会完胜人类顶级棋手（柯洁，李世乭等），看2017年的IO大会，对外宣布了<strong>Mobile-first</strong>向<strong>AI-first</strong>的战略，具体视频<a href="https://events.google.com/io/">https://events.google.com/io/</a> 可以再看看</p>
@@ -506,7 +506,7 @@ while 1:
 <h2 id="microsoft">MicroSoft:</h2>
 
 <p>小冰，水平没谷歌强，比剩余强，没有记忆功能，支持中文，产品跟第三方整合的比较多，微信微博都接入了，微信也有小程序-小冰FM，这个小程序可以秒杀掉国内的若琪，喜马拉雅的智能机器人了
-<img src="http://whitespur.top/content/images/2017/10/ms2.jpeg" alt=""></p>
+<img src="http://go2mars.top/content/images/2017/10/ms2.jpeg" alt=""></p>
 
 <h1 id="amazon">Amazon:</h1>
 
@@ -519,7 +519,7 @@ while 1:
 <h2 id="apple">Apple:</h2>
 
 <p>Siri挺弱智的，挺弱智的，挺弱智的，虽然支持中文语音，但是智商实在太低，让使用的用户也感觉弱智，尤其是晚上老婆喊“Hey Siri，给我打开闹钟”时每次都被我鄙视一次，但是当让siri打开指定日期都闹钟时它就歇菜了，苹果果然还是面子货（又要被果粉黑了） <br>
-<img src="http://whitespur.top/content/images/2017/10/apple.jpeg" alt=""></p>
+<img src="http://go2mars.top/content/images/2017/10/apple.jpeg" alt=""></p>
 
 <h2 id="openai">OpenAI:</h2>
 
@@ -536,12 +536,12 @@ while 1:
 <p>软件方面：</p>
 
 <p>阿里小蜜，盒马鲜生的盒马福利社有点意思，产品有创意
-<img src="http://whitespur.top/content/images/2017/10/ali.jpeg" alt=""></p>
+<img src="http://go2mars.top/content/images/2017/10/ali.jpeg" alt=""></p>
 
 <h2 id="">百度：</h2>
 
 <p>移动互联网时代落后了一大截，最近在AI上Allin，官网(<a href="http://dueros.baidu.com">http://dueros.baidu.com</a> )看着挺丰富的，有具体产品（软硬件），合作厂商，解决方案，开放平台等等，手机端的app是度密，号称人工智能小秘书，简单体验了一番，水平一般，我告诉的问题再次提问还是记不住，哈哈，这个可以看作检验聊天机器人水平的一个小标准了，上下文短期记忆能力
-<img src="http://whitespur.top/content/images/2017/10/baidu.jpeg" alt=""></p>
+<img src="http://go2mars.top/content/images/2017/10/baidu.jpeg" alt=""></p>
 
 <h2 id="">腾讯:</h2>
 
@@ -550,7 +550,7 @@ while 1:
 <h2 id="">京东:</h2>
 
 <p>直接面向消费者的不多，更多面向京东自身，智慧物流，自己能体验到的是京东JIMI，跟阿里小蜜类似，主要还是客服，推荐系统的功能，用之前的问题检验不出意料还是回答不上来，水平一般
-<img src="http://whitespur.top/content/images/2017/10/jd.jpeg" alt=""></p>
+<img src="http://go2mars.top/content/images/2017/10/jd.jpeg" alt=""></p>
 
 <h1 id="">三 创业公司：</h1>
 
@@ -574,7 +574,7 @@ while 1:
 
 <h1 id="2">2 评论留言</h1>
 
-<p>虽然百度统计也有意见反馈功能，不过试用了下是访客在博客页面右下角输入意见，系统再发送邮件到指定邮箱，这个只能自己看到，不方便其他读者进行交流，于是又调研了一下评论留言的系统，</p>]]></description><link>http://whitespur.top/bo-ke-gong-neng-sheng-ji/</link><guid isPermaLink="false">db34f27a-8c1c-4330-bd93-dd991fc45798</guid><category><![CDATA[访问统计]]></category><category><![CDATA[评论]]></category><category><![CDATA[升级]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 01 Oct 2017 22:23:51 GMT</pubDate><content:encoded><![CDATA[<p>鉴于开通了公众号，博客可能会有越来越多人来访问，今天下午给博客升级了一下功能，主要增加了访问统计和评论留言功能，简单记录如下：</p>
+<p>虽然百度统计也有意见反馈功能，不过试用了下是访客在博客页面右下角输入意见，系统再发送邮件到指定邮箱，这个只能自己看到，不方便其他读者进行交流，于是又调研了一下评论留言的系统，</p>]]></description><link>http://go2mars.top/bo-ke-gong-neng-sheng-ji/</link><guid isPermaLink="false">db34f27a-8c1c-4330-bd93-dd991fc45798</guid><category><![CDATA[访问统计]]></category><category><![CDATA[评论]]></category><category><![CDATA[升级]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 01 Oct 2017 22:23:51 GMT</pubDate><content:encoded><![CDATA[<p>鉴于开通了公众号，博客可能会有越来越多人来访问，今天下午给博客升级了一下功能，主要增加了访问统计和评论留言功能，简单记录如下：</p>
 
 <h1 id="1">1 访问统计</h1>
 
@@ -603,7 +603,7 @@ while 1:
 
 <p>公众号：聊天机器人</p>]]></content:encoded></item><item><title><![CDATA[HelloWorld！开通公众号了]]></title><description><![CDATA[<p>一到放假醒的格外早的“恶习”还是一如既往，不管晚上睡的多晚，早上到点就醒，比上班都准时。最近不知怎么的感觉想法越来越多，一是受马斯克火星殖民计划的影响，二是微信知乎看的有趣的东西比较多，感觉需要把想法idea记录下来，微信公众号朋友圈，微博，知乎这些算是信息源，看到好的mark下转发下，同时自己的想法也记录下，很多东西都是一闪而过，先写下来：
 1 个人公众号开通，取名musk，因为搜索了一下居然没人用，又去搜了下网站域名，结果大部分都被注册了，想要购买的花要高价买了，其实很多人早就在做域名生意了，先把好的域名抢注下来，就像在网络虚拟世界里先买了个房子一样，好的域名就是好城市好地段的房子。 <br>
-2 公众号内容：科技相关，musk相关，国外有<a href="https://elonmusknews.org/">https://elonmusknews.org/</a> 可以订阅musk最新动态，还且还提供了付费服务（ $7 / month or $37 / year），那我打算也搞个国内版的网站或者公众号，一是本人就是musk粉丝，科技粉，希望及时获取musk及其旗下公司的最新进展，但是国内这块专业性的还比较少，认识的朋友里目前就个位数对此感兴趣，不过这并不能说明什么，</p>]]></description><link>http://whitespur.top/guo-qing-10yue-2hao-sui-gan/</link><guid isPermaLink="false">9fc23643-ee4b-4bdb-a772-57031407c475</guid><category><![CDATA[公众号]]></category><category><![CDATA[价值投资]]></category><category><![CDATA[musk]]></category><category><![CDATA[科技股]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 01 Oct 2017 14:48:16 GMT</pubDate><content:encoded><![CDATA[<p>一到放假醒的格外早的“恶习”还是一如既往，不管晚上睡的多晚，早上到点就醒，比上班都准时。最近不知怎么的感觉想法越来越多，一是受马斯克火星殖民计划的影响，二是微信知乎看的有趣的东西比较多，感觉需要把想法idea记录下来，微信公众号朋友圈，微博，知乎这些算是信息源，看到好的mark下转发下，同时自己的想法也记录下，很多东西都是一闪而过，先写下来：
+2 公众号内容：科技相关，musk相关，国外有<a href="https://elonmusknews.org/">https://elonmusknews.org/</a> 可以订阅musk最新动态，还且还提供了付费服务（ $7 / month or $37 / year），那我打算也搞个国内版的网站或者公众号，一是本人就是musk粉丝，科技粉，希望及时获取musk及其旗下公司的最新进展，但是国内这块专业性的还比较少，认识的朋友里目前就个位数对此感兴趣，不过这并不能说明什么，</p>]]></description><link>http://go2mars.top/guo-qing-10yue-2hao-sui-gan/</link><guid isPermaLink="false">9fc23643-ee4b-4bdb-a772-57031407c475</guid><category><![CDATA[公众号]]></category><category><![CDATA[价值投资]]></category><category><![CDATA[musk]]></category><category><![CDATA[科技股]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 01 Oct 2017 14:48:16 GMT</pubDate><content:encoded><![CDATA[<p>一到放假醒的格外早的“恶习”还是一如既往，不管晚上睡的多晚，早上到点就醒，比上班都准时。最近不知怎么的感觉想法越来越多，一是受马斯克火星殖民计划的影响，二是微信知乎看的有趣的东西比较多，感觉需要把想法idea记录下来，微信公众号朋友圈，微博，知乎这些算是信息源，看到好的mark下转发下，同时自己的想法也记录下，很多东西都是一闪而过，先写下来：
 1 个人公众号开通，取名musk，因为搜索了一下居然没人用，又去搜了下网站域名，结果大部分都被注册了，想要购买的花要高价买了，其实很多人早就在做域名生意了，先把好的域名抢注下来，就像在网络虚拟世界里先买了个房子一样，好的域名就是好城市好地段的房子。 <br>
 2 公众号内容：科技相关，musk相关，国外有<a href="https://elonmusknews.org/">https://elonmusknews.org/</a> 可以订阅musk最新动态，还且还提供了付费服务（ $7 / month or $37 / year），那我打算也搞个国内版的网站或者公众号，一是本人就是musk粉丝，科技粉，希望及时获取musk及其旗下公司的最新进展，但是国内这块专业性的还比较少，认识的朋友里目前就个位数对此感兴趣，不过这并不能说明什么，mush及其公司还是非常非常非常有前途的，单从其名下的tesla股价就能看出；二是自己希望利用技术，尝试技术来获取信息，最近要学爬虫，练习爬虫，一个目标就是用爬虫爬取有价值的东西，那musk相关信息就是非常有价值的信息，很值得爬取收集；三是对musk有兴趣的关注musk感觉层次应该还是比较高的，比起投机炒房炒股的强多了，个人把公众号网站运营好，加个大赏功能啥的说不定也可以赚点外快，哈哈，毕竟目前还是挺穷的，就像www.liaoxuefeng.com一样，给小白大众提供初级教程，也增加了打赏功能，目测最近还上了好多培训课程，这块又是个有点钱途的东西，不过对我个人来说价值不大（虽然很多刚毕业技术水的人都喜欢花高价来培训希望找到好工作） <br>
 3 价值投资方面：区块链很好的东西，可惜由于ico投机的人太多，ico被国内政府给禁了，比特币等国内的交易网站也被禁了，不过技术层面的确是一项非常伟大的进步，国外很多地区和政府还是支持的，更不用暗网这种地下交易了 <br>
@@ -637,7 +637,7 @@ while 1:
 
 <h1 id="3">3 机器学习 入门</h1>
 
-<p>上次花了一个晚上刚学完入门部分：机器学习基础概念，问题分类，</p>]]></description><link>http://whitespur.top/guo-qing-ji-hua/</link><guid isPermaLink="false">01ed31ed-25cd-4174-9e79-8fc6c74f608b</guid><category><![CDATA[国庆]]></category><category><![CDATA[计划]]></category><category><![CDATA[杂感]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sat, 30 Sep 2017 21:59:47 GMT</pubDate><content:encoded><![CDATA[<p>前言：今年国庆不回老家了，为啥不回？因为人多，其实是因为穷。
+<p>上次花了一个晚上刚学完入门部分：机器学习基础概念，问题分类，</p>]]></description><link>http://go2mars.top/guo-qing-ji-hua/</link><guid isPermaLink="false">01ed31ed-25cd-4174-9e79-8fc6c74f608b</guid><category><![CDATA[国庆]]></category><category><![CDATA[计划]]></category><category><![CDATA[杂感]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sat, 30 Sep 2017 21:59:47 GMT</pubDate><content:encoded><![CDATA[<p>前言：今年国庆不回老家了，为啥不回？因为人多，其实是因为穷。
 既然留杭还是得干点事情，1号在家打扫卫生就这么过去了，后面几天好好利用起来，列个计划监督自己。</p>
 
 <h1 id="1python">1 python 入门</h1>
@@ -683,7 +683,7 @@ while 1:
 切回原环境</p>
 
 <p>rm -rf ~/.pyenv/versions/env362/ <br>
-删除环境</p>]]></description><link>http://whitespur.top/pyenvda-jian-pythonxu-ni-kai-fa-huan-jing/</link><guid isPermaLink="false">3902d414-50fd-44f4-90e7-d230745497a9</guid><category><![CDATA[python]]></category><category><![CDATA[pyenv]]></category><category><![CDATA[virtualenv]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Fri, 29 Sep 2017 22:33:11 GMT</pubDate><content:encoded><![CDATA[<p>pyenv install --list <br>
+删除环境</p>]]></description><link>http://go2mars.top/pyenvda-jian-pythonxu-ni-kai-fa-huan-jing/</link><guid isPermaLink="false">3902d414-50fd-44f4-90e7-d230745497a9</guid><category><![CDATA[python]]></category><category><![CDATA[pyenv]]></category><category><![CDATA[virtualenv]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Fri, 29 Sep 2017 22:33:11 GMT</pubDate><content:encoded><![CDATA[<p>pyenv install --list <br>
 查看有哪些版本python可以安装</p>
 
 <p>pyenv install 3.6.2 <br>
@@ -729,7 +729,7 @@ while 1:
 宇宙向新一代先驱与探险家招手
 敦促人类征服更远的地方一
 人类将前往太阳系中的其它星球
-不只是为了探访而是为了留下</p>]]></description><link>http://whitespur.top/ma-si-ke-wai-xing-zhi-min-ji-hua-pu-guang-zai-ci-ji-lu/</link><guid isPermaLink="false">324a2ed4-c619-40f2-911c-7f06832145c7</guid><category><![CDATA[马斯克]]></category><category><![CDATA[火星殖民]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Fri, 29 Sep 2017 14:26:12 GMT</pubDate><content:encoded><![CDATA[<p>视频介绍：
+不只是为了探访而是为了留下</p>]]></description><link>http://go2mars.top/ma-si-ke-wai-xing-zhi-min-ji-hua-pu-guang-zai-ci-ji-lu/</link><guid isPermaLink="false">324a2ed4-c619-40f2-911c-7f06832145c7</guid><category><![CDATA[马斯克]]></category><category><![CDATA[火星殖民]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Fri, 29 Sep 2017 14:26:12 GMT</pubDate><content:encoded><![CDATA[<p>视频介绍：
 <a href="http://www.spacex.com/mars">http://www.spacex.com/mars</a> <br>
 可以选择中文字幕，不得不说技术发展真快，自动翻译已经这么先进了，看外语视频再也不用找字幕了
 中文介绍：</p>
@@ -760,13 +760,13 @@ while 1:
 
 <p>A computer program is said to learn from experience E with respect to some task T and some performace measure P,if its performance on T,as measured by P,improves with experience E.</p>
 
-<p>In general, any machine learning problem can be assigned to one of two broad</p>]]></description><link>http://whitespur.top/ji-qi-xue-xi-bi-ji-1/</link><guid isPermaLink="false">0ab086b1-991f-4b0d-8f69-716bfa984c14</guid><category><![CDATA[机器学习]]></category><category><![CDATA[监督学习]]></category><category><![CDATA[非监督学习]]></category><category><![CDATA[回归]]></category><category><![CDATA[分类]]></category><category><![CDATA[聚类]]></category><category><![CDATA[非聚类]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 25 Sep 2017 02:06:56 GMT</pubDate><media:content url="http://whitespur.top/content/images/2017/09/image-39.png" medium="image"/><content:encoded><![CDATA[<h1 id="1">1 概念</h1>
+<p>In general, any machine learning problem can be assigned to one of two broad</p>]]></description><link>http://go2mars.top/ji-qi-xue-xi-bi-ji-1/</link><guid isPermaLink="false">0ab086b1-991f-4b0d-8f69-716bfa984c14</guid><category><![CDATA[机器学习]]></category><category><![CDATA[监督学习]]></category><category><![CDATA[非监督学习]]></category><category><![CDATA[回归]]></category><category><![CDATA[分类]]></category><category><![CDATA[聚类]]></category><category><![CDATA[非聚类]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 25 Sep 2017 02:06:56 GMT</pubDate><media:content url="http://go2mars.top/content/images/2017/09/image-39.png" medium="image"/><content:encoded><![CDATA[<h1 id="1">1 概念</h1>
 
-<img src="http://whitespur.top/content/images/2017/09/image-39.png" alt="机器学习笔记1----Introduction"><p>A computer program is said to learn from experience E with respect to some task T and some performace measure P,if its performance on T,as measured by P,improves with experience E.</p>
+<img src="http://go2mars.top/content/images/2017/09/image-39.png" alt="机器学习笔记1----Introduction"><p>A computer program is said to learn from experience E with respect to some task T and some performace measure P,if its performance on T,as measured by P,improves with experience E.</p>
 
 <p>In general, any machine learning problem can be assigned to one of two broad classifications: <br>
 Supervised learning and Unsupervised learning. <br>
-<img src="http://whitespur.top/content/images/2017/09/image-41.png" alt="机器学习笔记1----Introduction"></p>
+<img src="http://go2mars.top/content/images/2017/09/image-41.png" alt="机器学习笔记1----Introduction"></p>
 
 <p>机器学习算法分类：
 监督学习，非监督学习</p>
@@ -811,7 +811,7 @@ XCopy是由主要由网易的王斌开发的一套流量复制测试工具。XCo
 <p>TCPCopy 包含两部分：TCPCopy client（tcpcopy） 和 TCPCopy server（intercept） ，其中，TCPCopy client 运行在在线系统，用来捕获在线请求数据包，而 TCPCopy server 运行在测试系统，用来做一系列辅助配合工作，如返回响应包头信息、维护路由信息等。 <br>
 <a href="https://github.com/session-replay-tools/tcpcopy">https://github.com/session-replay-tools/tcpcopy</a> <br>
 参考
-<a href="https://blog.hackroad.com/operations-engineer/linux">https://blog.hackroad.com/operations-engineer/linux</a></p>]]></description><link>http://whitespur.top/shi-yong-tcpcopyjin-xing-ya-li-ce-shi/</link><guid isPermaLink="false">ef247361-a81f-4093-be90-2f47c94fb998</guid><category><![CDATA[TCPCopy]]></category><category><![CDATA[压力测试]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Tue, 19 Sep 2017 16:19:31 GMT</pubDate><content:encoded><![CDATA[<p>简介：
+<a href="https://blog.hackroad.com/operations-engineer/linux">https://blog.hackroad.com/operations-engineer/linux</a></p>]]></description><link>http://go2mars.top/shi-yong-tcpcopyjin-xing-ya-li-ce-shi/</link><guid isPermaLink="false">ef247361-a81f-4093-be90-2f47c94fb998</guid><category><![CDATA[TCPCopy]]></category><category><![CDATA[压力测试]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Tue, 19 Sep 2017 16:19:31 GMT</pubDate><content:encoded><![CDATA[<p>简介：
 XCopy是由主要由网易的王斌开发的一套流量复制测试工具。XCopy系列包括 TCPCopy、UDPCopy、MysqlCopy 等开源软件（这些软件都集成在tcpcopy 开源项目内)。曾经应用于网易的广告投放系统，urs系统，nginx hmux协议等系统，避免了上线带来的很多问题。所以很多时候我们指的tcpcopy （广义上的）就包括xcopy的全系统产品。</p>
 
 <p>TCPCopy 包含两部分：TCPCopy client（tcpcopy） 和 TCPCopy server（intercept） ，其中，TCPCopy client 运行在在线系统，用来捕获在线请求数据包，而 TCPCopy server 运行在测试系统，用来做一系列辅助配合工作，如返回响应包头信息、维护路由信息等。 <br>
