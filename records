@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html class="theme-next mist use-motion">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?v=0.5.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="遥望白鹿巷">
+    <meta property="og:url" content="http://go2mars.top">
+    <meta property="og:site_name" content="遥望白鹿巷">
+    <meta property="og:description" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="遥望白鹿巷">
+    <meta name="twitter:description" content="">
+    <title>records</title>
+
+    <!-- Style Sheet-->
+    <link href="assets/vendors/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css">
+    <link href="assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css">
+    <link href="assets/vendors/highlight/css/github.css" rel="stylesheet">
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <!-- End Style-->
+    <style type="text/css">.fancybox-margin{margin-right:15px;}</style>
+
+    <script type="text/javascript" id="hexo.configuration">
+        var NexT = window.NexT || {};
+        var CONFIG = {
+            scheme: 'Mist',
+            sidebar: {"position":"right","display":"post"},
+            fancybox: true,
+            motion: true
+        };
+    </script>
+    <div style="display: none"><link rel="canonical" href="http://go2mars.top/records/" />
+    <meta name="referrer" content="origin" />
+    <script type="text/javascript" src="shared/ghost-url.min.js"></script>
+<script type="text/javascript">
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "1b3e089f4eb6"
+});
+</script>
+    <meta name="generator" content="Ghost 0.7" />
+    <link rel="alternate" type="application/rss+xml" title="遥望白鹿巷" href="http://go2mars.top/rss/" />
+    <div id="site-config">
+	{
+	    "author_name": "遥望白鹿巷",
+	    "links": [
+	    {
+	        "name": "openai",
+	        "link": "https://openai.com/"
+	    },
+	    {
+	        "name": "编程随想大神",
+	        "link": "https://program-think.blogspot.com/"
+	    },
+	    {
+	        "name": "机器学习课程",
+	        "link": "https://www.coursera.org/learn/machine-learning/home/info"
+	    }
+	    ]
+	}
+	</div></div>
+
+
+</head>
+
+<script>
+    var siteConfig = JSON.parse($("#site-config").html());
+    var duoshuo_name = siteConfig.duoshuo_name;
+    var author_name = siteConfig.author_name;
+    var link_list = siteConfig.links;
+</script>
+
+<body class="post-template page-template page tag-gui-dang page-records page-template-records">
+<div class="container one-collumn sidebar-position-left page-home">
+<div class="headband"></div>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-meta ">
+            <div class="custom-logo-site-title">
+                <a href="http://go2mars.top" class="brand" rel="start" >
+                    <span class="logo-line-before "><i class=""></i></span>
+                    <span class="site-title">遥望白鹿巷</span>
+                    <span class="logo-line-after"><i class=""></i></span>
+                </a>
+            </div>
+        </div>
+            <div class="site-nav-toggle">
+                <button>
+                    <span class="btn-bar"></span>
+                    <span class="btn-bar"></span>
+                    <span class="btn-bar"></span>
+                </button>
+            </div>
+            <nav class="site-nav">
+                <ul id="menu" class="menu menu-left">
+        <li class="menu-item menu-item-home menu-item-active nav-" role="presentation">
+            <a href="https://whitespur.github.io" rel="section">
+                <i class="menu-item-icon fa fa-home fa-fw"></i> <br>首页
+            </a>
+        </li>
+        <li class="menu-item menu-item-home menu-item-active nav-" role="presentation">
+            <a href="https://whitespur.github.io/records.html" rel="section">
+                <i class="menu-item-icon fa fa-home fa-fw"></i> <br>归档
+            </a>
+        </li>
+        <li class="menu-item menu-item-home menu-item-active nav-" role="presentation">
+            <a href="https://whitespur.github.io/tags.html" rel="section">
+                <i class="menu-item-icon fa fa-home fa-fw"></i> <br>标签
+            </a>
+        </li>
+        <li class="menu-item menu-item-home menu-item-active nav-github" role="presentation">
+            <a href="https://github.com/whitespur/" rel="section">
+                <i class="menu-item-icon fa fa-home fa-fw"></i> <br>github
+            </a>
+        </li>
+</ul>
+                <div class="site-search">
+                    <form class="site-search-form">
+                        <input type="text" id="search-input" class="search-input default-search-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main id="main" class="main">
+        <div class="main-inner ">
+            
+<div class="content-wrap page-archive">
+    <div id="content" class="content">
+        <section id="posts" class="posts-collapse">
+            <span class="archive-move-on"></span>
+            <span class="archive-page-counter">好! 目前共计&nbsp;33&nbsp;篇日志。 继续努力。</span>
+            <div id="hidden-temp-container" style="display: none;">
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="bo-ke-da-jian-xiao-jie/index.html" itemprop="url">
+                                        <span itemprop="name">博客搭建小结</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        11-13
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="zhuan-zai-yi-li-jie-lstm-wang-luo-understanding-lstm-networks-by-colah/index.html" itemprop="url">
+                                        <span itemprop="name">转载-（译）理解 LSTM 网络 （Understanding LSTM Networks by colah）</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        10-30
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="dai-jie-jue-wen-ti-he-dai-xue-xi-ji-zhu/index.html" itemprop="url">
+                                        <span itemprop="name">待解决问题，待学习技术，待了解公司</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        10-30
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="liao-tian-ji-qi-ren-yi-qi-she-ji-fang-an/index.html" itemprop="url">
+                                        <span itemprop="name">聊天机器人一期技术方案设计</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        10-30
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="zi-ji-dong-shou-kai-fa-liao-tian-ji-qi-ren-xi-lie/index.html" itemprop="url">
+                                        <span itemprop="name">自己动手开发聊天机器人chatbot系列1----总览</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        10-23
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="ji-qi-xue-xi-bi-ji-2-xian-xing-dai-shu/index.html" itemprop="url">
+                                        <span itemprop="name">机器学习笔记2----线性代数</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        10-21
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="chao-zhi-neng-ti-du-shu-bi-ji-1/index.html" itemprop="url">
+                                        <span itemprop="name">超智能体读书笔记1</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        10-06
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="xie-cheng-shi-shi-yao-you-shi-yao-hao-chu-yu-jin-cheng-xian-cheng-de-qu-bie/index.html" itemprop="url">
+                                        <span itemprop="name">协程是什么，有什么好处，与进程，线程的区别，理解并发与并行</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        10-06
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="cong-liao-tian-ji-qi-ren-xian-zhuang-kan-ge-da-gong-si-ren-gong-zhi-neng-fa-zhan-bu-ju/index.html" itemprop="url">
+                                        <span itemprop="name">从聊天机器人现状看各大公司人工智能的布局发展</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        10-04
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="bo-ke-gong-neng-sheng-ji/index.html" itemprop="url">
+                                        <span itemprop="name">博客功能升级和后续计划</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        10-02
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="guo-qing-10yue-2hao-sui-gan/index.html" itemprop="url">
+                                        <span itemprop="name">HelloWorld！开通公众号了</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        10-01
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="guo-qing-ji-hua/index.html" itemprop="url">
+                                        <span itemprop="name">国庆计划</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        10-01
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="pyenvda-jian-pythonxu-ni-kai-fa-huan-jing/index.html" itemprop="url">
+                                        <span itemprop="name">使用pyenv和virtualenv搭建python虚拟开发环境</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        09-30
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="ma-si-ke-wai-xing-zhi-min-ji-hua-pu-guang-zai-ci-ji-lu/index.html" itemprop="url">
+                                        <span itemprop="name">马斯克外星殖民计划曝光----在此记录</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        09-29
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="ji-qi-xue-xi-bi-ji-1/index.html" itemprop="url">
+                                        <span itemprop="name">机器学习笔记1----Introduction</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        09-25
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="shi-yong-tcpcopyjin-xing-ya-li-ce-shi/index.html" itemprop="url">
+                                        <span itemprop="name">使用TCPCopy进行压力测试</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        09-20
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="macban-excelzi-ding-yi-tian-chong-xi-lie/index.html" itemprop="url">
+                                        <span itemprop="name">mac版excel自定义填充系列</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        09-20
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="mysqlxing-neng-you-hua/index.html" itemprop="url">
+                                        <span itemprop="name">TODO mysql性能优化</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        09-19
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="du-shu-bi-ji-tui-jian-xi-tong-shi-jian/index.html" itemprop="url">
+                                        <span itemprop="name">推荐系统实践-读书笔记1（好的推荐系统）</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        09-18
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="zhuan-zai-dang-wo-men-tan-lun-bot-de-shi-hou-wo-men-zai-tan-lun-shi-yao/index.html" itemprop="url">
+                                        <span itemprop="name">转载----当我们谈论 Bot 的时候，我们在谈论什么</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        09-17
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="jmeterji-chu-zhi-jmeterji-chu-gai-nian/index.html" itemprop="url">
+                                        <span itemprop="name">TODO Jmeter基础</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        09-14
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="ya-li-ce-shi-gong-ju-jmeterji-wen-ti-jie-jue/index.html" itemprop="url">
+                                        <span itemprop="name">压力测试工具JMeter及问题解决</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        09-14
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="ji-qun-gun-dong-zhong-qi/index.html" itemprop="url">
+                                        <span itemprop="name">Elasticsearch集群滚动重启</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        09-14
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="java-ji-he-zheng-li-zong-jie/index.html" itemprop="url">
+                                        <span itemprop="name">TODO java 集合整理总结</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        08-31
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="zhong-duan-qi-gui-hua/index.html" itemprop="url">
+                                        <span itemprop="name">毕业流水账+中短期规划</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        08-30
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="elasticsearchxue-xi-zhai-yao-er-ji-ben-gai-nian-he-yuan-li/index.html" itemprop="url">
+                                        <span itemprop="name">Elasticsearch学习摘要二----基本概念和原理</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        08-30
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="she-ji-mo-shi-zhi-dan-li-mo-shi/index.html" itemprop="url">
+                                        <span itemprop="name">设计模式之单例模式</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        08-29
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="sou-suo-yin-qing-jian-jie/index.html" itemprop="url">
+                                        <span itemprop="name">搜索引擎简介</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        08-26
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="todo-jettyxue-xi/index.html" itemprop="url">
+                                        <span itemprop="name">Jetty  安装配置、特性、以及后期优化</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        08-25
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="todo-elasticsearchxue-xi-bi-ji/index.html" itemprop="url">
+                                        <span itemprop="name">Elasticsearch学习摘要一</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        08-23
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="springbootzheng-he-es/index.html" itemprop="url">
+                                        <span itemprop="name">spring-data-elasticsearch预研</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        08-23
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="da-jian-ghostbo-ke-xi-tong/index.html" itemprop="url">
+                                        <span itemprop="name">接触的几套博客系统</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        08-20
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+                        <article class="" itemscope="" itemtype="http://schema.org/Article">
+                            <header class="post-header">
+                                <h1 class="post-title">
+                                    <a class="post-title-link" href="welcome-to-ghost/index.html" itemprop="url">
+                                        <span itemprop="name">欢迎使用 Ghost 博客系统</span>
+                                    </a>
+                                </h1>
+                                <div class="post-meta">
+                                    <time year="2017">
+                                        08-20
+                                    </time>
+                                </div>
+                            </header>
+                        </article>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+        <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+        <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+        <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+</div>
+<aside id="sidebar" class="sidebar" style="display: none; width: 320px;">
+    <div class="sidebar-inner">
+                <section class="site-overview sidebar-panel" style="display: block;">
+            <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                <img class="site-author-image" itemprop="image" src="records" alt="遥望白鹿巷">
+                <p class="site-author-name" id="site-author-name" itemprop="name"></p>
+                <p class="site-description motion-element" itemprop="description" >哪来的天才</p>
+            </div>
+            <nav class="site-state motion-element" >
+                <div class="site-state-item site-state-posts">
+                    <a href="records">
+                        <span class="site-state-item-count">
+                                33
+                        </span>
+                        <span class="site-state-item-name">文章</span>
+                    </a>
+                </div>
+                <!-- <div class="site-state-item site-state-categories">
+      <a href="/categories">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span>
+      </a>
+    </div>-->
+                <div class="site-state-item site-state-categories">
+                    <a href="tags">
+                        <span class="site-state-item-count">
+                                80
+                        </span>
+                        <span class="site-state-item-name">标签</span>
+                    </a>
+                </div>
+                <!--
+                <div class="site-state-item site-state-tags">
+                    <a href="/tags">
+                        <span class="site-state-item-count">62</span>
+                        <span class="site-state-item-name">标签</span>
+                    </a>
+                </div>-->
+            </nav>
+            <div class="feed-link motion-element" >
+                <a href="rss" rel="alternate"><i class="fa fa-rss"></i>RSS</a>
+            </div>
+            <div class="links-of-author motion-element" >
+            </div>
+            <div class="links-of-author motion-element" id="site-links">
+                <p class="site-author-name">友情链接</p>
+
+                <!--友情链接位置，在后台修改head inject配置即可-->
+
+            </div>
+        </section>
+<script>
+    $("#site-author-name").html(author_name);
+    var i = 0;
+    for (i = 0; i < link_list.length; i++)
+    {
+        $("#site-links").html($("#site-links").html() + '<span class="links-of-author-item">' +
+                '<a href="http://localhost:2368/records/'&#32;+&#32;link_list[i].link&#32;+&#32;'" target="_blank">' +
+                link_list[i].name +
+                '</a></span>');
+    }
+</script>    </div>
+</aside>
+<script type="text/javascript">
+    var counter = 0;
+    var currentYear;
+    $("#hidden-temp-container article").each(function(){
+        if (counter == 0){
+            currentYear = $(this).find("time").attr("year");
+            $("#posts").html($("#posts").html() + '<div class="collection-title">' +
+                    '<h2 class="archive-year motion-element" id="archive-year-' + currentYear + '" style="opacity: 1;">' + currentYear + '</h2>' +
+                    '</div>');
+        }
+        if($(this).find("time").attr("year") < currentYear) {
+            currentYear = $(this).find("time").attr("year");
+            $("#posts").html($("#posts").html() + '<div class="collection-title">' +
+                    '<h2 class="archive-year motion-element" id="archive-year-' + currentYear + '" style="opacity: 1;">' + currentYear + '</h2>' +
+                    '</div>');
+        }
+        $(this).addClass("post post-type-normal");
+        $("#posts").append($(this));
+        counter += 1;
+    });
+</script>
+        </div>
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="ghost-footer">
+                
+            </div>
+            <div class="powered-by">
+                Powered&nbsp;by&nbsp;<a class="theme-link" href="http://ghost.org">Ghost</a>
+            </div>
+            <div class="theme-info">
+                Theme&nbsp;-&nbsp;<a class="theme-link" href="https://github.com/microud/ghost-theme-next">NexT.Mist</a>
+            </div>
+        </div>
+    </footer>
+    <div class="back-to-top"></div>
+</div>
+
+<script>
+$("#search-input").keypress(function(key){
+    if (key.keyCode == 13)
+    {
+        window.open("/search/?keyword=" + $(this).val(), "_blank");
+    }
+
+});
+
+
+</script>
+<script type="text/javascript" src="assets/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="assets/vendors/velocity/velocity.ui.min.js"></script>
+<script type="text/javascript" src="assets/vendors/fastclick/lib/fastclick.min.js"></script>
+<script type="text/javascript" src="assets/vendors/jquery_lazyload/jquery.lazyload.js"></script>
+<script type="text/javascript" src="assets/vendors/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="assets/vendors/ua-parser-js/ua-parser.pack.js"></script>
+<script type="text/javascript" src="assets/vendors/highlight/script/highlight.pack.js"></script>
+
+<script type="text/javascript" src="assets/js/motion.js"></script>
+<script type="text/javascript" src="assets/js/utils.js"></script>
+<script type="text/javascript" src="assets/js/affix.js"></script>
+<script type="text/javascript" src="assets/js/post-details.js"></script>
+<script type="text/javascript" src="assets/js/scrollspy.js"></script>
+
+<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+</body>
+</html>
