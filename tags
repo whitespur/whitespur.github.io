@@ -137,7 +137,7 @@ ghost.init({
             <div class="tag-cloud">
                 <div class="tag-cloud-title">
                     目前共计&nbsp;
-                    85
+                    96
                 &nbsp;个标签
                 </div>
                 <div class="tag-cloud-tags">
@@ -177,7 +177,7 @@ ghost.init({
                             <a href="tag/jian-du-xue-xi/index.html" post-num="1" class="tags-cloud">监督学习</a>
                             <a href="tag/fei-jian-du-xue-xi/index.html" post-num="1" class="tags-cloud">非监督学习</a>
                             <a href="tag/hui-gui/index.html" post-num="1" class="tags-cloud">回归</a>
-                            <a href="tag/fen-lei/index.html" post-num="1" class="tags-cloud">分类</a>
+                            <a href="tag/fen-lei/index.html" post-num="2" class="tags-cloud">分类</a>
                             <a href="tag/ju-lei/index.html" post-num="1" class="tags-cloud">聚类</a>
                             <a href="tag/fei-ju-lei/index.html" post-num="1" class="tags-cloud">非聚类</a>
                             <a href="tag/ma-si-ke/index.html" post-num="1" class="tags-cloud">马斯克</a>
@@ -195,7 +195,7 @@ ghost.init({
                             <a href="tag/fang-wen-tong-ji/index.html" post-num="1" class="tags-cloud">访问统计</a>
                             <a href="tag/ping-lun/index.html" post-num="1" class="tags-cloud">评论</a>
                             <a href="tag/sheng-ji/index.html" post-num="1" class="tags-cloud">升级</a>
-                            <a href="tag/liao-tian-ji-qi-ren/index.html" post-num="3" class="tags-cloud">聊天机器人</a>
+                            <a href="tag/liao-tian-ji-qi-ren/index.html" post-num="4" class="tags-cloud">聊天机器人</a>
                             <a href="tag/ren-gong-zhi-neng/index.html" post-num="1" class="tags-cloud">人工智能</a>
                             <a href="tag/gu-ge/index.html" post-num="1" class="tags-cloud">谷歌</a>
                             <a href="tag/ya-ma-xun/index.html" post-num="1" class="tags-cloud">亚马逊</a>
@@ -214,7 +214,7 @@ ghost.init({
                             <a href="tag/tu-ling-ce-shi/index.html" post-num="1" class="tags-cloud">图灵测试</a>
                             <a href="tag/ji-zhu-fang-an-she-ji/index.html" post-num="1" class="tags-cloud">技术方案设计</a>
                             <a href="tag/lstm/index.html" post-num="1" class="tags-cloud">LSTM</a>
-                            <a href="tag/shang-xia-wen-li-jie/index.html" post-num="1" class="tags-cloud">上下文理解</a>
+                            <a href="tag/shang-xia-wen-li-jie/index.html" post-num="2" class="tags-cloud">上下文理解</a>
                             <a href="tag/gui-dang/index.html" post-num="0" class="tags-cloud">归档</a>
                             <a href="tag/bo-ke-da-jian/index.html" post-num="1" class="tags-cloud">博客搭建</a>
                             <a href="tag/ghost-tag/index.html" post-num="2" class="tags-cloud">ghost</a>
@@ -226,6 +226,17 @@ ghost.init({
                             <a href="tag/datax/index.html" post-num="1" class="tags-cloud">datax</a>
                             <a href="tag/canal/index.html" post-num="1" class="tags-cloud">canal</a>
                             <a href="tag/bo-ke-fa-bu/index.html" post-num="1" class="tags-cloud">博客发布</a>
+                            <a href="tag/zhi-shi-tu-pu/index.html" post-num="3" class="tags-cloud">知识图谱</a>
+                            <a href="tag/dui-hua-guan-li/index.html" post-num="1" class="tags-cloud">对话管理</a>
+                            <a href="tag/shen-du-xue-xi/index.html" post-num="1" class="tags-cloud">深度学习</a>
+                            <a href="tag/yu-yan/index.html" post-num="1" class="tags-cloud">预研</a>
+                            <a href="tag/pa-chong/index.html" post-num="1" class="tags-cloud">爬虫</a>
+                            <a href="tag/pyspider/index.html" post-num="1" class="tags-cloud">pyspider</a>
+                            <a href="tag/shi-ti/index.html" post-num="1" class="tags-cloud">实体</a>
+                            <a href="tag/san-yuan-zu/index.html" post-num="1" class="tags-cloud">三元组</a>
+                            <a href="tag/shu-xing/index.html" post-num="1" class="tags-cloud">属性</a>
+                            <a href="tag/guan-xi/index.html" post-num="1" class="tags-cloud">关系</a>
+                            <a href="tag/gou-jian/index.html" post-num="1" class="tags-cloud">构建</a>
                 </div>
             </div>
         </div>
@@ -250,7 +261,7 @@ ghost.init({
                 <div class="site-state-item site-state-posts">
                     <a href="records">
                         <span class="site-state-item-count">
-                                35
+                                39
                         </span>
                         <span class="site-state-item-name">文章</span>
                     </a>
@@ -264,7 +275,7 @@ ghost.init({
                 <div class="site-state-item site-state-categories">
                     <a href="tags">
                         <span class="site-state-item-count">
-                                85
+                                96
                         </span>
                         <span class="site-state-item-name">标签</span>
                     </a>

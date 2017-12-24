@@ -1,4 +1,274 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[遥望白鹿巷]]></title><description><![CDATA[哪来的天才]]></description><link>http://go2mars.top/</link><generator>Ghost 0.7</generator><lastBuildDate>Sun, 24 Dec 2017 09:09:33 GMT</lastBuildDate><atom:link href="http://go2mars.top/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[博客编写发布流程]]></title><description><![CDATA[<h1 id="1ghost">1 本地启动ghost博客</h1>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[遥望白鹿巷]]></title><description><![CDATA[哪来的天才]]></description><link>http://go2mars.top/</link><generator>Ghost 0.7</generator><lastBuildDate>Sun, 24 Dec 2017 09:39:50 GMT</lastBuildDate><atom:link href="http://go2mars.top/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[TODO 知识图谱学习记录二之构建知识图谱]]></title><description><![CDATA[<p>项目实战：如何构建知识图谱
+<a href="https://www.jiqizhixin.com/articles/2017-09-14-4">https://www.jiqizhixin.com/articles/2017-09-14-4</a></p>
+
+<p>你不得不看的六篇知识图谱落地好文
+<a href="http://www.infoq.com/cn/news/2017/11/knowledge-graph-articles">http://www.infoq.com/cn/news/2017/11/knowledge-graph-articles</a></p>
+
+<p>狗尾草科技王昊奋：当知识图谱遇上聊天机器人
+<a href="https://www.jqr.com/news/005041">https://www.jqr.com/news/005041</a></p>
+
+<p>KBQA第三期-聊天与知识问答相结合 <br>
+<a href="http://www.paperweekly.site/collections/296/papers">http://www.paperweekly.site/collections/296/papers</a></p>]]></description><link>http://go2mars.top/zhi-shi-tu-pu-xue-xi-ji-lu-er-zhi-gou-jian-zhi-shi-tu-pu/</link><guid isPermaLink="false">790bf5bc-1151-4f65-b2d6-8e8a7c42f078</guid><category><![CDATA[知识图谱]]></category><category><![CDATA[构建]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 24 Dec 2017 09:38:38 GMT</pubDate><content:encoded><![CDATA[<p>项目实战：如何构建知识图谱
+<a href="https://www.jiqizhixin.com/articles/2017-09-14-4">https://www.jiqizhixin.com/articles/2017-09-14-4</a></p>
+
+<p>你不得不看的六篇知识图谱落地好文
+<a href="http://www.infoq.com/cn/news/2017/11/knowledge-graph-articles">http://www.infoq.com/cn/news/2017/11/knowledge-graph-articles</a></p>
+
+<p>狗尾草科技王昊奋：当知识图谱遇上聊天机器人
+<a href="https://www.jqr.com/news/005041">https://www.jqr.com/news/005041</a></p>
+
+<p>KBQA第三期-聊天与知识问答相结合 <br>
+<a href="http://www.paperweekly.site/collections/296/papers">http://www.paperweekly.site/collections/296/papers</a></p>]]></content:encoded></item><item><title><![CDATA[知识图谱学习记录一之基本知识概念]]></title><description><![CDATA[<h1 id="1">1 基本概念：</h1>
+
+<p><a href="https://mp.weixin.qq.com/s/bhk6iZdphif74HJlyUZOBQ">https://mp.weixin.qq.com/s/bhk6iZdphif74HJlyUZOBQ</a></p>
+
+<p>知识图谱中包含三种节点：</p>
+
+<p>实体: 指的是具有可区别性且独立存在的某种事物。如某一个人、某一个城市、某一种植物等、某一种商品等等。世界万物有具体事物组成，此指实体。如图1的“中国”、“美国”、“日本”等。，实体是知识图谱中的最基本元素，不同的实体间存在不同的关系。
+语义类（概念）：具有同种特性的实体构成的集合，如国家、民族、书籍、电脑等。 概念主要指集合、类别、对象类型、事物的种类，例如人物、地理等。
+内容: 通常作为实体和语义类的名字、描述、解释等，可以由文本、图像、音视频等来表达。
+属性(值): 从一个实体指向它的属性值。不同的属性类型对应于不同类型属性的边。属性值主要指对象指定属性的值。</p>]]></description><link>http://go2mars.top/todo-zhi-shi-tu-pu-xue-xi-ji-lu/</link><guid isPermaLink="false">60a56bd3-1cea-4c51-8522-f2c0dd96782a</guid><category><![CDATA[知识图谱]]></category><category><![CDATA[实体]]></category><category><![CDATA[三元组]]></category><category><![CDATA[属性]]></category><category><![CDATA[关系]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 24 Dec 2017 09:37:23 GMT</pubDate><media:content url="http://go2mars.top/content/images/2017/12/image-15.png" medium="image"/><content:encoded><![CDATA[<h1 id="1">1 基本概念：</h1>
+
+<img src="http://go2mars.top/content/images/2017/12/image-15.png" alt="知识图谱学习记录一之基本知识概念"><p><a href="https://mp.weixin.qq.com/s/bhk6iZdphif74HJlyUZOBQ">https://mp.weixin.qq.com/s/bhk6iZdphif74HJlyUZOBQ</a></p>
+
+<p>知识图谱中包含三种节点：</p>
+
+<p>实体: 指的是具有可区别性且独立存在的某种事物。如某一个人、某一个城市、某一种植物等、某一种商品等等。世界万物有具体事物组成，此指实体。如图1的“中国”、“美国”、“日本”等。，实体是知识图谱中的最基本元素，不同的实体间存在不同的关系。
+语义类（概念）：具有同种特性的实体构成的集合，如国家、民族、书籍、电脑等。 概念主要指集合、类别、对象类型、事物的种类，例如人物、地理等。
+内容: 通常作为实体和语义类的名字、描述、解释等，可以由文本、图像、音视频等来表达。
+属性(值): 从一个实体指向它的属性值。不同的属性类型对应于不同类型属性的边。属性值主要指对象指定属性的值。如图1所示的“面积”、“人口”、“首都”是几种不同的属性。属性值主要指对象指定属性的值，例如960万平方公里等。
+关系: 形式化为一个函数，它把kk个点映射到一个布尔值。在知识图谱上，关系则是一个把kk个图节点(实体、语义类、属性值)映射到布尔值的函数。
+基于上述定义。基于三元组是知识图谱的一种通用表示方式，即</p>
+
+<p>是知识库中的实体集合，共包含|E|种不同实体； </p>
+
+<p>是知识库中的关系集合，共包含|R|种不同关系；</p>
+
+<p>代表知识库中的三元组集合</p>
+
+<p><img src="http://go2mars.top/content/images/2017/12/image-13.png" alt="知识图谱学习记录一之基本知识概念"></p>
+
+<h2 id="11">1.1 知识图谱的逻辑结构</h2>
+
+<p>知识图谱在逻辑上可分为模式层与数据层两个层次，数据层主要是由一系列的事实组成，而知识将以事实为单位进行存储。如果用(实体1，关系，实体2)、(实体、属性，属性值)这样的三元组来表达事实，可选择图数据库作为存储介质，例如开源的Neo4j[7]、Twitter的FlockDB[8]、sones的GraphDB[9]等。模式层构建在数据层之上，是知识图谱的核心，通常采用本体库来管理知识图谱的模式层。本体是结构化知识库的概念模板，通过本体库而形成的知识库不仅层次结构较强，并且冗余程度较小。</p>
+
+<h2 id="12">1.2  知识图谱的体系架构</h2>
+
+<p><img src="http://go2mars.top/content/images/2017/12/image-16.png" alt="知识图谱学习记录一之基本知识概念"></p>
+
+<h1 id="2">2 知识图谱的构建过程设计的关键技术</h1>
+
+<p><a href="http://blog.csdn.net/zhangqiang1104/article/details/50212227">http://blog.csdn.net/zhangqiang1104/article/details/50212227</a></p>
+
+<h2 id="21">2.1概念和实体学习</h2>
+
+<p>正如Google的辛格博士在介绍知识图谱时提到的：“The world is not made of strings , but is madeof things.”，这里的“thing”是和传统的互联网上的网页相比较的，知识图谱的目标在于描述真实世界中存在的各种实体和概念，以及这些实体、概念之间的关联关系。知识图谱可以看成是一张巨大的图，图中的节点表示实体或概念，而图中的边则由关系构成。</p>
+
+<p><a href="http://blog.csdn.net/zhangqiang1104/article/details/50212261">http://blog.csdn.net/zhangqiang1104/article/details/50212261</a></p>
+
+<p>数据源：</p>
+
+<p>内部：</p>
+
+<p>mysql，</p>
+
+<p>外部：</p>
+
+<p>专业领域：点评，天猫等</p>
+
+<p>爬虫es获取</p>
+
+<p>通用领域：</p>
+
+<p>开放链接数据和开放知识库严格而言属于半结构化的数据，这些数据通常以图形式的数据结构存储。最知名的为YAGO[14]、DBPedia[15]和Freebase[16]，中文通用概念知识图谱（CN-Probase）</p>
+
+<p>在线百科：百度百科，互动百科</p>
+
+<h2 id="22">2.2实体对齐（同义关系学习）</h2>
+
+<p>关于知识图谱的实体（概念）对齐的目标是，先把从三类百科中学习到的实体（概念）中描述同一目标的进行合并，再把经过合并后的结果实体集与从开放链接数据中抽取的实体进行合并。</p>
+
+<p>2.2.1基于百科结构化数据的百科实体对齐 <br>
+2.2.2基于的自监督百科实体对齐方法 <br>
+自动生成训练语料</p>
+
+<p>支持向量机的由Christopher J.C. Burges于1998年提出，基本目标是把一堆n维空间里的点用n-1维的曲面分开来</p>
+
+<p>在现实应用的数据中，可能不存在线性可分的边界，此时可以通过数学方法将它从低维空间转化为高维空间，然后它就变得存在线性可分的边界了。这个投影过程采取了一种叫核的技术，转换过程中使用的函数叫做核函数，常见的核函数有线性核函数、多项式核函数、径向基核函数和Sigmoid核函数等。</p>
+
+<p>语料构建完毕后，接下来便可以训练模型了。本文使用的实现是libSVM，它是一个简单易用的软件包，可以解决分类问题、回归问题和分布估计问题等，并且可以有效地多类问题</p>
+
+<p>2.2.3基于语言学模式的方法 <br>
+2.2.4基于CRF的开放同义关系学习 <br>
+序列化标注问题指为一个观察序列中的每个组成单元赋予类别标签，其输入X是一个观测序列，输出Y是一些需要依据观测序列来推导的隐式状态；所有的输出yi形成一条链，每个y(i-1)至少和yi之间有一条边相连，这也保证了它们是遵守一阶马尔可夫假设的。</p>
+
+<p>中文翻译为条件随机场或条件随机域，是一种机器学习模型。算法的过程，主要包括五步：选取作为同义关系的候选实体，标注机器学习所需要的语料，确定需要训练模型需要使用的特征，训练同义关系抽取模型，以及把学习的模型用于更丰富的句子中以抽取同义实体。本文把从文本句子中抽取同义实体建模成序列化标注问题，并使用CRF作为机器学习模型。</p>
+
+<h2 id="23">2.3 上下位关系学习</h2>
+
+<p>2.3.1 从开放链接数据集中抽取上下位关系 <br>
+2.3.2 从百科中抽取上下位关系 <br>
+百科中描述了两种上下位关系，一种是类别之间，另一种是类别和文章之间，前者对应概念间的层次关系，后者对应实体和概念之间的从属关系。</p>
+
+<p>2.3.3基于开放上下位关系学习方法 <br>
+基于CRF的开放上下位关系学习与基于CRF的开放同义关系学习非常相似</p>
+
+<p>2.3.4分类树整合  </p>
+
+<h2 id="24">2.4 属性学习</h2>
+
+<h1 id="3">3 知识的应用</h1>
+
+<h2 id="31">3.1 语义检索</h2>
+
+<p>语义检索分为三个过程：</p>
+
+<p>（1）通过分词和实体识别从输入中识别概念、实体和属性；</p>
+
+<p>（2）结合知识图谱的数据模式，对识别的结果进行理解；</p>
+
+<p>（3）把理解的结果在目标数据集上进行搜索并返回结果；</p>]]></content:encoded></item><item><title><![CDATA[TODO 爬虫学习记录]]></title><description><![CDATA[<p>爬虫框架采用了pyspider</p>
+
+<h1 id="1pyspider">1 pyspider文档</h1>
+
+<p><a href="http://docs.pyspider.org/en/latest/">http://docs.pyspider.org/en/latest/</a></p>
+
+<p><a href="http://www.pyspider.cn/book/pyspider/pyspider-Quickstart-2.html">http://www.pyspider.cn/book/pyspider/pyspider-Quickstart-2.html</a></p>
+
+<p><a href="http://phantomjs.org/quick-start.html">http://phantomjs.org/quick-start.html</a></p>
+
+<p><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000">https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000</a></p>
+
+<p><a href="http://www.cnblogs.com/hiddenfox/p/virtualenv-python3.html">http://www.cnblogs.com/hiddenfox/p/virtualenv-python3.html</a></p>
+
+<h1 id="2">2 问题记录：</h1>
+
+<p>解决mac pyspider运行出错的问题：</p>
+
+<p>ImportError: pycurl: libcurl link-time ssl backend (openssl) is different</p>]]></description><link>http://go2mars.top/pa-chong-xue-xi-ji-lu/</link><guid isPermaLink="false">84b81b50-7859-4bd9-8e9a-c391765ca32f</guid><category><![CDATA[爬虫]]></category><category><![CDATA[pyspider]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 24 Dec 2017 09:32:36 GMT</pubDate><content:encoded><![CDATA[<p>爬虫框架采用了pyspider</p>
+
+<h1 id="1pyspider">1 pyspider文档</h1>
+
+<p><a href="http://docs.pyspider.org/en/latest/">http://docs.pyspider.org/en/latest/</a></p>
+
+<p><a href="http://www.pyspider.cn/book/pyspider/pyspider-Quickstart-2.html">http://www.pyspider.cn/book/pyspider/pyspider-Quickstart-2.html</a></p>
+
+<p><a href="http://phantomjs.org/quick-start.html">http://phantomjs.org/quick-start.html</a></p>
+
+<p><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000">https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000</a></p>
+
+<p><a href="http://www.cnblogs.com/hiddenfox/p/virtualenv-python3.html">http://www.cnblogs.com/hiddenfox/p/virtualenv-python3.html</a></p>
+
+<h1 id="2">2 问题记录：</h1>
+
+<p>解决mac pyspider运行出错的问题：</p>
+
+<p>ImportError: pycurl: libcurl link-time ssl backend (openssl) is different from compile-time ssl backend (none/other)</p>
+
+<p><a href="https://stackoverflow.com/questions/21096436/ssl-backend-error-when-using-openssl">https://stackoverflow.com/questions/21096436/ssl-backend-error-when-using-openssl</a></p>
+
+<p>pip uninstall pycurl <br>
+export PYCURL<em>SSL</em>LIBRARY=openssl <br>
+export LDFLAGS=-L/usr/local/opt/openssl/lib;export CPPFLAGS=-I/usr/local/opt/openssl/include;pip install pycurl --compile --no-cache-dir  </p>
+
+<h1 id="">开发流程</h1>
+
+<p><a href="https://www.zybuluo.com/twein89/note/993829">https://www.zybuluo.com/twein89/note/993829</a></p>]]></content:encoded></item><item><title><![CDATA[智能机器人一期总结和后期技术预研]]></title><description><![CDATA[<h1 id="1">1 现状和待解决问题</h1>
+
+<p>现状：目前一期实现了检索型单轮对话机器人，相关技术方案看前面文章</p>
+
+<p><img src="http://go2mars.top/content/images/2017/12/image-2.png" alt=""></p>
+
+<p>相关意见反馈：一期问题反馈与处理进度</p>
+
+<h2 id="11">1.1 推荐结果不理想</h2>
+
+<p>推荐不理想有多个原因，</p>
+
+<p>1.1.1 语音识别不准确，例如说“鲜丰水果”识别为“先锋水果”，依赖与外部百度语音，上传专业词库，有一定效果</p>
+
+<p>1.1.2 用户输入千变万化，例如说“我想找点吃的” “推荐一下最便宜的商家” ”我在来福士，这里有什么好玩的“ 等等，目前只能尽量搜集常见问法，匹配到推荐问法后，词法分析提取对应的名词和形容词进行搜索，但是不同语境下的词性也会不同，例如”新发现“，可能是一个名词，也可能是动词，还有可能是形容词+动词。</p>
+
+<h2 id="12">1.2 扩展到其他领域：</h2>
+
+<p>场景：</p>
+
+<p>XX内部：例如：“我的券为什么用不了”“我的退款为什么还没到账”</p>]]></description><link>http://go2mars.top/todo-ji-qi-ren-yi-qi-zong-jie/</link><guid isPermaLink="false">ebe36303-46ee-448f-879b-c6938826aeca</guid><category><![CDATA[聊天机器人]]></category><category><![CDATA[知识图谱]]></category><category><![CDATA[上下文理解]]></category><category><![CDATA[分类]]></category><category><![CDATA[对话管理]]></category><category><![CDATA[深度学习]]></category><category><![CDATA[预研]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 24 Dec 2017 09:29:57 GMT</pubDate><media:content url="http://go2mars.top/content/images/2017/12/image-4.png" medium="image"/><content:encoded><![CDATA[<h1 id="1">1 现状和待解决问题</h1>
+
+<img src="http://go2mars.top/content/images/2017/12/image-4.png" alt="智能机器人一期总结和后期技术预研"><p>现状：目前一期实现了检索型单轮对话机器人，相关技术方案看前面文章</p>
+
+<p><img src="http://go2mars.top/content/images/2017/12/image-2.png" alt="智能机器人一期总结和后期技术预研"></p>
+
+<p>相关意见反馈：一期问题反馈与处理进度</p>
+
+<h2 id="11">1.1 推荐结果不理想</h2>
+
+<p>推荐不理想有多个原因，</p>
+
+<p>1.1.1 语音识别不准确，例如说“鲜丰水果”识别为“先锋水果”，依赖与外部百度语音，上传专业词库，有一定效果</p>
+
+<p>1.1.2 用户输入千变万化，例如说“我想找点吃的” “推荐一下最便宜的商家” ”我在来福士，这里有什么好玩的“ 等等，目前只能尽量搜集常见问法，匹配到推荐问法后，词法分析提取对应的名词和形容词进行搜索，但是不同语境下的词性也会不同，例如”新发现“，可能是一个名词，也可能是动词，还有可能是形容词+动词。</p>
+
+<h2 id="12">1.2 扩展到其他领域：</h2>
+
+<p>场景：</p>
+
+<p>XX内部：例如：“我的券为什么用不了”“我的退款为什么还没到账”等，识别为客服相关问题</p>
+
+<p>XX外部：例如：“我跟朋友打算晚上去西溪湿地吃饭，帮我推荐下行程和餐馆，到时候提前提醒我” 识别为行程规划，推荐和智能提醒问题</p>
+
+<h2 id="13">1.3 上下文理解：</h2>
+
+<p>场景：</p>
+
+<p>例如：先问：“来福士附近有什么好吃的”，推荐后不理想，用户又问“那万象城呢”，这时需要自动理解为是需要推荐“万象城的美食类优惠券和店”</p>
+
+<h1 id="2">2 相关技术预研</h1>
+
+<h2 id="21">2.1 推荐结果不理想</h2>
+
+<p>意图理解：</p>
+
+<p>槽值提取关键信息</p>
+
+<p>参考：<a href="https://speechlab.sjtu.edu.cn/pages/sz128/homepage/year/08/21/SLU-review-introduction/">https://speechlab.sjtu.edu.cn/pages/sz128/homepage/year/08/21/SLU-review-introduction/</a></p>
+
+<h2 id="22">2.2 扩展到其他领域</h2>
+
+<p>分类问题：二分类，多分类问题，</p>
+
+<p>算法：基于深度学习的RNN，CNN</p>
+
+<p>前提：需要大量高质量数据</p>
+
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/25928551">https://zhuanlan.zhihu.com/p/25928551</a></p>
+
+<h2 id="23">2.3 上下文理解</h2>
+
+<p>构建对话管理（DM）：综合用户当前query和历史对话中已获得的信息后，给出机器答复的结构化表示。</p>
+
+<p>对话管理包含两个模块：对话状态追踪（DST）和策略优化（DPO）。
+<img src="http://go2mars.top/content/images/2017/12/image-6.png" alt="智能机器人一期总结和后期技术预研"></p>
+
+<p>参考：</p>
+
+<p><a href="http://www.zhuanzhi.ai/document/46d057980762981441dcfce9ae15d4fb">http://www.zhuanzhi.ai/document/46d057980762981441dcfce9ae15d4fb</a></p>
+
+<h2 id="24">2.4 知识图谱：</h2>
+
+<p>优化现有优惠券和店的存储结构，改为图存储，真正把券店的关联信息表示出来</p>
+
+<p>具体工作：</p>
+
+<pre><code>第一期w1：知识提取
+第一期w2：知识表示
+第一期w3：知识存储
+第一期w4：知识检索
+</code></pre>
+
+<p>参考：</p>
+
+<p><a href="https://github.com/memect/kg-beijing">https://github.com/memect/kg-beijing</a></p>]]></content:encoded></item><item><title><![CDATA[博客编写发布流程]]></title><description><![CDATA[<h1 id="1ghost">1 本地启动ghost博客</h1>
 
 <p>事先在~/.zshrc里面增加如下命令别名</p>
 
@@ -726,144 +996,4 @@ while 1:
 
 <p>后面有空了再补充，商汤，旷世，第四范式，科大讯飞，出门问问，寒武纪等等，具体名单可看(<a href="http://www.199it.com/archives/526832.html">http://www.199it.com/archives/526832.html</a>)</p>
 
-<p>如果您有更多想讨论的东西欢迎留言，也可以关注我的个人公众号(muskinfo)进行留言，后面会增加聊天机器人到上面，拭目以待吧。</p>]]></content:encoded></item><item><title><![CDATA[博客功能升级和后续计划]]></title><description><![CDATA[<p>鉴于开通了公众号，博客可能会有越来越多人来访问，今天下午给博客升级了一下功能，主要增加了访问统计和评论留言功能，简单记录如下：</p>
-
-<h1 id="1">1 访问统计</h1>
-
-<p>由于读者大部分应该还是国内用户，就使用了百度统计，接入非常简单方便，功能看着还算强大，后面考虑可以做下seo搜索优化，目前google搜博客地址可以搜到，baidu还是乱七八糟的结果，bing搜出来的是个俄罗斯网站(<a href="http://go2mars.ru/">http://go2mars.ru/</a>) ，内容是关于火星探索的，挺丰富的，没想到自己yy的这个域名还是可以的，老毛子也起了一样的域名前缀，不过人家研究的更早更专业，看了下域名注册时间居然是2006年的。</p>
-
-<p>具体增加方法参考官方文档即可：
-<a href="https://tongji.baidu.com/web/help/articleList?type=0&amp;category=16">https://tongji.baidu.com/web/help/articleList?type=0&amp;category=16</a> <br>
-<a href="http://www.ghostchina.com/add-analytics-code-for-ghost/">http://www.ghostchina.com/add-analytics-code-for-ghost/</a>  </p>
-
-<h1 id="2">2 评论留言</h1>
-
-<p>虽然百度统计也有意见反馈功能，不过试用了下是访客在博客页面右下角输入意见，系统再发送邮件到指定邮箱，这个只能自己看到，不方便其他读者进行交流，于是又调研了一下评论留言的系统，</p>]]></description><link>http://go2mars.top/bo-ke-gong-neng-sheng-ji/</link><guid isPermaLink="false">db34f27a-8c1c-4330-bd93-dd991fc45798</guid><category><![CDATA[访问统计]]></category><category><![CDATA[评论]]></category><category><![CDATA[升级]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 01 Oct 2017 22:23:51 GMT</pubDate><content:encoded><![CDATA[<p>鉴于开通了公众号，博客可能会有越来越多人来访问，今天下午给博客升级了一下功能，主要增加了访问统计和评论留言功能，简单记录如下：</p>
-
-<h1 id="1">1 访问统计</h1>
-
-<p>由于读者大部分应该还是国内用户，就使用了百度统计，接入非常简单方便，功能看着还算强大，后面考虑可以做下seo搜索优化，目前google搜博客地址可以搜到，baidu还是乱七八糟的结果，bing搜出来的是个俄罗斯网站(<a href="http://go2mars.ru/">http://go2mars.ru/</a>) ，内容是关于火星探索的，挺丰富的，没想到自己yy的这个域名还是可以的，老毛子也起了一样的域名前缀，不过人家研究的更早更专业，看了下域名注册时间居然是2006年的。</p>
-
-<p>具体增加方法参考官方文档即可：
-<a href="https://tongji.baidu.com/web/help/articleList?type=0&amp;category=16">https://tongji.baidu.com/web/help/articleList?type=0&amp;category=16</a> <br>
-<a href="http://www.ghostchina.com/add-analytics-code-for-ghost/">http://www.ghostchina.com/add-analytics-code-for-ghost/</a>  </p>
-
-<h1 id="2">2 评论留言</h1>
-
-<p>虽然百度统计也有意见反馈功能，不过试用了下是访客在博客页面右下角输入意见，系统再发送邮件到指定邮箱，这个只能自己看到，不方便其他读者进行交流，于是又调研了一下评论留言的系统，最后选用了discus，至于为什么用disqus，知乎还有其他博客上有人分享过，国内之前的多说是评论系统的top1，不过后面由于无法盈利，官网在2017年3月下线了多说，网易云跟帖用的应该比较多，不过也在2017年8月下线了，另外几个国产评论系统用户量更少，很有可能也活不长了，估计跟zf进行言论控制有关，于是绕了一圈还是选用了国际上top1的discus，刚好自己的服务器也是在国外的，在国外访问应该还好，不太好的地方就是需要登录系统才能留言，而登录的几个系统(facebook,google,twitter)由于天朝防火墙的原因，普通小白用户都不容易登录，因此这个评论功能短期来看可能有些鸡肋，用处不大了，除非后面国际化，增加英文文章，这个暂时来的有点远，先留着吧。</p>
-
-<p>具体增加方法还是参考官方文档：</p>
-
-<p><a href="https://go2mars-top.disqus.com/admin/install/platforms/ghost/">https://go2mars-top.disqus.com/admin/install/platforms/ghost/</a></p>
-
-<p>第三方评论系统相关文章：</p>
-
-<p><a href="https://blog.shuiba.co/comment-systems-recommendation">https://blog.shuiba.co/comment-systems-recommendation</a> <br>
-<a href="https://www.zhihu.com/question/57426274">https://www.zhihu.com/question/57426274</a>  </p>
-
-<h1 id="3">3 后续功能</h1>
-
-<p>博客：搜索，标签云，布局结构美化</p>
-
-<p>公众号：聊天机器人</p>]]></content:encoded></item><item><title><![CDATA[HelloWorld！开通公众号了]]></title><description><![CDATA[<p>一到放假醒的格外早的“恶习”还是一如既往，不管晚上睡的多晚，早上到点就醒，比上班都准时。最近不知怎么的感觉想法越来越多，一是受马斯克火星殖民计划的影响，二是微信知乎看的有趣的东西比较多，感觉需要把想法idea记录下来，微信公众号朋友圈，微博，知乎这些算是信息源，看到好的mark下转发下，同时自己的想法也记录下，很多东西都是一闪而过，先写下来：
-1 个人公众号开通，取名musk，因为搜索了一下居然没人用，又去搜了下网站域名，结果大部分都被注册了，想要购买的花要高价买了，其实很多人早就在做域名生意了，先把好的域名抢注下来，就像在网络虚拟世界里先买了个房子一样，好的域名就是好城市好地段的房子。 <br>
-2 公众号内容：科技相关，musk相关，国外有<a href="https://elonmusknews.org/">https://elonmusknews.org/</a> 可以订阅musk最新动态，还且还提供了付费服务（ $7 / month or $37 / year），那我打算也搞个国内版的网站或者公众号，一是本人就是musk粉丝，科技粉，希望及时获取musk及其旗下公司的最新进展，但是国内这块专业性的还比较少，认识的朋友里目前就个位数对此感兴趣，不过这并不能说明什么，</p>]]></description><link>http://go2mars.top/guo-qing-10yue-2hao-sui-gan/</link><guid isPermaLink="false">9fc23643-ee4b-4bdb-a772-57031407c475</guid><category><![CDATA[公众号]]></category><category><![CDATA[价值投资]]></category><category><![CDATA[musk]]></category><category><![CDATA[科技股]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 01 Oct 2017 14:48:16 GMT</pubDate><content:encoded><![CDATA[<p>一到放假醒的格外早的“恶习”还是一如既往，不管晚上睡的多晚，早上到点就醒，比上班都准时。最近不知怎么的感觉想法越来越多，一是受马斯克火星殖民计划的影响，二是微信知乎看的有趣的东西比较多，感觉需要把想法idea记录下来，微信公众号朋友圈，微博，知乎这些算是信息源，看到好的mark下转发下，同时自己的想法也记录下，很多东西都是一闪而过，先写下来：
-1 个人公众号开通，取名musk，因为搜索了一下居然没人用，又去搜了下网站域名，结果大部分都被注册了，想要购买的花要高价买了，其实很多人早就在做域名生意了，先把好的域名抢注下来，就像在网络虚拟世界里先买了个房子一样，好的域名就是好城市好地段的房子。 <br>
-2 公众号内容：科技相关，musk相关，国外有<a href="https://elonmusknews.org/">https://elonmusknews.org/</a> 可以订阅musk最新动态，还且还提供了付费服务（ $7 / month or $37 / year），那我打算也搞个国内版的网站或者公众号，一是本人就是musk粉丝，科技粉，希望及时获取musk及其旗下公司的最新进展，但是国内这块专业性的还比较少，认识的朋友里目前就个位数对此感兴趣，不过这并不能说明什么，mush及其公司还是非常非常非常有前途的，单从其名下的tesla股价就能看出；二是自己希望利用技术，尝试技术来获取信息，最近要学爬虫，练习爬虫，一个目标就是用爬虫爬取有价值的东西，那musk相关信息就是非常有价值的信息，很值得爬取收集；三是对musk有兴趣的关注musk感觉层次应该还是比较高的，比起投机炒房炒股的强多了，个人把公众号网站运营好，加个大赏功能啥的说不定也可以赚点外快，哈哈，毕竟目前还是挺穷的，就像www.liaoxuefeng.com一样，给小白大众提供初级教程，也增加了打赏功能，目测最近还上了好多培训课程，这块又是个有点钱途的东西，不过对我个人来说价值不大（虽然很多刚毕业技术水的人都喜欢花高价来培训希望找到好工作） <br>
-3 价值投资方面：区块链很好的东西，可惜由于ico投机的人太多，ico被国内政府给禁了，比特币等国内的交易网站也被禁了，不过技术层面的确是一项非常伟大的进步，国外很多地区和政府还是支持的，更不用暗网这种地下交易了 <br>
-4 价值投资方面：科技股重点关注，为什么重点关注科技股，因为我是科技迷，呵呵，废话，因为我认为科技才是第一生产力，是推动人类进步的重要力量，像能源国企等靠政治取得的垄断是没有前途的，效率是低下的，今早也恰好朋友圈看到一篇文章发现一个公众号就是关于科技股的，里面几句话说的很好：</p>
-
-<pre><code>    这个世界绝大多数的公司都是平庸的公司，绝大部分的生意都只是一个挣辛苦钱的生意。企业的高速增长永远都不是一个常态，企业的常态是不死不活或者走向衰败。只有少数的幸运儿，在好的行业，好的领导人的带领下，才能走出长期的增长。
-   硅谷创投教父、PayPal创始人彼得·蒂尔在他著名的那本小册子《从0到1》里，告诫创业者要致力于开创新的商业模式，因为只有这样才能建立垄断型企业。这个世界上最成功的企业都是垄断者，而竞争是输家的游戏。
-  在2000年的一个早上，杰夫贝索斯给巴菲特打电话，问巴菲特：“你的投资体系这么简单，为什么你是全世界第二富有的人，别人不做和你一样的事情？”巴菲特回答说：“因为没人愿意慢慢地变富。”
-   为什么我们要重点关注科技企业？其实绝大部分的科技企业都不值得投资，但在当今这个时代以及未来，能靠市场竞争获得垄断地位的一定是那些利用了互联网，大数据和人工智能的科技企业。这点从世界十大上市公司排行榜近10年的变迁就能看出来，2007年的榜单上石油公司和银行占据了7席，而到了2017年就有7家科技企业上榜，而且更是霸占了前5名。
-</code></pre>
-
-<p>5 个人重点关于上市公司：有钱的老铁们可以买起来了</p>
-
-<pre><code>Tesla,google,Amazon,Facebook,Nvidia,mircrosoft,veritone,apple,Ali,tencent,猎豹移动
-</code></pre>]]></content:encoded></item><item><title><![CDATA[国庆计划]]></title><description><![CDATA[<p>前言：今年国庆不回老家了，为啥不回？因为人多，其实是因为穷。
-既然留杭还是得干点事情，1号在家打扫卫生就这么过去了，后面几天好好利用起来，列个计划监督自己。</p>
-
-<h1 id="1python">1 python 入门</h1>
-
-<p>目标：基础概念建立，工具，环境配好，简易网站搭建，注意与java对比
-教程：<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000</a></p>
-
-<p>代码:
-<a href="https://github.com/michaelliao/awesome-python-webapp">https://github.com/michaelliao/awesome-python-webapp</a>  </p>
-
-<h1 id="2python">2 python 进阶</h1>
-
-<p>目标：爬虫学习，可以爬取指定网页的图片文字并保存到本地</p>
-
-<p>框架：<a href="http://docs.pyspider.org/en/latest/">http://docs.pyspider.org/en/latest/</a></p>
-
-<h1 id="3">3 机器学习 入门</h1>
-
-<p>上次花了一个晚上刚学完入门部分：机器学习基础概念，问题分类，</p>]]></description><link>http://go2mars.top/guo-qing-ji-hua/</link><guid isPermaLink="false">01ed31ed-25cd-4174-9e79-8fc6c74f608b</guid><category><![CDATA[国庆]]></category><category><![CDATA[计划]]></category><category><![CDATA[杂感]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sat, 30 Sep 2017 21:59:47 GMT</pubDate><content:encoded><![CDATA[<p>前言：今年国庆不回老家了，为啥不回？因为人多，其实是因为穷。
-既然留杭还是得干点事情，1号在家打扫卫生就这么过去了，后面几天好好利用起来，列个计划监督自己。</p>
-
-<h1 id="1python">1 python 入门</h1>
-
-<p>目标：基础概念建立，工具，环境配好，简易网站搭建，注意与java对比
-教程：<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000</a></p>
-
-<p>代码:
-<a href="https://github.com/michaelliao/awesome-python-webapp">https://github.com/michaelliao/awesome-python-webapp</a>  </p>
-
-<h1 id="2python">2 python 进阶</h1>
-
-<p>目标：爬虫学习，可以爬取指定网页的图片文字并保存到本地</p>
-
-<p>框架：<a href="http://docs.pyspider.org/en/latest/">http://docs.pyspider.org/en/latest/</a></p>
-
-<h1 id="3">3 机器学习 入门</h1>
-
-<p>上次花了一个晚上刚学完入门部分：机器学习基础概念，问题分类，线性回归，代价函数，这几天要把落下的课程补回来，完成第一周梯度下降和第二周内容：多元线性回归。</p>
-
-<p>学习地址：<a href="https://www.coursera.org/learn/machine-learning/home/week/2">https://www.coursera.org/learn/machine-learning/home/week/2</a></p>
-
-<h1 id="4">4 杂感</h1>
-
-<p>最近公司招人也面了很多人，很多都说会大数据，机器学习算法，结果大部分都只是会用大数据的工具，做过一点流程性的工作，算法名字知道一大堆，但是问起机器学习的基本概念都答不上来，一个比一个水，刷新了好几次三观，反倒是刚毕业的科班出身的感觉不错，不会瞎扯，思路正确，实事求是。</p>
-
-<p>编程是一件需要创造力的事情，现阶段的基本目标是学习先进技术应用到公司实际项目中，当然除了技术外产品意识也是很重要的，因为那才是最终面向用户的东西，技术再好产品界面交互不好也不行，最近搜索优化基本完成了，后面的智能机器人，推荐系统，用户画像每个东西要做好都不容易，珍惜现在的机会，对标业内先进产品，借鉴学习，争取这次把技术+产品做好，什么算好呢？产品上用户愿意用，指标是活跃用户数，用户留存率，这个要多关注。技术上代码架构设计，性能，直观点就是代码可读性，系统并发量。</p>]]></content:encoded></item><item><title><![CDATA[使用pyenv和virtualenv搭建python虚拟开发环境]]></title><description><![CDATA[<p>pyenv install --list <br>
-查看有哪些版本python可以安装</p>
-
-<p>pyenv install 3.6.2 <br>
-安装3.6.2</p>
-
-<p>pyenv versions <br>
-查看当前环境</p>
-
-<p>pyenv virtualenv 3.6.2 env362 <br>
-创建虚拟环境</p>
-
-<p>pyenv activate env362 <br>
-切换到环境</p>
-
-<p>pyenv deactivate <br>
-切回原环境</p>
-
-<p>rm -rf ~/.pyenv/versions/env362/ <br>
-删除环境</p>]]></description><link>http://go2mars.top/pyenvda-jian-pythonxu-ni-kai-fa-huan-jing/</link><guid isPermaLink="false">3902d414-50fd-44f4-90e7-d230745497a9</guid><category><![CDATA[python]]></category><category><![CDATA[pyenv]]></category><category><![CDATA[virtualenv]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Fri, 29 Sep 2017 22:33:11 GMT</pubDate><content:encoded><![CDATA[<p>pyenv install --list <br>
-查看有哪些版本python可以安装</p>
-
-<p>pyenv install 3.6.2 <br>
-安装3.6.2</p>
-
-<p>pyenv versions <br>
-查看当前环境</p>
-
-<p>pyenv virtualenv 3.6.2 env362 <br>
-创建虚拟环境</p>
-
-<p>pyenv activate env362 <br>
-切换到环境</p>
-
-<p>pyenv deactivate <br>
-切回原环境</p>
-
-<p>rm -rf ~/.pyenv/versions/env362/ <br>
-删除环境</p>]]></content:encoded></item></channel></rss>
+<p>如果您有更多想讨论的东西欢迎留言，也可以关注我的个人公众号(muskinfo)进行留言，后面会增加聊天机器人到上面，拭目以待吧。</p>]]></content:encoded></item></channel></rss>
