@@ -137,7 +137,7 @@ ghost.init({
             <div class="tag-cloud">
                 <div class="tag-cloud-title">
                     目前共计&nbsp;
-                    84
+                    85
                 &nbsp;个标签
                 </div>
                 <div class="tag-cloud-tags">
@@ -183,7 +183,7 @@ ghost.init({
                             <a href="tag/ma-si-ke/index.html" post-num="1" class="tags-cloud">马斯克</a>
                             <a href="tag/huo-xing-zhi-min/index.html" post-num="1" class="tags-cloud">火星殖民</a>
                             <a href="tag/python/index.html" post-num="1" class="tags-cloud">python</a>
-                            <a href="tag/pyenv/index.html" post-num="1" class="tags-cloud">pyenv</a>
+                            <a href="tag/pyenv/index.html" post-num="2" class="tags-cloud">pyenv</a>
                             <a href="tag/virtualenv/index.html" post-num="1" class="tags-cloud">virtualenv</a>
                             <a href="tag/guo-qing/index.html" post-num="1" class="tags-cloud">国庆</a>
                             <a href="tag/ji-hua/index.html" post-num="1" class="tags-cloud">计划</a>
@@ -220,11 +220,12 @@ ghost.init({
                             <a href="tag/ghost-tag/index.html" post-num="2" class="tags-cloud">ghost</a>
                             <a href="tag/next/index.html" post-num="1" class="tags-cloud">next</a>
                             <a href="tag/nginx/index.html" post-num="1" class="tags-cloud">nginx</a>
-                            <a href="tag/buster/index.html" post-num="1" class="tags-cloud">buster</a>
+                            <a href="tag/buster/index.html" post-num="2" class="tags-cloud">buster</a>
                             <a href="tag/shu-ju-tong-bu/index.html" post-num="1" class="tags-cloud">数据同步</a>
                             <a href="tag/navicat/index.html" post-num="1" class="tags-cloud">Navicat</a>
                             <a href="tag/datax/index.html" post-num="1" class="tags-cloud">datax</a>
                             <a href="tag/canal/index.html" post-num="1" class="tags-cloud">canal</a>
+                            <a href="tag/bo-ke-fa-bu/index.html" post-num="1" class="tags-cloud">博客发布</a>
                 </div>
             </div>
         </div>
@@ -249,7 +250,7 @@ ghost.init({
                 <div class="site-state-item site-state-posts">
                     <a href="records">
                         <span class="site-state-item-count">
-                                34
+                                35
                         </span>
                         <span class="site-state-item-name">文章</span>
                     </a>
@@ -263,7 +264,7 @@ ghost.init({
                 <div class="site-state-item site-state-categories">
                     <a href="tags">
                         <span class="site-state-item-count">
-                                84
+                                85
                         </span>
                         <span class="site-state-item-name">标签</span>
                     </a>

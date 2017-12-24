@@ -1,4 +1,65 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[遥望白鹿巷]]></title><description><![CDATA[哪来的天才]]></description><link>http://go2mars.top/</link><generator>Ghost 0.7</generator><lastBuildDate>Sun, 24 Dec 2017 08:16:19 GMT</lastBuildDate><atom:link href="http://go2mars.top/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[博客数据恢复小结]]></title><description><![CDATA[<p>好久没更新博客了，一来是工作太忙，二来是刚换了新的mac，前段时间又把博客改成用本地ghost编辑+github远程托管的方式了，所有文章数据都在老mac里面，一直没恢复数据，今天弄了下总算恢复了。</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[遥望白鹿巷]]></title><description><![CDATA[哪来的天才]]></description><link>http://go2mars.top/</link><generator>Ghost 0.7</generator><lastBuildDate>Sun, 24 Dec 2017 09:09:33 GMT</lastBuildDate><atom:link href="http://go2mars.top/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[博客编写发布流程]]></title><description><![CDATA[<h1 id="1ghost">1 本地启动ghost博客</h1>
+
+<p>事先在~/.zshrc里面增加如下命令别名</p>
+
+<pre><code>alias ghost_start='NODE_ENV=production forever start 
+$GHOST_HOME/index.js'
+alias ghost_stop='forever stop $GHOST_HOME/index.js'
+alias pbg='python buster.py generate'
+alias pbp='python buster.py preview'
+</code></pre>
+
+<p>ghost_start 即可启动博客  </p>
+
+<h1 id="2">2 编辑文章</h1>
+
+<p>打开本地博客后台 <a href="http://localhost:2368/ghost">http://localhost:2368/ghost</a>
+其中端口号可在ghost配置文件config.js进行配置
+后台管理界面是markdown格式编辑，</p>]]></description><link>http://go2mars.top/bo-ke-bian-xie-fa-bu-liu-cheng-pyenvan-zhuang-shi-yong-ji-lu/</link><guid isPermaLink="false">b0732974-9687-4c46-883d-3d888423bd4b</guid><category><![CDATA[博客发布]]></category><category><![CDATA[buster]]></category><category><![CDATA[pyenv]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 24 Dec 2017 09:04:10 GMT</pubDate><content:encoded><![CDATA[<h1 id="1ghost">1 本地启动ghost博客</h1>
+
+<p>事先在~/.zshrc里面增加如下命令别名</p>
+
+<pre><code>alias ghost_start='NODE_ENV=production forever start 
+$GHOST_HOME/index.js'
+alias ghost_stop='forever stop $GHOST_HOME/index.js'
+alias pbg='python buster.py generate'
+alias pbp='python buster.py preview'
+</code></pre>
+
+<p>ghost_start 即可启动博客  </p>
+
+<h1 id="2">2 编辑文章</h1>
+
+<p>打开本地博客后台 <a href="http://localhost:2368/ghost">http://localhost:2368/ghost</a>
+其中端口号可在ghost配置文件config.js进行配置
+后台管理界面是markdown格式编辑，非常方便</p>
+
+<h1 id="3">3 生成静态页面</h1>
+
+<p>./blog-buster.sh脚本内容如下：</p>
+
+<pre><code>pyenv activate venv27
+cd $BUSTER_HOME
+pbg
+pbp
+</code></pre>
+
+<p>打开 <a href="http://localhost:9000/">http://localhost:9000/</a> 可以查看静态页面效果</p>
+
+<h1 id="4github">4 推送至github</h1>
+
+<p>./blog-commit.sh脚本内容如下：</p>
+
+<pre><code>cd $GIT_BLOG
+cp -rf $BUSTER_HOME/static/* .
+</code></pre>
+
+<p>提交推送</p>
+
+<pre><code>git add .
+git commit -m "commit info"
+git push
+</code></pre>]]></content:encoded></item><item><title><![CDATA[博客数据恢复小结]]></title><description><![CDATA[<p>好久没更新博客了，一来是工作太忙，二来是刚换了新的mac，前段时间又把博客改成用本地ghost编辑+github远程托管的方式了，所有文章数据都在老mac里面，一直没恢复数据，今天弄了下总算恢复了。</p>
 
 <h1 id="1">1 先说下为啥不用远程服务器直接搭博客</h1>
 
@@ -805,58 +866,4 @@ while 1:
 切回原环境</p>
 
 <p>rm -rf ~/.pyenv/versions/env362/ <br>
-删除环境</p>]]></content:encoded></item><item><title><![CDATA[马斯克外星殖民计划曝光----在此记录]]></title><description><![CDATA[<p>视频介绍：
-<a href="http://www.spacex.com/mars">http://www.spacex.com/mars</a> <br>
-可以选择中文字幕，不得不说技术发展真快，自动翻译已经这么先进了，看外语视频再也不用找字幕了
-中文介绍：</p>
-
-<p><a href="http://www.pingwest.com/musk-multiplanetary-plan-bfr-rocket/">http://www.pingwest.com/musk-multiplanetary-plan-bfr-rocket/</a></p>
-
-<p>详尽的火星殖民计划：最大的现役运载火箭，轨道加油；探测风险、完成基建；燃料工厂、建造基地
-尽管困难重重，相信他们可以实现，期待有生之年看到。</p>
-
-<p>火星时代，纪录片+科幻片，2033年与2016年的镜头交叉展现，马斯克反复露镜科普，强烈推荐，第一集开篇字幕写的很好：
-我们拥有梦想
-这就是人类
-那创造的本能
-那探索未知的欲望
-存在于我们的基因之中
-我们跨越海洋
-我们征服天空
-当地球上的各处已遍布人类的足迹时
-我们决定出发前往其它星体
-我们选择在这十年间登陆月球
-并完成一系列任务
-不是因为这很简单
-而是因为这很困难
-宇宙向新一代先驱与探险家招手
-敦促人类征服更远的地方一
-人类将前往太阳系中的其它星球
-不只是为了探访而是为了留下</p>]]></description><link>http://go2mars.top/ma-si-ke-wai-xing-zhi-min-ji-hua-pu-guang-zai-ci-ji-lu/</link><guid isPermaLink="false">324a2ed4-c619-40f2-911c-7f06832145c7</guid><category><![CDATA[马斯克]]></category><category><![CDATA[火星殖民]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Fri, 29 Sep 2017 14:26:12 GMT</pubDate><content:encoded><![CDATA[<p>视频介绍：
-<a href="http://www.spacex.com/mars">http://www.spacex.com/mars</a> <br>
-可以选择中文字幕，不得不说技术发展真快，自动翻译已经这么先进了，看外语视频再也不用找字幕了
-中文介绍：</p>
-
-<p><a href="http://www.pingwest.com/musk-multiplanetary-plan-bfr-rocket/">http://www.pingwest.com/musk-multiplanetary-plan-bfr-rocket/</a></p>
-
-<p>详尽的火星殖民计划：最大的现役运载火箭，轨道加油；探测风险、完成基建；燃料工厂、建造基地
-尽管困难重重，相信他们可以实现，期待有生之年看到。</p>
-
-<p>火星时代，纪录片+科幻片，2033年与2016年的镜头交叉展现，马斯克反复露镜科普，强烈推荐，第一集开篇字幕写的很好：
-我们拥有梦想
-这就是人类
-那创造的本能
-那探索未知的欲望
-存在于我们的基因之中
-我们跨越海洋
-我们征服天空
-当地球上的各处已遍布人类的足迹时
-我们决定出发前往其它星体
-我们选择在这十年间登陆月球
-并完成一系列任务
-不是因为这很简单
-而是因为这很困难
-宇宙向新一代先驱与探险家招手
-敦促人类征服更远的地方一
-人类将前往太阳系中的其它星球
-不只是为了探访而是为了留下</p>]]></content:encoded></item></channel></rss>
+删除环境</p>]]></content:encoded></item></channel></rss>
