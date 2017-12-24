@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[遥望白鹿巷]]></title><description><![CDATA[哪来的天才]]></description><link>http://go2mars.top/</link><generator>Ghost 0.7</generator><lastBuildDate>Mon, 13 Nov 2017 12:12:20 GMT</lastBuildDate><atom:link href="http://go2mars.top/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[博客搭建小结]]></title><description><![CDATA[<p>这两天对博客改造了一下，内容如下：</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[遥望白鹿巷]]></title><description><![CDATA[哪来的天才]]></description><link>http://go2mars.top/</link><generator>Ghost 0.7</generator><lastBuildDate>Sun, 24 Dec 2017 08:16:19 GMT</lastBuildDate><atom:link href="http://go2mars.top/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[博客数据恢复小结]]></title><description><![CDATA[<p>好久没更新博客了，一来是工作太忙，二来是刚换了新的mac，前段时间又把博客改成用本地ghost编辑+github远程托管的方式了，所有文章数据都在老mac里面，一直没恢复数据，今天弄了下总算恢复了。</p>
+
+<h1 id="1">1 先说下为啥不用远程服务器直接搭博客</h1>
+
+<p>自己买的bwg服务器，物美价廉，虽说翻墙博客够用，但是访问速度还是慢，而且一旦到期后没法续费或者机器换了的话还得再数据迁移，索性直接该用本地起ghost服务直接编辑博客好了，速度快也方便，然后再通过工具buster生成静态页面，放到github托管起来，另外把mysql的数据也在github备份一份。</p>
+
+<h1 id="2">2 数据恢复流程</h1>
+
+<p>其实很简单，就是把老机器的mysql数据同步到新机器的mysql，那问题来了mac下面mysql的数据文件是放在哪里的？网上差了好多没一个靠谱的，还是自己来，
+先用</p>
+
+<p><code>which mysql</code>得到
+<code>/usr/local/bin/mysql</code>
+，再<code>ll</code>得到
+<code>lrwxr-xr-x  1 jinglong  admin  32 12  3 19:38 mysql -&gt;</code></p>]]></description><link>http://go2mars.top/bo-ke-shu-ju-hui-fu-xiao-jie/</link><guid isPermaLink="false">798f1c10-a81c-4ab6-9791-1afb59d15633</guid><category><![CDATA[ghost]]></category><category><![CDATA[mysql]]></category><category><![CDATA[数据同步]]></category><category><![CDATA[Navicat]]></category><category><![CDATA[datax]]></category><category><![CDATA[canal]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Sun, 24 Dec 2017 07:30:26 GMT</pubDate><content:encoded><![CDATA[<p>好久没更新博客了，一来是工作太忙，二来是刚换了新的mac，前段时间又把博客改成用本地ghost编辑+github远程托管的方式了，所有文章数据都在老mac里面，一直没恢复数据，今天弄了下总算恢复了。</p>
+
+<h1 id="1">1 先说下为啥不用远程服务器直接搭博客</h1>
+
+<p>自己买的bwg服务器，物美价廉，虽说翻墙博客够用，但是访问速度还是慢，而且一旦到期后没法续费或者机器换了的话还得再数据迁移，索性直接该用本地起ghost服务直接编辑博客好了，速度快也方便，然后再通过工具buster生成静态页面，放到github托管起来，另外把mysql的数据也在github备份一份。</p>
+
+<h1 id="2">2 数据恢复流程</h1>
+
+<p>其实很简单，就是把老机器的mysql数据同步到新机器的mysql，那问题来了mac下面mysql的数据文件是放在哪里的？网上差了好多没一个靠谱的，还是自己来，
+先用</p>
+
+<p><code>which mysql</code>得到
+<code>/usr/local/bin/mysql</code>
+，再<code>ll</code>得到
+<code>lrwxr-xr-x  1 jinglong  admin  32 12  3 19:38 mysql -&gt; ../Cellar/mysql/5.7.20/bin/mysql</code>，进入<code>/usr/local/Cellar/mysql/5.7.20</code>,这是mysql的实际主目录，发现一个文件<code>homebrew.mxcl.mysql.plist</code>，vim打开发现</p>
+
+<pre><code>&lt;array&gt;
+&lt;string&gt;/usr/local/opt/mysql/bin/mysqld_safe&lt;/string&gt;
+&lt;string&gt;--datadir=/usr/local/var/mysql&lt;/string&gt;
+&lt;/array&gt;
+&lt;key&gt;RunAtLoad&lt;/key&gt;
+&lt;true/&gt;
+&lt;key&gt;WorkingDirectory&lt;/key&gt;
+&lt;string&gt;/usr/local/var/mysql&lt;/string&gt;
+</code></pre>
+
+<p>看到这里基本就找到宝藏了，<code>/usr/local/var/mysql</code>这就是数据所在位置,打开一看果然，各种数据，几个数据库名就是目录名显示在那里，目录下面是表名对应的文件。</p>
+
+<h1 id="3">3 数据同步</h1>
+
+<p>现在只要把老mac对应mysql的数据文件放到新mac下面，再新建个库把数据同步下就好了，此处用了Navicat Premium的数据同步功能，还是很方便的，至于开发中用到的数据同步技术也很多，有定时同步的，比如（dataX，支持很多不同的数据源，这周在用从oss到mysql的同步<a href="https://github.com/alibaba/DataX">https://github.com/alibaba/DataX</a> ），还有实时同步mysql的canal(基于数据库binlog增量日志解析，<a href="https://github.com/alibaba/canal">https://github.com/alibaba/canal</a>)</p>]]></content:encoded></item><item><title><![CDATA[博客搭建小结]]></title><description><![CDATA[<p>这两天对博客改造了一下，内容如下：</p>
 
 <p>1 把博客内容托管到github，</p>
 
@@ -235,17 +279,17 @@ sigmoid 层输出（是一个向量）的每个元素都是一个在 0 和 1 之
 3.2 国内创业公司：智能一点，阿里大牛出来做的 <br>
 <a href="https://36kr.com/p/5091791.html">https://36kr.com/p/5091791.html</a></p>]]></content:encoded></item><item><title><![CDATA[聊天机器人一期技术方案设计]]></title><description><![CDATA[<p>公司的项目向来都是时间紧，任务重，现在又来了，在支持原有项目的同时要在月底上线第一版机器人，结合之前的理解，整理出如下内容：</p>
 
-<p>整体架构和功能划分
-<img src="http://go2mars.top/content/images/2017/10/image-302.png" alt=""></p>
+<p>整体架构和功能划分</p>
 
-<p>各模块交互关系
-<img src="http://go2mars.top/content/images/2017/10/image-304.png" alt=""></p>]]></description><link>http://go2mars.top/liao-tian-ji-qi-ren-yi-qi-she-ji-fang-an/</link><guid isPermaLink="false">c2b746ab-e181-47cb-b13c-20561dd89bf9</guid><category><![CDATA[聊天机器人]]></category><category><![CDATA[技术方案设计]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 30 Oct 2017 11:09:54 GMT</pubDate><media:content url="http://go2mars.top/content/images/2017/10/image-303.png" medium="image"/><content:encoded><![CDATA[<img src="http://go2mars.top/content/images/2017/10/image-303.png" alt="聊天机器人一期技术方案设计"><p>公司的项目向来都是时间紧，任务重，现在又来了，在支持原有项目的同时要在月底上线第一版机器人，结合之前的理解，整理出如下内容：</p>
+<p>各模块交互关系</p>
 
-<p>整体架构和功能划分
-<img src="http://go2mars.top/content/images/2017/10/image-302.png" alt="聊天机器人一期技术方案设计"></p>
+<p>因涉及保密信息，此处省略</p>]]></description><link>http://go2mars.top/liao-tian-ji-qi-ren-yi-qi-she-ji-fang-an/</link><guid isPermaLink="false">c2b746ab-e181-47cb-b13c-20561dd89bf9</guid><category><![CDATA[聊天机器人]]></category><category><![CDATA[技术方案设计]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 30 Oct 2017 11:09:54 GMT</pubDate><media:content url="http://go2mars.top/content/images/2017/10/image-303.png" medium="image"/><content:encoded><![CDATA[<img src="http://go2mars.top/content/images/2017/10/image-303.png" alt="聊天机器人一期技术方案设计"><p>公司的项目向来都是时间紧，任务重，现在又来了，在支持原有项目的同时要在月底上线第一版机器人，结合之前的理解，整理出如下内容：</p>
 
-<p>各模块交互关系
-<img src="http://go2mars.top/content/images/2017/10/image-304.png" alt="聊天机器人一期技术方案设计"></p>]]></content:encoded></item><item><title><![CDATA[自己动手开发聊天机器人chatbot系列1----总览]]></title><description><![CDATA[<p>最近接触聊天机器人chatbot有段时间了，今天把各种渠道已有的关于chatbot的认识梳理了一下，加深理解，便于后面动手实践。</p>
+<p>整体架构和功能划分</p>
+
+<p>各模块交互关系</p>
+
+<p>因涉及保密信息，此处省略</p>]]></content:encoded></item><item><title><![CDATA[自己动手开发聊天机器人chatbot系列1----总览]]></title><description><![CDATA[<p>最近接触聊天机器人chatbot有段时间了，今天把各种渠道已有的关于chatbot的认识梳理了一下，加深理解，便于后面动手实践。</p>
 
 <h1 id="1chatbot">1 什么是聊天机器人chatbot</h1>
 
@@ -815,53 +859,4 @@ while 1:
 宇宙向新一代先驱与探险家招手
 敦促人类征服更远的地方一
 人类将前往太阳系中的其它星球
-不只是为了探访而是为了留下</p>]]></content:encoded></item><item><title><![CDATA[机器学习笔记1----Introduction]]></title><description><![CDATA[<h1 id="1">1 概念</h1>
-
-<p>A computer program is said to learn from experience E with respect to some task T and some performace measure P,if its performance on T,as measured by P,improves with experience E.</p>
-
-<p>In general, any machine learning problem can be assigned to one of two broad</p>]]></description><link>http://go2mars.top/ji-qi-xue-xi-bi-ji-1/</link><guid isPermaLink="false">0ab086b1-991f-4b0d-8f69-716bfa984c14</guid><category><![CDATA[机器学习]]></category><category><![CDATA[监督学习]]></category><category><![CDATA[非监督学习]]></category><category><![CDATA[回归]]></category><category><![CDATA[分类]]></category><category><![CDATA[聚类]]></category><category><![CDATA[非聚类]]></category><dc:creator><![CDATA[whitespur]]></dc:creator><pubDate>Mon, 25 Sep 2017 02:06:56 GMT</pubDate><media:content url="http://go2mars.top/content/images/2017/09/image-39.png" medium="image"/><content:encoded><![CDATA[<h1 id="1">1 概念</h1>
-
-<img src="http://go2mars.top/content/images/2017/09/image-39.png" alt="机器学习笔记1----Introduction"><p>A computer program is said to learn from experience E with respect to some task T and some performace measure P,if its performance on T,as measured by P,improves with experience E.</p>
-
-<p>In general, any machine learning problem can be assigned to one of two broad classifications: <br>
-Supervised learning and Unsupervised learning. <br>
-<img src="http://go2mars.top/content/images/2017/09/image-41.png" alt="机器学习笔记1----Introduction"></p>
-
-<p>机器学习算法分类：
-监督学习，非监督学习</p>
-
-<p>注意：理解各种定义以及什么场景使用何种算法。</p>
-
-<h1 id="2">2 分类</h1>
-
-<h2 id="21">2.1 监督学习</h2>
-
-<p>部分数据有正确结果，<mark>有标记</mark></p>
-
-<p>In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.
-    Supervised learning problems are categorized into "regression" and "classification" problems. In a regression problem, we are trying to predict results within a continuous output, meaning that we are trying to map input variables to some continuous function. In a classification problem, we are instead trying to predict results in a discrete output. In other words, we are trying to map input variables into discrete categories.</p>
-
-<p><mark>回归</mark>问题-regression<mark>输出结果连续值</mark>
-例如：房价预测，</p>
-
-<p><mark>分类</mark>问题-classification-<mark>输出结果离散值</mark>
-输入-特征值，例如是否会患肿瘤预测
-支持向量机</p>
-
-<h2 id="22">2.2 无监督学习</h2>
-
-<p>所有数据一样或类似，无明显标记</p>
-
-<p>Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of the variables. <br>
-    We can derive this structure by clustering the data based on relationships among the variables in the data.</p>
-
-<p><mark>聚类</mark>算法：Clustering</p>
-
-<p>例如：基因分析，社交网络分组，天文数据分析</p>
-
-<p>鸡尾酒会算法：<mark>非聚类</mark> Non-clustering</p>
-
-<p>例如：复杂环境下人声提取</p>
-
-<p>备注工具：<mark>Octave</mark>内置很多算法，预研算法是否合适，用来开发原型
-Svd-奇异值分解</p>]]></content:encoded></item></channel></rss>
+不只是为了探访而是为了留下</p>]]></content:encoded></item></channel></rss>

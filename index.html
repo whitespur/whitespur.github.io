@@ -65,7 +65,7 @@
 <script type="text/javascript">
 ghost.init({
 	clientId: "ghost-frontend",
-	clientSecret: "1b3e089f4eb6"
+	clientSecret: "d7f4dced7beb"
 });
 </script>
     <meta name="generator" content="Ghost 0.7" />
@@ -106,7 +106,7 @@ ghost.init({
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
         <div class="header-inner"><div class="site-meta ">
             <div class="custom-logo-site-title">
-                <a href="https://whitespur.github.io/" class="brand" rel="start" >
+                <a href="http://go2mars.top" class="brand" rel="start" >
                     <span class="logo-line-before "><i class=""></i></span>
                     <span class="site-title">遥望白鹿巷</span>
                     <span class="logo-line-after"><i class=""></i></span>
@@ -156,6 +156,50 @@ ghost.init({
              <div class="content-wrap">
      <div id="content" class="content">
          <section id="posts" class="posts-expand">
+                 <article class="post posts-type-normal">
+                     <header class="post-header">
+                         <h1 class="post-title" itemprop="name headline">
+                             <a class="post-title-link" href="bo-ke-shu-ju-hui-fu-xiao-jie/index.html">博客数据恢复小结</a>
+                         </h1>
+                         <div class="post-meta">
+                             <span class="post-time">
+                                 <span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span>
+                                 <span class="post-meta-item-text">发表于</span>
+                                 <time>2017-12-24</time>
+                             </span>
+                             <span class="post-category">&nbsp; | &nbsp;
+                                 <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span>
+                                 <span class="post-meta-item-text">标签</span>
+                                 <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                                         <a href="tag/ghost-tag/index.html">ghost</a>, <a href="tag/mysql/index.html">mysql</a>, <a href="tag/shu-ju-tong-bu/index.html">数据同步</a>, <a href="tag/navicat/index.html">Navicat</a>, <a href="tag/datax/index.html">datax</a>, <a href="tag/canal/index.html">canal</a>
+                                 </span>
+                             </span>
+                             <span class="post-comments-count">&nbsp; | &nbsp;
+                                 <a href="bo-ke-shu-ju-hui-fu-xiao-jie/index.html#comments" itemprop="discussionUrl">
+                                     <span class="post-comments-count ds-thread-count" data-thread-key="39" itemprop="commentsCount"></span>
+                                 </a>
+                             </span>
+                         </div>
+                     </header>
+                     <div class="post-body" itemprop="articleBody">
+                            <p>好久没更新博客了，一来是工作太忙，二来是刚换了新的mac，前段时间又把博客改成用本地ghost编辑+github远程托管的方式了，所有文章数据都在老mac里面，一直没恢复数据，今天弄了下总算恢复了。</p>
+
+<h1 id="1">1 先说下为啥不用远程服务器直接搭博客</h1>
+
+<p>自己买的bwg服务器，物美价廉，虽说翻墙博客够用，但是访问速度还是慢，而且一旦到期后没法续费或者机器换了的话还得再数据迁移，索性直接该用本地起ghost服务直接编辑博客好了，速度快也方便，然后再通过工具buster生成静态页面，放到github托管起来，另外把mysql的数据也在github备份一份。</p>
+
+<h1 id="2">2 数据恢复流程</h1>
+
+<p>其实很简单，就是把老机器的mysql数据同步到新机器的mysql，那问题来了mac下面mysql的数据文件是放在哪里的？网上差了好多没一个靠谱的，还是自己来，
+先用</p>
+
+<p><code>which mysql</code>得到
+<code>/usr/</code></p>
+                         <div class="post-more-link text-center">
+                             <a class="btn" href="bo-ke-shu-ju-hui-fu-xiao-jie/index.html" rel="contents">阅读全文 »</a>
+                         </div>
+                     </div>
+                 </article>
                  <article class="post posts-type-normal">
                      <header class="post-header">
                          <h1 class="post-title" itemprop="name headline">
@@ -320,11 +364,11 @@ http://www.huar.love/blog/</code></pre>
                      <div class="post-body" itemprop="articleBody">
                             <p>公司的项目向来都是时间紧，任务重，现在又来了，在支持原有项目的同时要在月底上线第一版机器人，结合之前的理解，整理出如下内容：</p>
 
-<p>整体架构和功能划分
-<img src="http://localhost:2368/content/images/2017/10/image-302.png" alt="" /></p>
+<p>整体架构和功能划分</p>
 
-<p>各模块交互关系
-<img src="http://localhost:2368/content/images/2017/10/image-304.png" alt="" /></p>
+<p>各模块交互关系</p>
+
+<p>因涉及保密信息，此处省略</p>
                          <div class="post-more-link text-center">
                              <a class="btn" href="liao-tian-ji-qi-ren-yi-qi-she-ji-fang-an/index.html" rel="contents">阅读全文 »</a>
                          </div>
@@ -571,45 +615,6 @@ while 1:
                          </div>
                      </div>
                  </article>
-                 <article class="post posts-type-normal">
-                     <header class="post-header">
-                         <h1 class="post-title" itemprop="name headline">
-                             <a class="post-title-link" href="bo-ke-gong-neng-sheng-ji/index.html">博客功能升级和后续计划</a>
-                         </h1>
-                         <div class="post-meta">
-                             <span class="post-time">
-                                 <span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span>
-                                 <span class="post-meta-item-text">发表于</span>
-                                 <time>2017-10-02</time>
-                             </span>
-                             <span class="post-category">&nbsp; | &nbsp;
-                                 <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span>
-                                 <span class="post-meta-item-text">标签</span>
-                                 <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
-                                         <a href="tag/fang-wen-tong-ji/index.html">访问统计</a>, <a href="tag/ping-lun/index.html">评论</a>, <a href="tag/sheng-ji/index.html">升级</a>
-                                 </span>
-                             </span>
-                             <span class="post-comments-count">&nbsp; | &nbsp;
-                                 <a href="bo-ke-gong-neng-sheng-ji/index.html#comments" itemprop="discussionUrl">
-                                     <span class="post-comments-count ds-thread-count" data-thread-key="26" itemprop="commentsCount"></span>
-                                 </a>
-                             </span>
-                         </div>
-                     </header>
-                     <div class="post-body" itemprop="articleBody">
-                            <p>鉴于开通了公众号，博客可能会有越来越多人来访问，今天下午给博客升级了一下功能，主要增加了访问统计和评论留言功能，简单记录如下：</p>
-
-<h1 id="1">1 访问统计</h1>
-
-<p>由于读者大部分应该还是国内用户，就使用了百度统计，接入非常简单方便，功能看着还算强大，后面考虑可以做下seo搜索优化，目前google搜博客地址可以搜到，baidu还是乱七八糟的结果，bing搜出来的是个俄罗斯网站(<a href="http://go2mars.ru/">http://go2mars.ru/</a>) ，内容是关于火星探索的，挺丰富的，没想到自己yy的这个域名还是可以的，老毛子也起了一样的域名前缀，不过人家研究的更早更专业，看了下域名注册时间居然是2006年的。</p>
-
-<p>具体增加方法参考官方文档即可：
-<a href="https://tongji.baidu.com/web/help/articleList?type=0&amp;category=16">https://tongji.baidu.com/web/help/articleList?</a></p>
-                         <div class="post-more-link text-center">
-                             <a class="btn" href="bo-ke-gong-neng-sheng-ji/index.html" rel="contents">阅读全文 »</a>
-                         </div>
-                     </div>
-                 </article>
          </section>
              <nav class="pagination" page-info="index">
 
@@ -704,7 +709,7 @@ while 1:
                 <div class="site-state-item site-state-posts">
                     <a href="records">
                         <span class="site-state-item-count">
-                                33
+                                34
                         </span>
                         <span class="site-state-item-name">文章</span>
                     </a>
@@ -718,7 +723,7 @@ while 1:
                 <div class="site-state-item site-state-categories">
                     <a href="tags">
                         <span class="site-state-item-count">
-                                80
+                                84
                         </span>
                         <span class="site-state-item-name">标签</span>
                     </a>
