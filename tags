@@ -137,7 +137,7 @@ ghost.init({
             <div class="tag-cloud">
                 <div class="tag-cloud-title">
                     目前共计&nbsp;
-                    96
+                    104
                 &nbsp;个标签
                 </div>
                 <div class="tag-cloud-tags">
@@ -186,7 +186,7 @@ ghost.init({
                             <a href="tag/pyenv/index.html" post-num="2" class="tags-cloud">pyenv</a>
                             <a href="tag/virtualenv/index.html" post-num="1" class="tags-cloud">virtualenv</a>
                             <a href="tag/guo-qing/index.html" post-num="1" class="tags-cloud">国庆</a>
-                            <a href="tag/ji-hua/index.html" post-num="1" class="tags-cloud">计划</a>
+                            <a href="tag/ji-hua/index.html" post-num="2" class="tags-cloud">计划</a>
                             <a href="tag/za-gan/index.html" post-num="1" class="tags-cloud">杂感</a>
                             <a href="tag/gong-zhong-hao/index.html" post-num="1" class="tags-cloud">公众号</a>
                             <a href="tag/jie-zhi-tou-zi/index.html" post-num="1" class="tags-cloud">价值投资</a>
@@ -237,6 +237,14 @@ ghost.init({
                             <a href="tag/shu-xing/index.html" post-num="1" class="tags-cloud">属性</a>
                             <a href="tag/guan-xi/index.html" post-num="1" class="tags-cloud">关系</a>
                             <a href="tag/gou-jian/index.html" post-num="1" class="tags-cloud">构建</a>
+                            <a href="tag/zi-lu/index.html" post-num="1" class="tags-cloud">自律</a>
+                            <a href="tag/bu-gan-xin/index.html" post-num="1" class="tags-cloud">不甘心</a>
+                            <a href="tag/hao-qi-xin/index.html" post-num="1" class="tags-cloud">好奇心</a>
+                            <a href="tag/shi-jie-bei/index.html" post-num="1" class="tags-cloud">世界杯</a>
+                            <a href="tag/wei-jing-zhan-hou/index.html" post-num="1" class="tags-cloud">维京战吼</a>
+                            <a href="tag/ying-ge-lan/index.html" post-num="1" class="tags-cloud">英格兰</a>
+                            <a href="tag/re-ci/index.html" post-num="1" class="tags-cloud">热刺</a>
+                            <a href="tag/bi-te-bi/index.html" post-num="1" class="tags-cloud">比特币</a>
                 </div>
             </div>
         </div>
@@ -261,7 +269,7 @@ ghost.init({
                 <div class="site-state-item site-state-posts">
                     <a href="records">
                         <span class="site-state-item-count">
-                                39
+                                40
                         </span>
                         <span class="site-state-item-name">文章</span>
                     </a>
@@ -275,7 +283,7 @@ ghost.init({
                 <div class="site-state-item site-state-categories">
                     <a href="tags">
                         <span class="site-state-item-count">
-                                96
+                                104
                         </span>
                         <span class="site-state-item-name">标签</span>
                     </a>
